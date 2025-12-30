@@ -1,52 +1,136 @@
-<footer class="bg-light border-top pt-5 pb-3">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-lg-4">
-                <h5 class="fw-bold text-success mb-3">BiasharaConnect.</h5>
-                <p class="text-muted small">
-                    Kenya's most trusted digital marketplace. We bridge the gap between small businesses and the online audience.
-                </p>
-                <div class="d-flex gap-3">
-                    <a href="#" class="text-success fs-5"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="text-success fs-5"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="text-success fs-5"><i class="bi bi-whatsapp"></i></a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer - Biashara Connect</title>
+
+    <!-- Same styles as header -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="../assets/css/footer.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Footer Section -->
+    <footer class="main-footer">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-content">
+                <!-- Row 1: Logo and Social -->
+                <div class="footer-row">
+                    <div class="footer-logo-section">
+                        <a href="/" class="footer-logo">
+                            <i class="fas fa-handshake footer-logo-icon"></i>
+                            <div>
+                                <div class="footer-logo-text">BiasharaConnect</div>
+                                <div class="footer-logo-tagline">Kenya's Marketplace</div>
+                            </div>
+                        </a>
+                        <p class="footer-description">
+                            Connecting buyers and sellers across Kenya. Your trusted marketplace for local products and services.
+                        </p>
+                        <div class="footer-social">
+                            <a href="#" class="social-icon" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Links and Contact -->
+                <div class="footer-row">
+                    <div class="footer-columns">
+                        <!-- Quick Links -->
+                        <div class="footer-column">
+                            <h3 class="footer-column-title">Quick Links</h3>
+                            <ul class="footer-links">
+                                <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+                                <li><a href="/about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                                <li><a href="/categories"><i class="fas fa-chevron-right"></i> Categories</a></li>
+                                <li><a href="/how-it-works"><i class="fas fa-chevron-right"></i> How It Works</a></li>
+                                <li><a href="/blog"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- For Buyers -->
+                        <div class="footer-column">
+                            <h3 class="footer-column-title">For Buyers</h3>
+                            <ul class="footer-links">
+                                <li><a href="/buyer-guide"><i class="fas fa-chevron-right"></i> Buyer's Guide</a></li>
+                                <li><a href="/safety-tips"><i class="fas fa-chevron-right"></i> Safety Tips</a></li>
+                                <li><a href="/payment-methods"><i class="fas fa-chevron-right"></i> Payment Methods</a></li>
+                                <li><a href="/delivery-info"><i class="fas fa-chevron-right"></i> Delivery Information</a></li>
+                                <li><a href="/faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- For Sellers -->
+                        <div class="footer-column">
+                            <h3 class="footer-column-title">For Sellers</h3>
+                            <ul class="footer-links">
+                                <li><a href="/sell"><i class="fas fa-chevron-right"></i> Sell on Biashara</a></li>
+                                <li><a href="/seller-guide"><i class="fas fa-chevron-right"></i> Seller's Guide</a></li>
+                                <li><a href="/pricing"><i class="fas fa-chevron-right"></i> Pricing & Fees</a></li>
+                                <li><a href="/success-stories"><i class="fas fa-chevron-right"></i> Success Stories</a></li>
+                                <li><a href="/seller-support"><i class="fas fa-chevron-right"></i> Seller Support</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="footer-column">
+                            <h3 class="footer-column-title">Contact Us</h3>
+                            <div class="footer-contact">
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Nairobi, Kenya</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <span>+254 700 123 456</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>info@biasharaconnect.co.ke</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Mon - Fri: 8:00 AM - 6:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="copyright">
+                        &copy; <span id="current-year"></span> Biashara Connect. All rights reserved.
+                    </div>
                 </div>
             </div>
-
-            <div class="col-6 col-lg-2 ms-auto">
-                <h6 class="fw-bold mb-3">Company</h6>
-                <ul class="list-unstyled small">
-                    <li><a href="#" class="text-decoration-none text-muted d-block mb-2">About Us</a></li>
-                    <li><a href="#" class="text-decoration-none text-muted d-block mb-2">How it Works</a></li>
-                    <li><a href="#" class="text-decoration-none text-muted d-block mb-2">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="col-6 col-lg-2">
-                <h6 class="fw-bold mb-3">Support</h6>
-                <ul class="list-unstyled small">
-                    <li><a href="#" class="text-decoration-none text-muted d-block mb-2">Safety Tips</a></li>
-                    <li><a href="#" class="text-decoration-none text-muted d-block mb-2">Privacy Policy</a></li>
-                    <li><a href="#" class="text-decoration-none text-muted d-block mb-2">Terms of Service</a></li>
-                </ul>
-            </div>
         </div>
+    </footer>
 
-        <hr class="my-4 text-muted">
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center text-md-start">
-                <p class="text-muted small mb-0">&copy; <span id="year"></span> Biashara Connect Kenya.</p>
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-                <p class="text-muted small mb-0">
-                    Handcrafted for the 254 🇰🇪
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+    <!-- JavaScript -->
+    <script src="../assets/js/footer.js" defer></script>
+</body>
+</html>
