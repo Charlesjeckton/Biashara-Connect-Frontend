@@ -2,9 +2,280 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biashara Connect | Marketplace</title>
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap"
+          rel="stylesheet">
+
+    <link href="assets/css/main.css" rel="stylesheet">
 </head>
 <body>
+
+<div id="header-placeholder"></div>
+
+<main>
+    <section id="filters" class="filters section py-4">
+        <div class="container container-main">
+            <div class="filters-section">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <div class="filter-group">
+                            <label class="filter-label">Category</label>
+                            <select class="filter-select" id="categoryFilter">
+                                <option value="">All Categories</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="fashion">Fashion</option>
+                                <option value="home">Home & Garden</option>
+                                <option value="vehicles">Vehicles</option>
+                                <option value="services">Services</option>
+                                <option value="agriculture">Agriculture</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="filter-group">
+                            <label class="filter-label">Condition</label>
+                            <select class="filter-select" id="conditionFilter">
+                                <option value="">All Conditions</option>
+                                <option value="new">Brand New</option>
+                                <option value="used">Second Hand</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="filter-group">
+                            <label class="filter-label">Location</label>
+                            <select class="filter-select" id="locationFilter">
+                                <option value="">All Kenya</option>
+                                <option value="nairobi">Nairobi</option>
+                                <option value="mombasa">Mombasa</option>
+                                <option value="kisumu">Kisumu</option>
+                                <option value="nakuru">Nakuru</option>
+                                <option value="eldoret">Eldoret</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="filter-group">
+                            <label class="filter-label">Price Range</label>
+                            <div class="d-flex gap-2">
+                                <input type="number" class="filter-input" placeholder="Min" id="priceMin">
+                                <input type="number" class="filter-input" placeholder="Max" id="priceMax">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-2">
+                                <button class="filter-btn" id="applyFilters">
+                                    <i class="fas fa-filter me-2"></i>Apply Filters
+                                </button>
+                                <button class="filter-btn" id="resetFilters" style="background: var(--text-light);">
+                                    <i class="fas fa-redo me-2"></i>Reset
+                                </button>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <span id="resultsCount">Showing 12 of 120 results</span>
+                                <select class="filter-select" id="sortFilter" style="width: auto;">
+                                    <option value="newest">Newest First</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="location">Nearest First</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="listings" class="listings section pb-5">
+        <div class="container container-main">
+            <div class="listings-container" id="listingsGrid">
+
+                <div class="listing-card">
+                    <div class="listing-image-container">
+                        <img src="https://images.unsplash.com/photo-1762512949121-c1fc05b36e1a?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="iPhone 13 Pro" class="listing-image">
+                        <div class="condition-badge new-badge">New</div>
+                        <div class="saved-icon" data-listing="1"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div class="listing-card-body">
+                        <div class="listing-price">KSh 85,000</div>
+                        <h3 class="listing-title">iPhone 13 Pro 256GB - Space Gray</h3>
+                        <p class="listing-description">Brand new iPhone 13 Pro, 256GB storage. Includes original box and
+                            warranty.</p>
+                        <div class="listing-location"><i
+                                class="fas fa-map-marker-alt"></i><span>Westlands, Nairobi</span></div>
+                    </div>
+                    <div class="listing-card-footer">
+                        <div class="seller-info">
+                            <div class="seller-avatar">JK</div>
+                            <div class="seller-name">John Kamau</div>
+                        </div>
+                        <button class="contact-btn" data-listing="1"><i class="fas fa-message"></i> Contact</button>
+                    </div>
+                </div>
+
+                <div class="listing-card">
+                    <div class="listing-image-container">
+                        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=500&q=60"
+                             alt="Nike Shoes" class="listing-image">
+                        <div class="condition-badge">Used</div>
+                        <div class="saved-icon" data-listing="2"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div class="listing-card-body">
+                        <div class="listing-price">KSh 3,500</div>
+                        <h3 class="listing-title">Nike Air Max Running Shoes - Size 42</h3>
+                        <p class="listing-description">Lightly used. Comfortable for running and casual wear. Minimal
+                            wear.</p>
+                        <div class="listing-location"><i
+                                class="fas fa-map-marker-alt"></i><span>Kilimani, Nairobi</span></div>
+                    </div>
+                    <div class="listing-card-footer">
+                        <div class="seller-info">
+                            <div class="seller-avatar">SW</div>
+                            <div class="seller-name">Sarah Wanjiru</div>
+                        </div>
+                        <button class="contact-btn" data-listing="2"><i class="fas fa-message"></i> Contact</button>
+                    </div>
+                </div>
+
+                <div class="listing-card">
+                    <div class="listing-image-container">
+                        <img src="https://plus.unsplash.com/premium_photo-1673548917423-073963e7afc9?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="Sofa Set" class="listing-image">
+                        <div class="condition-badge new-badge">New</div>
+                        <div class="saved-icon" data-listing="3"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div class="listing-card-body">
+                        <div class="listing-price">KSh 45,000</div>
+                        <h3 class="listing-title">Modern 3-Seater Sofa Set - Beige</h3>
+                        <p class="listing-description">Premium fabric, modern design. Perfect for your living room.</p>
+                        <div class="listing-location"><i
+                                class="fas fa-map-marker-alt"></i><span>Kileleshwa, Nairobi</span></div>
+                    </div>
+                    <div class="listing-card-footer">
+                        <div class="seller-info">
+                            <div class="seller-avatar">FM</div>
+                            <div class="seller-name">Furniture Mart</div>
+                        </div>
+                        <button class="contact-btn" data-listing="3"><i class="fas fa-message"></i> Contact</button>
+                    </div>
+                </div>
+
+                <div class="listing-card">
+                    <div class="listing-image-container">
+                        <img src="https://images.unsplash.com/photo-1638618164682-12b986ec2a75?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="Toyota Premio" class="listing-image">
+                        <div class="condition-badge">Used</div>
+                        <div class="saved-icon" data-listing="4"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div class="listing-card-body">
+                        <div class="listing-price">KSh 1,200,000</div>
+                        <h3 class="listing-title">Toyota Premio 2015 - Mint Condition</h3>
+                        <p class="listing-description">Well maintained, full service history. Fuel efficient and clean
+                            interior.</p>
+                        <div class="listing-location"><i class="fas fa-map-marker-alt"></i><span>Thika, Kiambu</span>
+                        </div>
+                    </div>
+                    <div class="listing-card-footer">
+                        <div class="seller-info">
+                            <div class="seller-avatar">DM</div>
+                            <div class="seller-name">David Maina</div>
+                        </div>
+                        <button class="contact-btn" data-listing="4"><i class="fas fa-message"></i> Contact</button>
+                    </div>
+                </div>
+
+                <div class="listing-card">
+                    <div class="listing-image-container">
+                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="Plumber" class="listing-image">
+                        <div class="condition-badge new-badge">Service</div>
+                        <div class="saved-icon" data-listing="5"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div class="listing-card-body">
+                        <div class="listing-price">KSh 2,500/hr</div>
+                        <h3 class="listing-title">Professional Plumbing Services</h3>
+                        <p class="listing-description">Available for leak repair, installation, and general maintenance.
+                            Free quotes.</p>
+                        <div class="listing-location"><i class="fas fa-map-marker-alt"></i><span>Mombasa CBD</span>
+                        </div>
+                    </div>
+                    <div class="listing-card-footer">
+                        <div class="seller-info">
+                            <div class="seller-avatar">PP</div>
+                            <div class="seller-name">Pro Plumbers</div>
+                        </div>
+                        <button class="contact-btn" data-listing="5"><i class="fas fa-message"></i> Contact</button>
+                    </div>
+                </div>
+
+                <div class="listing-card">
+                    <div class="listing-image-container">
+                        <img src="https://images.unsplash.com/photo-1712766279006-ce3a50df51ee?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="Tractor" class="listing-image">
+                        <div class="condition-badge">Used</div>
+                        <div class="saved-icon" data-listing="6"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div class="listing-card-body">
+                        <div class="listing-price">KSh 850,000</div>
+                        <h3 class="listing-title">Farm Tractor - 45HP - Ready for Work</h3>
+                        <p class="listing-description">2018 model, well maintained. Perfect for small to medium
+                            farms.</p>
+                        <div class="listing-location"><i
+                                class="fas fa-map-marker-alt"></i><span>Eldoret, Uasin Gishu</span></div>
+                    </div>
+                    <div class="listing-card-footer">
+                        <div class="seller-info">
+                            <div class="seller-avatar">FK</div>
+                            <div class="seller-name">Farm Kenya</div>
+                        </div>
+                        <button class="contact-btn" data-listing="6"><i class="fas fa-message"></i> Contact</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="pagination" class="pagination section py-4">
+        <div class="container">
+            <div class="pagination-container">
+                <div class="pagination">
+                    <a href="#" class="page-link disabled"><i class="fas fa-chevron-left"></i></a>
+                    <a href="#" class="page-link active">1</a>
+                    <a href="#" class="page-link">2</a>
+                    <a href="#" class="page-link">3</a>
+                    <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+    function loadHTML(elementId, filePath) {
+        fetch(filePath)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(elementId).innerHTML = data;
+            });
+    }
+
+    window.onload = function () {
+        loadHTML('header-placeholder', 'includes/header.html');
+        loadHTML('footer-placeholder', 'includes/footer.html');
+    };
+</script>
+<script src="assets/js/main.js" defer></script>
 
 </body>
 </html>
