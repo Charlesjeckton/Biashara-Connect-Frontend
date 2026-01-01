@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biashara Connect | Marketplace</title>
 
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Vendor CSS -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap"
           rel="stylesheet">
 
-    <link href="assets/css/main.css" rel="stylesheet">
+    <!-- Main CSS -->
+    <link href="/assets/css/main.css" rel="stylesheet">
 </head>
 <body>
 
@@ -260,8 +262,9 @@
 
 <div id="footer-placeholder"></div>
 
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script>
+    // Load header & footer
     function loadHTML(elementId, filePath) {
         fetch(filePath)
             .then(response => response.text())
@@ -271,11 +274,11 @@
     }
 
     window.onload = function () {
-        loadHTML('header-placeholder', 'includes/header.html');
-        loadHTML('footer-placeholder', 'includes/footer.html');
+    loadHTML('header-placeholder', '/includes/header.html');
+    loadHTML('footer-placeholder', '/includes/footer.html');
     };
 </script>
-<script src="assets/js/main.js" defer></script>
+<script src="/assets/js/main.js" defer></script>
 
 </body>
 </html>
