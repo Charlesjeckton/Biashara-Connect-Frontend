@@ -10,7 +10,228 @@
 </head>
 <body>
 
-<div id="header-placeholder"></div>
+<section id="header" class="header section">
+    <header class="main-header">
+        <div class="container py-3">
+
+            <div class="row align-items-center justify-content-between g-3">
+
+                <div class="col-lg-3 col-md-4 col-10 col-sm-8 logo-section d-flex align-items-center">
+                    <button class="mobile-menu-btn me-2 me-sm-3 d-lg-none" aria-label="Toggle Navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <a href="/index.html" class="logo d-flex align-items-center text-nowrap">
+                        <i class="fas fa-handshake logo-icon"></i>
+                        <div class="logo-text-wrapper">
+                            <div class="logo-text">BiasharaConnect</div>
+                            <div class="logo-tagline d-none d-sm-block">Kenya's Marketplace</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-5 col-md-8 col-12 search-container d-flex justify-content-center">
+                    <div class="search-box d-flex w-100">
+                        <input type="text" class="search-input" placeholder="Search products, services, or sellers...">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <nav aria-label="Main Navigation">
+                        <ul class="nav-menu d-flex justify-content-center" id="mainMenu">
+
+                            <li class="nav-item">
+                                <a href="/index.html" class="nav-link">
+                                    <i class="fas fa-store me-2"></i> Marketplace
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/sell.html" class="nav-link">
+                                    <i class="fas fa-hand-holding-dollar me-2"></i> Sell & Earn
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/favorites.html" class="nav-link active">
+                                    <i class="fas fa-bookmark me-2"></i> Favorites
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/analytics.html" class="nav-link">
+                                    <i class="fas fa-chart-line me-2"></i> Trends
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/support.html" class="nav-link">
+                                    <i class="fas fa-envelope me-2"></i> Contact Us
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                    <i class="fas fa-user-circle me-2"></i> My Account
+                                </a>
+
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user me-2"></i> Profile
+                                    </a>
+
+                                    <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                        <span><i class="fas fa-envelope me-2"></i> Messages</span>
+                                        <span class="badge bg-danger">5</span>
+                                    </a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <!-- Register Modal Trigger -->
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                       data-bs-target="#registerModal">
+                                        <i class="fas fa-user-plus me-2"></i> Register
+                                    </a>
+
+                                    <!-- Login Modal Trigger -->
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                       data-bs-target="#loginModal">
+                                        <i class="fas fa-sign-in-alt me-2"></i> Login
+                                    </a>
+
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                    </a>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">
+                        Create Account
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form method="POST" action="{% url 'register' %}">
+                        {% csrf_token %}
+
+                        <!-- Full Name -->
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Full Name</label>
+                            <input
+                                    type="text"
+                                    id="fullName"
+                                    name="full_name"
+                                    class="form-control"
+                                    placeholder="Enter your full name"
+                                    required
+                            >
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="Enter your email"
+                                    required
+                            >
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    class="form-control"
+                                    placeholder="Create a password"
+                                    required
+                            >
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-success w-100">
+                            Create Account
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="Enter your email"
+                                    required
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    class="form-control"
+                                    placeholder="Enter password"
+                                    required
+                            >
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">
+                            Login
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
 
 <main class="container py-5">
     <h2 class="mb-4">Your Saved Listings</h2>
