@@ -1,44 +1,660 @@
-<main class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card shadow-sm border-0">
-                <div class="card-body p-4">
-                    <h2 class="mb-4"><i class="fas fa-plus-circle text-success me-2"></i>Create New Listing</h2>
-                    <form id="sellForm">
-                        <div class="mb-4">
-                            <label class="form-label fw-bold">What are you selling?</label>
-                            <input type="text" class="form-control" placeholder="e.g. Toyota Fielder 2018">
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <label class="form-label fw-bold">Category</label>
-                                <select class="form-select">
-                                    <option>Vehicles</option>
-                                    <option>Electronics</option>
-                                    <option>Property</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label fw-bold">Price (KSh)</label>
-                                <input type="number" class="form-control" placeholder="Amount">
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <label class="form-label fw-bold">Description</label>
-                            <textarea class="form-control" rows="4" placeholder="Describe your item..."></textarea>
-                        </div>
-                        <div class="mb-4">
-                            <label class="form-label fw-bold">Photos</label>
-                            <div class="upload-box border-dashed p-5 text-center bg-light rounded">
-                                <i class="fas fa-camera fa-2x mb-2 text-muted"></i>
-                                <p>Click to upload or drag and drop</p>
-                                <input type="file" hidden id="fileUpload">
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-success btn-lg w-100">Post Listing Now</button>
-                    </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell on Biashara Connect | Kenya's Marketplace</title>
+
+    <!-- Vendor CSS -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link href="/assets/css/main.css" rel="stylesheet">
+
+    <style>
+        /* Sell Page Specific Styles */
+        .sell-hero {
+            background: linear-gradient(135deg, #2E8B57, #1A3C27);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .sell-hero h1 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .sell-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .benefits-section {
+            padding: 60px 0;
+            background: #F8F9FA;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            height: 100%;
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: #2E8B57;
+            margin-bottom: 20px;
+        }
+
+        .steps-section {
+            padding: 60px 0;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #2E8B57;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .sell-form-section {
+            background: #2E8B57;
+            color: white;
+            padding: 80px 0;
+            border-radius: 20px 20px 0 0;
+            margin-top: 60px;
+        }
+
+        .sell-form {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-control, .form-select {
+            padding: 12px 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #2E8B57;
+            box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
+        }
+
+        .image-upload-area {
+            border: 2px dashed #2E8B57;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .image-upload-area:hover {
+            background: #F8F9FA;
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            color: #2E8B57;
+            margin-bottom: 15px;
+        }
+
+        .price-tip {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .submit-btn {
+            background: #2E8B57;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #1A3C27;
+            transform: translateY(-2px);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 0;
+            background: #F8F9FA;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #1A3C27, #2E8B57);
+            color: white;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .sell-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .sell-hero p {
+                font-size: 1rem;
+            }
+
+            .sell-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header placeholder (same as index.html) -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="sell-hero">
+            <div class="container">
+                <h1>Start Selling on Biashara Connect</h1>
+                <p>Reach thousands of buyers across Kenya. List your products or services in minutes and grow your business with Kenya's fastest growing marketplace.</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="#sell-form" class="btn btn-light btn-lg px-4 py-3">
+                        <i class="fas fa-plus me-2"></i> List Item Now
+                    </a>
+                    <a href="#benefits" class="btn btn-outline-light btn-lg px-4 py-3">
+                        <i class="fas fa-play-circle me-2"></i> How It Works
+                    </a>
                 </div>
             </div>
-        </div>
-    </div>
-</main>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="stat-card">
+                            <div class="stat-number">50,000+</div>
+                            <div class="stat-label">Active Buyers</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="stat-card">
+                            <div class="stat-number">0%</div>
+                            <div class="stat-label">Listing Fee</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="stat-card">
+                            <div class="stat-number">47</div>
+                            <div class="stat-label">Counties Covered</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="stat-card">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="benefits-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Why Sell With Us?</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>Large Audience</h4>
+                            <p>Access thousands of verified buyers across all 47 counties in Kenya.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Secure Payments</h4>
+                            <p>M-Pesa integration ensures safe and instant payment for your sales.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4>Easy Management</h4>
+                            <p>Simple dashboard to track sales, messages, and manage your listings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Steps Section -->
+        <section class="steps-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Sell in 4 Easy Steps</h2>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <h4>Create Account</h4>
+                            <p>Sign up in 30 seconds. No lengthy forms required.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <h4>List Your Item</h4>
+                            <p>Upload photos, set price, add description.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <h4>Get Contacts</h4>
+                            <p>Interested buyers will contact you directly.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <h4>Sell & Earn</h4>
+                            <p>Receive payment via M-Pesa or cash on delivery.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sell Form Section -->
+        <section id="sell-form" class="sell-form-section">
+            <div class="container">
+                <h2 class="text-center mb-4 text-white">List Your Item</h2>
+                <p class="text-center text-white mb-5">Fill out the form below to start selling</p>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="sell-form">
+                            <form id="listingForm">
+                                <!-- Product Information -->
+                                <div class="mb-4">
+                                    <h5 class="mb-3"><i class="fas fa-box me-2"></i> Product Information</h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Product Title *</label>
+                                            <input type="text" class="form-control" placeholder="e.g., iPhone 13 Pro 256GB" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Category *</label>
+                                            <select class="form-select" required>
+                                                <option value="">Select Category</option>
+                                                <option>Electronics</option>
+                                                <option>Fashion</option>
+                                                <option>Home & Garden</option>
+                                                <option>Vehicles</option>
+                                                <option>Services</option>
+                                                <option>Agriculture</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Condition *</label>
+                                            <select class="form-select" required>
+                                                <option value="">Select Condition</option>
+                                                <option>Brand New</option>
+                                                <option>Second Hand - Like New</option>
+                                                <option>Second Hand - Good</option>
+                                                <option>Second Hand - Fair</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Price (KSh) *</label>
+                                            <input type="number" class="form-control" placeholder="e.g., 85000" required>
+                                            <div class="price-tip">Research similar items for pricing guidance</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Description -->
+                                <div class="mb-4">
+                                    <h5 class="mb-3"><i class="fas fa-align-left me-2"></i> Description</h5>
+                                    <label class="form-label">Detailed Description *</label>
+                                    <textarea class="form-control" rows="4" placeholder="Describe your item in detail. Include features, specifications, and any imperfections." required></textarea>
+                                </div>
+
+                                <!-- Images -->
+                                <div class="mb-4">
+                                    <h5 class="mb-3"><i class="fas fa-images me-2"></i> Photos</h5>
+                                    <div class="image-upload-area" id="imageUpload">
+                                        <div class="upload-icon">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                        </div>
+                                        <h5>Drag & Drop Photos Here</h5>
+                                        <p class="text-muted">or click to browse (Up to 8 images, max 5MB each)</p>
+                                        <input type="file" class="d-none" id="fileInput" multiple accept="image/*">
+                                    </div>
+                                    <div class="image-preview mt-3" id="imagePreview"></div>
+                                </div>
+
+                                <!-- Location -->
+                                <div class="mb-4">
+                                    <h5 class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> Location</h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">County *</label>
+                                            <select class="form-select" required>
+                                                <option value="">Select County</option>
+                                                <option>Nairobi</option>
+                                                <option>Mombasa</option>
+                                                <option>Kisumu</option>
+                                                <option>Nakuru</option>
+                                                <option>Kiambu</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Town/Area *</label>
+                                            <input type="text" class="form-control" placeholder="e.g., Westlands, Kilimani" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Contact Information -->
+                                <div class="mb-4">
+                                    <h5 class="mb-3"><i class="fas fa-phone me-2"></i> Contact Information</h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Phone Number *</label>
+                                            <input type="tel" class="form-control" placeholder="+254 700 123 456" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">WhatsApp Number (Optional)</label>
+                                            <input type="tel" class="form-control" placeholder="+254 700 123 456">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="d-grid gap-3">
+                                    <button type="submit" class="submit-btn">
+                                        <i class="fas fa-rocket me-2"></i> Publish Listing
+                                    </button>
+                                    <p class="text-center text-muted mb-0">
+                                        By clicking "Publish Listing", you agree to our <a href="#">Terms of Service</a>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                How much does it cost to sell?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Listing items is completely free on Biashara Connect. We only charge a small commission when you successfully make a sale through our platform.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                How do I receive payments?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                We support M-Pesa, cash on delivery, and bank transfers. Most sellers prefer M-Pesa for instant payments.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                How long do listings stay active?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Listings remain active for 30 days. You can renew them for free at any time before they expire.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Can I edit my listing after posting?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Yes, you can edit your listing anytime from your seller dashboard to update prices, photos, or descriptions.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Is my personal information safe?
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                We never share your phone number or personal details publicly. We use a secure messaging system to connect buyers and sellers.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Vendor JS -->
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Sell Page JS -->
+    <script>
+        // Load header & footer
+        function loadHTML(elementId, filePath) {
+            fetch(filePath)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header and footer
+            loadHTML('header-placeholder', '/includes/header.html');
+            loadHTML('footer-placeholder', '/includes/footer.html');
+
+            // Image upload functionality
+            const imageUpload = document.getElementById('imageUpload');
+            const fileInput = document.getElementById('fileInput');
+            const imagePreview = document.getElementById('imagePreview');
+
+            imageUpload.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                const files = Array.from(e.target.files);
+                imagePreview.innerHTML = '';
+
+                files.forEach((file, index) => {
+                    if (index >= 8) return; // Limit to 8 images
+
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'image-preview-item';
+                        imgContainer.style.cssText = `
+                            display: inline-block;
+                            margin: 5px;
+                            position: relative;
+                        `;
+
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.cssText = `
+                            width: 100px;
+                            height: 100px;
+                            object-fit: cover;
+                            border-radius: 8px;
+                        `;
+
+                        const removeBtn = document.createElement('button');
+                        removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                        removeBtn.style.cssText = `
+                            position: absolute;
+                            top: -5px;
+                            right: -5px;
+                            background: red;
+                            color: white;
+                            border: none;
+                            border-radius: 50%;
+                            width: 20px;
+                            height: 20px;
+                            font-size: 12px;
+                            cursor: pointer;
+                        `;
+                        removeBtn.onclick = () => imgContainer.remove();
+
+                        imgContainer.appendChild(img);
+                        imgContainer.appendChild(removeBtn);
+                        imagePreview.appendChild(imgContainer);
+                    };
+
+                    reader.readAsDataURL(file);
+                });
+            });
+
+            // Drag and drop functionality
+            imageUpload.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                imageUpload.style.background = '#F8F9FA';
+            });
+
+            imageUpload.addEventListener('dragleave', () => {
+                imageUpload.style.background = '';
+            });
+
+            imageUpload.addEventListener('drop', (e) => {
+                e.preventDefault();
+                imageUpload.style.background = '';
+                fileInput.files = e.dataTransfer.files;
+                fileInput.dispatchEvent(new Event('change'));
+            });
+
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Form submission
+            const listingForm = document.getElementById('listingForm');
+            listingForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Here you would typically send data to your backend
+                alert('Your listing has been submitted for review! It will be live within 24 hours.');
+                listingForm.reset();
+                imagePreview.innerHTML = '';
+            });
+        });
+    </script>
+</body>
+</html>
