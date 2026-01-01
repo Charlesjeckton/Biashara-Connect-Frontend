@@ -3,657 +3,607 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sell on Biashara Connect | Kenya's Marketplace</title>
-
-    <!-- Vendor CSS -->
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title>Biashara Marketplace - Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Main CSS -->
-    <link href="/assets/css/main.css" rel="stylesheet">
-
     <style>
-        /* Sell Page Specific Styles */
-        .sell-hero {
-            background: linear-gradient(135deg, #2E8B57, #1A3C27);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #3a86ff;
+            --secondary: #8338ec;
+            --accent: #ff006e;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #38b000;
+            --warning: #ffbe0b;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
             color: white;
-            padding: 80px 0 60px;
-            text-align: center;
+            padding: 25px 15px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
         }
 
-        .sell-hero h1 {
-            font-family: 'Raleway', sans-serif;
-            font-weight: 800;
-            font-size: 3rem;
-            margin-bottom: 20px;
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 0 10px;
         }
 
-        .sell-hero p {
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            font-size: 2.2rem;
+            color: var(--warning);
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .nav-item {
+            margin-bottom: 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 14px 15px;
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+
+        .nav-link i {
+            margin-right: 12px;
             font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-
-        .benefits-section {
-            padding: 60px 0;
-            background: #F8F9FA;
-        }
-
-        .benefit-card {
+            width: 24px;
             text-align: center;
-            padding: 30px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            height: 100%;
-            transition: transform 0.3s;
         }
 
-        .benefit-card:hover {
-            transform: translateY(-10px);
+        .user-profile {
+            position: absolute;
+            bottom: 30px;
+            left: 15px;
+            right: 15px;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
         }
 
-        .benefit-icon {
-            font-size: 3rem;
-            color: #2E8B57;
-            margin-bottom: 20px;
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: white;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 12px;
         }
 
-        .steps-section {
-            padding: 60px 0;
+        .user-info h4 {
+            font-size: 1rem;
+            margin-bottom: 3px;
         }
 
-        .step-card {
-            text-align: center;
-            padding: 40px 20px;
+        .user-info p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Main content styling */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 25px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .page-title h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+
+        .page-title p {
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
             position: relative;
+            margin-right: 20px;
         }
 
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: #2E8B57;
-            color: white;
+        .search-bar input {
+            padding: 12px 20px 12px 45px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            width: 300px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.1);
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .notification-btn {
+            background: white;
+            border: none;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
-            margin: 0 auto 20px;
-        }
-
-        .sell-form-section {
-            background: #2E8B57;
-            color: white;
-            padding: 80px 0;
-            border-radius: 20px 20px 0 0;
-            margin-top: 60px;
-        }
-
-        .sell-form {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .form-label {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .form-control, .form-select {
-            padding: 12px 15px;
-            border: 2px solid #E0E0E0;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        .form-control:focus, .form-select:focus {
-            border-color: #2E8B57;
-            box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.1);
-        }
-
-        .image-upload-area {
-            border: 2px dashed #2E8B57;
-            border-radius: 8px;
-            padding: 40px;
-            text-align: center;
+            color: var(--dark);
+            font-size: 1.2rem;
             cursor: pointer;
-            transition: all 0.3s;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            margin-right: 15px;
         }
 
-        .image-upload-area:hover {
-            background: #F8F9FA;
-        }
-
-        .upload-icon {
-            font-size: 48px;
-            color: #2E8B57;
-            margin-bottom: 15px;
-        }
-
-        .price-tip {
-            font-size: 14px;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        .submit-btn {
-            background: #2E8B57;
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--accent);
             color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: all 0.3s;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            background: #1A3C27;
-            transform: translateY(-2px);
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            padding: 60px 0;
-            background: #F8F9FA;
-        }
-
-        .faq-item {
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 20px;
-            font-weight: 600;
-            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 0.7rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
         }
 
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 0 20px 20px;
-            max-height: 500px;
-        }
-
-        /* Stats Section */
-        .stats-section {
-            padding: 60px 0;
-            background: linear-gradient(135deg, #1A3C27, #2E8B57);
-            color: white;
-        }
-
-        .stat-card {
-            text-align: center;
+        /* Page-specific content */
+        .page-content {
+            background-color: white;
+            border-radius: var(--border-radius);
             padding: 30px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+            min-height: 500px;
         }
 
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
+        .welcome-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+
+        .welcome-section h1 {
+            font-size: 2.2rem;
             margin-bottom: 10px;
         }
 
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            align-items: center;
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.8rem;
+        }
+
+        .stat-info h3 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-info p {
+            color: var(--gray);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #2a75ff;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(58, 134, 255, 0.2);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #e0005e;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: #7328d8;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+            border-top: 1px solid #eaeaea;
+            margin-top: 40px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 80px;
+                padding: 20px 10px;
+            }
+
+            .logo h1, .nav-link span, .user-info {
+                display: none;
+            }
+
+            .logo {
+                justify-content: center;
+                margin-bottom: 40px;
+            }
+
+            .nav-link {
+                justify-content: center;
+                padding: 15px 0;
+            }
+
+            .nav-link i {
+                margin-right: 0;
+                font-size: 1.4rem;
+            }
+
+            .user-profile {
+                justify-content: center;
+            }
+
+            .main-content {
+                margin-left: 80px;
+            }
+
+            .search-bar input {
+                width: 200px;
+            }
+        }
+
         @media (max-width: 768px) {
-            .sell-hero h1 {
-                font-size: 2.5rem;
+            .stats-cards {
+                grid-template-columns: 1fr;
             }
 
-            .sell-hero p {
-                font-size: 1rem;
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
-            .sell-form {
-                padding: 20px;
+            .header-actions {
+                margin-top: 20px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-bar {
+                flex-grow: 1;
+                margin-right: 10px;
+            }
+
+            .search-bar input {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header placeholder (same as index.html) -->
-    <div id="header-placeholder"></div>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h1>Biashara</h1>
+            </div>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="sell-hero">
-            <div class="container">
-                <h1>Start Selling on Biashara Connect</h1>
-                <p>Reach thousands of buyers across Kenya. List your products or services in minutes and grow your business with Kenya's fastest growing marketplace.</p>
-                <div class="d-flex justify-content-center gap-3 flex-wrap">
-                    <a href="#sell-form" class="btn btn-light btn-lg px-4 py-3">
-                        <i class="fas fa-plus me-2"></i> List Item Now
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
                     </a>
-                    <a href="#benefits" class="btn btn-outline-light btn-lg px-4 py-3">
-                        <i class="fas fa-play-circle me-2"></i> How It Works
+                </li>
+                <li class="nav-item">
+                    <a href="sell.html" class="nav-link active">
+                        <i class="fas fa-tag"></i>
+                        <span>Sell on Biashara</span>
                     </a>
+                </li>
+                <li class="nav-item">
+                    <a href="saved.html" class="nav-link">
+                        <i class="fas fa-bookmark"></i>
+                        <span>Saved Listings</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="insights.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Insights</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="support.html" class="nav-link">
+                        <i class="fas fa-headset"></i>
+                        <span>Support</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="messages.html" class="nav-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Messages</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <h4>Jane Doe</h4>
+                    <p>Premium Seller</p>
                 </div>
             </div>
-        </section>
+        </nav>
 
-        <!-- Stats Section -->
-        <section class="stats-section">
-            <div class="container">
-                <div class="row text-center">
-                    <div class="col-md-3 col-6 mb-4">
-                        <div class="stat-card">
-                            <div class="stat-number">50,000+</div>
-                            <div class="stat-label">Active Buyers</div>
-                        </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header">
+                <div class="page-title">
+                    <h2>Sell on Biashara</h2>
+                    <p>List your products and manage your sales</p>
+                </div>
+
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search products, categories...">
                     </div>
-                    <div class="col-md-3 col-6 mb-4">
-                        <div class="stat-card">
-                            <div class="stat-number">0%</div>
-                            <div class="stat-label">Listing Fee</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-4">
-                        <div class="stat-card">
-                            <div class="stat-number">47</div>
-                            <div class="stat-label">Counties Covered</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-4">
-                        <div class="stat-card">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Support</div>
-                        </div>
-                    </div>
+
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
                 </div>
             </div>
-        </section>
 
-        <!-- Benefits Section -->
-        <section id="benefits" class="benefits-section">
-            <div class="container">
-                <h2 class="text-center mb-5">Why Sell With Us?</h2>
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="benefit-card">
-                            <div class="benefit-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h4>Large Audience</h4>
-                            <p>Access thousands of verified buyers across all 47 counties in Kenya.</p>
-                        </div>
+            <div class="welcome-section">
+                <h1>Start Selling Today</h1>
+                <p>Reach thousands of customers on Biashara Marketplace. List your products in just a few steps.</p>
+                <a href="#list-product" class="btn btn-accent" style="margin-top: 20px;">
+                    <i class="fas fa-plus-circle"></i> List a Product
+                </a>
+            </div>
+
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: rgba(58, 134, 255, 0.1); color: var(--primary);">
+                        <i class="fas fa-box-open"></i>
                     </div>
-                    <div class="col-md-4">
-                        <div class="benefit-card">
-                            <div class="benefit-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h4>Secure Payments</h4>
-                            <p>M-Pesa integration ensures safe and instant payment for your sales.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="benefit-card">
-                            <div class="benefit-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <h4>Easy Management</h4>
-                            <p>Simple dashboard to track sales, messages, and manage your listings.</p>
-                        </div>
+                    <div class="stat-info">
+                        <h3>24</h3>
+                        <p>Active Listings</p>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Steps Section -->
-        <section class="steps-section">
-            <div class="container">
-                <h2 class="text-center mb-5">Sell in 4 Easy Steps</h2>
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="step-card">
-                            <div class="step-number">1</div>
-                            <h4>Create Account</h4>
-                            <p>Sign up in 30 seconds. No lengthy forms required.</p>
-                        </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: rgba(255, 190, 11, 0.1); color: var(--warning);">
+                        <i class="fas fa-shopping-cart"></i>
                     </div>
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="step-card">
-                            <div class="step-number">2</div>
-                            <h4>List Your Item</h4>
-                            <p>Upload photos, set price, add description.</p>
-                        </div>
+                    <div class="stat-info">
+                        <h3>156</h3>
+                        <p>Total Orders</p>
                     </div>
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="step-card">
-                            <div class="step-number">3</div>
-                            <h4>Get Contacts</h4>
-                            <p>Interested buyers will contact you directly.</p>
-                        </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: rgba(56, 176, 0, 0.1); color: var(--success);">
+                        <i class="fas fa-dollar-sign"></i>
                     </div>
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="step-card">
-                            <div class="step-number">4</div>
-                            <h4>Sell & Earn</h4>
-                            <p>Receive payment via M-Pesa or cash on delivery.</p>
-                        </div>
+                    <div class="stat-info">
+                        <h3>$3,842</h3>
+                        <p>Revenue This Month</p>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Sell Form Section -->
-        <section id="sell-form" class="sell-form-section">
-            <div class="container">
-                <h2 class="text-center mb-4 text-white">List Your Item</h2>
-                <p class="text-center text-white mb-5">Fill out the form below to start selling</p>
+            <div class="page-content" id="list-product">
+                <h2 style="margin-bottom: 25px;">Create New Listing</h2>
 
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="sell-form">
-                            <form id="listingForm">
-                                <!-- Product Information -->
-                                <div class="mb-4">
-                                    <h5 class="mb-3"><i class="fas fa-box me-2"></i> Product Information</h5>
-                                    <div class="row g-3">
-                                        <div class="col-md-6">
-                                            <label class="form-label">Product Title *</label>
-                                            <input type="text" class="form-control" placeholder="e.g., iPhone 13 Pro 256GB" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">Category *</label>
-                                            <select class="form-select" required>
-                                                <option value="">Select Category</option>
-                                                <option>Electronics</option>
-                                                <option>Fashion</option>
-                                                <option>Home & Garden</option>
-                                                <option>Vehicles</option>
-                                                <option>Services</option>
-                                                <option>Agriculture</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">Condition *</label>
-                                            <select class="form-select" required>
-                                                <option value="">Select Condition</option>
-                                                <option>Brand New</option>
-                                                <option>Second Hand - Like New</option>
-                                                <option>Second Hand - Good</option>
-                                                <option>Second Hand - Fair</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">Price (KSh) *</label>
-                                            <input type="number" class="form-control" placeholder="e.g., 85000" required>
-                                            <div class="price-tip">Research similar items for pricing guidance</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Description -->
-                                <div class="mb-4">
-                                    <h5 class="mb-3"><i class="fas fa-align-left me-2"></i> Description</h5>
-                                    <label class="form-label">Detailed Description *</label>
-                                    <textarea class="form-control" rows="4" placeholder="Describe your item in detail. Include features, specifications, and any imperfections." required></textarea>
-                                </div>
-
-                                <!-- Images -->
-                                <div class="mb-4">
-                                    <h5 class="mb-3"><i class="fas fa-images me-2"></i> Photos</h5>
-                                    <div class="image-upload-area" id="imageUpload">
-                                        <div class="upload-icon">
-                                            <i class="fas fa-cloud-upload-alt"></i>
-                                        </div>
-                                        <h5>Drag & Drop Photos Here</h5>
-                                        <p class="text-muted">or click to browse (Up to 8 images, max 5MB each)</p>
-                                        <input type="file" class="d-none" id="fileInput" multiple accept="image/*">
-                                    </div>
-                                    <div class="image-preview mt-3" id="imagePreview"></div>
-                                </div>
-
-                                <!-- Location -->
-                                <div class="mb-4">
-                                    <h5 class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> Location</h5>
-                                    <div class="row g-3">
-                                        <div class="col-md-6">
-                                            <label class="form-label">County *</label>
-                                            <select class="form-select" required>
-                                                <option value="">Select County</option>
-                                                <option>Nairobi</option>
-                                                <option>Mombasa</option>
-                                                <option>Kisumu</option>
-                                                <option>Nakuru</option>
-                                                <option>Kiambu</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">Town/Area *</label>
-                                            <input type="text" class="form-control" placeholder="e.g., Westlands, Kilimani" required>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Contact Information -->
-                                <div class="mb-4">
-                                    <h5 class="mb-3"><i class="fas fa-phone me-2"></i> Contact Information</h5>
-                                    <div class="row g-3">
-                                        <div class="col-md-6">
-                                            <label class="form-label">Phone Number *</label>
-                                            <input type="tel" class="form-control" placeholder="+254 700 123 456" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">WhatsApp Number (Optional)</label>
-                                            <input type="tel" class="form-control" placeholder="+254 700 123 456">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Submit Button -->
-                                <div class="d-grid gap-3">
-                                    <button type="submit" class="submit-btn">
-                                        <i class="fas fa-rocket me-2"></i> Publish Listing
-                                    </button>
-                                    <p class="text-center text-muted mb-0">
-                                        By clicking "Publish Listing", you agree to our <a href="#">Terms of Service</a>
-                                    </p>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="faq-section">
-            <div class="container">
-                <h2 class="text-center mb-5">Frequently Asked Questions</h2>
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                How much does it cost to sell?
-                                <i class="fas fa-chevron-down"></i>
+                <form id="listing-form">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px;">
+                        <div>
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Product Name</label>
+                                <input type="text" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: var(--border-radius);" placeholder="Enter product name">
                             </div>
-                            <div class="faq-answer">
-                                Listing items is completely free on Biashara Connect. We only charge a small commission when you successfully make a sale through our platform.
+
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Category</label>
+                                <select style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: var(--border-radius);">
+                                    <option>Select a category</option>
+                                    <option>Electronics</option>
+                                    <option>Fashion & Clothing</option>
+                                    <option>Home & Garden</option>
+                                    <option>Beauty & Personal Care</option>
+                                    <option>Sports & Outdoors</option>
+                                </select>
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Price ($)</label>
+                                <input type="number" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: var(--border-radius);" placeholder="0.00">
                             </div>
                         </div>
 
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                How do I receive payments?
-                                <i class="fas fa-chevron-down"></i>
+                        <div>
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Product Description</label>
+                                <textarea rows="6" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: var(--border-radius);" placeholder="Describe your product in detail"></textarea>
                             </div>
-                            <div class="faq-answer">
-                                We support M-Pesa, cash on delivery, and bank transfers. Most sellers prefer M-Pesa for instant payments.
-                            </div>
-                        </div>
 
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                How long do listings stay active?
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                Listings remain active for 30 days. You can renew them for free at any time before they expire.
-                            </div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                Can I edit my listing after posting?
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                Yes, you can edit your listing anytime from your seller dashboard to update prices, photos, or descriptions.
-                            </div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                Is my personal information safe?
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                We never share your phone number or personal details publicly. We use a secure messaging system to connect buyers and sellers.
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Upload Product Images</label>
+                                <div style="border: 2px dashed #ddd; border-radius: var(--border-radius); padding: 30px; text-align: center; cursor: pointer;">
+                                    <i class="fas fa-cloud-upload-alt" style="font-size: 2.5rem; color: var(--gray); margin-bottom: 10px;"></i>
+                                    <p>Click to upload or drag and drop</p>
+                                    <p style="font-size: 0.9rem; color: var(--gray);">PNG, JPG up to 5MB each</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                    <div style="display: flex; justify-content: flex-end; gap: 15px;">
+                        <button type="button" class="btn" style="background-color: #e9ecef; color: var(--dark);">Save as Draft</button>
+                        <button type="submit" class="btn btn-accent">Publish Listing</button>
+                    </div>
+                </form>
             </div>
-        </section>
-    </main>
 
-    <!-- Footer placeholder -->
-    <div id="footer-placeholder"></div>
+            <div class="footer">
+                <p>&copy; 2023 Biashara Marketplace. All rights reserved. | <a href="#" style="color: var(--primary); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--primary); text-decoration: none;">Terms of Service</a></p>
+            </div>
+        </main>
+    </div>
 
-    <!-- Vendor JS -->
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Sell Page JS -->
     <script>
-        // Load header & footer
-        function loadHTML(elementId, filePath) {
-            fetch(filePath)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById(elementId).innerHTML = data;
-                });
-        }
-
+        // Highlight active page in navigation
         document.addEventListener('DOMContentLoaded', function() {
-            // Load header and footer
-            loadHTML('header-placeholder', '/includes/header.html');
-            loadHTML('footer-placeholder', '/includes/footer.html');
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
 
-            // Image upload functionality
-            const imageUpload = document.getElementById('imageUpload');
-            const fileInput = document.getElementById('fileInput');
-            const imagePreview = document.getElementById('imagePreview');
-
-            imageUpload.addEventListener('click', () => {
-                fileInput.click();
-            });
-
-            fileInput.addEventListener('change', (e) => {
-                const files = Array.from(e.target.files);
-                imagePreview.innerHTML = '';
-
-                files.forEach((file, index) => {
-                    if (index >= 8) return; // Limit to 8 images
-
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        const imgContainer = document.createElement('div');
-                        imgContainer.className = 'image-preview-item';
-                        imgContainer.style.cssText = `
-                            display: inline-block;
-                            margin: 5px;
-                            position: relative;
-                        `;
-
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.style.cssText = `
-                            width: 100px;
-                            height: 100px;
-                            object-fit: cover;
-                            border-radius: 8px;
-                        `;
-
-                        const removeBtn = document.createElement('button');
-                        removeBtn.innerHTML = '<i class="fas fa-times"></i>';
-                        removeBtn.style.cssText = `
-                            position: absolute;
-                            top: -5px;
-                            right: -5px;
-                            background: red;
-                            color: white;
-                            border: none;
-                            border-radius: 50%;
-                            width: 20px;
-                            height: 20px;
-                            font-size: 12px;
-                            cursor: pointer;
-                        `;
-                        removeBtn.onclick = () => imgContainer.remove();
-
-                        imgContainer.appendChild(img);
-                        imgContainer.appendChild(removeBtn);
-                        imagePreview.appendChild(imgContainer);
-                    };
-
-                    reader.readAsDataURL(file);
-                });
-            });
-
-            // Drag and drop functionality
-            imageUpload.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                imageUpload.style.background = '#F8F9FA';
-            });
-
-            imageUpload.addEventListener('dragleave', () => {
-                imageUpload.style.background = '';
-            });
-
-            imageUpload.addEventListener('drop', (e) => {
-                e.preventDefault();
-                imageUpload.style.background = '';
-                fileInput.files = e.dataTransfer.files;
-                fileInput.dispatchEvent(new Event('change'));
-            });
-
-            // FAQ Accordion
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                question.addEventListener('click', () => {
-                    item.classList.toggle('active');
-                });
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (currentPage === linkHref) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
             });
 
             // Form submission
-            const listingForm = document.getElementById('listingForm');
-            listingForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                // Here you would typically send data to your backend
-                alert('Your listing has been submitted for review! It will be live within 24 hours.');
-                listingForm.reset();
-                imagePreview.innerHTML = '';
-            });
+            const listingForm = document.getElementById('listing-form');
+            if (listingForm) {
+                listingForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Product listing published successfully! It will be visible to customers shortly.');
+                    // In a real app, you would submit the form data to a server here
+                });
+            }
         });
     </script>
 </body>
