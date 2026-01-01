@@ -7,6 +7,555 @@
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="/assets/css/main.css" rel="stylesheet">
+    <style>
+        /* ====== FAVORITES PAGE STYLES ====== */
+        :root {
+            --favorite-primary: #1a7f5f;
+            --favorite-secondary: #0d9668;
+            --favorite-accent: #f4b41a;
+            --favorite-light: #f9fdfb;
+            --favorite-border: #d1e7dd;
+            --favorite-card-bg: #ffffff;
+            --favorite-shadow: 0 4px 20px rgba(26, 127, 95, 0.08);
+            --favorite-shadow-hover: 0 8px 30px rgba(26, 127, 95, 0.15);
+        }
+
+        body {
+            background-color: #f8faf9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Hero Section */
+        .favorites-hero {
+            background: linear-gradient(135deg, var(--favorite-primary), var(--favorite-secondary));
+            color: white;
+            padding: 3.5rem 0 4rem;
+            margin-bottom: 2rem;
+            border-radius: 0 0 20px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .favorites-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.08" d="M0,224L48,218.7C96,213,192,203,288,197.3C384,192,480,192,576,186.7C672,181,768,171,864,170.7C960,171,1056,181,1152,181.3C1248,181,1344,171,1392,165.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .favorites-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .favorites-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .favorites-hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .favorites-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 140px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--favorite-accent);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        /* Main Content */
+        .favorites-main {
+            max-width: 1400px;
+            margin: -60px auto 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .favorites-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--favorite-shadow);
+            padding: 2.5rem;
+            border: 1px solid var(--favorite-border);
+        }
+
+        .favorites-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--favorite-border);
+        }
+
+        .favorites-title {
+            color: var(--favorite-primary);
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .favorites-title i {
+            color: var(--favorite-accent);
+        }
+
+        .favorites-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-favorite-action {
+            background: var(--favorite-light);
+            color: var(--favorite-primary);
+            border: 1px solid var(--favorite-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-favorite-action:hover {
+            background: var(--favorite-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--favorite-shadow);
+        }
+
+        /* Empty State */
+        .empty-favorites {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--favorite-light);
+            border-radius: 15px;
+            border: 2px dashed var(--favorite-border);
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            color: var(--favorite-border);
+            margin-bottom: 1.5rem;
+        }
+
+        .empty-title {
+            color: var(--favorite-primary);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .empty-text {
+            color: #6c757d;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-explore {
+            background: linear-gradient(to right, var(--favorite-primary), var(--favorite-secondary));
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 4px 15px rgba(26, 127, 95, 0.2);
+        }
+
+        .btn-explore:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(26, 127, 95, 0.3);
+            color: white;
+        }
+
+        /* Favorites Grid */
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .favorite-card {
+            background: var(--favorite-card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--favorite-shadow);
+            border: 1px solid var(--favorite-border);
+            transition: all 0.3s ease;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .favorite-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--favorite-shadow-hover);
+        }
+
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .favorite-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--favorite-accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--favorite-primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            z-index: 2;
+        }
+
+        .favorite-btn.active {
+            background: #ff4757;
+            color: white;
+        }
+
+        .favorite-btn:hover {
+            background: var(--favorite-primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-price {
+            color: var(--favorite-primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-location {
+            color: #6c757d;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-location i {
+            color: var(--favorite-secondary);
+        }
+
+        .card-description {
+            color: #5a6c7d;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--favorite-border);
+        }
+
+        .card-seller {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6c757d;
+            font-size: 0.85rem;
+        }
+
+        .seller-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--favorite-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .btn-view {
+            background: var(--favorite-light);
+            color: var(--favorite-primary);
+            border: 1px solid var(--favorite-border);
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view:hover {
+            background: var(--favorite-primary);
+            color: white;
+            border-color: var(--favorite-primary);
+        }
+
+        /* Categories Filter */
+        .categories-filter {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            margin-bottom: 1.5rem;
+            scrollbar-width: thin;
+        }
+
+        .category-filter-btn {
+            background: var(--favorite-light);
+            color: var(--favorite-primary);
+            border: 1px solid var(--favorite-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .category-filter-btn:hover,
+        .category-filter-btn.active {
+            background: var(--favorite-primary);
+            color: white;
+            border-color: var(--favorite-primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .favorites-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .favorites-hero h1 {
+                font-size: 2rem;
+            }
+
+            .favorites-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-item {
+                min-width: 120px;
+                padding: 0.8rem 1rem;
+            }
+
+            .favorites-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .favorites-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .favorites-hero {
+                padding: 2.5rem 1rem 3rem;
+            }
+
+            .favorites-main {
+                margin: -40px 1rem 2rem;
+            }
+
+            .favorites-container {
+                padding: 1.5rem;
+            }
+
+            .favorites-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.2rem;
+            }
+
+            .card-image {
+                height: 180px;
+            }
+
+            .categories-filter {
+                padding-bottom: 0.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .favorites-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item {
+                min-width: 100px;
+            }
+
+            .favorites-title {
+                font-size: 1.5rem;
+            }
+
+            .empty-icon {
+                font-size: 3rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .favorite-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .categories-filter::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .categories-filter::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .categories-filter::-webkit-scrollbar-thumb {
+            background: var(--favorite-primary);
+            border-radius: 10px;
+        }
+
+        /* Loader Animation */
+        .loader {
+            text-align: center;
+            padding: 3rem;
+            display: none;
+        }
+
+        .loader-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--favorite-primary);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
 
@@ -233,23 +782,410 @@
 
 </section>
 
-<main class="container py-5">
-    <h2 class="mb-4">Your Saved Listings</h2>
-    <div class="listings-container" id="savedListingsGrid">
-        <p>You haven't saved any listings yet.</p>
-        <!-- Dynamic favorite listings will be injected here -->
+<!-- Hero Section -->
+<div class="favorites-hero">
+    <div class="container favorites-hero-content">
+        <h1><i class="fas fa-bookmark me-2"></i>Your Saved Favorites</h1>
+        <p>Track your favorite products and services, compare prices, and never miss a deal</p>
+
+        <div class="favorites-stats">
+            <div class="stat-item">
+                <span class="stat-number" id="totalFavorites">0</span>
+                <span class="stat-label">Total Saved</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="activeListings">0</span>
+                <span class="stat-label">Active Now</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="priceDrops">0</span>
+                <span class="stat-label">Price Drops</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="categoriesCount">0</span>
+                <span class="stat-label">Categories</span>
+            </div>
+        </div>
     </div>
-</main>
+</div>
+
+<!-- Main Content -->
+<div class="container favorites-main">
+    <div class="favorites-container">
+        <div class="favorites-header">
+            <h2 class="favorites-title">
+                <i class="fas fa-heart"></i>
+                Saved Listings
+            </h2>
+
+            <div class="favorites-actions">
+                <button class="btn-favorite-action" id="sortByDate">
+                    <i class="fas fa-sort-amount-down"></i>
+                    Sort by Date
+                </button>
+                <button class="btn-favorite-action" id="sortByPrice">
+                    <i class="fas fa-money-bill-wave"></i>
+                    Sort by Price
+                </button>
+                <button class="btn-favorite-action" id="clearAll">
+                    <i class="fas fa-trash-alt"></i>
+                    Clear All
+                </button>
+            </div>
+        </div>
+
+        <!-- Categories Filter -->
+        <div class="categories-filter">
+            <button class="category-filter-btn active" data-category="all">All Items</button>
+            <button class="category-filter-btn" data-category="electronics">Electronics</button>
+            <button class="category-filter-btn" data-category="fashion">Fashion</button>
+            <button class="category-filter-btn" data-category="vehicles">Vehicles</button>
+            <button class="category-filter-btn" data-category="home">Home & Garden</button>
+            <button class="category-filter-btn" data-category="services">Services</button>
+            <button class="category-filter-btn" data-category="agriculture">Agriculture</button>
+        </div>
+
+        <!-- Loader -->
+        <div class="loader" id="favoritesLoader">
+            <div class="loader-spinner"></div>
+            <p>Loading your favorites...</p>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-favorites" id="emptyFavorites">
+            <div class="empty-icon">
+                <i class="far fa-bookmark"></i>
+            </div>
+            <h3 class="empty-title">No Favorites Yet</h3>
+            <p class="empty-text">
+                You haven't saved any listings to your favorites yet. Browse the marketplace and click the heart icon to save items you're interested in.
+            </p>
+            <a href="/index.html" class="btn btn-explore">
+                <i class="fas fa-store"></i>
+                Explore Marketplace
+            </a>
+        </div>
+
+        <!-- Favorites Grid -->
+        <div class="favorites-grid" id="savedListingsGrid">
+            <!-- Dynamic content will be loaded here -->
+        </div>
+
+        <!-- Pagination (optional) -->
+        <div class="d-flex justify-content-center mt-4" id="paginationContainer" style="display: none;">
+            <nav aria-label="Favorites pagination">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
 
 <div id="footer-placeholder"></div>
 
 <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script>
+    // Sample favorite listings data
+    const sampleFavorites = [
+        {
+            id: 1,
+            title: "iPhone 13 Pro 256GB - Excellent Condition",
+            price: 85000,
+            location: "Nairobi",
+            category: "electronics",
+            description: "iPhone 13 Pro in excellent condition. 256GB storage, battery health 95%. Includes original box and charger.",
+            seller: "TechDeals",
+            image: "https://images.unsplash.com/photo-1632661674596-df8be070a6c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+            date: "2024-01-15",
+            active: true,
+            priceDrop: true
+        },
+        {
+            id: 2,
+            title: "Sofa Set - 3 Seater + 2 Single Seaters",
+            price: 45000,
+            location: "Mombasa",
+            category: "home",
+            description: "Modern sofa set in excellent condition. Leather material, comfortable seating for living room.",
+            seller: "HomeFurnishings",
+            image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+            date: "2024-01-14",
+            active: true,
+            priceDrop: false
+        },
+        {
+            id: 3,
+            title: "Toyota Premio 2018 - Well Maintained",
+            price: 1850000,
+            location: "Kisumu",
+            category: "vehicles",
+            description: "Toyota Premio 2018 model. Excellent condition, low mileage, full service history available.",
+            seller: "AutoConnect",
+            image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+            date: "2024-01-12",
+            active: true,
+            priceDrop: true
+        },
+        {
+            id: 4,
+            title: "Professional Web Design Services",
+            price: 25000,
+            location: "Remote",
+            category: "services",
+            description: "Custom website design and development for businesses. Responsive design, SEO optimized.",
+            seller: "WebCrafters",
+            image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+            date: "2024-01-10",
+            active: true,
+            priceDrop: false
+        },
+        {
+            id: 5,
+            title: "Maize Harvest - Fresh from Farm",
+            price: 2500,
+            location: "Eldoret",
+            category: "agriculture",
+            description: "Fresh maize harvest from our farm. High quality, available in 90kg bags. Delivery available.",
+            seller: "FarmFresh",
+            image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+            date: "2024-01-08",
+            active: false,
+            priceDrop: false
+        },
+        {
+            id: 6,
+            title: "Designer Handbag - Authentic",
+            price: 15000,
+            location: "Nairobi",
+            category: "fashion",
+            description: "Authentic designer handbag in excellent condition. Comes with original dust bag and authenticity card.",
+            seller: "FashionHub",
+            image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+            date: "2024-01-05",
+            active: true,
+            priceDrop: true
+        }
+    ];
+
+    // DOM Elements
+    const savedListingsGrid = document.getElementById('savedListingsGrid');
+    const emptyFavorites = document.getElementById('emptyFavorites');
+    const favoritesLoader = document.getElementById('favoritesLoader');
+    const categoryFilterBtns = document.querySelectorAll('.category-filter-btn');
+    const totalFavoritesEl = document.getElementById('totalFavorites');
+    const activeListingsEl = document.getElementById('activeListings');
+    const priceDropsEl = document.getElementById('priceDrops');
+    const categoriesCountEl = document.getElementById('categoriesCount');
+    const sortByDateBtn = document.getElementById('sortByDate');
+    const sortByPriceBtn = document.getElementById('sortByPrice');
+    const clearAllBtn = document.getElementById('clearAll');
+
+    // State
+    let currentFavorites = [...sampleFavorites];
+    let currentCategory = 'all';
+    let sortBy = 'date';
+
+    // Format price with commas
+    function formatPrice(price) {
+        return new Intl.NumberFormat('en-KE', {
+            style: 'currency',
+            currency: 'KES',
+            maximumFractionDigits: 0
+        }).format(price);
+    }
+
+    // Calculate stats
+    function calculateStats(favorites) {
+        const total = favorites.length;
+        const active = favorites.filter(item => item.active).length;
+        const priceDrops = favorites.filter(item => item.priceDrop).length;
+        const categories = [...new Set(favorites.map(item => item.category))].length;
+
+        totalFavoritesEl.textContent = total;
+        activeListingsEl.textContent = active;
+        priceDropsEl.textContent = priceDrops;
+        categoriesCountEl.textContent = categories;
+    }
+
+    // Create favorite card HTML
+    function createFavoriteCard(item) {
+        return `
+            <div class="favorite-card" data-category="${item.category}" data-id="${item.id}">
+                <div class="card-image">
+                    <img src="${item.image}" alt="${item.title}" onerror="this.src='https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'">
+                    ${item.priceDrop ? '<span class="card-badge"><i class="fas fa-tag me-1"></i>Price Drop</span>' : ''}
+                    <button class="favorite-btn active" onclick="toggleFavorite(${item.id})">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">${item.title}</h3>
+                    <div class="card-price">${formatPrice(item.price)}</div>
+                    <div class="card-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        ${item.location}
+                    </div>
+                    <p class="card-description">${item.description}</p>
+                    <div class="card-footer">
+                        <div class="card-seller">
+                            <div class="seller-avatar">${item.seller.charAt(0)}</div>
+                            <span>${item.seller}</span>
+                        </div>
+                        <button class="btn-view" onclick="viewListing(${item.id})">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Render favorites grid
+    function renderFavorites(favorites) {
+        if (favorites.length === 0) {
+            emptyFavorites.style.display = 'block';
+            savedListingsGrid.innerHTML = '';
+        } else {
+            emptyFavorites.style.display = 'none';
+            savedListingsGrid.innerHTML = favorites.map(createFavoriteCard).join('');
+        }
+        calculateStats(favorites);
+    }
+
+    // Filter by category
+    function filterByCategory(category) {
+        currentCategory = category;
+        let filtered = [...sampleFavorites];
+
+        if (category !== 'all') {
+            filtered = filtered.filter(item => item.category === category);
+        }
+
+        // Apply sorting
+        sortFavorites(filtered, sortBy);
+    }
+
+    // Sort favorites
+    function sortFavorites(favorites, sortType) {
+        const sorted = [...favorites];
+
+        if (sortType === 'date') {
+            sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+        } else if (sortType === 'price') {
+            sorted.sort((a, b) => a.price - b.price);
+        }
+
+        currentFavorites = sorted;
+        renderFavorites(sorted);
+    }
+
+    // Toggle favorite
+    function toggleFavorite(id) {
+        const index = sampleFavorites.findIndex(item => item.id === id);
+        if (index !== -1) {
+            sampleFavorites.splice(index, 1);
+            filterByCategory(currentCategory);
+
+            // Show notification
+            showNotification('Item removed from favorites', 'info');
+        }
+    }
+
+    // View listing
+    function viewListing(id) {
+        showNotification('Redirecting to listing details...', 'success');
+        // In a real app, this would redirect to the listing page
+        // window.location.href = `/listing.html?id=${id}`;
+    }
+
+    // Show notification
+    function showNotification(message, type) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type === 'success' ? 'success' : 'info'} position-fixed`;
+        notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+        notification.innerHTML = `
+            <div class="d-flex align-items-center">
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'} me-2"></i>
+                <span>${message}</span>
+                <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
+            </div>
+        `;
+
+        document.body.appendChild(notification);
+
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 3000);
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        // Simulate loading delay
+        favoritesLoader.style.display = 'block';
+
+        setTimeout(() => {
+            favoritesLoader.style.display = 'none';
+            filterByCategory('all');
+        }, 1000);
+
+        // Category filter event listeners
+        categoryFilterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryFilterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                filterByCategory(this.dataset.category);
+            });
+        });
+
+        // Sort buttons
+        sortByDateBtn.addEventListener('click', function() {
+            sortBy = 'date';
+            sortFavorites(currentFavorites, 'date');
+            sortByDateBtn.innerHTML = '<i class="fas fa-sort-amount-down me-1"></i> Newest First';
+            sortByPriceBtn.innerHTML = '<i class="fas fa-money-bill-wave me-1"></i> Sort by Price';
+        });
+
+        sortByPriceBtn.addEventListener('click', function() {
+            sortBy = 'price';
+            sortFavorites(currentFavorites, 'price');
+            sortByPriceBtn.innerHTML = '<i class="fas fa-sort-amount-down me-1"></i> Price: Low to High';
+            sortByDateBtn.innerHTML = '<i class="fas fa-calendar-alt me-1"></i> Sort by Date';
+        });
+
+        // Clear all button
+        clearAllBtn.addEventListener('click', function() {
+            if (confirm('Are you sure you want to remove all items from favorites?')) {
+                sampleFavorites.length = 0;
+                filterByCategory('all');
+                showNotification('All favorites cleared', 'info');
+            }
+        });
+    });
+
+    // Load external HTML
     function loadHTML(elementId, filePath) {
         fetch(filePath)
             .then(response => response.text())
             .then(data => document.getElementById(elementId).innerHTML = data);
     }
+
     window.onload = function () {
         loadHTML('header-placeholder', '/includes/header.html');
         loadHTML('footer-placeholder', '/includes/footer.html');
