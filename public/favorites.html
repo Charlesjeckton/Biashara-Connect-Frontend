@@ -1,38 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BiasharaConnect | Favorites</title>
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="/assets/css/main.css" rel="stylesheet">
-</head>
-<body>
-
-<div id="header-placeholder"></div>
-
 <main class="container py-5">
-    <h2 class="mb-4">Your Saved Listings</h2>
-    <div class="listings-container" id="savedListingsGrid">
-        <p>You haven't saved any listings yet.</p>
-        <!-- Dynamic favorite listings will be injected here -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="fas fa-bookmark text-primary me-2"></i>Your Favorites</h2>
+        <span class="text-muted">3 Items Saved</span>
+    </div>
+    <div class="row g-4" id="savedGrid">
+        <div class="col-md-4">
+            <div class="listing-card">
+                <button class="btn btn-outline-danger w-100 mt-2">Remove from Saved</button>
+            </div>
+        </div>
     </div>
 </main>
-
-<div id="footer-placeholder"></div>
-
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script>
-    function loadHTML(elementId, filePath) {
-        fetch(filePath)
-            .then(response => response.text())
-            .then(data => document.getElementById(elementId).innerHTML = data);
-    }
-    window.onload = function () {
-        loadHTML('header-placeholder', '/includes/header.html');
-        loadHTML('footer-placeholder', '/includes/footer.html');
-    };
-</script>
-</body>
-</html>

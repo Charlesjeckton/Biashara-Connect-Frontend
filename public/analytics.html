@@ -1,83 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BiasharaConnect | Analytics</title>
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="/assets/css/main.css" rel="stylesheet">
-</head>
-<body>
-
-<div id="header-placeholder"></div>
-
 <main class="container py-5">
-    <h2 class="mb-4">Insights & Analytics</h2>
-
-    <p>Track your listings, views, favorites, and sales performance in one dashboard.</p>
-
-    <div class="row g-3 mt-4">
-        <div class="col-md-3">
-            <div class="card text-center p-3">
-                <h5>Listings</h5>
-                <span class="fs-3">12</span>
+    <h2 class="mb-4">Performance Insights</h2>
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card border-0 bg-success text-white p-4">
+                <h5>Total Views</h5>
+                <h3>1,284</h3>
+                <small>+12% from last week</small>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card text-center p-3">
-                <h5>Views</h5>
-                <span class="fs-3">1,254</span>
+        <div class="col-md-4">
+            <div class="card border-0 bg-primary text-white p-4">
+                <h5>Inquiries</h5>
+                <h3>42</h3>
+                <small>Direct messages received</small>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card text-center p-3">
-                <h5>Favorites</h5>
-                <span class="fs-3">34</span>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card text-center p-3">
-                <h5>Contacts</h5>
-                <span class="fs-3">58</span>
+        <div class="col-md-4">
+            <div class="card border-0 bg-warning text-dark p-4">
+                <h5>Active Ads</h5>
+                <h3>5</h3>
+                <small>Out of 10 limit</small>
             </div>
         </div>
     </div>
-
-    <div class="mt-5">
-        <canvas id="analyticsChart" height="150"></canvas>
+    <div class="card border-0 shadow-sm p-4">
+        <h4>Trending in Kenya</h4>
+        <p class="text-muted">See what people are searching for right now.</p>
+        <canvas id="trendsChart" height="100"></canvas>
     </div>
 </main>
-
-<div id="footer-placeholder"></div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script>
-    function loadHTML(elementId, filePath) {
-        fetch(filePath)
-            .then(response => response.text())
-            .then(data => document.getElementById(elementId).innerHTML = data);
-    }
-    window.onload = function () {
-        loadHTML('header-placeholder', '/includes/header.html');
-        loadHTML('footer-placeholder', '/includes/footer.html');
-
-        // Chart example
-        const ctx = document.getElementById('analyticsChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                datasets: [{
-                    label: 'Views',
-                    data: [120, 150, 180, 200, 170, 190],
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.3
-                }]
-            }
-        });
-    };
-</script>
-</body>
-</html>

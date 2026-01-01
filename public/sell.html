@@ -1,81 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BiasharaConnect | Sell & Earn</title>
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="/assets/css/main.css" rel="stylesheet">
-</head>
-<body>
-
-<div id="header-placeholder"></div>
-
 <main class="container py-5">
-    <h2 class="mb-4">Sell Your Products & Services</h2>
-
-    <form id="sellForm" class="row g-3">
-        <div class="col-md-6">
-            <label for="productName" class="form-label">Product / Service Name</label>
-            <input type="text" class="form-control" id="productName" placeholder="Enter product or service name" required>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <h2 class="mb-4"><i class="fas fa-plus-circle text-success me-2"></i>Create New Listing</h2>
+                    <form id="sellForm">
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">What are you selling?</label>
+                            <input type="text" class="form-control" placeholder="e.g. Toyota Fielder 2018">
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Category</label>
+                                <select class="form-select">
+                                    <option>Vehicles</option>
+                                    <option>Electronics</option>
+                                    <option>Property</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Price (KSh)</label>
+                                <input type="number" class="form-control" placeholder="Amount">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Description</label>
+                            <textarea class="form-control" rows="4" placeholder="Describe your item..."></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Photos</label>
+                            <div class="upload-box border-dashed p-5 text-center bg-light rounded">
+                                <i class="fas fa-camera fa-2x mb-2 text-muted"></i>
+                                <p>Click to upload or drag and drop</p>
+                                <input type="file" hidden id="fileUpload">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-lg w-100">Post Listing Now</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-            <label for="category" class="form-label">Category</label>
-            <select id="category" class="form-select" required>
-                <option value="">Select Category</option>
-                <option value="electronics">Electronics</option>
-                <option value="fashion">Fashion</option>
-                <option value="home">Home & Garden</option>
-                <option value="vehicles">Vehicles</option>
-                <option value="services">Services</option>
-                <option value="agriculture">Agriculture</option>
-            </select>
-        </div>
-        <div class="col-md-4">
-            <label for="price" class="form-label">Price (KSh)</label>
-            <input type="number" class="form-control" id="price" placeholder="Enter price" required>
-        </div>
-        <div class="col-md-4">
-            <label for="location" class="form-label">Location</label>
-            <input type="text" class="form-control" id="location" placeholder="Enter location" required>
-        </div>
-        <div class="col-md-4">
-            <label for="condition" class="form-label">Condition</label>
-            <select id="condition" class="form-select" required>
-                <option value="">Select Condition</option>
-                <option value="new">Brand New</option>
-                <option value="used">Second Hand</option>
-                <option value="service">Service</option>
-            </select>
-        </div>
-        <div class="col-12">
-            <label for="images" class="form-label">Upload Images</label>
-            <input type="file" class="form-control" id="images" multiple>
-        </div>
-        <div class="col-12">
-            <label for="description" class="form-label">Description</label>
-            <textarea id="description" class="form-control" rows="4" placeholder="Describe your product or service" required></textarea>
-        </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-success">Publish Listing</button>
-        </div>
-    </form>
+    </div>
 </main>
-
-<div id="footer-placeholder"></div>
-
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script>
-    function loadHTML(elementId, filePath) {
-        fetch(filePath)
-            .then(response => response.text())
-            .then(data => document.getElementById(elementId).innerHTML = data);
-    }
-    window.onload = function () {
-        loadHTML('header-placeholder', '/includes/header.html');
-        loadHTML('footer-placeholder', '/includes/footer.html');
-    };
-</script>
-</body>
-</html>

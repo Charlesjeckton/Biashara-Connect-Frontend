@@ -1,66 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BiasharaConnect | Help Center</title>
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="/assets/css/main.css" rel="stylesheet">
-</head>
-<body>
+<main class="container py-5 text-center">
+    <h1 class="display-5 fw-bold mb-3">How can we help?</h1>
+    <p class="lead mb-5">Search our help center or contact our team directly.</p>
 
-<div id="header-placeholder"></div>
-
-<main class="container py-5">
-    <h2 class="mb-4">Help Center</h2>
-
-    <p>Need assistance? Reach out to our support team or browse our FAQs.</p>
-
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <h5>FAQs</h5>
-            <ul>
-                <li>How do I post a listing?</li>
-                <li>How do I edit or delete my listing?</li>
-                <li>How do I contact sellers?</li>
-                <li>Payment and shipping options</li>
-            </ul>
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="p-4 border rounded shadow-hover">
+                <i class="fas fa-shopping-cart fa-3x text-success mb-3"></i>
+                <h4>Buying</h4>
+                <p>Safety tips for safe transactions.</p>
+            </div>
         </div>
-        <div class="col-md-6">
-            <h5>Contact Support</h5>
-            <form>
-                <div class="mb-3">
-                    <label for="supportName" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="supportName" required>
-                </div>
-                <div class="mb-3">
-                    <label for="supportEmail" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="supportEmail" required>
-                </div>
-                <div class="mb-3">
-                    <label for="supportMessage" class="form-label">Message</label>
-                    <textarea class="form-control" id="supportMessage" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
+        <div class="col-md-4">
+            <div class="p-4 border rounded shadow-hover">
+                <i class="fas fa-bullhorn fa-3x text-primary mb-3"></i>
+                <h4>Selling</h4>
+                <p>How to make your ads stand out.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 border rounded shadow-hover">
+                <i class="fas fa-shield-alt fa-3x text-danger mb-3"></i>
+                <h4>Security</h4>
+                <p>Report suspicious behavior.</p>
+            </div>
         </div>
     </div>
+
+    <div class="bg-light p-5 rounded">
+        <h3>Still need help?</h3>
+        <p>Our Kenyan-based support team is online 24/7.</p>
+        <button class="btn btn-dark btn-lg px-5 mt-3">Chat with Us</button>
+    </div>
 </main>
-
-<div id="footer-placeholder"></div>
-
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script>
-    function loadHTML(elementId, filePath) {
-        fetch(filePath)
-            .then(response => response.text())
-            .then(data => document.getElementById(elementId).innerHTML = data);
-    }
-    window.onload = function () {
-        loadHTML('header-placeholder', '/includes/header.html');
-        loadHTML('footer-placeholder', '/includes/footer.html');
-    };
-</script>
-</body>
-</html>
