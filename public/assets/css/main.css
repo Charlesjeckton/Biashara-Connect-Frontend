@@ -21,6 +21,15 @@
     --card-bg: #ffffff;
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+    /* Chart colors */
+    --chart-primary: #1a7f5f;
+    --chart-secondary: #0d9668;
+    --chart-accent: #f4b41a;
+    --chart-success: #28a745;
+    --chart-warning: #ffc107;
+    --chart-info: #17a2b8;
+    --chart-danger: #dc3545;
 }
 
 /*--------------------------------------------------------------
@@ -687,7 +696,7 @@ body {
 }
 
 .sell-hero {
-    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
     color: white;
     padding: 4rem 0;
     margin-bottom: 3rem;
@@ -1053,7 +1062,7 @@ main h2::after {
 ==============================================================*/
 /* Hero Section */
 .favorites-hero {
-    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
     color: white;
     padding: 3.5rem 0 4rem;
     margin-bottom: 2rem;
@@ -1591,7 +1600,7 @@ main h2::after {
 ==============================================================*/
 /* Hero Section */
 .analytics-hero {
-    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
     color: white;
     padding: 3.5rem 0 4rem;
     margin-bottom: 2rem;
