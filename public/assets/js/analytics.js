@@ -261,7 +261,7 @@ function createListingRow(listing, index) {
         <tr>
             <td>
                 <div class="listing-item">
-                    <img src="${listing.image}" alt="${listing.title}" class="listing-image" width="80" height="60" onerror="this.src='https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=100&fit=crop&crop=center'">
+                    <img src="${listing.image}" alt="${listing.title}" class="listing-image" width="60" height="40" onerror="this.src='https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=100&fit=crop&crop=center'">
                     <div class="listing-info">
                         <h5>${listing.title}</h5>
                         <p>${listing.category}</p>
