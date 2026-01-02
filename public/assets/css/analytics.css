@@ -1,13 +1,20 @@
 /* ====== ANALYTICS PAGE STYLES ====== */
 :root {
-    --analytics-primary: #1a7f5f;
-    --analytics-secondary: #0d9668;
-    --analytics-accent: #f4b41a;
-    --analytics-light: #f9fdfb;
-    --analytics-border: #d1e7dd;
-    --analytics-card-bg: #ffffff;
-    --analytics-shadow: 0 4px 20px rgba(26, 127, 95, 0.08);
-    --analytics-shadow-hover: 0 8px 30px rgba(26, 127, 95, 0.15);
+    --primary-green: #2E8B57;
+    --secondary-green:#0d9668;
+    --accent-orange: #FF8C00;
+    --dark-green: #1A3C27;
+    --light-green: #E8F5E9;
+    --light-gray: #DCDCDC;
+    --header-bg: #FFFFFF;
+    --nav-bg: #2E8B57;
+    --nav-text: #FFFFFF;
+    --text-dark: #333333;
+    --text-light: #666666;
+    --border-color: #d1e7dd;
+    --card-bg: #ffffff;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
 
     /* Chart colors */
     --chart-primary: #1a7f5f;
@@ -27,7 +34,7 @@ body {
 
 /* Hero Section */
 .analytics-hero {
-    background: linear-gradient(135deg, var(--analytics-primary), var(--analytics-secondary));
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
     color: white;
     padding: 3.5rem 0 4rem;
     margin-bottom: 2rem;
@@ -90,7 +97,7 @@ body {
 .time-period-btn:hover,
 .time-period-btn.active {
     background: white;
-    color: var(--analytics-primary);
+    color: var(--primary-green);
     border-color: white;
 }
 
@@ -105,9 +112,9 @@ body {
 .analytics-container {
     background: white;
     border-radius: 20px;
-    box-shadow: var(--analytics-shadow);
+    box-shadow: var(--card-shadow);
     padding: 2.5rem;
-    border: 1px solid var(--analytics-border);
+    border: 1px solid var(--border-color);
 }
 
 /* Stats Overview */
@@ -119,10 +126,10 @@ body {
 }
 
 .stat-card {
-    background: var(--analytics-card-bg);
+    background: var(--card-bg);
     border-radius: 15px;
     padding: 1.8rem;
-    border: 1px solid var(--analytics-border);
+    border: 1px solid var(--border-color);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -130,7 +137,7 @@ body {
 
 .stat-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--analytics-shadow-hover);
+    box-shadow: var(--card-shadow-hover);
 }
 
 .stat-card::before {
@@ -140,19 +147,19 @@ body {
     left: 0;
     width: 6px;
     height: 100%;
-    background: linear-gradient(to bottom, var(--analytics-primary), var(--analytics-accent));
+    background: linear-gradient(to bottom, var(--primary-green), var(--accent-orange));
 }
 
 .stat-card-icon {
     width: 60px;
     height: 60px;
-    background: var(--analytics-light);
+    background: var(--light-green);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.2rem;
-    color: var(--analytics-primary);
+    color: var(--primary-green);
     font-size: 1.5rem;
 }
 
@@ -165,7 +172,7 @@ body {
 .stat-card-value {
     font-size: 2.2rem;
     font-weight: 700;
-    color: var(--analytics-primary);
+    color: var(--primary-green);
     line-height: 1;
     margin-bottom: 0.5rem;
 }
@@ -184,7 +191,7 @@ body {
     font-weight: 600;
     padding: 0.3rem 0.6rem;
     border-radius: 20px;
-    background: var(--analytics-light);
+    background: var(--light-green);
 }
 
 .stat-card-change.positive {
@@ -212,7 +219,7 @@ body {
 }
 
 .section-title {
-    color: var(--analytics-primary);
+    color: var(--primary-green);
     font-weight: 700;
     font-size: 1.5rem;
     display: flex;
@@ -222,7 +229,7 @@ body {
 }
 
 .section-title i {
-    color: var(--analytics-accent);
+    color: var(--accent-orange);
 }
 
 .chart-actions {
@@ -232,9 +239,9 @@ body {
 }
 
 .chart-action-btn {
-    background: var(--analytics-light);
-    color: var(--analytics-primary);
-    border: 1px solid var(--analytics-border);
+    background: var(--light-green);
+    color: var(--primary-green);
+    border: 1px solid var(--border-color);
     padding: 0.5rem 1rem;
     border-radius: 8px;
     font-weight: 500;
@@ -246,9 +253,9 @@ body {
 }
 
 .chart-action-btn:hover {
-    background: var(--analytics-primary);
+    background: var(--primary-green);
     color: white;
-    border-color: var(--analytics-primary);
+    border-color: var(--primary-green);
 }
 
 .charts-grid {
@@ -258,16 +265,16 @@ body {
 }
 
 .chart-container {
-    background: var(--analytics-card-bg);
+    background: var(--card-bg);
     border-radius: 15px;
     padding: 1.5rem;
-    border: 1px solid var(--analytics-border);
-    box-shadow: var(--analytics-shadow);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
     transition: all 0.3s ease;
 }
 
 .chart-container:hover {
-    box-shadow: var(--analytics-shadow-hover);
+    box-shadow: var(--card-shadow-hover);
 }
 
 .chart-header {
@@ -278,7 +285,7 @@ body {
 }
 
 .chart-title {
-    color: var(--analytics-primary);
+    color: var(--primary-green);
     font-weight: 600;
     font-size: 1.2rem;
     margin: 0;
@@ -317,11 +324,11 @@ body {
 }
 
 .metric-card {
-    background: var(--analytics-card-bg);
+    background: var(--card-bg);
     border-radius: 15px;
     padding: 1.8rem;
-    border: 1px solid var(--analytics-border);
-    box-shadow: var(--analytics-shadow);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
 }
 
 .metric-header {
@@ -332,7 +339,7 @@ body {
 }
 
 .metric-title {
-    color: var(--analytics-primary);
+    color: var(--primary-green);
     font-weight: 600;
     font-size: 1.1rem;
     margin: 0;
@@ -341,13 +348,13 @@ body {
 .metric-value {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--analytics-primary);
+    color: var(--primary-green);
     margin-bottom: 0.5rem;
 }
 
 .metric-progress {
     height: 8px;
-    background: var(--analytics-light);
+    background: var(--light-green);
     border-radius: 4px;
     margin: 1rem 0;
     overflow: hidden;
@@ -356,7 +363,7 @@ body {
 .metric-progress-bar {
     height: 100%;
     border-radius: 4px;
-    background: linear-gradient(to right, var(--analytics-primary), var(--analytics-secondary));
+    background: linear-gradient(to right, var(--primary-green), var(--secondary-green));
     transition: width 1s ease;
 }
 
@@ -377,26 +384,26 @@ body {
     width: 100%;
     background: white;
     border-radius: 15px;
-    border: 1px solid var(--analytics-border);
+    border: 1px solid var(--border-color);
     overflow: hidden;
-    box-shadow: var(--analytics-shadow);
+    box-shadow: var(--card-shadow);
 }
 
 .listings-table thead {
-    background: var(--analytics-light);
+    background: var(--light-green);
 }
 
 .listings-table th {
     padding: 1.2rem 1.5rem;
     text-align: left;
     font-weight: 600;
-    color: var(--analytics-primary);
-    border-bottom: 2px solid var(--analytics-border);
+    color: var(--primary-green);
+    border-bottom: 2px solid var(--border-color);
 }
 
 .listings-table td {
     padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--analytics-border);
+    border-bottom: 1px solid var(--border-color);
     vertical-align: middle;
 }
 
@@ -419,7 +426,7 @@ body {
     height: 50px;
     border-radius: 8px;
     object-fit: cover;
-    background: var(--analytics-light);
+    background: var(--light-green);
 }
 
 .listing-info h5 {
@@ -460,16 +467,16 @@ body {
 
 /* Export Section */
 .export-section {
-    background: var(--analytics-light);
+    background: var(--light-green);
     border-radius: 15px;
     padding: 2rem;
     text-align: center;
-    border: 2px dashed var(--analytics-border);
+    border: 2px dashed var(--border-color);
     margin-top: 3rem;
 }
 
 .export-title {
-    color: var(--analytics-primary);
+    color: var(--primary-green);
     font-weight: 600;
     margin-bottom: 1rem;
 }
@@ -483,8 +490,8 @@ body {
 
 .export-btn {
     background: white;
-    color: var(--analytics-primary);
-    border: 1px solid var(--analytics-border);
+    color: var(--primary-green);
+    border: 1px solid var(--border-color);
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
     font-weight: 500;
@@ -495,9 +502,9 @@ body {
 }
 
 .export-btn:hover {
-    background: var(--analytics-primary);
+    background: var(--primary-green);
     color: white;
-    border-color: var(--analytics-primary);
+    border-color: var(--primary-green);
     transform: translateY(-2px);
 }
 
@@ -628,19 +635,19 @@ body {
 /* Custom Chart.js Tooltip */
 .chartjs-tooltip {
     background: white;
-    border: 1px solid var(--analytics-border);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 0.8rem 1rem;
-    box-shadow: var(--analytics-shadow);
+    box-shadow: var(--card-shadow);
     font-size: 0.9rem;
 }
 
 .chartjs-tooltip-header {
     font-weight: 600;
-    color: var(--analytics-primary);
+    color: var(--primary-green);
     margin-bottom: 0.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--analytics-border);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .chartjs-tooltip-body {
