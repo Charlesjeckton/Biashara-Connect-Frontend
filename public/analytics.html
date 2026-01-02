@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiasharaConnect | Analytics</title>
 
-    <!-- Vendor CSS -->
+       <!-- Vendor CSS -->
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap"
+          rel="stylesheet">
+
 
     <!-- Main CSS -->
-    <link href="/assets/css/main.css" rel="stylesheet">
-    <!-- Analytics CSS -->
     <link href="/assets/css/analytics.css" rel="stylesheet">
 </head>
 <body>
@@ -20,11 +20,14 @@
 <section id="header" class="header section">
     <header class="main-header">
         <div class="container py-3">
+
             <div class="row align-items-center justify-content-between g-3">
+
                 <div class="col-lg-3 col-md-4 col-10 col-sm-8 logo-section d-flex align-items-center">
                     <button class="mobile-menu-btn me-2 me-sm-3 d-lg-none" aria-label="Toggle Navigation">
                         <i class="fas fa-bars"></i>
                     </button>
+
                     <a href="/index.html" class="logo d-flex align-items-center text-nowrap">
                         <i class="fas fa-handshake logo-icon"></i>
                         <div class="logo-text-wrapper">
@@ -42,61 +45,78 @@
                         </button>
                     </div>
                 </div>
-            </div>
 
+            </div>
             <div class="row mt-3">
                 <div class="col-12">
                     <nav aria-label="Main Navigation">
                         <ul class="nav-menu d-flex justify-content-center" id="mainMenu">
+
                             <li class="nav-item">
                                 <a href="/index.html" class="nav-link">
                                     <i class="fas fa-store me-2"></i> Marketplace
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <a href="/sell.html" class="nav-link">
                                     <i class="fas fa-hand-holding-dollar me-2"></i> Sell & Earn
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <a href="/favorites.html" class="nav-link">
                                     <i class="fas fa-bookmark me-2"></i> Favorites
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <a href="/analytics.html" class="nav-link active">
                                     <i class="fas fa-chart-line me-2"></i> Trends
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <a href="/support.html" class="nav-link">
                                     <i class="fas fa-envelope me-2"></i> Contact Us
                                 </a>
                             </li>
+
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                                     <i class="fas fa-user-circle me-2"></i> My Account
                                 </a>
+
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">
                                         <i class="fas fa-user me-2"></i> Profile
                                     </a>
+
                                     <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
                                         <span><i class="fas fa-envelope me-2"></i> Messages</span>
                                         <span class="badge bg-danger">5</span>
                                     </a>
+
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">
+
+                                    <!-- Register Modal Trigger -->
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                       data-bs-target="#registerModal">
                                         <i class="fas fa-user-plus me-2"></i> Register
                                     </a>
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+
+                                    <!-- Login Modal Trigger -->
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                       data-bs-target="#loginModal">
                                         <i class="fas fa-sign-in-alt me-2"></i> Login
                                     </a>
+
                                     <a class="dropdown-item" href="#">
                                         <i class="fas fa-sign-out-alt me-2"></i> Logout
                                     </a>
                                 </div>
                             </li>
+
                         </ul>
                     </nav>
                 </div>
@@ -104,65 +124,129 @@
         </div>
     </header>
 
-    <!-- Modals -->
+
     <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
+
+                <!-- Modal Header -->
                 <div class="modal-header">
-                    <h5 class="modal-title" id="registerModalLabel">Create Account</h5>
+                    <h5 class="modal-title" id="registerModalLabel">
+                        Create Account
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
+                <!-- Modal Body -->
                 <div class="modal-body">
-                    <form id="registerForm">
+                    <form method="POST" action="{% url 'register' %}">
+                        {% csrf_token %}
+
+                        <!-- Full Name -->
                         <div class="mb-3">
                             <label for="fullName" class="form-label">Full Name</label>
-                            <input type="text" id="fullName" name="full_name" class="form-control" placeholder="Enter your full name" required>
+                            <input
+                                    type="text"
+                                    id="fullName"
+                                    name="full_name"
+                                    class="form-control"
+                                    placeholder="Enter your full name"
+                                    required
+                            >
                         </div>
+
+                        <!-- Email -->
                         <div class="mb-3">
                             <label for="email" class="form-label">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                            <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="Enter your email"
+                                    required
+                            >
                         </div>
+
+                        <!-- Password -->
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Create a password" required>
+                            <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    class="form-control"
+                                    placeholder="Create a password"
+                                    required
+                            >
                         </div>
-                        <button type="submit" class="btn btn-success w-100">Create Account</button>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-success w-100">
+                            Create Account
+                        </button>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>
 
+
     <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
+
                 <div class="modal-header">
                     <h5 class="modal-title">Login</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
+
                 <div class="modal-body">
-                    <form id="loginForm">
+                    <form>
                         <div class="mb-3">
-                            <label for="loginEmail" class="form-label">Email Address</label>
-                            <input type="email" id="loginEmail" name="email" class="form-control" placeholder="Enter your email" required>
+                            <label for="email" class="form-label">Email Address</label>
+                            <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="Enter your email"
+                                    required
+                            >
                         </div>
+
                         <div class="mb-3">
-                            <label for="loginPassword" class="form-label">Password</label>
-                            <input type="password" id="loginPassword" name="password" class="form-control" placeholder="Enter password" required>
+                            <label for="password" class="form-label">Password</label>
+                            <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    class="form-control"
+                                    placeholder="Enter password"
+                                    required
+                            >
                         </div>
-                        <button type="submit" class="btn btn-success w-100">Login</button>
+
+                        <button type="submit" class="btn btn-success w-100">
+                            Login
+                        </button>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>
+
 </section>
 
 <!-- Hero Section -->
 <div class="analytics-hero">
     <div class="container analytics-hero-content">
         <h1><i class="fas fa-chart-line"></i> Analytics & Insights</h1>
-        <p>Track your marketplace performance, understand trends, and optimize your selling strategy with detailed analytics</p>
+        <p>Track your marketplace performance, understand trends, and optimize your selling strategy with detailed
+            analytics</p>
+
         <div class="time-period-selector">
             <button class="time-period-btn active" data-period="7d">Last 7 Days</button>
             <button class="time-period-btn" data-period="30d">Last 30 Days</button>
@@ -230,23 +314,21 @@
                 <div class="stat-card-icon">
                     <i class="fas fa-comments"></i>
                 </div>
-                <div class="stat-card-content">
-                    <div>
-                        <div class="stat-card-value" id="totalContacts">58</div>
-                        <div class="stat-card-label">Buyer Contacts</div>
-                    </div>
-                    <div class="stat-card-change negative">
-                        <i class="fas fa-arrow-down"></i>
-                        <span>5%</span>
-                    </div>
+                <div>
+                    <div class="stat-card-value" id="totalContacts">58</div>
+                    <div class="stat-card-label">Buyer Contacts</div>
+                </div>
+                <div class="stat-card-change negative">
+                    <i class="fas fa-arrow-down"></i>
+                    <span>5%</span>
                 </div>
             </div>
         </div>
 
         <!-- Charts Section -->
         <div class="charts-section">
-            <div class="analytics-section-header">
-                <h3 class="analytics-section-title"><i class="fas fa-chart-bar"></i> Performance Trends</h3>
+            <div class="section-header">
+                <h3 class="section-title"><i class="fas fa-chart-bar"></i> Performance Trends</h3>
                 <div class="chart-actions">
                     <button class="chart-action-btn" id="toggleChartType">
                         <i class="fas fa-exchange-alt"></i>
@@ -296,9 +378,7 @@
             <div class="metric-card">
                 <div class="metric-header">
                     <h4 class="metric-title">Conversion Rate</h4>
-                    <span class="performance-badge high">
-                        <i class="fas fa-arrow-up"></i> High
-                    </span>
+                    <span class="performance-badge high">High</span>
                 </div>
                 <div class="metric-value">4.2%</div>
                 <div class="metric-progress">
@@ -313,9 +393,7 @@
             <div class="metric-card">
                 <div class="metric-header">
                     <h4 class="metric-title">Response Time</h4>
-                    <span class="performance-badge medium">
-                        <i class="fas fa-minus"></i> Medium
-                    </span>
+                    <span class="performance-badge medium">Medium</span>
                 </div>
                 <div class="metric-value">2.8h</div>
                 <div class="metric-progress">
@@ -330,9 +408,7 @@
             <div class="metric-card">
                 <div class="metric-header">
                     <h4 class="metric-title">Listing Quality Score</h4>
-                    <span class="performance-badge high">
-                        <i class="fas fa-arrow-up"></i> High
-                    </span>
+                    <span class="performance-badge high">High</span>
                 </div>
                 <div class="metric-value">8.7/10</div>
                 <div class="metric-progress">
@@ -347,8 +423,8 @@
 
         <!-- Top Performing Listings -->
         <div class="listings-section">
-            <div class="analytics-section-header">
-                <h3 class="analytics-section-title"><i class="fas fa-trophy"></i> Top Performing Listings</h3>
+            <div class="section-header">
+                <h3 class="section-title"><i class="fas fa-trophy"></i> Top Performing Listings</h3>
                 <div class="chart-actions">
                     <button class="chart-action-btn" id="refreshListings">
                         <i class="fas fa-sync-alt"></i>
@@ -360,17 +436,17 @@
             <div class="table-responsive">
                 <table class="listings-table">
                     <thead>
-                        <tr>
-                            <th style="width: 35%;">Listing</th>
-                            <th style="width: 12%;">Views</th>
-                            <th style="width: 12%;">Favorites</th>
-                            <th style="width: 12%;">Contacts</th>
-                            <th style="width: 16%;">Performance</th>
-                            <th style="width: 13%;">Action</th>
-                        </tr>
+                    <tr>
+                        <th>Listing</th>
+                        <th>Views</th>
+                        <th>Favorites</th>
+                        <th>Contacts</th>
+                        <th>Performance</th>
+                        <th>Action</th>
+                    </tr>
                     </thead>
                     <tbody id="topListingsTable">
-                        <!-- Listings will be dynamically loaded -->
+                    <!-- Listings will be dynamically loaded -->
                     </tbody>
                 </table>
             </div>
@@ -400,33 +476,22 @@
 
 <div id="footer-placeholder"></div>
 
-<!-- Vendor Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Analytics JavaScript -->
-<script src="/assets/js/trend.js" defer></script>
-
-<!-- Inline initialization -->
+<script src="/assets/js/analytics.js"></script>
 <script>
-    // Initialize when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize analytics functionality
-        if (typeof initAnalytics === 'function') {
-            initAnalytics();
-        }
 
-        // Load footer if needed
-        function loadHTML(elementId, filePath) {
-            fetch(filePath)
-                .then(response => response.text())
-                .then(data => document.getElementById(elementId).innerHTML = data)
-                .catch(error => console.error('Error loading:', elementId, error));
-        }
+    // Load external HTML
+    function loadHTML(elementId, filePath) {
+        fetch(filePath)
+            .then(response => response.text())
+            .then(data => document.getElementById(elementId).innerHTML = data);
+    }
 
-        // Load footer
+    window.onload = function () {
+        loadHTML('header-placeholder', '/includes/header.html');
         loadHTML('footer-placeholder', '/includes/footer.html');
-    });
+    };
 </script>
 </body>
 </html>
