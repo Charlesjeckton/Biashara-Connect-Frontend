@@ -1353,7 +1353,7 @@ main h2::after {
 }
 
 .favorite-btn.active {
-    background: #ff4757;
+    background: var(--primary-green);
     color: white;
 }
 
