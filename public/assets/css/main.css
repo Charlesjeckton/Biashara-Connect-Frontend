@@ -485,6 +485,60 @@ body {
         justify-content: center;
     }
 }
+/* Add to main.css - Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary-green);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: var(--card-shadow);
+    z-index: 9999;
+    animation: slideIn 0.3s ease;
+}
+
+.notification-success {
+    background: var(--primary-green);
+}
+
+.notification-info {
+    background: var(--chart-info);
+}
+
+.notification-warning {
+    background: var(--chart-warning);
+}
+
+.notification-danger {
+    background: var(--chart-danger);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
 
 /*--------------------------------------------------------------
 # Global Header
