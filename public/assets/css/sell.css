@@ -1,5 +1,18 @@
 /* ====== SELL PAGE SPECIFIC STYLES ====== */
 :root {
+    --primary-green: #2E8B57;
+    --accent-orange: #FF8C00;
+    --dark-green: #1A3C27;
+    --light-green: #E8F5E9;
+    --light-gray: #DCDCDC;
+    --header-bg: #FFFFFF;
+    --nav-bg: #2E8B57;
+    --nav-text: #FFFFFF;
+    --text-dark: #333333;
+    --text-light: #666666;
+    --border-color: #E0E0E0;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
     --sell-primary: #1a7f5f;
     --sell-secondary: #0d9668;
     --sell-accent: #f4b41a;
@@ -9,8 +22,9 @@
 }
 
 body {
-    background-color: #f8faf9;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-dark);
 }
 
 /* Main Content Enhancement */

@@ -11,8 +11,9 @@
 }
 
 body {
-    background-color: #f8faf9;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-dark);
 }
 
 /* Hero Section */
