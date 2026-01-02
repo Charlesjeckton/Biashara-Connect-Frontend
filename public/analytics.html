@@ -3,495 +3,1184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BiasharaConnect | Analytics</title>
+    <title>Analytics Dashboard | BiasharaConnect</title>
 
-       <!-- Vendor CSS -->
+    <!-- Vendor CSS -->
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap" rel="stylesheet">
 
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Main CSS -->
     <link href="/assets/css/main.css" rel="stylesheet">
+
+    <style>
+        /* Modern Analytics Styles */
+        .analytics-hero {
+            background: linear-gradient(135deg, #1a3c27 0%, #2E8B57 50%, #0d9668 100%);
+            color: white;
+            padding: 4rem 0 5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .analytics-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+        }
+
+        .analytics-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .analytics-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #ffffff, #f4b41a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .analytics-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        .time-period-selector {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .time-period-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .time-period-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .time-period-btn.active {
+            background: white;
+            color: var(--primary-green);
+            border-color: white;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .analytics-main {
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .analytics-container {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            padding: 3rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Stats Overview */
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid #eef5f1;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-orange));
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-green);
+        }
+
+        .stat-card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--light-green), var(--primary-green));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 20px rgba(46, 139, 87, 0.2);
+        }
+
+        .stat-card-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .stat-card-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .stat-card-label {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-card-change {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: var(--light-green);
+        }
+
+        .stat-card-change.positive {
+            background: rgba(40, 167, 69, 0.1);
+            color: var(--chart-success);
+        }
+
+        .stat-card-change.negative {
+            background: rgba(220, 53, 69, 0.1);
+            color: var(--chart-danger);
+        }
+
+        /* Charts Section */
+        .charts-section {
+            margin-bottom: 4rem;
+        }
+
+        .analytics-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .analytics-section-title {
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 0;
+        }
+
+        .analytics-section-title i {
+            color: var(--accent-orange);
+            background: rgba(255, 140, 0, 0.1);
+            padding: 0.8rem;
+            border-radius: 12px;
+        }
+
+        .chart-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .chart-action-btn {
+            background: white;
+            color: var(--primary-green);
+            border: 2px solid var(--border-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .chart-action-btn:hover {
+            background: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(46, 139, 87, 0.2);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .chart-container:hover {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .chart-title {
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .chart-legend {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 0.5rem 1rem;
+            background: var(--light-green);
+            border-radius: 8px;
+        }
+
+        .legend-color {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 350px;
+            width: 100%;
+        }
+
+        /* Performance Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .metric-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--light-green), transparent);
+            border-radius: 0 0 0 100px;
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.8rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .metric-title {
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 0;
+        }
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-family: 'Raleway', sans-serif;
+            position: relative;
+            z-index: 2;
+        }
+
+        .metric-progress {
+            height: 10px;
+            background: var(--light-green);
+            border-radius: 5px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        .metric-progress-bar {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .metric-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Top Listings */
+        .listings-section {
+            margin-bottom: 3rem;
+        }
+
+        .listings-table {
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .listings-table thead {
+            background: linear-gradient(90deg, var(--light-green), var(--primary-green));
+        }
+
+        .listings-table th {
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .listings-table td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+
+        .listings-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .listings-table tbody tr:hover {
+            background: var(--light-green);
+            transform: scale(1.01);
+        }
+
+        .listing-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .analytics-listing-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+
+        .listing-info h5 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .listing-info p {
+            margin: 0.2rem 0 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .performance-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .performance-badge.high {
+            background: rgba(40, 167, 69, 0.15);
+            color: var(--chart-success);
+            border: 1px solid rgba(40, 167, 69, 0.3);
+        }
+
+        .performance-badge.medium {
+            background: rgba(255, 193, 7, 0.15);
+            color: var(--chart-warning);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+
+        .performance-badge.low {
+            background: rgba(220, 53, 69, 0.15);
+            color: var(--chart-danger);
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+
+        /* Export Section */
+        .export-section {
+            background: linear-gradient(135deg, var(--light-green), rgba(46, 139, 87, 0.1));
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            border: 2px dashed var(--primary-green);
+            margin-top: 3rem;
+        }
+
+        .export-title {
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .export-btn {
+            background: white;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .export-btn:hover {
+            background: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(46, 139, 87, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-card,
+        .chart-container,
+        .metric-card {
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            .metrics-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .analytics-hero h1 {
+                font-size: 2.2rem;
+            }
+            .analytics-container {
+                padding: 2rem;
+            }
+            .stat-card-value {
+                font-size: 2rem;
+            }
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            .chart-wrapper {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .analytics-hero {
+                padding: 3rem 1rem 4rem;
+            }
+            .analytics-hero h1 {
+                font-size: 1.8rem;
+            }
+            .time-period-selector {
+                justify-content: center;
+            }
+            .time-period-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            .analytics-section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .chart-actions {
+                width: 100%;
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+            .export-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .export-btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .analytics-container {
+                padding: 1.5rem;
+                border-radius: 16px;
+            }
+            .stats-overview {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .charts-grid {
+                gap: 1.5rem;
+            }
+            .chart-container {
+                padding: 1.5rem;
+            }
+            .metric-card {
+                padding: 2rem;
+            }
+            .listings-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<section id="header" class="header section">
-    <header class="main-header">
-        <div class="container py-3">
+    <!-- Header (Same as other pages) -->
+    <section id="header" class="header section">
+        <header class="main-header">
+            <div class="container py-3">
+                <div class="row align-items-center justify-content-between g-3">
+                    <div class="col-lg-3 col-md-4 col-10 col-sm-8 logo-section d-flex align-items-center">
+                        <button class="mobile-menu-btn me-2 me-sm-3 d-lg-none" aria-label="Toggle Navigation">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <a href="/index.html" class="logo d-flex align-items-center text-nowrap">
+                            <i class="fas fa-handshake logo-icon"></i>
+                            <div class="logo-text-wrapper">
+                                <div class="logo-text">BiasharaConnect</div>
+                                <div class="logo-tagline d-none d-sm-block">Kenya's Marketplace</div>
+                            </div>
+                        </a>
+                    </div>
 
-            <div class="row align-items-center justify-content-between g-3">
-
-                <div class="col-lg-3 col-md-4 col-10 col-sm-8 logo-section d-flex align-items-center">
-                    <button class="mobile-menu-btn me-2 me-sm-3 d-lg-none" aria-label="Toggle Navigation">
-                        <i class="fas fa-bars"></i>
-                    </button>
-
-                    <a href="/index.html" class="logo d-flex align-items-center text-nowrap">
-                        <i class="fas fa-handshake logo-icon"></i>
-                        <div class="logo-text-wrapper">
-                            <div class="logo-text">BiasharaConnect</div>
-                            <div class="logo-tagline d-none d-sm-block">Kenya's Marketplace</div>
+                    <div class="col-lg-5 col-md-8 col-12 search-container d-flex justify-content-center">
+                        <div class="search-box d-flex w-100">
+                            <input type="text" class="search-input" placeholder="Search products, services, or sellers...">
+                            <button class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
-                    </a>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <nav aria-label="Main Navigation">
+                            <ul class="nav-menu d-flex justify-content-center" id="mainMenu">
+                                <li class="nav-item"><a href="/index.html" class="nav-link"><i class="fas fa-store me-2"></i> Marketplace</a></li>
+                                <li class="nav-item"><a href="/sell.html" class="nav-link"><i class="fas fa-hand-holding-dollar me-2"></i> Sell & Earn</a></li>
+                                <li class="nav-item"><a href="/favorites.html" class="nav-link"><i class="fas fa-bookmark me-2"></i> Favorites</a></li>
+                                <li class="nav-item"><a href="/analytics.html" class="nav-link active"><i class="fas fa-chart-line me-2"></i> Analytics</a></li>
+                                <li class="nav-item"><a href="/support.html" class="nav-link"><i class="fas fa-envelope me-2"></i> Contact Us</a></li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                        <i class="fas fa-user-circle me-2"></i> My Account
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Profile</a>
+                                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                            <span><i class="fas fa-envelope me-2"></i> Messages</span>
+                                            <span class="badge bg-danger">5</span>
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">
+                                            <i class="fas fa-user-plus me-2"></i> Register
+                                        </a>
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                            <i class="fas fa-sign-in-alt me-2"></i> Login
+                                        </a>
+                                        <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </section>
+
+    <!-- Hero Section -->
+    <div class="analytics-hero">
+        <div class="container analytics-hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1><i class="fas fa-chart-network"></i> Analytics Dashboard</h1>
+                    <p>Gain powerful insights into your marketplace performance. Track metrics, analyze trends, and make data-driven decisions to grow your business.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                    <div class="text-white opacity-75">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        <span id="currentDate"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-period-selector">
+                <button class="time-period-btn active" data-period="7d">
+                    <i class="fas fa-calendar-week me-2"></i>Last 7 Days
+                </button>
+                <button class="time-period-btn" data-period="30d">
+                    <i class="fas fa-calendar-alt me-2"></i>Last 30 Days
+                </button>
+                <button class="time-period-btn" data-period="90d">
+                    <i class="fas fa-chart-line me-2"></i>Last Quarter
+                </button>
+                <button class="time-period-btn" data-period="ytd">
+                    <i class="fas fa-calendar-check me-2"></i>Year to Date
+                </button>
+                <button class="time-period-btn" data-period="all">
+                    <i class="fas fa-infinity me-2"></i>All Time
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container analytics-main">
+        <div class="analytics-container">
+
+            <!-- Stats Overview -->
+            <div class="stats-overview">
+                <div class="stat-card">
+                    <div class="stat-card-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="stat-card-content">
+                        <div>
+                            <div class="stat-card-value" id="totalListings">24</div>
+                            <div class="stat-card-label">
+                                <i class="fas fa-tag"></i>Active Listings
+                            </div>
+                        </div>
+                        <div class="stat-card-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+15%</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-lg-5 col-md-8 col-12 search-container d-flex justify-content-center">
-                    <div class="search-box d-flex w-100">
-                        <input type="text" class="search-input" placeholder="Search products, services, or sellers...">
-                        <button class="search-btn">
-                            <i class="fas fa-search"></i>
+                <div class="stat-card">
+                    <div class="stat-card-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="stat-card-content">
+                        <div>
+                            <div class="stat-card-value" id="totalViews">2,847</div>
+                            <div class="stat-card-label">
+                                <i class="fas fa-chart-bar"></i>Total Views
+                            </div>
+                        </div>
+                        <div class="stat-card-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+28%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="stat-card-content">
+                        <div>
+                            <div class="stat-card-value" id="totalFavorites">68</div>
+                            <div class="stat-card-label">
+                                <i class="fas fa-bookmark"></i>Favorites
+                            </div>
+                        </div>
+                        <div class="stat-card-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+22%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="stat-card-content">
+                        <div>
+                            <div class="stat-card-value" id="totalContacts">124</div>
+                            <div class="stat-card-label">
+                                <i class="fas fa-envelope"></i>Buyer Contacts
+                            </div>
+                        </div>
+                        <div class="stat-card-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+18%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="analytics-section-header">
+                    <h3 class="analytics-section-title"><i class="fas fa-chart-bar"></i> Performance Analytics</h3>
+                    <div class="chart-actions">
+                        <button class="chart-action-btn" id="toggleChartType">
+                            <i class="fas fa-exchange-alt"></i>
+                            Switch View
+                        </button>
+                        <button class="chart-action-btn" id="downloadChart">
+                            <i class="fas fa-download"></i>
+                            Export Data
+                        </button>
+                        <button class="chart-action-btn" id="refreshData">
+                            <i class="fas fa-sync-alt"></i>
+                            Refresh
                         </button>
                     </div>
                 </div>
 
-            </div>
-            <div class="row mt-3">
-                <div class="col-12">
-                    <nav aria-label="Main Navigation">
-                        <ul class="nav-menu d-flex justify-content-center" id="mainMenu">
-
-                            <li class="nav-item">
-                                <a href="/index.html" class="nav-link">
-                                    <i class="fas fa-store me-2"></i> Marketplace
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/sell.html" class="nav-link">
-                                    <i class="fas fa-hand-holding-dollar me-2"></i> Sell & Earn
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/favorites.html" class="nav-link">
-                                    <i class="fas fa-bookmark me-2"></i> Favorites
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/analytics.html" class="nav-link active">
-                                    <i class="fas fa-chart-line me-2"></i> Trends
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/support.html" class="nav-link">
-                                    <i class="fas fa-envelope me-2"></i> Contact Us
-                                </a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                    <i class="fas fa-user-circle me-2"></i> My Account
-                                </a>
-
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-user me-2"></i> Profile
-                                    </a>
-
-                                    <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                                        <span><i class="fas fa-envelope me-2"></i> Messages</span>
-                                        <span class="badge bg-danger">5</span>
-                                    </a>
-
-                                    <div class="dropdown-divider"></div>
-
-                                    <!-- Register Modal Trigger -->
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                       data-bs-target="#registerModal">
-                                        <i class="fas fa-user-plus me-2"></i> Register
-                                    </a>
-
-                                    <!-- Login Modal Trigger -->
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                       data-bs-target="#loginModal">
-                                        <i class="fas fa-sign-in-alt me-2"></i> Login
-                                    </a>
-
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-sign-out-alt me-2"></i> Logout
-                                    </a>
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h4 class="chart-title"><i class="fas fa-line-chart me-2"></i>Engagement Trends</h4>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: var(--chart-primary);"></div>
+                                    <span>Views</span>
                                 </div>
-                            </li>
-
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-
-
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="registerModalLabel">
-                        Create Account
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <!-- Modal Body -->
-                <div class="modal-body">
-                    <form method="POST" action="{% url 'register' %}">
-                        {% csrf_token %}
-
-                        <!-- Full Name -->
-                        <div class="mb-3">
-                            <label for="fullName" class="form-label">Full Name</label>
-                            <input
-                                    type="text"
-                                    id="fullName"
-                                    name="full_name"
-                                    class="form-control"
-                                    placeholder="Enter your full name"
-                                    required
-                            >
-                        </div>
-
-                        <!-- Email -->
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    class="form-control"
-                                    placeholder="Enter your email"
-                                    required
-                            >
-                        </div>
-
-                        <!-- Password -->
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    class="form-control"
-                                    placeholder="Create a password"
-                                    required
-                            >
-                        </div>
-
-                        <!-- Submit Button -->
-                        <button type="submit" class="btn btn-success w-100">
-                            Create Account
-                        </button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h5 class="modal-title">Login</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    class="form-control"
-                                    placeholder="Enter your email"
-                                    required
-                            >
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    class="form-control"
-                                    placeholder="Enter password"
-                                    required
-                            >
-                        </div>
-
-                        <button type="submit" class="btn btn-success w-100">
-                            Login
-                        </button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-</section>
-
-<!-- Hero Section -->
-<div class="analytics-hero">
-    <div class="container analytics-hero-content">
-        <h1><i class="fas fa-chart-line"></i> Analytics & Insights</h1>
-        <p>Track your marketplace performance, understand trends, and optimize your selling strategy with detailed
-            analytics</p>
-
-        <div class="time-period-selector">
-            <button class="time-period-btn active" data-period="7d">Last 7 Days</button>
-            <button class="time-period-btn" data-period="30d">Last 30 Days</button>
-            <button class="time-period-btn" data-period="90d">Last 90 Days</button>
-            <button class="time-period-btn" data-period="ytd">Year to Date</button>
-            <button class="time-period-btn" data-period="all">All Time</button>
-        </div>
-    </div>
-</div>
-
-<!-- Main Content -->
-<div class="container analytics-main">
-    <div class="analytics-container">
-        <!-- Stats Overview -->
-        <div class="stats-overview">
-            <div class="stat-card">
-                <div class="stat-card-icon">
-                    <i class="fas fa-store"></i>
-                </div>
-                <div class="stat-card-content">
-                    <div>
-                        <div class="stat-card-value" id="totalListings">12</div>
-                        <div class="stat-card-label">Active Listings</div>
-                    </div>
-                    <div class="stat-card-change positive">
-                        <i class="fas fa-arrow-up"></i>
-                        <span>15%</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-card-icon">
-                    <i class="fas fa-eye"></i>
-                </div>
-                <div class="stat-card-content">
-                    <div>
-                        <div class="stat-card-value" id="totalViews">1,254</div>
-                        <div class="stat-card-label">Total Views</div>
-                    </div>
-                    <div class="stat-card-change positive">
-                        <i class="fas fa-arrow-up"></i>
-                        <span>28%</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-card-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <div class="stat-card-content">
-                    <div>
-                        <div class="stat-card-value" id="totalFavorites">34</div>
-                        <div class="stat-card-label">Favorites</div>
-                    </div>
-                    <div class="stat-card-change positive">
-                        <i class="fas fa-arrow-up"></i>
-                        <span>12%</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-card-icon">
-                    <i class="fas fa-comments"></i>
-                </div>
-                <div>
-                    <div class="stat-card-value" id="totalContacts">58</div>
-                    <div class="stat-card-label">Buyer Contacts</div>
-                </div>
-                <div class="stat-card-change negative">
-                    <i class="fas fa-arrow-down"></i>
-                    <span>5%</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Charts Section -->
-        <div class="charts-section">
-            <div class="section-header">
-                <h3 class="section-title"><i class="fas fa-chart-bar"></i> Performance Trends</h3>
-                <div class="chart-actions">
-                    <button class="chart-action-btn" id="toggleChartType">
-                        <i class="fas fa-exchange-alt"></i>
-                        Switch Chart Type
-                    </button>
-                    <button class="chart-action-btn" id="downloadChart">
-                        <i class="fas fa-download"></i>
-                        Download
-                    </button>
-                </div>
-            </div>
-
-            <div class="charts-grid">
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h4 class="chart-title">Views Over Time</h4>
-                        <div class="chart-legend">
-                            <div class="legend-item">
-                                <div class="legend-color" style="background-color: var(--chart-primary);"></div>
-                                <span>Views</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color" style="background-color: var(--chart-accent);"></div>
-                                <span>Target</span>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: var(--chart-accent);"></div>
+                                    <span>Favorites</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: var(--chart-success);"></div>
+                                    <span>Contacts</span>
+                                </div>
                             </div>
                         </div>
+                        <div class="chart-wrapper">
+                            <canvas id="engagementChart"></canvas>
+                        </div>
                     </div>
-                    <div class="chart-wrapper">
-                        <canvas id="viewsChart"></canvas>
-                    </div>
-                </div>
 
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h4 class="chart-title">Engagement by Category</h4>
-                        <div class="chart-legend" id="categoryLegend"></div>
-                    </div>
-                    <div class="chart-wrapper">
-                        <canvas id="categoryChart"></canvas>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h4 class="chart-title"><i class="fas fa-chart-pie me-2"></i>Category Performance</h4>
+                            <div class="chart-legend" id="categoryLegend"></div>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Performance Metrics -->
-        <div class="metrics-grid">
-            <div class="metric-card">
-                <div class="metric-header">
-                    <h4 class="metric-title">Conversion Rate</h4>
-                    <span class="performance-badge high">High</span>
+            <!-- Performance Metrics -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <h4 class="metric-title"><i class="fas fa-percentage me-2"></i>Conversion Rate</h4>
+                        <span class="performance-badge high">Excellent</span>
+                    </div>
+                    <div class="metric-value">5.8%</div>
+                    <p class="text-muted mb-3">Views to buyer contacts conversion</p>
+                    <div class="metric-progress">
+                        <div class="metric-progress-bar" style="width: 58%;"></div>
+                    </div>
+                    <div class="metric-footer">
+                        <span>Industry average: 3.2%</span>
+                        <span><i class="fas fa-arrow-up text-success me-1"></i>+2.6%</span>
+                    </div>
                 </div>
-                <div class="metric-value">4.2%</div>
-                <div class="metric-progress">
-                    <div class="metric-progress-bar" style="width: 42%;"></div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <h4 class="metric-title"><i class="fas fa-clock me-2"></i>Response Time</h4>
+                        <span class="performance-badge high">Fast</span>
+                    </div>
+                    <div class="metric-value">1.2h</div>
+                    <p class="text-muted mb-3">Average response to buyer inquiries</p>
+                    <div class="metric-progress">
+                        <div class="metric-progress-bar" style="width: 85%;"></div>
+                    </div>
+                    <div class="metric-footer">
+                        <span>Target: &lt;2 hours</span>
+                        <span><i class="fas fa-arrow-down text-success me-1"></i>-0.8h</span>
+                    </div>
                 </div>
-                <div class="metric-footer">
-                    <span>Views to Contacts</span>
-                    <span>+0.8% from last month</span>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <h4 class="metric-title"><i class="fas fa-star me-2"></i>Quality Score</h4>
+                        <span class="performance-badge high">High</span>
+                    </div>
+                    <div class="metric-value">9.2/10</div>
+                    <p class="text-muted mb-3">Listing completeness and quality</p>
+                    <div class="metric-progress">
+                        <div class="metric-progress-bar" style="width: 92%;"></div>
+                    </div>
+                    <div class="metric-footer">
+                        <span>Based on 5 criteria</span>
+                        <span><i class="fas fa-arrow-up text-success me-1"></i>+0.4</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="metric-card">
-                <div class="metric-header">
-                    <h4 class="metric-title">Response Time</h4>
-                    <span class="performance-badge medium">Medium</span>
+            <!-- Top Performing Listings -->
+            <div class="listings-section">
+                <div class="analytics-section-header">
+                    <h3 class="analytics-section-title"><i class="fas fa-trophy"></i> Top Performing Listings</h3>
+                    <div class="chart-actions">
+                        <select class="filter-select" id="sortByPerformance" style="width: auto;">
+                            <option value="views">Sort by Views</option>
+                            <option value="favorites">Sort by Favorites</option>
+                            <option value="conversion">Sort by Conversion</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="metric-value">2.8h</div>
-                <div class="metric-progress">
-                    <div class="metric-progress-bar" style="width: 56%;"></div>
-                </div>
-                <div class="metric-footer">
-                    <span>Average response time</span>
-                    <span>-0.5h from last month</span>
+
+                <div class="table-responsive">
+                    <table class="listings-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Views</th>
+                                <th>Favorites</th>
+                                <th>Contacts</th>
+                                <th>Performance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topListingsTable">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <div class="metric-card">
-                <div class="metric-header">
-                    <h4 class="metric-title">Listing Quality Score</h4>
-                    <span class="performance-badge high">High</span>
+            <!-- Export Data -->
+            <div class="export-section">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h4 class="export-title">Export Analytics Report</h4>
+                        <p class="text-muted mb-0">Download comprehensive reports for detailed analysis, presentations, or record keeping.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="export-buttons">
+                            <button class="export-btn" id="exportPDF">
+                                <i class="fas fa-file-pdf fa-2x"></i>
+                                <div>
+                                    <div class="fw-bold">PDF Report</div>
+                                    <small>High quality</small>
+                                </div>
+                            </button>
+                            <button class="export-btn" id="exportExcel">
+                                <i class="fas fa-file-excel fa-2x"></i>
+                                <div>
+                                    <div class="fw-bold">Excel Data</div>
+                                    <small>Editable format</small>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="metric-value">8.7/10</div>
-                <div class="metric-progress">
-                    <div class="metric-progress-bar" style="width: 87%;"></div>
-                </div>
-                <div class="metric-footer">
-                    <span>Based on completeness</span>
-                    <span>+0.3 from last month</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Top Performing Listings -->
-        <div class="listings-section">
-            <div class="section-header">
-                <h3 class="section-title"><i class="fas fa-trophy"></i> Top Performing Listings</h3>
-                <div class="chart-actions">
-                    <button class="chart-action-btn" id="refreshListings">
-                        <i class="fas fa-sync-alt"></i>
-                        Refresh
-                    </button>
-                </div>
-            </div>
-
-            <div class="table-responsive">
-                <table class="listings-table">
-                    <thead>
-                    <tr>
-                        <th>Listing</th>
-                        <th>Views</th>
-                        <th>Favorites</th>
-                        <th>Contacts</th>
-                        <th>Performance</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody id="topListingsTable">
-                    <!-- Listings will be dynamically loaded -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Export Data -->
-        <div class="export-section">
-            <h4 class="export-title">Export Your Analytics Data</h4>
-            <p class="text-muted mb-4">Download your performance data for offline analysis or reporting</p>
-            <div class="export-buttons">
-                <button class="export-btn" id="exportPDF">
-                    <i class="fas fa-file-pdf"></i>
-                    Export as PDF
-                </button>
-                <button class="export-btn" id="exportCSV">
-                    <i class="fas fa-file-csv"></i>
-                    Export as CSV
-                </button>
-                <button class="export-btn" id="exportExcel">
-                    <i class="fas fa-file-excel"></i>
-                    Export as Excel
-                </button>
             </div>
         </div>
     </div>
-</div>
 
-<div id="footer-placeholder"></div>
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/assets/js/analytics.js"></script>
-<script>
+    <!-- JavaScript -->
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Set current date
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
 
-    // Load external HTML
-    function loadHTML(elementId, filePath) {
-        fetch(filePath)
-            .then(response => response.text())
-            .then(data => document.getElementById(elementId).innerHTML = data);
-    }
+        // Time period selector
+        document.querySelectorAll('.time-period-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.time-period-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // In real implementation: Fetch data for selected period
+                console.log('Selected period:', this.dataset.period);
+            });
+        });
 
-    window.onload = function () {
-        loadHTML('header-placeholder', '/includes/header.html');
-        loadHTML('footer-placeholder', '/includes/footer.html');
-    };
-</script>
+        // Initialize charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Engagement Chart
+            const engagementCtx = document.getElementById('engagementChart').getContext('2d');
+            new Chart(engagementCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Views',
+                        data: [320, 450, 380, 520, 610, 480, 390],
+                        borderColor: 'var(--chart-primary)',
+                        backgroundColor: 'rgba(26, 127, 95, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Favorites',
+                        data: [45, 62, 58, 78, 85, 72, 60],
+                        borderColor: 'var(--chart-accent)',
+                        backgroundColor: 'rgba(244, 180, 26, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Contacts',
+                        data: [18, 24, 22, 30, 35, 28, 25],
+                        borderColor: 'var(--chart-success)',
+                        backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                drawBorder: false
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Category Chart
+            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+            const categoryChart = new Chart(categoryCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Electronics', 'Fashion', 'Home & Garden', 'Vehicles', 'Services', 'Agriculture'],
+                    datasets: [{
+                        data: [25, 18, 15, 22, 12, 8],
+                        backgroundColor: [
+                            'var(--chart-primary)',
+                            'var(--chart-secondary)',
+                            'var(--chart-accent)',
+                            'var(--chart-success)',
+                            'var(--chart-info)',
+                            'var(--chart-warning)'
+                        ],
+                        borderWidth: 2,
+                        borderColor: 'white'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '65%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // Populate top listings
+            const topListings = [
+                { title: 'iPhone 13 Pro 256GB', category: 'Electronics', views: 420, favorites: 28, contacts: 15 },
+                { title: 'Modern Sofa Set', category: 'Home & Garden', views: 380, favorites: 22, contacts: 12 },
+                { title: 'Nike Running Shoes', category: 'Fashion', views: 320, favorites: 18, contacts: 10 },
+                { title: 'Toyota Premio 2015', category: 'Vehicles', views: 290, favorites: 15, contacts: 8 },
+                { title: 'Plumbing Services', category: 'Services', views: 250, favorites: 12, contacts: 7 }
+            ];
+
+            const tableBody = document.getElementById('topListingsTable');
+            topListings.forEach(listing => {
+                const conversionRate = ((listing.contacts / listing.views) * 100).toFixed(1);
+                const performance = conversionRate > 4 ? 'high' : conversionRate > 2 ? 'medium' : 'low';
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div class="listing-item">
+                            <div class="analytics-listing-image" style="background: var(--light-green);"></div>
+                            <div class="listing-info">
+                                <h5>${listing.title}</h5>
+                                <p>Active for 7 days</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge bg-light text-dark">${listing.category}</span></td>
+                    <td><strong>${listing.views}</strong></td>
+                    <td><strong>${listing.favorites}</strong></td>
+                    <td><strong>${listing.contacts}</strong></td>
+                    <td>
+                        <span class="performance-badge ${performance}">
+                            ${conversionRate}% Conversion
+                        </span>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            // Export buttons
+            document.getElementById('exportPDF').addEventListener('click', () => {
+                alert('PDF report generation would be implemented in production.');
+            });
+
+            document.getElementById('exportExcel').addEventListener('click', () => {
+                alert('Excel export functionality would be implemented in production.');
+            });
+        });
+
+        // Load footer (if using separate file)
+        function loadHTML(elementId, filePath) {
+            fetch(filePath)
+                .then(response => response.text())
+                .then(data => document.getElementById(elementId).innerHTML = data);
+        }
+
+        window.onload = function() {
+            loadHTML('footer-placeholder', '/includes/footer.html');
+        };
+    </script>
 </body>
 </html>
