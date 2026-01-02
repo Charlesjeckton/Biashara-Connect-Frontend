@@ -34,7 +34,7 @@ const analyticsData = {
             favorites: 18,
             contacts: 12,
             performance: 'high',
-            image: 'https://images.unsplash.com/photo-1632661674596-df8be070a6c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=100&fit=crop&crop=center'
+            image: 'https://images.unsplash.com/photo-1632661674596-df8be070a6c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=120&h=90&q=100&fit=crop&crop=center'
         },
         {
             id: 2,
@@ -44,7 +44,7 @@ const analyticsData = {
             favorites: 14,
             contacts: 8,
             performance: 'high',
-            image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=100&fit=crop&crop=center'
+            image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=120&h=90&q=100&fit=crop&crop=center'
         },
         {
             id: 3,
@@ -54,7 +54,7 @@ const analyticsData = {
             favorites: 9,
             contacts: 5,
             performance: 'medium',
-            image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=100&fit=crop&crop=center'
+            image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=120&h=90&q=100&fit=crop&crop=center'
         },
         {
             id: 4,
@@ -64,7 +64,7 @@ const analyticsData = {
             favorites: 7,
             contacts: 3,
             performance: 'medium',
-            image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=100&fit=crop&crop=center'
+            image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-1.2.1&auto=format&fit=crop&w=120&h=90&q=100&fit=crop&crop=center'
         },
         {
             id: 5,
@@ -74,7 +74,7 @@ const analyticsData = {
             favorites: 6,
             contacts: 2,
             performance: 'low',
-            image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=100&fit=crop&crop=center'
+            image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=120&h=90&q=100&fit=crop&crop=center'
         }
     ]
 };
@@ -261,7 +261,7 @@ function createListingRow(listing, index) {
         <tr>
             <td>
                 <div class="listing-item">
-                    <img src="${listing.image}" alt="${listing.title}" class="listing-image" width="60" height="40" onerror="this.src='https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=100&fit=crop&crop=center'">
+                    <img src="${listing.image}" alt="${listing.title}" class="listing-image" width="60" height="45" onerror="this.src='https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=120&h=90&q=100&fit=crop&crop=center'">
                     <div class="listing-info">
                         <h5>${listing.title}</h5>
                         <p>${listing.category}</p>
@@ -312,9 +312,9 @@ function showNotification(message, type = 'success') {
         <div class="d-flex align-items-center">
             <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'} me-2"></i>
             <span>${message}</span>
-            <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
-        </div>
-    `;
+                <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
+            </div>
+        `;
 
     document.body.appendChild(notification);
 
