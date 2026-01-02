@@ -2230,7 +2230,7 @@ main h2::after {
 ==============================================================*/
 /* Hero Section */
 .help-hero {
-    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
     color: white;
     padding: 3.5rem 0 4rem;
     margin-bottom: 2rem;
