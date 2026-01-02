@@ -1,10 +1,11 @@
-/* ====== SELL PAGE SPECIFIC STYLES ====== */
 :root {
     --primary-green: #2E8B57;
+    --secondary-green:#1a7f5f;
     --accent-orange: #FF8C00;
     --dark-green: #1A3C27;
     --light-green: #E8F5E9;
     --light-gray: #DCDCDC;
+    --sell-border: #d1e7dd;
     --header-bg: #FFFFFF;
     --nav-bg: #2E8B57;
     --nav-text: #FFFFFF;
@@ -13,12 +14,6 @@
     --border-color: #E0E0E0;
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
-    --sell-primary: #1a7f5f;
-    --sell-secondary: #0d9668;
-    --sell-accent: #f4b41a;
-    --sell-light: #f9fdfb;
-    --sell-border: #d1e7dd;
-    --sell-shadow: 0 4px 20px rgba(26, 127, 95, 0.1);
 }
 
 body {
@@ -34,7 +29,7 @@ body {
 }
 
 .sell-hero {
-    background: linear-gradient(135deg, var(--sell-primary), var(--sell-secondary));
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
     color: white;
     padding: 4rem 0;
     margin-bottom: 3rem;
@@ -96,7 +91,7 @@ body {
 
 .benefit-item i {
     font-size: 2rem;
-    color: var(--sell-accent);
+    color: var(--accent-orange);
     margin-bottom: 0.8rem;
 }
 
@@ -110,7 +105,7 @@ body {
 main.container {
     background: white;
     border-radius: 20px;
-    box-shadow: var(--sell-shadow);
+    box-shadow: var(--card-shadow);
     padding: 3rem !important;
     margin-top: -50px;
     position: relative;
@@ -119,11 +114,11 @@ main.container {
 }
 
 main h2 {
-    color: var(--sell-primary);
+    color: var(--primary-green);
     font-weight: 700;
     margin-bottom: 2.5rem;
     padding-bottom: 1.2rem;
-    border-bottom: 3px solid var(--sell-accent);
+    border-bottom: 3px solid var(--accent-orange);
     position: relative;
 }
 
@@ -134,12 +129,12 @@ main h2::after {
     left: 0;
     width: 100px;
     height: 3px;
-    background: var(--sell-secondary);
+    background: var(--secondary-green);
 }
 
 /* Enhanced Form Styling */
 #sellForm {
-    background: var(--sell-light);
+    background: var(--light-green);
     padding: 2.5rem;
     border-radius: 15px;
     border: 1px solid var(--sell-border);
@@ -147,11 +142,11 @@ main h2::after {
 }
 
 .form-section-title {
-    color: var(--sell-primary);
+    color: var(--primary-green);
     font-weight: 600;
     margin: 2rem 0 1.2rem;
     padding-left: 0.5rem;
-    border-left: 4px solid var(--sell-accent);
+    border-left: 4px solid var(--accent-orange);
     padding-left: 1rem;
 }
 
@@ -164,7 +159,7 @@ main h2::after {
 }
 
 .form-label i {
-    color: var(--sell-primary);
+    color: var(--primary-green);
     margin-right: 0.5rem;
     font-size: 0.9rem;
 }
@@ -179,7 +174,7 @@ main h2::after {
 }
 
 .form-control:focus, .form-select:focus {
-    border-color: var(--sell-primary);
+    border-color: var(--primary-green);
     box-shadow: 0 0 0 0.25rem rgba(26, 127, 95, 0.2);
     background-color: white;
 }
@@ -206,19 +201,19 @@ main h2::after {
 }
 
 .file-upload-container:hover {
-    border-color: var(--sell-primary);
+    border-color: var(--primary-green);
     background-color: #e8f4ef;
 }
 
 .file-upload-container i {
     font-size: 2.5rem;
-    color: var(--sell-primary);
+    color: var(--primary-green);
     margin-bottom: 1rem;
 }
 
 .file-upload-label {
     font-weight: 600;
-    color: var(--sell-primary);
+    color: var(--primary-green);
     margin-bottom: 0.5rem;
     display: block;
 }
@@ -239,7 +234,7 @@ main h2::after {
     top: 50%;
     transform: translateY(-50%);
     font-weight: 600;
-    color: var(--sell-primary);
+    color: var(--primary-green);
 }
 
 .price-container input {
@@ -262,7 +257,7 @@ main h2::after {
 }
 
 .btn-publish {
-    background: linear-gradient(to right, var(--sell-primary), var(--sell-secondary));
+    background: linear-gradient(to right, var(--primary-green), var(--secondary-green));
     color: white;
     border: none;
     padding: 1rem 3rem;
@@ -295,11 +290,11 @@ main h2::after {
     border-radius: 15px;
     padding: 2rem;
     margin-top: 3rem;
-    border-left: 5px solid var(--sell-accent);
+    border-left: 5px solid var(--accent-orange);
 }
 
 .sell-tips h4 {
-    color: var(--sell-primary);
+    color: var(--primary-green);
     margin-bottom: 1.5rem;
     font-weight: 600;
 }
@@ -319,7 +314,7 @@ main h2::after {
     content: "✓";
     position: absolute;
     left: 0;
-    color: var(--sell-secondary);
+    color: var(--secondary-green);
     font-weight: bold;
 }
 
