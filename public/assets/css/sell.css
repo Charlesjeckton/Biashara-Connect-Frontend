@@ -5,7 +5,6 @@
     --dark-green: #1A3C27;
     --light-green: #E8F5E9;
     --light-gray: #DCDCDC;
-    --sell-border: #d1e7dd;
     --header-bg: #FFFFFF;
     --nav-bg: #2E8B57;
     --nav-text: #FFFFFF;
@@ -110,7 +109,7 @@ main.container {
     margin-top: -50px;
     position: relative;
     z-index: 10;
-    border: 1px solid var(--sell-border);
+    border: 1px solid var(--border-color);
 }
 
 main h2 {
@@ -137,7 +136,7 @@ main h2::after {
     background: var(--light-green);
     padding: 2.5rem;
     border-radius: 15px;
-    border: 1px solid var(--sell-border);
+    border: 1px solid var(--border-color);
     margin-top: 1rem;
 }
 
@@ -253,7 +252,7 @@ main h2::after {
     text-align: center;
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 2px solid var(--sell-border);
+    border-top: 2px solid var(--border-color);
 }
 
 .btn-publish {
