@@ -15,6 +15,7 @@
     --header-bg: #FFFFFF;
     --nav-bg: #2E8B57;
     --nav-text: #FFFFFF;
+    --footer-text: #fffff;
     --text-dark: #333333;
     --text-light: #666666;
     --border-color: #d1e7dd;
@@ -336,7 +337,7 @@ body {
 --------------------------------------------------------------*/
 .main-footer {
     background:  var(--primary-green);
-    color: #FFFFFF;
+    color: var(--footer-text);
     padding: 60px 0 20px;
     margin-top: 60px;
     position: relative;
@@ -368,9 +369,9 @@ body {
 
 .footer-logo-section {
     text-align: center;
-    align-items: center;
+    align-items: center;/*
     flex: 1;
-    min-width: 300px;
+    min-width: 300px; */
 }
 
 .footer-logo {
@@ -399,20 +400,20 @@ body {
     font-family: 'Raleway', sans-serif;
     font-weight: 800;
     font-size: 28px;
-    color: #FFFFFF;
+    color: var(--footer-text);
     letter-spacing: -0.5px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .footer-logo-tagline {
     font-size: 14px;
-    color: var(--light-green);
+    color: var(--footer-text);
     margin-top: 4px;
     opacity: 0.9;
 }
 
 .footer-description {
-    color: var(--light-green);
+    color: var(--footer-text);
     line-height: 1.6;
     margin-bottom: 25px;
     font-size: 15px;
@@ -433,7 +434,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--light-green);
+    color: var(--footer-text);
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 16px;
@@ -491,7 +492,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--light-green);
+    color: var(--footer-text);
     text-decoration: none;
     font-size: 14px;
     padding: 8px 0;
@@ -524,7 +525,7 @@ body {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    color: var(--light-green);
+    color: var(--footer-text);
     font-size: 14px;
     line-height: 1.5;
     opacity: 0.9;
@@ -550,7 +551,7 @@ body {
 }
 
 .copyright {
-    color: var(--light-green);
+    color: var(--footer-text);
     font-size: 14px;
     opacity: 0.8;
 }
