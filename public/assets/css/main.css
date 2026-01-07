@@ -335,11 +335,8 @@ body {
 /*--------------------------------------------------------------
 # Footer Styles
 --------------------------------------------------------------*/
-/*--------------------------------------------------------------
-# Footer Styles
---------------------------------------------------------------*/
 .main-footer {
-    background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 100%);
+    background: var(--primary-green);
     color: #FFFFFF;
     padding: 60px 0 20px;
     margin-top: 60px;
@@ -399,20 +396,20 @@ body {
     font-family: 'Raleway', sans-serif;
     font-weight: 800;
     font-size: 28px;
-    color: #FFFFFF;
+    color: var(--footer-text);
     letter-spacing: -0.5px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .footer-logo-tagline {
     font-size: 14px;
-    color: var(--light-green);
+    color: var(--footer-text);
     margin-top: 4px;
     opacity: 0.9;
 }
 
 .footer-description {
-    color: var(--light-green);
+    color: var(--footer-text);
     line-height: 1.6;
     margin-bottom: 25px;
     font-size: 15px;
@@ -437,7 +434,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--light-green);
+    color: var(--footer-text);
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 16px;
@@ -496,7 +493,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--light-green);
+    color: var(--footer-text);
     text-decoration: none;
     font-size: 14px;
     padding: 8px 0;
@@ -529,7 +526,7 @@ body {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    color: var(--light-green);
+    color: var(--footer-text);
     font-size: 14px;
     line-height: 1.5;
     opacity: 0.9;
@@ -550,7 +547,7 @@ body {
 }
 
 .copyright {
-    color: var(--light-green);
+    color: var(--footer-text);
     font-size: 14px;
     opacity: 0.8;
 }
