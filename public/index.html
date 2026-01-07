@@ -210,13 +210,35 @@
             </div>
         </div>
     </section>
+
+    <!-- Pagination (optional) -->
+        <div class="d-flex justify-content-center mt-4" id="paginationContainer" style="display: none;">
+            <nav aria-label="Favorites pagination">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 </main>
 
 <div id="footer-placeholder"></div>
 
 <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-
+<script src="/assets/js/index.js" defer></script>
+<script src="/assets/js/main.js" defer></script>
 <script>
     // Load header & footer
     function loadHTML(elementId, filePath) {
@@ -228,6 +250,7 @@
     }
 
     window.onload = function () {
+        loadHTML('header-placeholder', '/includes/header.html');
         loadHTML('footer-placeholder', '/includes/footer.html');
     };
 
@@ -243,22 +266,6 @@
 
     window.onload = loadModals;
 </script>
-<script>
-    // Debug: Check if main.js is loading
-    console.log('HTML loaded, checking main.js...');
-
-    // Test if listingsGrid exists
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOMContentLoaded fired');
-        console.log('listingsGrid element:', document.getElementById('listingsGrid'));
-
-        if (typeof mainJsLoaded === 'undefined') {
-            console.error('main.js not loaded or has errors');
-        }
-    });
-</script>
-<script src="/assets/js/index.js" defer></script>
-<script src="/assets/js/main.js" defer></script>
 
 </body>
 </html>
