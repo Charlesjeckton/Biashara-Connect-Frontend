@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiasharaConnect | Favorites</title>
 
-    <!-- Vendor CSS -->
+        <!-- Vendor CSS -->
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap"
@@ -86,45 +86,46 @@
                                     <i class="fas fa-user-circle me-2"></i> My Account
                                 </a>
 
-                                <!-- Profile Modal Trigger -->
-                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                   data-bs-target="#profileModal">
-                                    <i class="fas fa-user me-2"></i> Profile
-                                </a>
+                                <div class="dropdown-menu">
+                                    <!-- Profile Modal Trigger -->
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                       data-bs-target="#profileModal">
+                                        <i class="fas fa-user me-2"></i> Profile
+                                    </a>
 
-                                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                                    <span><i class="fas fa-envelope me-2"></i> Messages</span>
-                                    <span class="badge bg-danger">5</span>
-                                </a>
+                                    <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                        <span><i class="fas fa-envelope me-2"></i> Messages</span>
+                                        <span class="badge bg-danger">5</span>
+                                    </a>
 
-                                <div class="dropdown-divider"></div>
+                                    <div class="dropdown-divider"></div>
 
-                                <!-- Register Modal Trigger -->
-                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                   data-bs-target="#registerModal">
-                                    <i class="fas fa-user-plus me-2"></i> Register
-                                </a>
+                                    <!-- Register Modal Trigger -->
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                       data-bs-target="#registerModal">
+                                        <i class="fas fa-user-plus me-2"></i> Register
+                                    </a>
 
-                                <!-- Login Modal Trigger -->
-                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                   data-bs-target="#loginModal">
-                                    <i class="fas fa-sign-in-alt me-2"></i> Login
-                                </a>
+                                    <!-- Login Modal Trigger -->
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                       data-bs-target="#loginModal">
+                                        <i class="fas fa-sign-in-alt me-2"></i> Login
+                                    </a>
 
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-sign-out-alt me-2"></i> Logout
-                                </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                    </a>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </nav>
                 </div>
-                </li>
-
-                </ul>
-                </nav>
             </div>
-        </div>
         </div>
     </header>
 
-    <div id="modals-placeholder"></div>
+<div id="modals-placeholder"></div>
 
 </section>
 
@@ -256,7 +257,7 @@
             });
     }
 
-    window.onload = function () {
+    window.onload = function() {
         // Load all components
         Promise.all([
             loadHTML('modals-placeholder', '/includes/modals.html'),
