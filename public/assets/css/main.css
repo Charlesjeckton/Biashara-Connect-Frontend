@@ -1486,8 +1486,8 @@ main h2::after {
 }
 
 .favorite-seller-avatar {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: var(--primary-green);
     color: white;
@@ -1495,7 +1495,7 @@ main h2::after {
     align-items: center;
     justify-content: center;
     font-weight: 600;
-    font-size: 0.8rem;
+    margin-right: 10px;
 }
 
 .btn-view {
