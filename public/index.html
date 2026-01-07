@@ -217,7 +217,23 @@
 <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
+<script>
+    // Load header & footer
+    function loadHTML(elementId, filePath) {
+        fetch(filePath)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(elementId).innerHTML = data;
+            });
+    }
 
+    window.onload = function () {
+        loadHTML('footer-placeholder', '/includes/footer.html');
+        loadHTML('modals-placeholder', '/includes/register-modal.html');
+        loadHTML('modals-placeholder', '/includes/login-modal.html');
+    };
+
+</script>
 <script src="/assets/js/main.js" defer></script>
 
 </body>
