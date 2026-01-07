@@ -278,33 +278,24 @@
 
 <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/assets/js/sell.js"></script>
+<script src="/assets/js/main.js" defer></script>
 <script>
-    // Load header & footer
+    // Load header & footer and modals
     function loadHTML(elementId, filePath) {
-        fetch(filePath)
+        return fetch(filePath)
             .then(response => response.text())
             .then(data => {
                 document.getElementById(elementId).innerHTML = data;
             });
     }
 
-    window.onload = function () {
-        loadHTML('header-placeholder', '/includes/header.html');
-        loadHTML('footer-placeholder', '/includes/footer.html');
-    };
-
-    // Load modals
-    function loadModals() {
+    window.onload = function() {
+        // Load all components
         Promise.all([
-            fetch('/includes/register-modal.html').then(r => r.text()),
-            fetch('/includes/login-modal.html').then(r => r.text())
-        ]).then(([registerHTML, loginHTML]) => {
-            document.getElementById('modals-placeholder').innerHTML = registerHTML + loginHTML;
-        });
-    }
-
-    window.onload = loadModals;
+            loadHTML('modals-placeholder', '/includes/modals.html'),
+            loadHTML('footer-placeholder', '/includes/footer.html')
+        ]);
+    };
 </script>
-<script src="/assets/js/main.js" defer></script>
 </body>
 </html>
