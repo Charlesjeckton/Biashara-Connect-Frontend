@@ -2982,7 +2982,9 @@ main h2::after {
     }
 }
 
-/* My Listings Styles */
+/*=================
+My Listings Styles
+===================*/
 .my-listings-hero {
     background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
     color: white;
