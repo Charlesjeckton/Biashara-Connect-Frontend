@@ -229,11 +229,35 @@
 
     window.onload = function () {
         loadHTML('footer-placeholder', '/includes/footer.html');
-        loadHTML('modals-placeholder', '/includes/register-modal.html');
-        loadHTML('modals-placeholder', '/includes/login-modal.html');
     };
 
+    // Load modals
+    function loadModals() {
+        Promise.all([
+            fetch('/includes/register-modal.html').then(r => r.text()),
+            fetch('/includes/login-modal.html').then(r => r.text())
+        ]).then(([registerHTML, loginHTML]) => {
+            document.getElementById('modals-placeholder').innerHTML = registerHTML + loginHTML;
+        });
+    }
+
+    window.onload = loadModals;
 </script>
+<script>
+    // Debug: Check if main.js is loading
+    console.log('HTML loaded, checking main.js...');
+
+    // Test if listingsGrid exists
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOMContentLoaded fired');
+        console.log('listingsGrid element:', document.getElementById('listingsGrid'));
+
+        if (typeof mainJsLoaded === 'undefined') {
+            console.error('main.js not loaded or has errors');
+        }
+    });
+</script>
+<script src="/assets/js/main.js" defer></script>
 <script src="/assets/js/main.js" defer></script>
 
 </body>
