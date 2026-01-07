@@ -514,7 +514,6 @@ body {
 
 .footer-links i {
     font-size: 10px;
-    color: var(--secondary-green);
 }
 
 .footer-contact {
@@ -534,7 +533,6 @@ body {
 }
 
 .contact-item i {
-    color: var(--secondary-green);
     margin-top: 3px;
     min-width: 20px;
     font-size: 16px;
