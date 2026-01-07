@@ -2649,16 +2649,15 @@ main h2::after {
 /*==============================================================
 # 6. Messages Style
 ==============================================================*/
+/* Messages Styles */
 .messages-main {
     padding: 40px 0;
     min-height: 70vh;
 }
 
 .messages-header {
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
-    color: white;
-    padding: 60px 0 40px;
-    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .messages-header h1 {
