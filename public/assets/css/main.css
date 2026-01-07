@@ -1489,6 +1489,7 @@ main h2::after {
     color: white;
     border-color: var(--primary-green);
 }
+
 /* Pagination Container */
 .pagination-container {
     display: flex;
