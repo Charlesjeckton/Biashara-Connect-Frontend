@@ -37,15 +37,7 @@
     /* Shadows */
     --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
     --card-shadow-hover: 0 10px 30px rgba(0,0,0,0.15);
-
-    /* Chart Colors (Already Accessible) */
-    --chart-primary: #1a7f5f;
-    --chart-secondary: #0d9668;
-    --chart-accent: #f4b41a;
-    --chart-success: #198754;
-    --chart-warning: #ffc107;
-    --chart-info: #0dcaf0;
-    --chart-danger: #dc3545;
+    
 }
 
 
