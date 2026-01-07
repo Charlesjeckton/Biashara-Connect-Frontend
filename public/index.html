@@ -217,33 +217,7 @@
 <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
-<script>
-    // Load header & footer
-    function loadHTML(elementId, filePath) {
-        fetch(filePath)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById(elementId).innerHTML = data;
-            });
-    }
 
-    window.onload = function () {
-        loadHTML('header-placeholder', '/includes/header.html');
-        loadHTML('footer-placeholder', '/includes/footer.html');
-    };
-
-    // Load modals
-    function loadModals() {
-        Promise.all([
-            fetch('/includes/register-modal.html').then(r => r.text()),
-            fetch('/includes/login-modal.html').then(r => r.text())
-        ]).then(([registerHTML, loginHTML]) => {
-            document.getElementById('modals-placeholder').innerHTML = registerHTML + loginHTML;
-        });
-    }
-
-    window.onload = loadModals;
-</script>
 <script src="/assets/js/main.js" defer></script>
 
 </body>
