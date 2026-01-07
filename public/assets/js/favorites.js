@@ -10,7 +10,7 @@ const sampleFavorites = [
         category: "electronics",
         description: "iPhone 13 Pro in excellent condition. 256GB storage, battery health 95%. Includes original box and charger.",
         seller: "Tech Deals",
-        image: "https://images.unsplash.com/photo-1632661674596-df8be070a6c5?auto=format&fit=crop&w=500&q=80",
+        image: "https://images.unsplash.com/photo-1762512949121-c1fc05b36e1a?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         date: "2024-01-15",
         active: true,
         priceDrop: true
