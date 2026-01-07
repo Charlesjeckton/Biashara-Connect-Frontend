@@ -137,6 +137,8 @@ body {
 }
 
 .seller-avatar {
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: var(--primary-green);
     color: white;
@@ -144,6 +146,8 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: 600;
+    font-size: 14px;
+    margin-right: 10px;
 }
 
 /* Global Section Title */
