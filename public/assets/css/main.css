@@ -367,6 +367,8 @@ body {
 }
 
 .footer-logo-section {
+    text-align: center;
+    align-items: center;
     flex: 1;
     min-width: 300px;
 }
