@@ -455,6 +455,59 @@ body {
     text-align: center;
 }
 
+/*====== Pagination Style =====*/
+#paginationContainer .pagination {
+    display: flex;
+    gap: 10px;
+}
+
+/* Page links */
+#paginationContainer .page-link {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+
+    color: var(--text-dark);
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+/* Hover state */
+#paginationContainer .page-link:hover {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+    color: #fff;
+}
+
+/* Active state (Bootstrap puts .active on .page-item) */
+#paginationContainer .page-item.active .page-link {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+    color: #fff;
+}
+
+/* Disabled state */
+#paginationContainer .page-item.disabled .page-link {
+    opacity: 0.5;
+    pointer-events: none;
+    background: #f8f9fa;
+}
+
+/* Remove Bootstrap focus shadow */
+#paginationContainer .page-link:focus {
+    box-shadow: none;
+}
+
 /*==============================================================
 # 1. Index Page
 ==============================================================*/
@@ -1489,62 +1542,6 @@ main h2::after {
     color: white;
     border-color: var(--primary-green);
 }
-
-/* Centering already handled by Bootstrap classes */
-
-/* Pagination spacing */
-#paginationContainer .pagination {
-    display: flex;
-    gap: 10px;
-}
-
-/* Page links */
-#paginationContainer .page-link {
-    width: 40px;
-    height: 40px;
-    padding: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #fff;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-
-    color: var(--text-dark);
-    font-weight: 600;
-    text-decoration: none;
-
-    transition: all 0.3s ease;
-}
-
-/* Hover state */
-#paginationContainer .page-link:hover {
-    background: var(--primary-green);
-    border-color: var(--primary-green);
-    color: #fff;
-}
-
-/* Active state (Bootstrap puts .active on .page-item) */
-#paginationContainer .page-item.active .page-link {
-    background: var(--primary-green);
-    border-color: var(--primary-green);
-    color: #fff;
-}
-
-/* Disabled state */
-#paginationContainer .page-item.disabled .page-link {
-    opacity: 0.5;
-    pointer-events: none;
-    background: #f8f9fa;
-}
-
-/* Remove Bootstrap focus shadow */
-#paginationContainer .page-link:focus {
-    box-shadow: none;
-}
-
 
 /* Loader Animation */
 .loader {
