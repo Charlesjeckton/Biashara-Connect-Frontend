@@ -1445,7 +1445,6 @@ main h2::after {
 
 /* Enhanced Form Styling */
 #sellForm {
-    background: var(--light-green);
     padding: 2.5rem;
     border-radius: 15px;
     border: 1px solid var(--border-color);
