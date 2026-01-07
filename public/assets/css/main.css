@@ -3,48 +3,43 @@
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-# Global Variables
+# Global Variables — High Contrast & Accessible
 --------------------------------------------------------------*/
 :root {
-    /* Brand Greens */
-    --primary-green: #2E8B57;
-    --secondary-green: #0d9668;
-    --dark-green: #0f3d2e;
-    --light-green: #E8F5E9;
+    /* Brand Greens (Adjusted for contrast) */
+    --primary-green: #1f7a55;
+    --secondary-green: #0f8f66;
+    --dark-green: #0b2f22;
+    --light-green: #eaf6f1;
 
     /* Accent */
-    --accent-orange: #FF8C00;
+    --accent-orange: #ff8a00;
 
     /* Backgrounds */
-    --header-bg: #FFFFFF;
-    --nav-bg: #2E8B57;
-    --card-bg: #FFFFFF;
-    --footer-bg: #0f3d2e;
+    --header-bg: #ffffff;
+    --nav-bg: #145c41;          /* darker for contrast */
+    --card-bg: #ffffff;
+    --footer-bg: #0b2f22;
 
-    /* Text Colors (Accessible) */
-    --nav-text: #FFFFFF;
-    --footer-text: #F1F5F3;
-    --footer-muted: #CFDAD5;
-    --text-dark: #1F2933;
-    --text-light: #6B7280;
+    /* Text — Semantic & Accessible */
+    --text-primary: #1f2933;    /* main body text */
+    --text-secondary: #4b5563;  /* descriptions */
+    --text-muted: #6b7280;
+
+    --nav-text: #ffffff;
+    --footer-text: #f9fafb;
+    --footer-muted: #cfdad5;
 
     /* UI */
-    --light-gray: #E5E7EB;
-    --border-color: #D1E7DD;
+    --light-gray: #f3f4f6;
+    --border-color: #cfe5db;
 
     /* Shadows */
-    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
+    --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    --card-shadow-hover: 0 10px 30px rgba(0,0,0,0.15);
 
-    /* Chart Colors (unchanged, already accessible) */
-    --chart-primary: #1a7f5f;
-    --chart-secondary: #0d9668;
-    --chart-accent: #f4b41a;
-    --chart-success: #28a745;
-    --chart-warning: #ffc107;
-    --chart-info: #17a2b8;
-    --chart-danger: #dc3545;
 }
+
 
 
 /*--------------------------------------------------------------
@@ -93,8 +88,14 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--light-gray);
-    color: var(--text-dark);
+    color: var(--text-primary);
     padding-top: 5px;
+}
+
+p,
+.listing-description,
+.footer-description {
+    color: var(--text-secondary);
 }
 
 /* Global Form Styles */
