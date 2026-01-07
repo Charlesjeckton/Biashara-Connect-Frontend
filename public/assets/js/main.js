@@ -3,7 +3,7 @@
  * Combined: Header, Listings, and Footer Logic
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('Biashara Connect - Main JS Loaded');
 
     // ==========================================
@@ -45,7 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const query = searchInput.value.trim();
         if (!query) {
             searchInput.style.animation = 'shake 0.5s';
-            setTimeout(() => { searchInput.style.animation = ''; }, 500);
+            setTimeout(() => {
+                searchInput.style.animation = '';
+            }, 500);
             searchInput.focus();
             return;
         }
@@ -69,7 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (searchBtn) {
         searchBtn.addEventListener('click', performSearch);
-        searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(); });
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
     }
 
     window.addEventListener('scroll', () => {
@@ -81,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================================
     // Heart/Save Toggle
     document.querySelectorAll('.saved-icon').forEach(icon => {
-        icon.addEventListener('click', function() {
+        icon.addEventListener('click', function () {
             const heartIcon = this.querySelector('i');
             heartIcon.classList.toggle('far');
             heartIcon.classList.toggle('fas');
@@ -91,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Contact Buttons
     document.querySelectorAll('.contact-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             const listingTitle = this.closest('.listing-card').querySelector('.listing-title').textContent;
             alert('Opening chat for: ' + listingTitle);
         });
@@ -111,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
             backToTopBtn.classList.toggle('visible', window.scrollY > 300);
         });
         backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({top: 0, behavior: 'smooth'});
         });
     }
 
@@ -136,9 +140,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Global Helpers
-window.updateContactInfo = function(phone, email) {
+window.updateContactInfo = function (phone, email) {
     const phoneEl = document.querySelector('.contact-item i.fa-phone + span');
     const emailEl = document.querySelector('.contact-item i.fa-envelope + span');
     if (phoneEl) phoneEl.textContent = phone;
     if (emailEl) emailEl.textContent = email;
 };
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const year = document.getElementById('current-year');
+    if (year) {
+    year.textContent = new Date().getFullYear();
+}
+});
