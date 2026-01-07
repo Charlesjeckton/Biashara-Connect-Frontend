@@ -1490,29 +1490,25 @@ main h2::after {
     border-color: var(--primary-green);
 }
 
-/* Pagination Container */
-.pagination-container {
-    display: flex;
-    justify-content: center;
-    margin: 40px 0;
-}
+/* Centering already handled by Bootstrap classes */
 
-/* Pagination List */
-.pagination {
+/* Pagination spacing */
+#paginationContainer .pagination {
     display: flex;
     gap: 10px;
 }
 
-/* Page Links */
-.page-link {
+/* Page links */
+#paginationContainer .page-link {
     width: 40px;
     height: 40px;
     padding: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: white;
+    background: #fff;
     border: 2px solid var(--border-color);
     border-radius: 8px;
 
@@ -1523,18 +1519,30 @@ main h2::after {
     transition: all 0.3s ease;
 }
 
-/* Hover + Active */
-.page-link:hover,
-.page-link.active {
+/* Hover state */
+#paginationContainer .page-link:hover {
     background: var(--primary-green);
     border-color: var(--primary-green);
-    color: white;
+    color: #fff;
+}
+
+/* Active state (Bootstrap puts .active on .page-item) */
+#paginationContainer .page-item.active .page-link {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+    color: #fff;
 }
 
 /* Disabled state */
-.page-item.disabled .page-link {
+#paginationContainer .page-item.disabled .page-link {
     opacity: 0.5;
     pointer-events: none;
+    background: #f8f9fa;
+}
+
+/* Remove Bootstrap focus shadow */
+#paginationContainer .page-link:focus {
+    box-shadow: none;
 }
 
 
