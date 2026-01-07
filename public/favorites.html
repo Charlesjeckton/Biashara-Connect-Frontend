@@ -123,119 +123,7 @@
         </div>
     </header>
 
-
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="registerModalLabel">
-                        Create Account
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <!-- Modal Body -->
-                <div class="modal-body">
-                    <form method="POST" action="{% url 'register' %}">
-                        {% csrf_token %}
-
-                        <!-- Full Name -->
-                        <div class="mb-3">
-                            <label for="fullName" class="form-label">Full Name</label>
-                            <input
-                                    type="text"
-                                    id="fullName"
-                                    name="full_name"
-                                    class="form-control"
-                                    placeholder="Enter your full name"
-                                    required
-                            >
-                        </div>
-
-                        <!-- Email -->
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    class="form-control"
-                                    placeholder="Enter your email"
-                                    required
-                            >
-                        </div>
-
-                        <!-- Password -->
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    class="form-control"
-                                    placeholder="Create a password"
-                                    required
-                            >
-                        </div>
-
-                        <!-- Submit Button -->
-                        <button type="submit" class="btn btn-success w-100">
-                            Create Account
-                        </button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h5 class="modal-title">Login</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    class="form-control"
-                                    placeholder="Enter your email"
-                                    required
-                            >
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    class="form-control"
-                                    placeholder="Enter password"
-                                    required
-                            >
-                        </div>
-
-                        <button type="submit" class="btn btn-success w-100">
-                            Login
-                        </button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
+<div id="modals-placeholder"></div>
 
 </section>
 
@@ -370,6 +258,18 @@
         loadHTML('header-placeholder', '/includes/header.html');
         loadHTML('footer-placeholder', '/includes/footer.html');
     };
+
+    // Load modals
+    function loadModals() {
+        Promise.all([
+            fetch('/includes/register-modal.html').then(r => r.text()),
+            fetch('/includes/login-modal.html').then(r => r.text())
+        ]).then(([registerHTML, loginHTML]) => {
+            document.getElementById('modals-placeholder').innerHTML = registerHTML + loginHTML;
+        });
+    }
+
+    window.onload = loadModals;
 </script>
 <script src="/assets/js/main.js" defer></script>
 </body>
