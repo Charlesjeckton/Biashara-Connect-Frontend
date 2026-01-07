@@ -1790,3 +1790,394 @@ select:disabled {
         text-decoration: underline !important;
     }
 }
+
+/*--------------------------------------------------------------
+# 2. Sell Page
+--------------------------------------------------------------*/
+/* Main Content Enhancement */
+.sell-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sell-hero {
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    color: white;
+    padding: 4rem 0;
+    margin-bottom: 3rem;
+    border-radius: 0 0 20px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.sell-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+    background-size: cover;
+    background-position: center;
+}
+
+.sell-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sell-hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.sell-hero p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+}
+
+.benefits-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.benefit-item {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    min-width: 180px;
+    transition: all 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.benefit-item i {
+    font-size: 2rem;
+    color: var(--accent-orange);
+    margin-bottom: 0.8rem;
+}
+
+.benefit-item span {
+    font-weight: 600;
+    display: block;
+    font-size: 1.1rem;
+    color: white;
+}
+
+/* Main Form Container */
+main.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    padding: 3rem !important;
+    margin-top: -50px;
+    position: relative;
+    z-index: 10;
+    border: 1px solid var(--border-color);
+}
+
+main h2 {
+    color: var(--primary-green);
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 3px solid var(--accent-orange);
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+main h2::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background: var(--secondary-green);
+}
+
+/* Enhanced Form Styling */
+#sellForm {
+    background: var(--light-green);
+    padding: 2.5rem;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    margin-top: 1rem;
+}
+
+.form-section-title {
+    color: var(--primary-green);
+    font-weight: 600;
+    margin: 2rem 0 1.2rem;
+    padding-left: 1rem;
+    border-left: 4px solid var(--accent-orange);
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* File Upload Customization */
+.file-upload-container {
+    border: 2px dashed var(--border-color);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.file-upload-container:hover {
+    border-color: var(--primary-green);
+    background-color: var(--light-green);
+    transform: translateY(-2px);
+}
+
+.file-upload-container i {
+    font-size: 2.5rem;
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+}
+
+.file-upload-label {
+    font-weight: 600;
+    color: var(--primary-green);
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 1.1rem;
+}
+
+.file-upload-hint {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Price Input with Currency */
+.price-container {
+    position: relative;
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 600;
+    color: var(--primary-green);
+    z-index: 2;
+}
+
+.price-container input {
+    padding-left: 45px;
+}
+
+/* Description Textarea */
+#description {
+    min-height: 150px;
+    resize: vertical;
+    line-height: 1.6;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+}
+
+#description:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 0.25rem rgba(26, 127, 95, 0.25);
+}
+
+.form-text {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.form-text a {
+    color: var(--primary-green);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.form-text a:hover {
+    color: var(--dark-green);
+}
+
+/* Submit Button */
+.submit-btn-container {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+}
+
+.btn-publish {
+    background: linear-gradient(to right, var(--primary-green), var(--secondary-green));
+    color: white;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(26, 127, 95, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.btn-publish:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(26, 127, 95, 0.4);
+    color: white;
+}
+
+.btn-publish:active {
+    transform: translateY(-1px);
+}
+
+.btn-publish i {
+    margin-right: 0;
+}
+
+/* Tips Section */
+.sell-tips {
+    background-color: #f0f9f6;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-left: 5px solid var(--accent-orange);
+}
+
+.sell-tips h4 {
+    color: var(--primary-green);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.tips-list {
+    list-style-type: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.tips-list li {
+    padding: 0.5rem 0;
+    padding-left: 1.8rem;
+    position: relative;
+    color: var(--text-dark);
+}
+
+.tips-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-green);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Animation for form sections */
+.form-group, .form-section-title {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .sell-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .benefits-container {
+        gap: 1rem;
+    }
+
+    .benefit-item {
+        min-width: 150px;
+        padding: 1rem;
+    }
+
+    main.container {
+        padding: 2rem !important;
+    }
+
+    #sellForm {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .sell-hero {
+        padding: 3rem 1rem;
+    }
+
+    .sell-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .sell-hero p {
+        font-size: 1rem;
+    }
+
+    main.container {
+        margin: -30px 1rem 2rem;
+    }
+
+    .form-section-title {
+        margin-top: 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    .tips-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .benefits-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .benefit-item {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .btn-publish {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    #sellForm {
+        padding: 1rem;
+    }
+
+    .file-upload-container {
+        padding: 1.5rem;
+    }
+}
