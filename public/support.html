@@ -138,271 +138,172 @@
 
 <main>
     <!-- Help Hero Section -->
-    <section id="help-hero" class="help-hero py-5 py-lg-5">
+    <section id="help-hero" class="help-hero py-5 text-center">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 col-xl-8 text-center">
-                    <h1 class="display-4 fw-bold mb-3">
-                        <i class="fas fa-headset me-2"></i>Help Center & Support
-                    </h1>
-                    <p class="lead mb-4">Get answers to your questions, contact our support team, or browse our comprehensive help resources</p>
+            <h1 class="mb-3">
+                <i class="fas fa-headset me-2"></i>Help Center & Support
+            </h1>
+            <p class="lead mb-4">
+                Get answers to your questions, contact our support team, or browse our comprehensive help resources
+            </p>
 
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8 col-md-10">
-                            <div class="input-group input-group-lg shadow-sm">
-                                <input type="text" class="form-control border-end-0" placeholder="Search for help articles, FAQs, or topics...">
-                                <button class="btn btn-primary px-4">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8 col-sm-10">
+                    <div class="input-group">
+                        <input type="text" class="form-control"
+                               placeholder="Search for help articles, FAQs, or topics...">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Quick Links Section -->
     <section id="quick-links" class="py-5">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-3 col-md-6">
-                    <div class="card h-100 border-0 shadow-sm hover-shadow transition-all cursor-pointer" onclick="scrollToSection('faq')">
-                        <div class="card-body text-center p-4">
-                            <div class="icon-lg bg-primary bg-gradient rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center">
-                                <i class="fas fa-question-circle fa-2x text-white"></i>
-                            </div>
-                            <h4 class="card-title h5 fw-bold text-primary mb-2">FAQs & Help Articles</h4>
-                            <p class="card-text text-muted small">Find answers to common questions about buying, selling, and using our platform</p>
+
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="card h-100 text-center quick-link-card"
+                         onclick="scrollToSection('faq')">
+                        <div class="card-body">
+                            <i class="fas fa-question-circle fa-2x mb-3 text-primary"></i>
+                            <h5 class="card-title">FAQs & Help Articles</h5>
+                            <p class="card-text">
+                                Find answers to common questions about buying, selling, and using our platform
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="card h-100 border-0 shadow-sm hover-shadow transition-all cursor-pointer" onclick="scrollToSection('contact')">
-                        <div class="card-body text-center p-4">
-                            <div class="icon-lg bg-primary bg-gradient rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center">
-                                <i class="fas fa-comments fa-2x text-white"></i>
-                            </div>
-                            <h4 class="card-title h5 fw-bold text-primary mb-2">Contact Support</h4>
-                            <p class="card-text text-muted small">Get personalized assistance from our support team for any issues or questions</p>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="card h-100 text-center quick-link-card"
+                         onclick="scrollToSection('contact')">
+                        <div class="card-body">
+                            <i class="fas fa-comments fa-2x mb-3 text-primary"></i>
+                            <h5 class="card-title">Contact Support</h5>
+                            <p class="card-text">
+                                Get personalized assistance from our support team
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="card h-100 border-0 shadow-sm hover-shadow transition-all cursor-pointer" onclick="window.location.href='/sell.html'">
-                        <div class="card-body text-center p-4">
-                            <div class="icon-lg bg-primary bg-gradient rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center">
-                                <i class="fas fa-hand-holding-dollar fa-2x text-white"></i>
-                            </div>
-                            <h4 class="card-title h5 fw-bold text-primary mb-2">Selling Guide</h4>
-                            <p class="card-text text-muted small">Learn how to create effective listings and maximize your sales on our platform</p>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="card h-100 text-center quick-link-card"
+                         onclick="window.location.href='/sell.html'">
+                        <div class="card-body">
+                            <i class="fas fa-hand-holding-dollar fa-2x mb-3 text-primary"></i>
+                            <h5 class="card-title">Selling Guide</h5>
+                            <p class="card-text">
+                                Learn how to create effective listings and maximize sales
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="card h-100 border-0 shadow-sm hover-shadow transition-all cursor-pointer" onclick="window.location.href='/index.html'">
-                        <div class="card-body text-center p-4">
-                            <div class="icon-lg bg-primary bg-gradient rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center">
-                                <i class="fas fa-shopping-cart fa-2x text-white"></i>
-                            </div>
-                            <h4 class="card-title h5 fw-bold text-primary mb-2">Buying Guide</h4>
-                            <p class="card-text text-muted small">Tips and best practices for safe and successful purchases on BiasharaConnect</p>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="card h-100 text-center quick-link-card"
+                         onclick="window.location.href='/index.html'">
+                        <div class="card-body">
+                            <i class="fas fa-shopping-cart fa-2x mb-3 text-primary"></i>
+                            <h5 class="card-title">Buying Guide</h5>
+                            <p class="card-text">
+                                Tips and best practices for safe purchases
+                            </p>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
+
 
     <!-- FAQ Section -->
     <section id="faq" class="py-5 bg-light">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-4 p-lg-5">
-                            <h2 class="h3 fw-bold text-primary mb-4">
-                                <i class="fas fa-question-circle me-2"></i>
-                                Frequently Asked Questions
-                            </h2>
+            <h3 class="text-center mb-4">
+                <i class="fas fa-question-circle me-2"></i>Frequently Asked Questions
+            </h3>
 
-                            <div class="d-flex flex-wrap gap-2 mb-4 pb-3 border-bottom">
-                                <button class="btn btn-outline-primary btn-sm active" data-category="all">All Questions</button>
-                                <button class="btn btn-outline-primary btn-sm" data-category="buying">Buying</button>
-                                <button class="btn btn-outline-primary btn-sm" data-category="selling">Selling</button>
-                                <button class="btn btn-outline-primary btn-sm" data-category="account">Account</button>
-                                <button class="btn btn-outline-primary btn-sm" data-category="payments">Payments</button>
-                                <button class="btn btn-outline-primary btn-sm" data-category="safety">Safety & Security</button>
-                            </div>
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+                <button class="btn btn-outline-primary active">All</button>
+                <button class="btn btn-outline-primary">Buying</button>
+                <button class="btn btn-outline-primary">Selling</button>
+                <button class="btn btn-outline-primary">Account</button>
+                <button class="btn btn-outline-primary">Payments</button>
+                <button class="btn btn-outline-primary">Safety</button>
+            </div>
 
-                            <div class="accordion" id="faqAccordion">
-                                <!-- FAQ items will be dynamically loaded -->
-                            </div>
+            <div id="faqContainer"></div>
 
-                            <div class="text-center mt-4 pt-3">
-                                <button class="btn btn-outline-primary" id="loadMoreFaq">
-                                    <i class="fas fa-plus me-2"></i>Load More Questions
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="text-center mt-4">
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Load More Questions
+                </button>
             </div>
         </div>
     </section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="py-5">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="card border-0 shadow-sm bg-light">
-                        <div class="card-body p-4 p-lg-5">
-                            <div class="text-center mb-5">
-                                <h2 class="h3 fw-bold text-primary mb-3">Contact Our Support Team</h2>
-                                <p class="text-muted mb-0 mx-auto" style="max-width: 600px;">Can't find what you're looking for? Our support team is here to help you with any questions or issues</p>
-                            </div>
-
-                            <form class="row g-4" id="supportForm">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="supportName" placeholder="John Doe" required>
-                                        <label for="supportName">
-                                            <i class="fas fa-user me-2"></i>Full Name
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" id="supportEmail" placeholder="name@example.com" required>
-                                        <label for="supportEmail">
-                                            <i class="fas fa-envelope me-2"></i>Email Address
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="supportCategory" required>
-                                            <option value="">Category</option>
-                                            <option value="account">Account Issues</option>
-                                            <option value="listing">Listing Problems</option>
-                                            <option value="payment">Payment Issues</option>
-                                            <option value="technical">Technical Support</option>
-                                            <option value="safety">Safety Concerns</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                        <label for="supportCategory">
-                                            <i class="fas fa-folder me-2"></i>Issue Category
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="supportPriority" required>
-                                            <option value="">Choose</option>
-                                            <option value="low">Low - General Inquiry</option>
-                                            <option value="medium" selected>Medium - Need Assistance</option>
-                                            <option value="high">High - Urgent Issue</option>
-                                            <option value="critical">Critical - System Problem</option>
-                                        </select>
-                                        <label for="supportPriority">
-                                            <i class="fas fa-exclamation-circle me-2"></i>Priority Level
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" id="supportMessage" placeholder="Describe your issue" style="height: 150px;" required></textarea>
-                                        <label for="supportMessage">
-                                            <i class="fas fa-comment-dots me-2"></i>Describe Your Issue
-                                        </label>
-                                    </div>
-                                    <div class="form-text mt-2">
-                                        <i class="fas fa-info-circle me-1"></i>Please provide detailed information about your issue or question. Include any relevant listing IDs, error messages, or screenshots if applicable.
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label for="supportAttachment" class="form-label">
-                                            <i class="fas fa-paperclip me-2"></i>Attachments (Optional)
-                                        </label>
-                                        <input class="form-control" type="file" id="supportAttachment" accept="image/*,.pdf,.doc,.docx">
-                                        <div class="form-text">You can attach screenshots or documents to help us understand your issue better</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg px-5">
-                                        <i class="fas fa-paper-plane me-2"></i>Send Message to Support
-                                    </button>
-                                </div>
-                            </form>
-
-                            <div class="mt-5 pt-4 border-top">
-                                <div class="row g-4">
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="text-center p-3">
-                                            <div class="icon-md bg-primary bg-gradient rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center">
-                                                <i class="fas fa-phone-alt fa-lg text-white"></i>
-                                            </div>
-                                            <h5 class="fw-bold text-primary mb-2">Phone Support</h5>
-                                            <p class="text-muted small mb-1">+254 700 123 456</p>
-                                            <p class="text-muted small mb-1">Mon-Fri: 8:00 AM - 6:00 PM</p>
-                                            <p class="text-muted small mb-0">Sat: 9:00 AM - 1:00 PM</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="text-center p-3">
-                                            <div class="icon-md bg-primary bg-gradient rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center">
-                                                <i class="fas fa-envelope fa-lg text-white"></i>
-                                            </div>
-                                            <h5 class="fw-bold text-primary mb-2">Email Support</h5>
-                                            <p class="text-muted small mb-1">support@biasharaconnect.co.ke</p>
-                                            <p class="text-muted small mb-1">Response within 24 hours</p>
-                                            <p class="text-muted small mb-0">Emergency: emergency@biasharaconnect.co.ke</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="text-center p-3">
-                                            <div class="icon-md bg-primary bg-gradient rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center">
-                                                <i class="fas fa-comments fa-lg text-white"></i>
-                                            </div>
-                                            <h5 class="fw-bold text-primary mb-2">Live Chat</h5>
-                                            <p class="text-muted small mb-1">Available 24/7</p>
-                                            <p class="text-muted small mb-1">Click the chat icon in bottom right</p>
-                                            <p class="text-muted small mb-0">Average response: 5 minutes</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="text-center p-3">
-                                            <div class="icon-md bg-primary bg-gradient rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center">
-                                                <i class="fas fa-map-marker-alt fa-lg text-white"></i>
-                                            </div>
-                                            <h5 class="fw-bold text-primary mb-2">Office Address</h5>
-                                            <p class="text-muted small mb-1">BiasharaConnect Ltd</p>
-                                            <p class="text-muted small mb-1">Westlands, Nairobi</p>
-                                            <p class="text-muted small mb-0">Kenya</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="text-center mb-5">
+                <h3>Contact Our Support Team</h3>
+                <p class="text-muted">
+                    Can't find what you're looking for? Our support team is here to help.
+                </p>
             </div>
+
+            <form class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Issue Category</label>
+                    <select class="form-select">
+                        <option>Account</option>
+                        <option>Payment</option>
+                        <option>Technical</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Priority</label>
+                    <select class="form-select">
+                        <option>Low</option>
+                        <option selected>Medium</option>
+                        <option>High</option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-control" rows="5"></textarea>
+                </div>
+
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary px-5">
+                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                    </button>
+                </div>
+            </form>
         </div>
     </section>
+
 </main>
 
 <div id="footer-placeholder"></div>
