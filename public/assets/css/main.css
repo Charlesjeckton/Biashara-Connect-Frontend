@@ -3341,183 +3341,256 @@ body {
         padding: 5px 10px;
     }
 }
-/* --- Support Page Theme Variables --- */
+/*====================================================
+  HELP & SUPPORT PAGE STYLES
+====================================================*/
+
 :root {
-    --primary-green: #28a745;
-    --dark-blue: #0a2351;
+    --primary-green: #0d6efd;
+    --dark-green: #084298;
     --light-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-dark: #212529;
     --text-muted: #6c757d;
-    --white: #ffffff;
+    --border-color: #e5e7eb;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.08);
     --transition: all 0.3s ease;
 }
 
-/* --- Help Hero Section --- */
+/*====================================================
+  GENERAL
+====================================================*/
+.section {
+    padding: 4rem 0;
+}
+
+.container-main {
+    max-width: 1300px;
+}
+
+.section-title {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.section-title i {
+    color: var(--primary-green);
+    margin-right: 8px;
+}
+
+/*====================================================
+  HELP HERO
+====================================================*/
 .help-hero {
-    background: linear-gradient(rgba(10, 35, 81, 0.9), rgba(10, 35, 81, 0.9)), center/cover; /* Add a nice background image */
-    color: var(--white);
-    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    color: #fff;
 }
 
 .help-hero h1 {
+    font-size: 2.8rem;
     font-weight: 700;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 
 .help-hero p {
     font-size: 1.1rem;
-    opacity: 0.9;
-    max-width: 700px;
-    margin: 0 auto 30px;
+    opacity: 0.95;
 }
 
-/* --- Search Bar Styling --- */
 .help-search .input-group {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 10px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 720px;
 }
 
 .help-search-input {
-    border-radius: 50px !important;
-    border: none !important;
-    padding: 12px 25px;
-    font-size: 1rem;
-}
-
-.help-search-btn {
-    border-radius: 50px !important;
-    padding: 0 30px;
-    font-weight: 600;
-    background-color: var(--primary-green);
+    padding: 14px 16px;
+    border-radius: 30px 0 0 30px;
     border: none;
 }
 
-/* --- Quick Link Cards --- */
+.help-search-btn {
+    border-radius: 0 30px 30px 0;
+    padding: 0 22px;
+    font-size: 1.1rem;
+}
+
+/*====================================================
+  QUICK LINKS
+====================================================*/
+.quick-links-section {
+    background: var(--light-bg);
+}
+
 .quick-link-card {
-    background: var(--white);
-    padding: 30px 20px;
-    border-radius: 15px;
-    border: 1px solid #eee;
-    transition: var(--transition);
+    background: var(--card-bg);
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
     cursor: pointer;
+    transition: var(--transition);
 }
 
 .quick-link-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    border-color: var(--primary-green);
+    transform: translateY(-6px);
 }
 
 .quick-link-icon {
-    font-size: 2.5rem;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: rgba(13, 110, 253, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quick-link-icon i {
+    font-size: 1.6rem;
     color: var(--primary-green);
-    margin-bottom: 20px;
 }
 
 .quick-link-title {
-    color: var(--dark-blue);
     font-weight: 600;
-    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
 }
 
 .quick-link-desc {
+    font-size: 0.95rem;
     color: var(--text-muted);
-    font-size: 0.9rem;
-    line-height: 1.5;
 }
 
-/* --- FAQ Tabs --- */
+/*====================================================
+  FAQ SECTION
+====================================================*/
+.faq-section {
+    background: #fff;
+}
+
+.faq-categories {
+    margin-bottom: 2rem;
+}
+
 .faq-category-btn {
-    padding: 8px 20px;
-    border-radius: 50px;
-    border: 1px solid #ddd;
-    background: var(--white);
-    color: var(--dark-blue);
-    font-weight: 500;
+    border: 1px solid var(--border-color);
+    background: #fff;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 0.9rem;
     transition: var(--transition);
 }
 
-.faq-category-btn.active, .faq-category-btn:hover {
+.faq-category-btn.active,
+.faq-category-btn:hover {
     background: var(--primary-green);
-    color: var(--white);
+    color: #fff;
     border-color: var(--primary-green);
 }
 
-/* --- Contact Form --- */
+.faq-container {
+    display: grid;
+    gap: 1rem;
+}
+
+/*====================================================
+  CONTACT SECTION
+====================================================*/
+.contact-section {
+    background: var(--light-bg);
+}
+
 .contact-container {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
 }
 
-.form-label {
-    font-weight: 600;
-    color: var(--dark-blue);
-    margin-bottom: 8px;
+.contact-title {
+    font-weight: 700;
 }
 
-.form-label i {
-    color: var(--primary-green);
-    margin-right: 5px;
+.contact-subtitle {
+    color: var(--text-muted);
+    max-width: 720px;
+    margin: 0 auto;
 }
 
-.form-control, .form-select {
+/* Form */
+.contact-form .form-label {
+    font-weight: 500;
+}
+
+.contact-form .form-control,
+.contact-form .form-select {
     padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
+    border-radius: var(--radius-md);
 }
 
 .submit-btn {
     background: var(--primary-green);
-    color: var(--white);
-    padding: 15px 40px;
-    border-radius: 50px;
+    color: #fff;
     border: none;
-    font-weight: 600;
-    font-size: 1.1rem;
+    padding: 14px 36px;
+    border-radius: 30px;
+    font-size: 1rem;
     transition: var(--transition);
-    width: 100%;
-    max-width: 300px;
 }
 
 .submit-btn:hover {
-    background: #218838;
-    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+    background: var(--dark-green);
 }
 
-/* --- Contact Method Items --- */
+/*====================================================
+  CONTACT METHODS
+====================================================*/
 .contact-method {
-    padding: 20px;
-    border-radius: 12px;
-    background: var(--light-bg);
-    transition: var(--transition);
-}
-
-.contact-method:hover {
-    background: #eef9f0;
+    background: #fff;
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
 }
 
 .contact-icon {
-    font-size: 1.5rem;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: rgba(13, 110, 253, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-icon i {
+    font-size: 1.6rem;
     color: var(--primary-green);
-    margin-bottom: 10px;
 }
 
 .contact-method-title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--dark-blue);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
 .contact-method-detail {
-    font-size: 0.85rem;
-    margin-bottom: 2px;
+    font-size: 0.9rem;
     color: var(--text-muted);
 }
+
+/*====================================================
+  RESPONSIVE
+====================================================*/
+@media (max-width: 768px) {
+    .help-hero h1 {
+        font-size: 2rem;
+    }
+
+    .contact-container {
+        padding: 2rem 1.5rem;
+    }
+}
+
 
 /*--------------------------------------------------------------
 # 6. Messages Style
