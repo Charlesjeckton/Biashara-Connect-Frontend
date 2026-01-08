@@ -2982,16 +2982,18 @@ body {
         gap: 10px;
     }
 }
-
-/*--------------------------------------------------------------
+ /*--------------------------------------------------------------
 # 5. Help/Support Page
 --------------------------------------------------------------*/
-/* Hero Section */
+.help-section {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
 .help-hero {
     background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
     color: white;
     padding: 3.5rem 0 4rem;
-    margin-bottom: 2rem;
     border-radius: 0 0 20px 20px;
     position: relative;
     overflow: hidden;
@@ -3015,6 +3017,7 @@ body {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .help-hero h1 {
@@ -3078,12 +3081,12 @@ body {
     transform: scale(1.05);
 }
 
-/* Main Content */
-.help-main {
+.help-section .help-main {
     max-width: 1200px;
     margin: -60px auto 3rem;
     position: relative;
     z-index: 10;
+    padding: 0 20px;
 }
 
 .help-container {
@@ -3094,7 +3097,6 @@ body {
     border: 1px solid var(--border-color);
 }
 
-/* Quick Links */
 .quick-links {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -3148,7 +3150,6 @@ body {
     line-height: 1.5;
 }
 
-/* FAQ Section */
 .faq-section {
     margin-bottom: 3rem;
 }
@@ -3284,7 +3285,6 @@ body {
     color: white;
 }
 
-/* Contact Form */
 .contact-section {
     background: linear-gradient(135deg, #f9fdfb, #e8f4ef);
     border-radius: 15px;
@@ -3359,7 +3359,6 @@ body {
     color: white;
 }
 
-/* Contact Methods */
 .contact-methods {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -3411,14 +3410,18 @@ body {
     line-height: 1.4;
 }
 
-/* Animation */
 .quick-link-card,
 .faq-item,
 .contact-method {
     animation: fadeIn 0.5s ease-out;
 }
 
-/* Responsive Design */
+@media (max-width: 1200px) {
+    .help-section {
+        padding: 0 20px;
+    }
+}
+
 @media (max-width: 992px) {
     .help-hero h1 {
         font-size: 2rem;
@@ -3440,14 +3443,34 @@ body {
 @media (max-width: 768px) {
     .help-hero {
         padding: 2.5rem 1rem 3rem;
+        border-radius: 0 0 15px 15px;
     }
 
-    .help-main {
-        margin: -40px 1rem 2rem;
+    .help-hero h1 {
+        font-size: 1.8rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .help-hero p {
+        font-size: 1rem;
+    }
+
+    .help-search {
+        max-width: 90%;
+    }
+
+    .help-section .help-main {
+        margin: -40px 15px 2rem;
     }
 
     .help-container {
         padding: 1.5rem;
+    }
+
+    .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
     .contact-section {
@@ -3471,66 +3494,6 @@ body {
         padding: 0.9rem 2rem;
         font-size: 1rem;
     }
-}
-
-@media (max-width: 576px) {
-    .help-hero h1 {
-        font-size: 1.8rem;
-    }
-
-    .help-search-input {
-        padding: 0.9rem 1.2rem;
-        padding-right: 55px;
-    }
-
-    .help-search-btn {
-        width: 40px;
-        height: 40px;
-        top: 6px;
-        right: 6px;
-    }
-
-    .quick-links {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-methods {
-        grid-template-columns: 1fr;
-    }
-
-    .faq-category-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-    }
-
-    .contact-title {
-        font-size: 1.5rem;
-    }
-
-    .contact-subtitle {
-        font-size: 0.9rem;
-    }
-}
-/* Responsive help page */
-@media (max-width: 768px) {
-    .help-hero h1 {
-        font-size: 2rem;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .help-hero p {
-        font-size: 1rem;
-    }
-
-    .help-search {
-        max-width: 90%;
-    }
-
-    .quick-links {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
 
     .contact-form .row {
         margin: 0 -0.5rem;
@@ -3548,15 +3511,16 @@ body {
     }
 
     .help-hero h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
-    .help-main {
+    .help-section .help-main {
         margin: -30px 10px 0;
     }
 
     .help-container {
         padding: 1.2rem;
+        border-radius: 15px;
     }
 
     .quick-links {
@@ -3597,11 +3561,19 @@ body {
         padding: 0.8rem;
         font-size: 0.9rem;
     }
+
+    .contact-title {
+        font-size: 1.5rem;
+    }
+
+    .contact-subtitle {
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 400px) {
     .help-hero h1 {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 
     .help-search-input {
@@ -3646,7 +3618,6 @@ body {
         font-size: 0.8rem;
     }
 }
-
 /*--------------------------------------------------------------
 # 6. Messages Style
 --------------------------------------------------------------*/

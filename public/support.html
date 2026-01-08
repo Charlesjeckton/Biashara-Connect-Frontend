@@ -99,7 +99,8 @@
                                         <i class="fas fa-user me-2"></i> Profile
                                     </a>
 
-                                    <a class="dropdown-item d-flex justify-content-between align-items-center" href="/messages.html">
+                                    <a class="dropdown-item d-flex justify-content-between align-items-center"
+                                       href="/messages.html">
                                         <span><i class="fas fa-envelope me-2"></i> Messages</span>
                                         <span class="badge bg-danger">5</span>
                                     </a>
@@ -135,229 +136,232 @@
 
 </section>
 
-<!-- Hero Section -->
-<div class="help-hero">
-    <div class="container help-hero-content">
-        <h1><i class="fas fa-headset me-2"></i>Help Center & Support</h1>
-        <p>Get answers to your questions, contact our support team, or browse our comprehensive help resources</p>
+<section class="help-section">
+    <!-- Hero Section -->
+    <div class="help-hero">
+        <div class="container help-hero-content">
+            <h1><i class="fas fa-headset me-2"></i>Help Center & Support</h1>
+            <p>Get answers to your questions, contact our support team, or browse our comprehensive help resources</p>
 
-        <div class="help-search">
-            <input type="text" class="help-search-input" placeholder="Search for help articles, FAQs, or topics...">
-            <button class="help-search-btn">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-    </div>
-</div>
-
-
-<!-- Main Content -->
-<div class="container help-main">
-    <div class="help-container">
-        <!-- Quick Links -->
-        <div class="quick-links">
-            <div class="quick-link-card" onclick="scrollToSection('faq')">
-                <div class="quick-link-icon">
-                    <i class="fas fa-question-circle"></i>
-                </div>
-                <h4 class="quick-link-title">FAQs & Help Articles</h4>
-                <p class="quick-link-desc">Find answers to common questions about buying, selling, and using our
-                    platform</p>
-            </div>
-
-            <div class="quick-link-card" onclick="scrollToSection('contact')">
-                <div class="quick-link-icon">
-                    <i class="fas fa-comments"></i>
-                </div>
-                <h4 class="quick-link-title">Contact Support</h4>
-                <p class="quick-link-desc">Get personalized assistance from our support team for any issues or
-                    questions</p>
-            </div>
-
-            <div class="quick-link-card" onclick="window.location.href='/sell.html'">
-                <div class="quick-link-icon">
-                    <i class="fas fa-hand-holding-dollar"></i>
-                </div>
-                <h4 class="quick-link-title">Selling Guide</h4>
-                <p class="quick-link-desc">Learn how to create effective listings and maximize your sales on our
-                    platform</p>
-            </div>
-
-            <div class="quick-link-card" onclick="window.location.href='/index.html'">
-                <div class="quick-link-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                </div>
-                <h4 class="quick-link-title">Buying Guide</h4>
-                <p class="quick-link-desc">Tips and best practices for safe and successful purchases on
-                    BiasharaConnect</p>
-            </div>
-        </div>
-
-        <!-- FAQ Section -->
-        <div class="faq-section" id="faq">
-            <h3 class="section-title">
-                <i class="fas fa-question-circle"></i>
-                Frequently Asked Questions
-            </h3>
-
-            <div class="faq-categories">
-                <button class="faq-category-btn active" data-category="all">All Questions</button>
-                <button class="faq-category-btn" data-category="buying">Buying</button>
-                <button class="faq-category-btn" data-category="selling">Selling</button>
-                <button class="faq-category-btn" data-category="account">Account</button>
-                <button class="faq-category-btn" data-category="payments">Payments</button>
-                <button class="faq-category-btn" data-category="safety">Safety & Security</button>
-            </div>
-
-            <div class="faq-container" id="faqContainer">
-                <!-- FAQ items will be dynamically loaded -->
-            </div>
-
-            <div class="text-center mt-3">
-                <button class="btn btn-outline-primary" id="loadMoreFaq">
-                    <i class="fas fa-plus me-2"></i>Load More Questions
+            <div class="help-search">
+                <input type="text" class="help-search-input" placeholder="Search for help articles, FAQs, or topics...">
+                <button class="help-search-btn">
+                    <i class="fas fa-search"></i>
                 </button>
             </div>
         </div>
+    </div>
 
-        <!-- Contact Section -->
-        <div class="contact-section" id="contact">
-            <div class="contact-header">
-                <h3 class="contact-title">Contact Our Support Team</h3>
-                <p class="contact-subtitle">Can't find what you're looking for? Our support team is here to help you
-                    with any questions or issues</p>
-            </div>
-
-            <form class="contact-form" id="supportForm">
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="supportName" class="form-label">
-                                <i class="fas fa-user"></i>Full Name
-                            </label>
-                            <input type="text" class="form-control" id="supportName" placeholder="Enter your full name"
-                                   required>
-                        </div>
+    <!-- Main Content -->
+    <div class="container help-main">
+        <div class="help-container">
+            <!-- Quick Links -->
+            <div class="quick-links">
+                <div class="quick-link-card" onclick="scrollToSection('faq')">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-question-circle"></i>
                     </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="supportEmail" class="form-label">
-                                <i class="fas fa-envelope"></i>Email Address
-                            </label>
-                            <input type="email" class="form-control" id="supportEmail"
-                                   placeholder="Enter your email address" required>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="supportCategory" class="form-label">
-                                <i class="fas fa-folder"></i>Issue Category
-                            </label>
-                            <select class="form-select" id="supportCategory" required>
-                                <option value="">Select category</option>
-                                <option value="account">Account Issues</option>
-                                <option value="listing">Listing Problems</option>
-                                <option value="payment">Payment Issues</option>
-                                <option value="technical">Technical Support</option>
-                                <option value="safety">Safety Concerns</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="supportPriority" class="form-label">
-                                <i class="fas fa-exclamation-circle"></i>Priority Level
-                            </label>
-                            <select class="form-select" id="supportPriority" required>
-                                <option value="low">Low - General Inquiry</option>
-                                <option value="medium" selected>Medium - Need Assistance</option>
-                                <option value="high">High - Urgent Issue</option>
-                                <option value="critical">Critical - System Problem</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label for="supportMessage" class="form-label">
-                                <i class="fas fa-comment-dots"></i>Describe Your Issue
-                            </label>
-                            <textarea class="form-control" id="supportMessage" rows="5"
-                                      placeholder="Please provide detailed information about your issue or question. Include any relevant listing IDs, error messages, or screenshots if applicable."
-                                      required></textarea>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label for="supportAttachment" class="form-label">
-                                <i class="fas fa-paperclip"></i>Attachments (Optional)
-                            </label>
-                            <input type="file" class="form-control" id="supportAttachment"
-                                   accept="image/*,.pdf,.doc,.docx">
-                            <div class="form-text">You can attach screenshots or documents to help us understand your
-                                issue better
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-paper-plane"></i>Send Message to Support
-                        </button>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Contact Methods -->
-            <div class="contact-methods">
-                <div class="contact-method">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <h4 class="contact-method-title">Phone Support</h4>
-                    <p class="contact-method-detail">+254 700 123 456</p>
-                    <p class="contact-method-detail">Mon-Fri: 8:00 AM - 6:00 PM</p>
-                    <p class="contact-method-detail">Sat: 9:00 AM - 1:00 PM</p>
+                    <h4 class="quick-link-title">FAQs & Help Articles</h4>
+                    <p class="quick-link-desc">Find answers to common questions about buying, selling, and using our
+                        platform</p>
                 </div>
 
-                <div class="contact-method">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h4 class="contact-method-title">Email Support</h4>
-                    <p class="contact-method-detail">support@biasharaconnect.co.ke</p>
-                    <p class="contact-method-detail">Response within 24 hours</p>
-                    <p class="contact-method-detail">Emergency: emergency@biasharaconnect.co.ke</p>
-                </div>
-
-                <div class="contact-method">
-                    <div class="contact-icon">
+                <div class="quick-link-card" onclick="scrollToSection('contact')">
+                    <div class="quick-link-icon">
                         <i class="fas fa-comments"></i>
                     </div>
-                    <h4 class="contact-method-title">Live Chat</h4>
-                    <p class="contact-method-detail">Available 24/7</p>
-                    <p class="contact-method-detail">Click the chat icon in bottom right</p>
-                    <p class="contact-method-detail">Average response: 5 minutes</p>
+                    <h4 class="quick-link-title">Contact Support</h4>
+                    <p class="quick-link-desc">Get personalized assistance from our support team for any issues or
+                        questions</p>
                 </div>
 
-                <div class="contact-method">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                <div class="quick-link-card" onclick="window.location.href='/sell.html'">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-hand-holding-dollar"></i>
                     </div>
-                    <h4 class="contact-method-title">Office Address</h4>
-                    <p class="contact-method-detail">BiasharaConnect Ltd</p>
-                    <p class="contact-method-detail">Westlands, Nairobi</p>
-                    <p class="contact-method-detail">Kenya</p>
+                    <h4 class="quick-link-title">Selling Guide</h4>
+                    <p class="quick-link-desc">Learn how to create effective listings and maximize your sales on our
+                        platform</p>
+                </div>
+
+                <div class="quick-link-card" onclick="window.location.href='/index.html'">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h4 class="quick-link-title">Buying Guide</h4>
+                    <p class="quick-link-desc">Tips and best practices for safe and successful purchases on
+                        BiasharaConnect</p>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section" id="faq">
+                <h3 class="section-title">
+                    <i class="fas fa-question-circle"></i>
+                    Frequently Asked Questions
+                </h3>
+
+                <div class="faq-categories">
+                    <button class="faq-category-btn active" data-category="all">All Questions</button>
+                    <button class="faq-category-btn" data-category="buying">Buying</button>
+                    <button class="faq-category-btn" data-category="selling">Selling</button>
+                    <button class="faq-category-btn" data-category="account">Account</button>
+                    <button class="faq-category-btn" data-category="payments">Payments</button>
+                    <button class="faq-category-btn" data-category="safety">Safety & Security</button>
+                </div>
+
+                <div class="faq-container" id="faqContainer">
+                    <!-- FAQ items will be dynamically loaded -->
+                </div>
+
+                <div class="text-center mt-3">
+                    <button class="btn btn-outline-primary" id="loadMoreFaq">
+                        <i class="fas fa-plus me-2"></i>Load More Questions
+                    </button>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact-section" id="contact">
+                <div class="contact-header">
+                    <h3 class="contact-title">Contact Our Support Team</h3>
+                    <p class="contact-subtitle">Can't find what you're looking for? Our support team is here to help you
+                        with any questions or issues</p>
+                </div>
+
+                <form class="contact-form" id="supportForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="supportName" class="form-label">
+                                    <i class="fas fa-user"></i>Full Name
+                                </label>
+                                <input type="text" class="form-control" id="supportName"
+                                       placeholder="Enter your full name"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="supportEmail" class="form-label">
+                                    <i class="fas fa-envelope"></i>Email Address
+                                </label>
+                                <input type="email" class="form-control" id="supportEmail"
+                                       placeholder="Enter your email address" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="supportCategory" class="form-label">
+                                    <i class="fas fa-folder"></i>Issue Category
+                                </label>
+                                <select class="form-select" id="supportCategory" required>
+                                    <option value="">Select category</option>
+                                    <option value="account">Account Issues</option>
+                                    <option value="listing">Listing Problems</option>
+                                    <option value="payment">Payment Issues</option>
+                                    <option value="technical">Technical Support</option>
+                                    <option value="safety">Safety Concerns</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="supportPriority" class="form-label">
+                                    <i class="fas fa-exclamation-circle"></i>Priority Level
+                                </label>
+                                <select class="form-select" id="supportPriority" required>
+                                    <option value="low">Low - General Inquiry</option>
+                                    <option value="medium" selected>Medium - Need Assistance</option>
+                                    <option value="high">High - Urgent Issue</option>
+                                    <option value="critical">Critical - System Problem</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="supportMessage" class="form-label">
+                                    <i class="fas fa-comment-dots"></i>Describe Your Issue
+                                </label>
+                                <textarea class="form-control" id="supportMessage" rows="5"
+                                          placeholder="Please provide detailed information about your issue or question. Include any relevant listing IDs, error messages, or screenshots if applicable."
+                                          required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="supportAttachment" class="form-label">
+                                    <i class="fas fa-paperclip"></i>Attachments (Optional)
+                                </label>
+                                <input type="file" class="form-control" id="supportAttachment"
+                                       accept="image/*,.pdf,.doc,.docx">
+                                <div class="form-text">You can attach screenshots or documents to help us understand
+                                    your
+                                    issue better
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i>Send Message to Support
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Contact Methods -->
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h4 class="contact-method-title">Phone Support</h4>
+                        <p class="contact-method-detail">+254 700 123 456</p>
+                        <p class="contact-method-detail">Mon-Fri: 8:00 AM - 6:00 PM</p>
+                        <p class="contact-method-detail">Sat: 9:00 AM - 1:00 PM</p>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4 class="contact-method-title">Email Support</h4>
+                        <p class="contact-method-detail">support@biasharaconnect.co.ke</p>
+                        <p class="contact-method-detail">Response within 24 hours</p>
+                        <p class="contact-method-detail">Emergency: emergency@biasharaconnect.co.ke</p>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h4 class="contact-method-title">Live Chat</h4>
+                        <p class="contact-method-detail">Available 24/7</p>
+                        <p class="contact-method-detail">Click the chat icon in bottom right</p>
+                        <p class="contact-method-detail">Average response: 5 minutes</p>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4 class="contact-method-title">Office Address</h4>
+                        <p class="contact-method-detail">BiasharaConnect Ltd</p>
+                        <p class="contact-method-detail">Westlands, Nairobi</p>
+                        <p class="contact-method-detail">Kenya</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <div id="footer-placeholder"></div>
 <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
