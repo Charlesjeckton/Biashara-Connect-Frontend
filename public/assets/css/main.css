@@ -2398,7 +2398,6 @@ main h2::after {
 }
 
 .quick-link-card {
-    background: var(--light-green);
     border-radius: 15px;
     padding: 1.8rem;
     text-align: center;
@@ -2473,7 +2472,6 @@ main h2::after {
 }
 
 .faq-category-btn {
-    background: var(--light-green);
     color: var(--primary-green);
     border: 1px solid var(--border-color);
     padding: 0.6rem 1.5rem;
@@ -2493,7 +2491,6 @@ main h2::after {
 }
 
 .faq-container {
-    background: var(--light-green);
     border-radius: 15px;
     padding: 1.5rem;
     border: 1px solid var(--border-color);
