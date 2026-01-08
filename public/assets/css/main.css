@@ -3098,6 +3098,141 @@ main h2::after {
         font-size: 0.9rem;
     }
 }
+/* Responsive help page */
+@media (max-width: 768px) {
+    .help-hero h1 {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .help-hero p {
+        font-size: 1rem;
+    }
+
+    .help-search {
+        max-width: 90%;
+    }
+
+    .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .contact-form .row {
+        margin: 0 -0.5rem;
+    }
+
+    .contact-form .col-md-6,
+    .contact-form .col-12 {
+        padding: 0 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .help-hero {
+        padding: 2rem 1rem;
+    }
+
+    .help-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .help-main {
+        margin: -30px 10px 0;
+    }
+
+    .help-container {
+        padding: 1.2rem;
+    }
+
+    .quick-links {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-link-card {
+        padding: 1.5rem;
+    }
+
+    .faq-categories {
+        gap: 0.5rem;
+    }
+
+    .faq-category-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .faq-container {
+        padding: 1rem;
+    }
+
+    .contact-section {
+        padding: 1.2rem;
+    }
+
+    .contact-methods {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .contact-method {
+        padding: 1rem;
+    }
+
+    .submit-btn {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .help-hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .help-search-input {
+        font-size: 0.9rem;
+        padding: 0.8rem 1rem;
+        padding-right: 50px;
+    }
+
+    .help-search-btn {
+        width: 36px;
+        height: 36px;
+        top: 5px;
+        right: 5px;
+    }
+
+    .quick-link-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .faq-question {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+
+    .contact-form .form-label {
+        font-size: 0.9rem;
+    }
+
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+
+    .contact-method-title {
+        font-size: 1rem;
+    }
+
+    .contact-method-detail {
+        font-size: 0.8rem;
+    }
+}
 
 /*--------------------------------------------------------------
 # 6. Messages Style
@@ -3481,6 +3616,164 @@ main h2::after {
     .conversation-time {
         font-size: 11px;
         margin-top: 2px;
+    }
+}
+/* Responsive messages page */
+@media (max-width: 992px) {
+    .messages-header {
+        padding: 40px 20px;
+    }
+
+    .messages-header h1 {
+        font-size: 2rem;
+    }
+
+    .conversations-sidebar,
+    .chat-container {
+        height: 60vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .messages-header {
+        padding: 30px 15px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .messages-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .messages-header p {
+        font-size: 1rem;
+    }
+
+    .conversations-sidebar {
+        margin-bottom: 20px;
+        height: 300px;
+    }
+
+    .chat-container {
+        height: 400px;
+    }
+
+    .chat-header {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .chat-user-info {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .chat-actions {
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 576px) {
+    .messages-main {
+        padding: 20px 10px;
+    }
+
+    .messages-header {
+        padding: 25px 15px;
+        border-radius: 8px;
+    }
+
+    .messages-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .col-lg-4.col-md-5,
+    .col-lg-8.col-md-7 {
+        padding: 0;
+    }
+
+    .conversations-sidebar,
+    .chat-container {
+        border-radius: 8px;
+    }
+
+    .conversation-item {
+        padding: 12px 15px;
+    }
+
+    .conversation-avatar .avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .chat-header {
+        padding: 12px 15px;
+    }
+
+    .chat-user-info .user-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .user-name {
+        font-size: 16px;
+    }
+
+    .chat-actions .btn-action {
+        width: 35px;
+        height: 35px;
+    }
+
+    .chat-messages {
+        padding: 15px;
+    }
+
+    .chat-input-container {
+        padding: 15px;
+    }
+
+    .message {
+        max-width: 90%;
+    }
+
+    .empty-chat {
+        padding: 40px 15px;
+    }
+
+    .empty-chat i {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .messages-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .conversation-name {
+        font-size: 14px;
+    }
+
+    .conversation-preview,
+    .conversation-last-msg {
+        font-size: 12px;
+    }
+
+    .message-content {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .chat-input-actions {
+        justify-content: center;
+    }
+
+    .btn-attachment {
+        font-size: 16px;
     }
 }
 
