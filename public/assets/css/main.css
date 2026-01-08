@@ -3344,7 +3344,781 @@ body {
 /*--------------------------------------------------------------
 # 5. Help/Support Page
 --------------------------------------------------------------*/
+/* Container for all sections */
+.container-main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
+/* Section base styles */
+.section {
+    padding: 3rem 0;
+}
+
+/* ============================================
+   DESKTOP STYLES (575px and above)
+============================================ */
+
+/* Help Hero Section */
+.help-hero {
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    color: white;
+    padding: 5rem 0 6rem;
+    border-radius: 0 0 20px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.help-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.08" d="M0,128L48,138.7C96,149,192,171,288,165.3C384,160,480,128,576,117.3C672,107,768,117,864,138.7C960,160,1056,192,1152,192C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+    background-size: cover;
+    background-position: center;
+}
+
+.help-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.help-hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.help-hero p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.help-search {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.help-search .input-group {
+    background: white;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+}
+
+.help-search-input {
+    border: none;
+    padding: 1rem 1.8rem;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    width: 100%;
+}
+
+.help-search-input:focus {
+    outline: 2px solid var(--accent-orange);
+    outline-offset: 2px;
+}
+
+.help-search-btn {
+    background: var(--accent-orange);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.help-search-btn:hover {
+    background: #e6a619;
+}
+
+/* Quick Links Section */
+.quick-links-section {
+    margin-top: -60px;
+    position: relative;
+    z-index: 10;
+    padding-bottom: 1rem;
+}
+
+.quick-links-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    padding: 3rem 2.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.quick-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.quick-link-card {
+    background: var(--light-green);
+    border-radius: 15px;
+    padding: 2rem 1.8rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.quick-link-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--card-shadow-hover);
+    background: white;
+    border-color: var(--primary-green);
+}
+
+.quick-link-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: white;
+    font-size: 2rem;
+}
+
+.quick-link-title {
+    color: var(--primary-green);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.quick-link-desc {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* FAQ Section */
+.faq-content {
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    padding: 3rem 2.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.section-title {
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.faq-categories {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+}
+
+.faq-categories::-webkit-scrollbar {
+    height: 6px;
+}
+
+.faq-categories::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.faq-categories::-webkit-scrollbar-thumb {
+    background: var(--primary-green);
+    border-radius: 10px;
+}
+
+.faq-category-btn {
+    background: var(--light-green);
+    color: var(--primary-green);
+    border: 1px solid var(--border-color);
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.faq-category-btn:hover,
+.faq-category-btn.active {
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+}
+
+.faq-container {
+    background: var(--light-green);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.faq-item {
+    margin-bottom: 1.2rem;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    border: 1px solid var(--border-color);
+}
+
+.faq-question {
+    padding: 1.5rem 2rem;
+    background: white;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.faq-question:hover {
+    background: #f8f9fa;
+}
+
+.faq-question i {
+    color: var(--primary-green);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+}
+
+.faq-question.active i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 2rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background: #f8f9fa;
+}
+
+.faq-answer.active {
+    padding: 1.5rem 2rem;
+    max-height: 500px;
+}
+
+.faq-answer p {
+    margin-bottom: 0;
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.faq-answer ul {
+    padding-left: 1.5rem;
+    margin: 0.8rem 0;
+}
+
+.faq-answer li {
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-size: 1rem;
+}
+
+#loadMoreFaq {
+    border: 2px solid var(--primary-green);
+    color: var(--primary-green);
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: white;
+    font-size: 1rem;
+}
+
+#loadMoreFaq:hover {
+    background: var(--primary-green);
+    color: white;
+}
+
+/* Contact Section */
+.contact-container {
+    background: linear-gradient(135deg, #f9fdfb, #e8f4ef);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact-title {
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.contact-subtitle {
+    color: var(--text-dark);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+}
+
+.form-label i {
+    color: var(--primary-green);
+    font-size: 1rem;
+}
+
+.submit-btn {
+    background: linear-gradient(to right, var(--primary-green), var(--secondary-green));
+    color: white;
+    border: none;
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(13, 92, 71, 0.3);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(13, 92, 71, 0.4);
+}
+
+/* Contact Methods */
+.contact-methods {
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.contact-methods .row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.contact-method {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-method:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-green);
+}
+
+.contact-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--light-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--primary-green);
+    font-size: 1.8rem;
+}
+
+.contact-method-title {
+    color: var(--primary-green);
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.contact-method-detail {
+    color: var(--text-dark);
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.contact-method-detail:last-child {
+    margin-bottom: 0;
+}
+
+/* Animation */
+.quick-link-card,
+.faq-item,
+.contact-method {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS FOR MOBILE
+============================================ */
+
+/* Tablets (768px to 991px) */
+@media (max-width: 991px) {
+    .help-hero {
+        padding: 4rem 0 5rem;
+    }
+
+    .help-hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .help-hero p {
+        font-size: 1.1rem;
+    }
+
+    .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .contact-methods .row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .quick-links-container,
+    .faq-content,
+    .contact-container {
+        padding: 2.5rem;
+    }
+}
+
+/* Small tablets & large phones (576px to 767px) */
+@media (max-width: 767px) and (min-width: 576px) {
+    .help-hero {
+        padding: 3.5rem 0 4.5rem;
+    }
+
+    .help-hero h1 {
+        font-size: 2rem;
+    }
+
+    .help-hero p {
+        font-size: 1rem;
+    }
+
+    .section {
+        padding: 2.5rem 0;
+    }
+
+    .quick-links-container,
+    .faq-content,
+    .contact-container {
+        padding: 2rem;
+    }
+
+    .contact-method {
+        padding: 1.8rem 1.2rem;
+    }
+
+    .contact-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .contact-method-title {
+        font-size: 1.1rem;
+    }
+
+    .contact-method-detail {
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile phones (575px and below) */
+@media (max-width: 575px) {
+    .section {
+        padding: 2rem 0;
+    }
+
+    .help-hero {
+        padding: 3rem 1rem;
+        border-radius: 0 0 15px 15px;
+    }
+
+    .help-hero h1 {
+        font-size: 1.8rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .help-hero p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .help-search .input-group {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+
+    .help-search-input {
+        border-radius: 15px 15px 0 0;
+        padding: 1rem;
+    }
+
+    .help-search-btn {
+        width: 100%;
+        border-radius: 0 0 15px 15px;
+        padding: 1rem;
+    }
+
+    .quick-links-section {
+        margin-top: -40px;
+    }
+
+    .quick-links-container,
+    .faq-content,
+    .contact-container {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+
+    .quick-links {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .quick-link-card {
+        padding: 1.5rem;
+    }
+
+    .quick-link-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 1.6rem;
+    }
+
+    .quick-link-title {
+        font-size: 1.1rem;
+    }
+
+    .quick-link-desc {
+        font-size: 0.9rem;
+    }
+
+    .section-title,
+    .contact-title {
+        font-size: 1.5rem;
+    }
+
+    .contact-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .contact-methods .row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .contact-method {
+        padding: 1.5rem;
+    }
+
+    .contact-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
+    }
+
+    .contact-method-title {
+        font-size: 1.1rem;
+    }
+
+    .contact-method-detail {
+        font-size: 0.9rem;
+    }
+
+    .faq-categories {
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .faq-category-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .faq-question {
+        padding: 1.2rem;
+        font-size: 1rem;
+    }
+
+    .faq-answer.active {
+        padding: 1.2rem;
+    }
+
+    .submit-btn {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Very small mobile phones (400px and below) */
+@media (max-width: 400px) {
+    .help-hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .help-hero p {
+        font-size: 0.95rem;
+    }
+
+    .container-main {
+        padding: 0 15px;
+    }
+
+    .contact-method {
+        padding: 1.2rem;
+    }
+
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .contact-method-title {
+        font-size: 1rem;
+    }
+
+    .contact-method-detail {
+        font-size: 0.85rem;
+    }
+}
+
+/* Landscape mode on small devices */
+@media (max-width: 767px) and (orientation: landscape) {
+    .contact-methods .row {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Touch device optimization */
+@media (hover: none) and (pointer: coarse) {
+    .quick-link-card:active,
+    .contact-method:active {
+        transform: translateY(-3px);
+        background: var(--light-green);
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .quick-link-card,
+    .contact-method,
+    .faq-question,
+    .submit-btn,
+    .faq-answer {
+        transition: none;
+    }
+
+    .quick-link-card:hover,
+    .contact-method:hover {
+        transform: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+    .contact-method {
+        border: 2px solid var(--text-dark);
+    }
+
+    .contact-method-title {
+        font-weight: 700;
+    }
+
+    .contact-method-detail {
+        font-weight: 500;
+    }
+}
 
 /*--------------------------------------------------------------
 # 6. Messages Style
