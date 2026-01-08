@@ -4305,8 +4305,8 @@ body {
     }
 }
 
-/* High contrast mode support */
-@media (prefers-contrast: high) {
+/* High contrast mode support - CORRECTED VERSION */
+@media (prefers-contrast: more) {
     @media (max-width: 400px) {
         .contact-method {
             border: 2px solid var(--text-dark);
