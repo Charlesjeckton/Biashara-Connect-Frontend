@@ -3805,13 +3805,14 @@ body {
 .contact-method {
     animation: fadeIn 0.5s ease-out;
 }
-
 /* =====================================================
-   LARGE SCREEN OPTIMIZATION (>=1200px)
+   LARGE & EXTRA-LARGE SCREENS
 ===================================================== */
+
+/* ---------- Large screens (≥1200px) ---------- */
 @media (min-width: 1200px) {
 
-    /* ---------- HERO SECTION ---------- */
+    /* Help Hero */
     .help-hero {
         padding: 6rem 0 7rem;
     }
@@ -3832,7 +3833,7 @@ body {
         line-height: 1.7;
     }
 
-    /* Bigger search bar */
+    /* Search Bar */
     .help-search {
         max-width: 750px;
     }
@@ -3849,7 +3850,7 @@ body {
         right: 6px;
     }
 
-    /* ---------- QUICK LINKS ---------- */
+    /* Quick Links */
     .quick-links-section {
         margin-top: -80px;
         padding-bottom: 3rem;
@@ -3884,6 +3885,8 @@ body {
         margin: 0 auto;
     }
 }
+
+/* ---------- Extra-large screens (≥1600px) ---------- */
 @media (min-width: 1600px) {
 
     .container-main {
@@ -3903,15 +3906,20 @@ body {
     }
 }
 
+/* =====================================================
+   RESPONSIVE ADJUSTMENTS
+===================================================== */
 
-/* Media Queries */
+/* Tablets & small desktops (≤1200px) */
 @media (max-width: 1200px) {
     .container-main {
         padding: 0 20px;
     }
 }
 
+/* Tablets & mobile landscape (≤992px) */
 @media (max-width: 992px) {
+
     .help-hero h1 {
         font-size: 2rem;
     }
@@ -3936,6 +3944,7 @@ body {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
 }
+
 
 @media (max-width: 768px) {
     .help-hero {
