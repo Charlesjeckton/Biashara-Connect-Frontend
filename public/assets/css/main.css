@@ -1526,12 +1526,15 @@ body {
 /*--------------------------------------------------------------
 # 3. Favorites Page
 --------------------------------------------------------------*/
-/* Hero Section */
+.favorites-section {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
 .favorites-hero {
     background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
     color: white;
     padding: 3.5rem 0 4rem;
-    margin-bottom: 2rem;
     border-radius: 0 0 20px 20px;
     position: relative;
     overflow: hidden;
@@ -1613,12 +1616,12 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Main Content */
-.favorites-main {
+.favorites-section .favorites-main {
     max-width: 1400px;
     margin: -60px auto 3rem;
     position: relative;
     z-index: 10;
+    padding: 0 20px;
 }
 
 .favorites-container {
@@ -1681,7 +1684,6 @@ body {
     border-color: var(--primary-green);
 }
 
-/* Categories Filter */
 .categories-filter {
     display: flex;
     gap: 1rem;
@@ -1724,7 +1726,6 @@ body {
     border-color: var(--primary-green);
 }
 
-/* Loader Animation */
 .loader {
     text-align: center;
     padding: 3rem;
@@ -1746,7 +1747,6 @@ body {
     font-size: 1rem;
 }
 
-/* Empty State */
 .empty-favorites {
     text-align: center;
     padding: 4rem 2rem;
@@ -1801,7 +1801,6 @@ body {
     color: white;
 }
 
-/* Favorites Grid */
 .favorites-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -1809,7 +1808,6 @@ body {
     margin-top: 1.5rem;
 }
 
-/* Card styles - reuse from listings but with favorites-specific styling */
 .favorite-card {
     background: var(--card-bg);
     border-radius: 15px;
@@ -1987,12 +1985,10 @@ body {
     border-color: var(--primary-green);
 }
 
-/* Animation */
 .favorite-card {
     animation: fadeIn 0.5s ease-out;
 }
 
-/* Responsive Design */
 @media (max-width: 1200px) {
     .favorites-grid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -2024,75 +2020,20 @@ body {
         justify-content: flex-start;
         flex-wrap: wrap;
     }
+
+    .favorites-section .favorites-main {
+        margin: -40px 15px 3rem;
+    }
 }
 
 @media (max-width: 768px) {
     .favorites-hero {
         padding: 2.5rem 1rem 3rem;
+        border-radius: 0 0 15px 15px;
     }
 
-    .favorites-main {
-        margin: -40px 1rem 2rem;
-    }
-
-    .favorites-container {
-        padding: 1.5rem;
-    }
-
-    .favorites-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1.2rem;
-    }
-
-    .card-image {
-        height: 180px;
-    }
-
-    .categories-filter {
-        padding-bottom: 0.5rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .favorites-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .stat-item {
-        min-width: 100px;
-        padding: 0.7rem 0.9rem;
-    }
-
-    .stat-number {
-        font-size: 1.5rem;
-    }
-
-    .favorites-title {
-        font-size: 1.5rem;
-    }
-
-    .empty-icon {
-        font-size: 3rem;
-    }
-
-    .empty-title {
-        font-size: 1.3rem;
-    }
-
-    .empty-text {
-        font-size: 0.9rem;
-    }
-
-    .btn-favorite-action,
-    .category-filter-btn {
-        font-size: 0.8rem;
-        padding: 0.5rem 1rem;
-    }
-}
-/* Responsive favorites page */
-@media (max-width: 768px) {
     .favorites-hero h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .favorites-stats {
@@ -2104,6 +2045,14 @@ body {
         flex: 1;
         min-width: calc(50% - 2rem);
         margin: 0.5rem;
+    }
+
+    .favorites-section .favorites-main {
+        margin: -30px 10px 2rem;
+    }
+
+    .favorites-container {
+        padding: 1.5rem;
     }
 
     .favorites-header {
@@ -2122,6 +2071,15 @@ body {
         overflow-x: auto;
         padding-bottom: 0.5rem;
     }
+
+    .favorites-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.2rem;
+    }
+
+    .card-image {
+        height: 180px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -2130,15 +2088,17 @@ body {
     }
 
     .favorites-hero h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
     .favorites-hero p {
         font-size: 1rem;
     }
 
-    .favorites-main {
-        margin: -30px 10px 0;
+    .favorites-section .favorites-main {
+        margin: -20px 5px 0;
     }
 
     .favorites-container {
@@ -2158,9 +2118,20 @@ body {
         font-size: 0.8rem;
     }
 
+    .favorites-title {
+        font-size: 1.5rem;
+    }
+
     .btn-favorite-action {
         width: 100%;
         justify-content: center;
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .category-filter-btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
     }
 
     .favorites-grid {
@@ -2171,13 +2142,23 @@ body {
     .empty-favorites {
         padding: 2rem 1rem;
     }
+
+    .empty-icon {
+        font-size: 3rem;
+    }
+
+    .empty-title {
+        font-size: 1.3rem;
+    }
+
+    .empty-text {
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 400px) {
     .favorites-hero h1 {
-        font-size: 1.6rem;
-        flex-direction: column;
-        gap: 0.5rem;
+        font-size: 1.4rem;
     }
 
     .stat-item {
@@ -2196,7 +2177,7 @@ body {
 
     .category-filter-btn {
         padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
     .empty-icon {
@@ -2210,6 +2191,8 @@ body {
     .btn-explore {
         width: 100%;
         justify-content: center;
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
     }
 }
 

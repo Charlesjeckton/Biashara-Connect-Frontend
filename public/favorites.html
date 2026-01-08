@@ -133,118 +133,120 @@
 
 </section>
 
-<!-- Hero Section -->
-<div class="favorites-hero">
-    <div class="container favorites-hero-content">
-        <h1><i class="fas fa-bookmark me-2"></i>Your Saved Favorites</h1>
-        <p>Track your favorite products and services, compare prices, and never miss a deal</p>
+<section class="favorites-section">
+    <!-- Hero Section -->
+    <div class="favorites-hero">
+        <div class="container favorites-hero-content">
+            <h1><i class="fas fa-bookmark me-2"></i>Your Saved Favorites</h1>
+            <p>Track your favorite products and services, compare prices, and never miss a deal</p>
 
-        <div class="favorites-stats">
-            <div class="stat-item">
-                <span class="stat-number" id="totalFavorites">0</span>
-                <span class="stat-label">Total Saved</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" id="activeListings">0</span>
-                <span class="stat-label">Active Now</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" id="priceDrops">0</span>
-                <span class="stat-label">Price Drops</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" id="categoriesCount">0</span>
-                <span class="stat-label">Categories</span>
+            <div class="favorites-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalFavorites">0</span>
+                    <span class="stat-label">Total Saved</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="activeListings">0</span>
+                    <span class="stat-label">Active Now</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="priceDrops">0</span>
+                    <span class="stat-label">Price Drops</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="categoriesCount">0</span>
+                    <span class="stat-label">Categories</span>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Main Content -->
-<div class="container favorites-main">
-    <div class="favorites-container">
-        <div class="favorites-header">
-            <h2 class="favorites-title">
-                <i class="fas fa-heart"></i>
-                Saved Listings
-            </h2>
+    <!-- Main Content -->
+    <div class="container favorites-main">
+        <div class="favorites-container">
+            <div class="favorites-header">
+                <h2 class="favorites-title">
+                    <i class="fas fa-heart"></i>
+                    Saved Listings
+                </h2>
 
-            <div class="favorites-actions">
-                <button class="btn-favorite-action" id="sortByDate">
-                    <i class="fas fa-sort-amount-down"></i>
-                    Sort by Date
-                </button>
-                <button class="btn-favorite-action" id="sortByPrice">
-                    <i class="fas fa-money-bill-wave"></i>
-                    Sort by Price
-                </button>
-                <button class="btn-favorite-action" id="clearAll">
-                    <i class="fas fa-trash-alt"></i>
-                    Clear All
-                </button>
+                <div class="favorites-actions">
+                    <button class="btn-favorite-action" id="sortByDate">
+                        <i class="fas fa-sort-amount-down"></i>
+                        Sort by Date
+                    </button>
+                    <button class="btn-favorite-action" id="sortByPrice">
+                        <i class="fas fa-money-bill-wave"></i>
+                        Sort by Price
+                    </button>
+                    <button class="btn-favorite-action" id="clearAll">
+                        <i class="fas fa-trash-alt"></i>
+                        Clear All
+                    </button>
+                </div>
             </div>
-        </div>
 
-        <!-- Categories Filter -->
-        <div class="categories-filter">
-            <button class="category-filter-btn active" data-category="all">All Items</button>
-            <button class="category-filter-btn" data-category="electronics">Electronics</button>
-            <button class="category-filter-btn" data-category="fashion">Fashion</button>
-            <button class="category-filter-btn" data-category="vehicles">Vehicles</button>
-            <button class="category-filter-btn" data-category="home">Home & Garden</button>
-            <button class="category-filter-btn" data-category="services">Services</button>
-            <button class="category-filter-btn" data-category="agriculture">Agriculture</button>
-        </div>
-
-        <!-- Loader -->
-        <div class="loader" id="favoritesLoader">
-            <div class="loader-spinner"></div>
-            <p>Loading your favorites...</p>
-        </div>
-
-        <!-- Empty State -->
-        <div class="empty-favorites" id="emptyFavorites">
-            <div class="empty-icon">
-                <i class="far fa-bookmark"></i>
+            <!-- Categories Filter -->
+            <div class="categories-filter">
+                <button class="category-filter-btn active" data-category="all">All Items</button>
+                <button class="category-filter-btn" data-category="electronics">Electronics</button>
+                <button class="category-filter-btn" data-category="fashion">Fashion</button>
+                <button class="category-filter-btn" data-category="vehicles">Vehicles</button>
+                <button class="category-filter-btn" data-category="home">Home & Garden</button>
+                <button class="category-filter-btn" data-category="services">Services</button>
+                <button class="category-filter-btn" data-category="agriculture">Agriculture</button>
             </div>
-            <h3 class="empty-title">No Favorites Yet</h3>
-            <p class="empty-text">
-                You haven't saved any listings to your favorites yet. Browse the marketplace and click the heart icon to
-                save items you're interested in.
-            </p>
-            <a href="/index.html" class="btn btn-explore">
-                <i class="fas fa-store"></i>
-                Explore Marketplace
-            </a>
-        </div>
 
-        <!-- Favorites Grid -->
-        <div class="favorites-grid" id="savedListingsGrid">
-            <!-- Dynamic content will be loaded here -->
-        </div>
+            <!-- Loader -->
+            <div class="loader" id="favoritesLoader">
+                <div class="loader-spinner"></div>
+                <p>Loading your favorites...</p>
+            </div>
 
-        <!-- Pagination (optional) -->
-        <div class="d-flex justify-content-center mt-4" id="paginationContainer" style="display: none;">
-            <nav aria-label="Favorites pagination">
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <!-- Empty State -->
+            <div class="empty-favorites" id="emptyFavorites">
+                <div class="empty-icon">
+                    <i class="far fa-bookmark"></i>
+                </div>
+                <h3 class="empty-title">No Favorites Yet</h3>
+                <p class="empty-text">
+                    You haven't saved any listings to your favorites yet. Browse the marketplace and click the heart icon to
+                    save items you're interested in.
+                </p>
+                <a href="/index.html" class="btn btn-explore">
+                    <i class="fas fa-store"></i>
+                    Explore Marketplace
+                </a>
+            </div>
+
+            <!-- Favorites Grid -->
+            <div class="favorites-grid" id="savedListingsGrid">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+
+            <!-- Pagination (optional) -->
+            <div class="d-flex justify-content-center mt-4" id="paginationContainer" style="display: none;">
+                <nav aria-label="Favorites pagination">
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 <div id="footer-placeholder"></div>
 
