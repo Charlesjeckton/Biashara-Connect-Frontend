@@ -3342,25 +3342,15 @@ body {
     }
 }
 /*--------------------------------------------------------------
-# 5. Help/Support Page
+# 4. Help/Support Page
 --------------------------------------------------------------*/
-/* Container for all sections */
-.container-main {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
 
-/* Section base styles */
-.section {
-    padding: 3rem 0;
-}
-
-/* Help Hero Section */
+/* Hero Section */
 .help-hero {
     background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
     color: white;
-    padding: 4rem 0;
+    padding: 3.5rem 1rem 4rem;
+    margin-bottom: 2rem;
     border-radius: 0 0 20px 20px;
     position: relative;
     overflow: hidden;
@@ -3384,7 +3374,6 @@ body {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
 .help-hero h1 {
@@ -3396,29 +3385,36 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
+    flex-wrap: wrap;
 }
 
 .help-hero p {
     font-size: 1.1rem;
     opacity: 0.95;
     margin-bottom: 2rem;
+    line-height: 1.6;
+    padding: 0 0.5rem;
 }
 
 .help-search {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 2rem auto 0;
     position: relative;
 }
 
-.help-search-input {
-    width: 100%;
-    padding: 1rem 1.5rem;
-    padding-right: 60px;
-    border: none;
+.help-search .input-group {
+    background: white;
     border-radius: 50px;
-    font-size: 1rem;
+    overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.help-search-input {
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
     color: var(--text-dark);
+    width: 100%;
 }
 
 .help-search-input:focus {
@@ -3427,15 +3423,10 @@ body {
 }
 
 .help-search-btn {
-    position: absolute;
-    right: 8px;
-    top: 8px;
     background: var(--accent-orange);
     color: white;
     border: none;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+    padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3445,23 +3436,21 @@ body {
 
 .help-search-btn:hover {
     background: #e6a619;
-    transform: scale(1.05);
+}
+
+/* Main Content */
+.container-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 /* Quick Links Section */
 .quick-links-section {
-    margin-top: -50px;
-    padding-bottom: 1rem;
-}
-
-.quick-links-section .quick-links {
-    background: white;
-    border-radius: 20px;
-    box-shadow: var(--card-shadow);
-    padding: 2.5rem;
-    border: 1px solid var(--border-color);
+    margin-top: -40px;
     position: relative;
     z-index: 10;
+    padding: 2rem 1rem;
 }
 
 .quick-links {
@@ -3471,8 +3460,9 @@ body {
 }
 
 .quick-link-card {
+    background: white;
     border-radius: 15px;
-    padding: 1.8rem;
+    padding: 1.8rem 1.5rem;
     text-align: center;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
@@ -3481,12 +3471,13 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100%;
+    box-shadow: var(--card-shadow);
 }
 
 .quick-link-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--card-shadow-hover);
-    background: white;
+    background: var(--light-green);
     border-color: var(--primary-green);
 }
 
@@ -3507,41 +3498,30 @@ body {
     color: var(--primary-green);
     font-weight: 600;
     font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
 }
 
 .quick-link-desc {
     color: var(--text-dark);
     font-size: 0.9rem;
     line-height: 1.5;
+    margin: 0;
 }
 
 /* FAQ Section */
 .faq-section {
-    padding-top: 0;
-}
-
-.faq-section .faq-content {
     background: white;
     border-radius: 20px;
     box-shadow: var(--card-shadow);
-    padding: 2.5rem;
+    padding: 2rem;
     border: 1px solid var(--border-color);
-}
-
-.section-title {
-    color: var(--primary-green);
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
+    margin: 2rem auto;
 }
 
 .faq-categories {
     display: flex;
-    gap: 1rem;
+    gap: 0.8rem;
     overflow-x: auto;
     margin-bottom: 2rem;
     padding-bottom: 0.5rem;
@@ -3549,7 +3529,7 @@ body {
 }
 
 .faq-categories::-webkit-scrollbar {
-    height: 6px;
+    height: 4px;
 }
 
 .faq-categories::-webkit-scrollbar-track {
@@ -3563,15 +3543,17 @@ body {
 }
 
 .faq-category-btn {
+    background: var(--light-green);
     color: var(--primary-green);
     border: 1px solid var(--border-color);
-    padding: 0.6rem 1.5rem;
+    padding: 0.6rem 1.2rem;
     border-radius: 50px;
     font-weight: 500;
     white-space: nowrap;
     transition: all 0.3s ease;
     cursor: pointer;
     font-size: 0.9rem;
+    flex-shrink: 0;
 }
 
 .faq-category-btn:hover,
@@ -3582,6 +3564,7 @@ body {
 }
 
 .faq-container {
+    background: var(--light-green);
     border-radius: 15px;
     padding: 1.5rem;
     border: 1px solid var(--border-color);
@@ -3618,6 +3601,8 @@ body {
 .faq-question i {
     color: var(--primary-green);
     transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
 }
 
 .faq-question.active i {
@@ -3653,7 +3638,7 @@ body {
     color: var(--text-dark);
 }
 
-.btn-outline-primary {
+#loadMoreFaq {
     border: 2px solid var(--primary-green);
     color: var(--primary-green);
     padding: 0.6rem 1.5rem;
@@ -3663,22 +3648,20 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    background: white;
 }
 
-.btn-outline-primary:hover {
+#loadMoreFaq:hover {
     background: var(--primary-green);
     color: white;
 }
 
 /* Contact Section */
 .contact-section {
-    padding-top: 0;
-}
-
-.contact-section .contact-container {
     background: linear-gradient(135deg, #f9fdfb, #e8f4ef);
-    border-radius: 20px;
-    padding: 2.5rem;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem auto;
     border: 1px solid var(--border-color);
 }
 
@@ -3692,6 +3675,7 @@ body {
     font-weight: 700;
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
+    line-height: 1.3;
 }
 
 .contact-subtitle {
@@ -3699,6 +3683,7 @@ body {
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
+    font-size: 1rem;
 }
 
 .contact-form {
@@ -3706,30 +3691,16 @@ body {
     margin: 0 auto;
 }
 
-.support-form-group {
+.form-group {
     margin-bottom: 1.5rem;
-}
-
-.support-form-group .form-label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin-bottom: 0.7rem;
-}
-
-.support-form-group .form-label i {
-    color: var(--primary-green);
-    font-size: 0.9rem;
 }
 
 .submit-btn {
     background: linear-gradient(to right, var(--primary-green), var(--secondary-green));
     color: white;
     border: none;
-    padding: 1rem 3rem;
-    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
     font-weight: 600;
     border-radius: 50px;
     transition: all 0.3s ease;
@@ -3740,35 +3711,44 @@ body {
     justify-content: center;
     gap: 0.8rem;
     margin-top: 1rem;
+    cursor: pointer;
 }
 
 .submit-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(13, 92, 71, 0.4);
-    color: white;
 }
 
+/* Contact Methods - DEFAULT STYLES (for larger screens) */
 .contact-methods {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
     margin-top: 3rem;
     padding-top: 2rem;
     border-top: 1px solid var(--border-color);
 }
 
+.contact-methods .row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
 .contact-method {
-    text-align: center;
-    padding: 1.5rem;
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
+    padding: 1.5rem 1.2rem;
+    text-align: center;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
 .contact-method:hover {
     transform: translateY(-3px);
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
     border-color: var(--primary-green);
 }
 
@@ -3788,15 +3768,22 @@ body {
 .contact-method-title {
     color: var(--primary-green);
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     font-size: 1.1rem;
+    line-height: 1.3;
 }
 
 .contact-method-detail {
     color: var(--text-dark);
     font-size: 0.9rem;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
     line-height: 1.4;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.contact-method-detail:last-child {
+    margin-bottom: 0;
 }
 
 /* Animation */
@@ -3805,153 +3792,70 @@ body {
 .contact-method {
     animation: fadeIn 0.5s ease-out;
 }
-/* =====================================================
-   LARGE & EXTRA-LARGE SCREENS
-===================================================== */
 
-/* ---------- Large screens (≥1200px) ---------- */
-@media (min-width: 1200px) {
+/* ============================================
+   RESPONSIVE BREAKPOINTS - MOBILE FIRST APPROACH
+   ============================================ */
 
-    /* Help Hero */
+/* For tablets and small laptops (768px and below) */
+@media (max-width: 768px) {
     .help-hero {
-        padding: 6rem 0 7rem;
-    }
-
-    .help-hero-content {
-        max-width: 1100px;
+        padding: 2.5rem 1rem 3.5rem;
     }
 
     .help-hero h1 {
-        font-size: 3.2rem;
-        letter-spacing: -0.5px;
+        font-size: 2rem;
     }
 
     .help-hero p {
-        font-size: 1.25rem;
-        max-width: 900px;
-        margin: 0 auto 2.5rem;
-        line-height: 1.7;
+        font-size: 1rem;
     }
 
-    /* Search Bar */
-    .help-search {
-        max-width: 750px;
+    .contact-methods .row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
-    .help-search-input {
-        font-size: 1.05rem;
-        padding: 1.2rem 1.8rem;
+    .contact-method {
+        padding: 1.2rem 1rem;
     }
 
-    .help-search-btn {
-        width: 50px;
-        height: 50px;
-        top: 6px;
-        right: 6px;
+    .contact-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.3rem;
     }
 
-    /* Quick Links */
+    .contact-method-title {
+        font-size: 1rem;
+    }
+
+    .contact-method-detail {
+        font-size: 0.85rem;
+    }
+
     .quick-links-section {
-        margin-top: -80px;
-        padding-bottom: 3rem;
-    }
-
-    .quick-links-section .quick-links {
-        padding: 3.5rem 3rem;
+        margin-top: -30px;
+        padding: 1.5rem 1rem;
     }
 
     .quick-links {
-        gap: 2rem;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .quick-link-card {
-        padding: 2.5rem 2rem;
+        padding: 1.5rem 1.2rem;
     }
 
     .quick-link-icon {
-        width: 80px;
-        height: 80px;
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .quick-link-title {
-        font-size: 1.2rem;
-    }
-
-    .quick-link-desc {
-        font-size: 0.95rem;
-        max-width: 260px;
-        margin: 0 auto;
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
     }
 }
 
-/* ---------- Extra-large screens (≥1600px) ---------- */
-@media (min-width: 1600px) {
-
-    .container-main {
-        max-width: 1550px;
-    }
-
-    .help-hero-content {
-        max-width: 1200px;
-    }
-
-    .help-hero h1 {
-        font-size: 3.6rem;
-    }
-
-    .help-hero p {
-        font-size: 1.35rem;
-    }
-}
-
-/* =====================================================
-   RESPONSIVE ADJUSTMENTS
-===================================================== */
-
-/* Tablets & small desktops (≤1200px) */
-@media (max-width: 1200px) {
-    .container-main {
-        padding: 0 20px;
-    }
-}
-
-/* Tablets & mobile landscape (≤992px) */
-@media (max-width: 992px) {
-
-    .help-hero h1 {
-        font-size: 2rem;
-    }
-
-    .section {
-        padding: 2rem 0;
-    }
-
-    .quick-links-section,
-    .faq-section,
-    .contact-section {
-        margin: -30px 15px 0;
-    }
-
-    .quick-links-section .quick-links,
-    .faq-section .faq-content,
-    .contact-section .contact-container {
-        padding: 2rem;
-    }
-
-    .quick-links {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-}
-
-
-@media (max-width: 768px) {
-    .help-hero {
-        padding: 3rem 1rem;
-        border-radius: 0 0 15px 15px;
-    }
-
+/* For mobile phones (576px and below) */
+@media (max-width: 576px) {
     .help-hero h1 {
         font-size: 1.8rem;
         flex-direction: column;
@@ -3959,122 +3863,30 @@ body {
     }
 
     .help-hero p {
-        font-size: 1rem;
-    }
-
-    .help-search {
-        max-width: 90%;
-    }
-
-    .quick-links-section,
-    .faq-section,
-    .contact-section {
-        margin: -20px 10px 0;
-    }
-
-    .quick-links-section .quick-links,
-    .faq-section .faq-content,
-    .contact-section .contact-container {
-        padding: 1.5rem;
-        border-radius: 15px;
-    }
-
-    .quick-links {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-
-    .faq-categories {
-        margin-bottom: 1.5rem;
-    }
-
-    .faq-question {
-        padding: 1rem;
         font-size: 0.95rem;
     }
 
-    .faq-answer.active {
-        padding: 1rem;
+    .help-search-input {
+        padding: 0.9rem 1.2rem;
     }
 
-    .submit-btn {
-        padding: 0.9rem 2rem;
-        font-size: 1rem;
-    }
-
-    .contact-form .row {
-        margin: 0 -0.5rem;
-    }
-
-    .contact-form .col-md-6,
-    .contact-form .col-12 {
-        padding: 0 0.5rem;
-    }
-
-    .contact-methods {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 576px) {
-    .help-hero {
-        padding: 2rem 1rem;
-    }
-
-    .help-hero h1 {
-        font-size: 1.6rem;
-    }
-
-    .section {
-        padding: 1.5rem 0;
-    }
-
-    .quick-links-section,
-    .faq-section,
-    .contact-section {
-        margin: -15px 5px 0;
-    }
-
-    .quick-links-section .quick-links,
-    .faq-section .faq-content,
-    .contact-section .contact-container {
-        padding: 1.2rem;
-        border-radius: 12px;
+    .help-search-btn {
+        padding: 0.9rem 1.5rem;
     }
 
     .quick-links {
         grid-template-columns: 1fr;
-    }
-
-    .quick-link-card {
-        padding: 1.5rem;
-    }
-
-    .faq-categories {
-        gap: 0.5rem;
-    }
-
-    .faq-category-btn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
-    }
-
-    .faq-container {
-        padding: 1rem;
-    }
-
-    .contact-methods {
-        grid-template-columns: 1fr;
         gap: 1rem;
     }
 
-    .contact-method {
-        padding: 1rem;
+    .quick-link-card {
+        padding: 1.2rem 1rem;
     }
 
-    .submit-btn {
-        padding: 0.8rem;
-        font-size: 0.9rem;
+    .quick-link-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
     }
 
     .contact-title {
@@ -4086,51 +3898,156 @@ body {
     }
 }
 
+/* For very small mobile phones (400px and below) */
 @media (max-width: 400px) {
+    .help-hero {
+        padding: 2rem 0.75rem 3rem;
+        border-radius: 0 0 15px 15px;
+    }
+
     .help-hero h1 {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
+    }
+
+    .help-hero p {
+        font-size: 0.9rem;
+        padding: 0 0.25rem;
+    }
+
+    .help-search {
+        margin-top: 1rem;
+    }
+
+    .help-search .input-group {
+        flex-direction: column;
+        border-radius: 15px;
     }
 
     .help-search-input {
-        font-size: 0.9rem;
         padding: 0.8rem 1rem;
-        padding-right: 50px;
+        border-radius: 15px 15px 0 0;
+        font-size: 0.95rem;
     }
 
     .help-search-btn {
-        width: 36px;
-        height: 36px;
-        top: 5px;
-        right: 5px;
-    }
-
-    .quick-link-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-    }
-
-    .faq-question {
-        font-size: 0.9rem;
+        width: 100%;
+        border-radius: 0 0 15px 15px;
         padding: 0.8rem;
     }
 
-    .contact-form .form-label {
-        font-size: 0.9rem;
+    /* CONTACT METHODS - 400px SPECIFIC */
+    .contact-methods .row {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .contact-method {
+        padding: 1rem 0.75rem;
+        border-radius: 10px;
     }
 
     .contact-icon {
         width: 50px;
         height: 50px;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
     }
 
     .contact-method-title {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
     }
 
     .contact-method-detail {
         font-size: 0.8rem;
+        margin-bottom: 0.4rem;
+        line-height: 1.3;
+    }
+
+    .container-main {
+        padding: 0 0.75rem;
+    }
+}
+
+/* For extremely small mobile phones (320px and below) */
+@media (max-width: 320px) {
+    .help-hero h1 {
+        font-size: 1.4rem;
+    }
+
+    .help-hero p {
+        font-size: 0.85rem;
+    }
+
+    .contact-method {
+        padding: 0.9rem 0.6rem;
+    }
+
+    .contact-method-title {
+        font-size: 0.9rem;
+    }
+
+    .contact-method-detail {
+        font-size: 0.75rem;
+    }
+
+    .contact-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Desktop styles (992px and above) - Enhancement only */
+@media (min-width: 992px) {
+    .help-hero {
+        padding: 4rem 2rem 5rem;
+    }
+
+    .help-hero h1 {
+        font-size: 3rem;
+    }
+
+    .help-hero p {
+        font-size: 1.2rem;
+    }
+
+    .contact-methods .row {
+        gap: 1.8rem;
+    }
+
+    .contact-method {
+        padding: 1.8rem 1.5rem;
+    }
+}
+
+/* Touch device optimization */
+@media (hover: none) and (pointer: coarse) {
+    .quick-link-card:active,
+    .contact-method:active {
+        transform: translateY(-2px);
+        background: var(--light-green);
+    }
+
+    .help-search-btn:active {
+        background: #e6a619;
+        transform: scale(0.98);
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .quick-link-card,
+    .contact-method,
+    .help-search-btn,
+    .faq-question,
+    .submit-btn {
+        transition: none;
+    }
+
+    .quick-link-card:hover,
+    .contact-method:hover {
+        transform: none;
     }
 }
 
