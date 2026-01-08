@@ -7,9 +7,9 @@
 --------------------------------------------------------------*/
 :root {
     /* Brand Greens - Enhanced for contrast */
-    --primary-green: #198754;
-    --secondary-green: #157347;
-    --dark-green: #146c43;
+    --primary-green: #1A7F5F;
+    --secondary-green: #0A9C6D;
+    --dark-green: #0C3527;
     --light-green: #D4EDDA;
 
     /* Accent Colors - Enhanced for contrast */
@@ -19,7 +19,7 @@
     --header-bg: #FFFFFF;
     --nav-bg: #1A7F5F;
     --card-bg: #FFFFFF;
-    --footer-bg: #146c43;
+    --footer-bg: #0C3527;
 
     /* Text Colors (WCAG AA Compliant) */
     --nav-text: #FFFFFF;
