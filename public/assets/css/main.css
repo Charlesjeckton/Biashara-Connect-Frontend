@@ -4330,37 +4330,7 @@ body {
         }
     }
 }
-/* More aggressive text compression for 400px and below - CORRECTED VERSION */
-@media (max-width: 400px) {
-    /* Live Chat section text optimization */
-    .contact-method:nth-child(3) .contact-method-detail:nth-child(3) { /* "Click the chat icon..." */
-        font-size: 0.78rem;
-        line-height: 1.2;
-        margin-bottom: 0.3rem;
-    }
 
-    .contact-method:nth-child(3) .contact-method-detail:nth-child(4) { /* "Average response: 5 minutes" */
-        font-size: 0.78rem;
-        line-height: 1.2;
-    }
-
-    /* Office Address section text optimization */
-    .contact-method:nth-child(4) .contact-method-detail {
-        font-size: 0.78rem;
-        line-height: 1.2;
-        margin-bottom: 0.3rem;
-    }
-
-    /* Combine "Westlands, Nairobi" and "Kenya" into one line if needed */
-    .contact-method:nth-child(4) .contact-method-detail:nth-child(2) {
-        display: inline;
-    }
-
-    .contact-method:nth-child(4) .contact-method-detail:nth-child(3) {
-        display: inline;
-        margin-left: 0.25rem;
-    }
-}
 
 /*--------------------------------------------------------------
 # 6. Messages Style
