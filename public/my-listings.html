@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiasharaConnect | My Listings</title>
 
-     <!-- Favicons -->
+    <!-- Favicons -->
     <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
@@ -83,7 +83,8 @@
                                        data-bs-target="#profileModal">
                                         <i class="fas fa-user me-2"></i> Profile
                                     </a>
-                                    <a class="dropdown-item d-flex justify-content-between align-items-center" href="/messages.html">
+                                    <a class="dropdown-item d-flex justify-content-between align-items-center"
+                                       href="/messages.html">
                                         <span><i class="fas fa-envelope me-2"></i> Messages</span>
                                         <span class="badge bg-danger">5</span>
                                     </a>
@@ -110,97 +111,100 @@
     <div id="modals-placeholder"></div>
 </section>
 
-<!-- My Listings Hero -->
-<div class="my-listings-hero">
-    <div class="container my-listings-hero-content">
-        <h1><i class="fas fa-list-alt me-2"></i>My Listings</h1>
-        <p>Manage your products and services, track performance, and connect with buyers</p>
+<section class="my-listings-section">
+    <!-- My Listings Hero -->
+    <div class="my-listings-hero">
+        <div class="container my-listings-hero-content">
+            <h1><i class="fas fa-list-alt me-2"></i>My Listings</h1>
+            <p>Manage your products and services, track performance, and connect with buyers</p>
 
-        <div class="my-listings-stats">
-            <div class="stat-item">
-                <span class="stat-number" id="totalListings">0</span>
-                <span class="stat-label">Total Listings</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" id="activeListings">0</span>
-                <span class="stat-label">Active</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" id="soldListings">0</span>
-                <span class="stat-label">Sold</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" id="totalViews">0</span>
-                <span class="stat-label">Total Views</span>
+            <div class="my-listings-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalListings">0</span>
+                    <span class="stat-label">Total Listings</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="activeListings">0</span>
+                    <span class="stat-label">Active</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="soldListings">0</span>
+                    <span class="stat-label">Sold</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalViews">0</span>
+                    <span class="stat-label">Total Views</span>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Main Content -->
-<div class="container my-listings-main">
-    <div class="my-listings-container">
-        <!-- Action Buttons -->
-        <div class="my-listings-actions">
-            <a href="/sell.html" class="btn btn-success">
-                <i class="fas fa-plus-circle me-2"></i> Create New Listing
-            </a>
-            <div class="action-buttons">
-                <button class="btn-action" id="filterActive">
-                    <i class="fas fa-check-circle me-1"></i> Active
-                </button>
-                <button class="btn-action" id="filterDraft">
-                    <i class="fas fa-edit me-1"></i> Drafts
-                </button>
-                <button class="btn-action" id="filterSold">
-                    <i class="fas fa-tag me-1"></i> Sold
-                </button>
-                <button class="btn-action" id="filterAll">
-                    <i class="fas fa-list me-1"></i> All
-                </button>
+    <!-- Main Content -->
+    <div class="container my-listings-main">
+        <div class="my-listings-container">
+            <!-- Action Buttons -->
+            <div class="my-listings-actions">
+                <a href="/sell.html" class="btn btn-success">
+                    <i class="fas fa-plus-circle me-2"></i> Create New Listing
+                </a>
+                <div class="action-buttons">
+                    <button class="btn-action" id="filterActive">
+                        <i class="fas fa-check-circle me-1"></i> Active
+                    </button>
+                    <button class="btn-action" id="filterDraft">
+                        <i class="fas fa-edit me-1"></i> Drafts
+                    </button>
+                    <button class="btn-action" id="filterSold">
+                        <i class="fas fa-tag me-1"></i> Sold
+                    </button>
+                    <button class="btn-action" id="filterAll">
+                        <i class="fas fa-list me-1"></i> All
+                    </button>
+                </div>
             </div>
-        </div>
 
-        <!-- My Listings Grid -->
-        <div class="my-listings-grid" id="myListingsGrid">
-            <!-- Dynamic content will be loaded here -->
-        </div>
-
-        <!-- Empty State -->
-        <div class="empty-listings" id="emptyListings">
-            <div class="empty-icon">
-                <i class="fas fa-list-alt"></i>
+            <!-- My Listings Grid -->
+            <div class="my-listings-grid" id="myListingsGrid">
+                <!-- Dynamic content will be loaded here -->
             </div>
-            <h3 class="empty-title">No Listings Yet</h3>
-            <p class="empty-text">
-                You haven't created any listings yet. Start selling by creating your first listing.
-            </p>
-            <a href="/sell.html" class="btn btn-primary">
-                <i class="fas fa-plus-circle me-2"></i> Create Your First Listing
-            </a>
+
+            <!-- Empty State -->
+            <div class="empty-listings" id="emptyListings">
+                <div class="empty-icon">
+                    <i class="fas fa-list-alt"></i>
+                </div>
+                <h3 class="empty-title">No Listings Yet</h3>
+                <p class="empty-text">
+                    You haven't created any listings yet. Start selling by creating your first listing.
+                </p>
+                <a href="/sell.html" class="btn btn-primary">
+                    <i class="fas fa-plus-circle me-2"></i> Create Your First Listing
+                </a>
+            </div>
         </div>
     </div>
-</div>
+</section>
+
 <!-- Pagination (optional) -->
-    <div class="d-flex justify-content-center mt-4" id="paginationContainer" style="display: none;">
-        <nav aria-label="Favorites pagination">
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+<div class="d-flex justify-content-center mt-4" id="paginationContainer" style="display: none;">
+    <nav aria-label="Favorites pagination">
+        <ul class="pagination">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
 
 <div id="footer-placeholder"></div>
 
@@ -217,7 +221,7 @@
             });
     }
 
-    window.onload = function() {
+    window.onload = function () {
         Promise.all([
             loadHTML('modals-placeholder', '/includes/modals.html'),
             loadHTML('footer-placeholder', '/includes/footer.html')
