@@ -3806,6 +3806,104 @@ body {
     animation: fadeIn 0.5s ease-out;
 }
 
+/* =====================================================
+   LARGE SCREEN OPTIMIZATION (>=1200px)
+===================================================== */
+@media (min-width: 1200px) {
+
+    /* ---------- HERO SECTION ---------- */
+    .help-hero {
+        padding: 6rem 0 7rem;
+    }
+
+    .help-hero-content {
+        max-width: 1100px;
+    }
+
+    .help-hero h1 {
+        font-size: 3.2rem;
+        letter-spacing: -0.5px;
+    }
+
+    .help-hero p {
+        font-size: 1.25rem;
+        max-width: 900px;
+        margin: 0 auto 2.5rem;
+        line-height: 1.7;
+    }
+
+    /* Bigger search bar */
+    .help-search {
+        max-width: 750px;
+    }
+
+    .help-search-input {
+        font-size: 1.05rem;
+        padding: 1.2rem 1.8rem;
+    }
+
+    .help-search-btn {
+        width: 50px;
+        height: 50px;
+        top: 6px;
+        right: 6px;
+    }
+
+    /* ---------- QUICK LINKS ---------- */
+    .quick-links-section {
+        margin-top: -80px;
+        padding-bottom: 3rem;
+    }
+
+    .quick-links-section .quick-links {
+        padding: 3.5rem 3rem;
+    }
+
+    .quick-links {
+        gap: 2rem;
+    }
+
+    .quick-link-card {
+        padding: 2.5rem 2rem;
+    }
+
+    .quick-link-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .quick-link-title {
+        font-size: 1.2rem;
+    }
+
+    .quick-link-desc {
+        font-size: 0.95rem;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+}
+@media (min-width: 1600px) {
+
+    .container-main {
+        max-width: 1550px;
+    }
+
+    .help-hero-content {
+        max-width: 1200px;
+    }
+
+    .help-hero h1 {
+        font-size: 3.6rem;
+    }
+
+    .help-hero p {
+        font-size: 1.35rem;
+    }
+}
+
+
 /* Media Queries */
 @media (max-width: 1200px) {
     .container-main {
