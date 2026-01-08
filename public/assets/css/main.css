@@ -3342,15 +3342,25 @@ body {
     }
 }
 /*--------------------------------------------------------------
-# 4. Help/Support Page
+# 5. Help/Support Page
 --------------------------------------------------------------*/
+/* Container for all sections */
+.container-main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-/* Hero Section */
+/* Section base styles */
+.section {
+    padding: 3rem 0;
+}
+
+/* Help Hero Section */
 .help-hero {
     background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
     color: white;
-    padding: 3.5rem 1rem 4rem;
-    margin-bottom: 2rem;
+    padding: 4rem 0;
     border-radius: 0 0 20px 20px;
     position: relative;
     overflow: hidden;
@@ -3374,6 +3384,7 @@ body {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .help-hero h1 {
@@ -3385,36 +3396,29 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
-    flex-wrap: wrap;
 }
 
 .help-hero p {
     font-size: 1.1rem;
     opacity: 0.95;
     margin-bottom: 2rem;
-    line-height: 1.6;
-    padding: 0 0.5rem;
 }
 
 .help-search {
     max-width: 600px;
-    margin: 2rem auto 0;
+    margin: 0 auto;
     position: relative;
 }
 
-.help-search .input-group {
-    background: white;
-    border-radius: 50px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
 .help-search-input {
-    border: none;
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
-    color: var(--text-dark);
     width: 100%;
+    padding: 1rem 1.5rem;
+    padding-right: 60px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: var(--text-dark);
 }
 
 .help-search-input:focus {
@@ -3423,10 +3427,15 @@ body {
 }
 
 .help-search-btn {
+    position: absolute;
+    right: 8px;
+    top: 8px;
     background: var(--accent-orange);
     color: white;
     border: none;
-    padding: 1rem 2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3436,21 +3445,23 @@ body {
 
 .help-search-btn:hover {
     background: #e6a619;
-}
-
-/* Main Content */
-.container-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+    transform: scale(1.05);
 }
 
 /* Quick Links Section */
 .quick-links-section {
-    margin-top: -40px;
+    margin-top: -50px;
+    padding-bottom: 1rem;
+}
+
+.quick-links-section .quick-links {
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    padding: 2.5rem;
+    border: 1px solid var(--border-color);
     position: relative;
     z-index: 10;
-    padding: 2rem 1rem;
 }
 
 .quick-links {
@@ -3460,9 +3471,8 @@ body {
 }
 
 .quick-link-card {
-    background: white;
     border-radius: 15px;
-    padding: 1.8rem 1.5rem;
+    padding: 1.8rem;
     text-align: center;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
@@ -3471,13 +3481,12 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100%;
-    box-shadow: var(--card-shadow);
 }
 
 .quick-link-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--card-shadow-hover);
-    background: var(--light-green);
+    background: white;
     border-color: var(--primary-green);
 }
 
@@ -3498,30 +3507,41 @@ body {
     color: var(--primary-green);
     font-weight: 600;
     font-size: 1.1rem;
-    margin-bottom: 0.8rem;
-    line-height: 1.4;
+    margin-bottom: 0.5rem;
 }
 
 .quick-link-desc {
     color: var(--text-dark);
     font-size: 0.9rem;
     line-height: 1.5;
-    margin: 0;
 }
 
 /* FAQ Section */
 .faq-section {
+    padding-top: 0;
+}
+
+.faq-section .faq-content {
     background: white;
     border-radius: 20px;
     box-shadow: var(--card-shadow);
-    padding: 2rem;
+    padding: 2.5rem;
     border: 1px solid var(--border-color);
-    margin: 2rem auto;
+}
+
+.section-title {
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
 }
 
 .faq-categories {
     display: flex;
-    gap: 0.8rem;
+    gap: 1rem;
     overflow-x: auto;
     margin-bottom: 2rem;
     padding-bottom: 0.5rem;
@@ -3529,7 +3549,7 @@ body {
 }
 
 .faq-categories::-webkit-scrollbar {
-    height: 4px;
+    height: 6px;
 }
 
 .faq-categories::-webkit-scrollbar-track {
@@ -3543,17 +3563,15 @@ body {
 }
 
 .faq-category-btn {
-    background: var(--light-green);
     color: var(--primary-green);
     border: 1px solid var(--border-color);
-    padding: 0.6rem 1.2rem;
+    padding: 0.6rem 1.5rem;
     border-radius: 50px;
     font-weight: 500;
     white-space: nowrap;
     transition: all 0.3s ease;
     cursor: pointer;
     font-size: 0.9rem;
-    flex-shrink: 0;
 }
 
 .faq-category-btn:hover,
@@ -3564,7 +3582,6 @@ body {
 }
 
 .faq-container {
-    background: var(--light-green);
     border-radius: 15px;
     padding: 1.5rem;
     border: 1px solid var(--border-color);
@@ -3601,8 +3618,6 @@ body {
 .faq-question i {
     color: var(--primary-green);
     transition: transform 0.3s ease;
-    flex-shrink: 0;
-    margin-left: 1rem;
 }
 
 .faq-question.active i {
@@ -3638,7 +3653,7 @@ body {
     color: var(--text-dark);
 }
 
-#loadMoreFaq {
+.btn-outline-primary {
     border: 2px solid var(--primary-green);
     color: var(--primary-green);
     padding: 0.6rem 1.5rem;
@@ -3648,20 +3663,22 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: white;
 }
 
-#loadMoreFaq:hover {
+.btn-outline-primary:hover {
     background: var(--primary-green);
     color: white;
 }
 
 /* Contact Section */
 .contact-section {
+    padding-top: 0;
+}
+
+.contact-section .contact-container {
     background: linear-gradient(135deg, #f9fdfb, #e8f4ef);
-    border-radius: 15px;
-    padding: 2rem;
-    margin: 2rem auto;
+    border-radius: 20px;
+    padding: 2.5rem;
     border: 1px solid var(--border-color);
 }
 
@@ -3675,7 +3692,6 @@ body {
     font-weight: 700;
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
-    line-height: 1.3;
 }
 
 .contact-subtitle {
@@ -3683,7 +3699,6 @@ body {
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
-    font-size: 1rem;
 }
 
 .contact-form {
@@ -3691,16 +3706,30 @@ body {
     margin: 0 auto;
 }
 
-.form-group {
+.support-form-group {
     margin-bottom: 1.5rem;
+}
+
+.support-form-group .form-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.7rem;
+}
+
+.support-form-group .form-label i {
+    color: var(--primary-green);
+    font-size: 0.9rem;
 }
 
 .submit-btn {
     background: linear-gradient(to right, var(--primary-green), var(--secondary-green));
     color: white;
     border: none;
-    padding: 1rem 2rem;
-    font-size: 1rem;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
     font-weight: 600;
     border-radius: 50px;
     transition: all 0.3s ease;
@@ -3711,44 +3740,35 @@ body {
     justify-content: center;
     gap: 0.8rem;
     margin-top: 1rem;
-    cursor: pointer;
 }
 
 .submit-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(13, 92, 71, 0.4);
+    color: white;
 }
 
-/* Contact Methods - DEFAULT STYLES (for larger screens) */
 .contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
     margin-top: 3rem;
     padding-top: 2rem;
     border-top: 1px solid var(--border-color);
 }
 
-.contact-methods .row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-}
-
 .contact-method {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem 1.2rem;
     text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
 .contact-method:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--card-shadow);
     border-color: var(--primary-green);
 }
 
@@ -3768,22 +3788,15 @@ body {
 .contact-method-title {
     color: var(--primary-green);
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     font-size: 1.1rem;
-    line-height: 1.3;
 }
 
 .contact-method-detail {
     color: var(--text-dark);
     font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     line-height: 1.4;
-    word-break: break-word;
-    overflow-wrap: break-word;
-}
-
-.contact-method-detail:last-child {
-    margin-bottom: 0;
 }
 
 /* Animation */
@@ -3792,70 +3805,153 @@ body {
 .contact-method {
     animation: fadeIn 0.5s ease-out;
 }
+/* =====================================================
+   LARGE & EXTRA-LARGE SCREENS
+===================================================== */
 
-/* ============================================
-   RESPONSIVE BREAKPOINTS - MOBILE FIRST APPROACH
-   ============================================ */
+/* ---------- Large screens (≥1200px) ---------- */
+@media (min-width: 1200px) {
 
-/* For tablets and small laptops (768px and below) */
-@media (max-width: 768px) {
+    /* Help Hero */
     .help-hero {
-        padding: 2.5rem 1rem 3.5rem;
+        padding: 6rem 0 7rem;
     }
+
+    .help-hero-content {
+        max-width: 1100px;
+    }
+
+    .help-hero h1 {
+        font-size: 3.2rem;
+        letter-spacing: -0.5px;
+    }
+
+    .help-hero p {
+        font-size: 1.25rem;
+        max-width: 900px;
+        margin: 0 auto 2.5rem;
+        line-height: 1.7;
+    }
+
+    /* Search Bar */
+    .help-search {
+        max-width: 750px;
+    }
+
+    .help-search-input {
+        font-size: 1.05rem;
+        padding: 1.2rem 1.8rem;
+    }
+
+    .help-search-btn {
+        width: 50px;
+        height: 50px;
+        top: 6px;
+        right: 6px;
+    }
+
+    /* Quick Links */
+    .quick-links-section {
+        margin-top: -80px;
+        padding-bottom: 3rem;
+    }
+
+    .quick-links-section .quick-links {
+        padding: 3.5rem 3rem;
+    }
+
+    .quick-links {
+        gap: 2rem;
+    }
+
+    .quick-link-card {
+        padding: 2.5rem 2rem;
+    }
+
+    .quick-link-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .quick-link-title {
+        font-size: 1.2rem;
+    }
+
+    .quick-link-desc {
+        font-size: 0.95rem;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+}
+
+/* ---------- Extra-large screens (≥1600px) ---------- */
+@media (min-width: 1600px) {
+
+    .container-main {
+        max-width: 1550px;
+    }
+
+    .help-hero-content {
+        max-width: 1200px;
+    }
+
+    .help-hero h1 {
+        font-size: 3.6rem;
+    }
+
+    .help-hero p {
+        font-size: 1.35rem;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE ADJUSTMENTS
+===================================================== */
+
+/* Tablets & small desktops (≤1200px) */
+@media (max-width: 1200px) {
+    .container-main {
+        padding: 0 20px;
+    }
+}
+
+/* Tablets & mobile landscape (≤992px) */
+@media (max-width: 992px) {
 
     .help-hero h1 {
         font-size: 2rem;
     }
 
-    .help-hero p {
-        font-size: 1rem;
+    .section {
+        padding: 2rem 0;
     }
 
-    .contact-methods .row {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+    .quick-links-section,
+    .faq-section,
+    .contact-section {
+        margin: -30px 15px 0;
     }
 
-    .contact-method {
-        padding: 1.2rem 1rem;
-    }
-
-    .contact-icon {
-        width: 55px;
-        height: 55px;
-        font-size: 1.3rem;
-    }
-
-    .contact-method-title {
-        font-size: 1rem;
-    }
-
-    .contact-method-detail {
-        font-size: 0.85rem;
-    }
-
-    .quick-links-section {
-        margin-top: -30px;
-        padding: 1.5rem 1rem;
+    .quick-links-section .quick-links,
+    .faq-section .faq-content,
+    .contact-section .contact-container {
+        padding: 2rem;
     }
 
     .quick-links {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .quick-link-card {
-        padding: 1.5rem 1.2rem;
-    }
-
-    .quick-link-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
 }
 
-/* For mobile phones (576px and below) */
-@media (max-width: 576px) {
+
+@media (max-width: 768px) {
+    .help-hero {
+        padding: 3rem 1rem;
+        border-radius: 0 0 15px 15px;
+    }
+
     .help-hero h1 {
         font-size: 1.8rem;
         flex-direction: column;
@@ -3863,30 +3959,122 @@ body {
     }
 
     .help-hero p {
+        font-size: 1rem;
+    }
+
+    .help-search {
+        max-width: 90%;
+    }
+
+    .quick-links-section,
+    .faq-section,
+    .contact-section {
+        margin: -20px 10px 0;
+    }
+
+    .quick-links-section .quick-links,
+    .faq-section .faq-content,
+    .contact-section .contact-container {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+
+    .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .faq-categories {
+        margin-bottom: 1.5rem;
+    }
+
+    .faq-question {
+        padding: 1rem;
         font-size: 0.95rem;
     }
 
-    .help-search-input {
-        padding: 0.9rem 1.2rem;
+    .faq-answer.active {
+        padding: 1rem;
     }
 
-    .help-search-btn {
-        padding: 0.9rem 1.5rem;
+    .submit-btn {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+    }
+
+    .contact-form .row {
+        margin: 0 -0.5rem;
+    }
+
+    .contact-form .col-md-6,
+    .contact-form .col-12 {
+        padding: 0 0.5rem;
+    }
+
+    .contact-methods {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .help-hero {
+        padding: 2rem 1rem;
+    }
+
+    .help-hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .section {
+        padding: 1.5rem 0;
+    }
+
+    .quick-links-section,
+    .faq-section,
+    .contact-section {
+        margin: -15px 5px 0;
+    }
+
+    .quick-links-section .quick-links,
+    .faq-section .faq-content,
+    .contact-section .contact-container {
+        padding: 1.2rem;
+        border-radius: 12px;
     }
 
     .quick-links {
         grid-template-columns: 1fr;
-        gap: 1rem;
     }
 
     .quick-link-card {
-        padding: 1.2rem 1rem;
+        padding: 1.5rem;
     }
 
-    .quick-link-icon {
-        width: 55px;
-        height: 55px;
-        font-size: 1.4rem;
+    .faq-categories {
+        gap: 0.5rem;
+    }
+
+    .faq-category-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .faq-container {
+        padding: 1rem;
+    }
+
+    .contact-methods {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .contact-method {
+        padding: 1rem;
+    }
+
+    .submit-btn {
+        padding: 0.8rem;
+        font-size: 0.9rem;
     }
 
     .contact-title {
@@ -3898,156 +4086,51 @@ body {
     }
 }
 
-/* For very small mobile phones (400px and below) */
 @media (max-width: 400px) {
-    .help-hero {
-        padding: 2rem 0.75rem 3rem;
-        border-radius: 0 0 15px 15px;
-    }
-
     .help-hero h1 {
-        font-size: 1.6rem;
-    }
-
-    .help-hero p {
-        font-size: 0.9rem;
-        padding: 0 0.25rem;
-    }
-
-    .help-search {
-        margin-top: 1rem;
-    }
-
-    .help-search .input-group {
-        flex-direction: column;
-        border-radius: 15px;
+        font-size: 1.4rem;
     }
 
     .help-search-input {
+        font-size: 0.9rem;
         padding: 0.8rem 1rem;
-        border-radius: 15px 15px 0 0;
-        font-size: 0.95rem;
+        padding-right: 50px;
     }
 
     .help-search-btn {
-        width: 100%;
-        border-radius: 0 0 15px 15px;
+        width: 36px;
+        height: 36px;
+        top: 5px;
+        right: 5px;
+    }
+
+    .quick-link-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .faq-question {
+        font-size: 0.9rem;
         padding: 0.8rem;
     }
 
-    /* CONTACT METHODS - 400px SPECIFIC */
-    .contact-methods .row {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-    }
-
-    .contact-method {
-        padding: 1rem 0.75rem;
-        border-radius: 10px;
+    .contact-form .form-label {
+        font-size: 0.9rem;
     }
 
     .contact-icon {
         width: 50px;
         height: 50px;
-        font-size: 1.2rem;
-        margin-bottom: 0.8rem;
+        font-size: 1.3rem;
     }
 
     .contact-method-title {
-        font-size: 0.95rem;
-        margin-bottom: 0.8rem;
+        font-size: 1rem;
     }
 
     .contact-method-detail {
         font-size: 0.8rem;
-        margin-bottom: 0.4rem;
-        line-height: 1.3;
-    }
-
-    .container-main {
-        padding: 0 0.75rem;
-    }
-}
-
-/* For extremely small mobile phones (320px and below) */
-@media (max-width: 320px) {
-    .help-hero h1 {
-        font-size: 1.4rem;
-    }
-
-    .help-hero p {
-        font-size: 0.85rem;
-    }
-
-    .contact-method {
-        padding: 0.9rem 0.6rem;
-    }
-
-    .contact-method-title {
-        font-size: 0.9rem;
-    }
-
-    .contact-method-detail {
-        font-size: 0.75rem;
-    }
-
-    .contact-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1rem;
-    }
-}
-
-/* Desktop styles (992px and above) - Enhancement only */
-@media (min-width: 992px) {
-    .help-hero {
-        padding: 4rem 2rem 5rem;
-    }
-
-    .help-hero h1 {
-        font-size: 3rem;
-    }
-
-    .help-hero p {
-        font-size: 1.2rem;
-    }
-
-    .contact-methods .row {
-        gap: 1.8rem;
-    }
-
-    .contact-method {
-        padding: 1.8rem 1.5rem;
-    }
-}
-
-/* Touch device optimization */
-@media (hover: none) and (pointer: coarse) {
-    .quick-link-card:active,
-    .contact-method:active {
-        transform: translateY(-2px);
-        background: var(--light-green);
-    }
-
-    .help-search-btn:active {
-        background: #e6a619;
-        transform: scale(0.98);
-    }
-}
-
-/* Reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-    .quick-link-card,
-    .contact-method,
-    .help-search-btn,
-    .faq-question,
-    .submit-btn {
-        transition: none;
-    }
-
-    .quick-link-card:hover,
-    .contact-method:hover {
-        transform: none;
     }
 }
 
