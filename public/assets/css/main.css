@@ -1093,11 +1093,6 @@ body {
 /*--------------------------------------------------------------
 # 2. Sell Page
 --------------------------------------------------------------*/
-.sell-section {
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
 .sell-hero {
     background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
     color: white;
@@ -1177,18 +1172,23 @@ body {
     color: white;
 }
 
-.sell-section main.container {
+/* Create Listing Section */
+#create-listing {
+    margin-top: -50px;
+    padding: 0 0 5rem 0;
+}
+
+#create-listing .container-main {
     background: white;
     border-radius: 20px;
     box-shadow: var(--card-shadow);
-    padding: 3rem !important;
-    margin-top: -50px;
+    padding: 3rem;
+    border: 1px solid var(--border-color);
     position: relative;
     z-index: 10;
-    border: 1px solid var(--border-color);
 }
 
-.sell-section main h2 {
+#create-listing h2 {
     color: var(--primary-green);
     font-weight: 700;
     margin-bottom: 2.5rem;
@@ -1199,7 +1199,7 @@ body {
     align-items: center;
 }
 
-.sell-section main h2::after {
+#create-listing h2::after {
     content: '';
     position: absolute;
     bottom: -3px;
@@ -1345,15 +1345,20 @@ body {
     transform: translateY(-1px);
 }
 
-.sell-tips {
-    background-color: #f0f9f6;
+/* Tips Section */
+#sell-tips {
+    padding: 3rem 0;
+    background: #f0f9f6;
+}
+
+.sell-tips-content {
+    background-color: white;
     border-radius: 15px;
     padding: 2rem;
-    margin-top: 3rem;
     border-left: 5px solid var(--accent-orange);
 }
 
-.sell-tips h4 {
+.sell-tips-content h4 {
     color: var(--primary-green);
     margin-bottom: 1.5rem;
     font-weight: 600;
@@ -1391,8 +1396,8 @@ body {
 }
 
 @media (max-width: 1200px) {
-    .sell-section {
-        padding: 0 20px;
+    .container-main {
+        margin: 0 20px;
     }
 }
 
@@ -1410,8 +1415,8 @@ body {
         padding: 1rem;
     }
 
-    .sell-section main.container {
-        padding: 2rem !important;
+    #create-listing .container-main {
+        padding: 2rem;
     }
 
     #sellForm {
@@ -1433,9 +1438,12 @@ body {
         font-size: 1rem;
     }
 
-    .sell-section main.container {
-        padding: 1.5rem !important;
+    #create-listing {
         margin: -30px 15px 0;
+    }
+
+    #create-listing .container-main {
+        padding: 1.5rem;
     }
 
     .benefits-container {
@@ -1478,9 +1486,12 @@ body {
         min-width: 100%;
     }
 
-    .sell-section main.container {
-        padding: 1rem !important;
+    #create-listing {
         margin: -20px 10px 0;
+    }
+
+    #create-listing .container-main {
+        padding: 1rem;
     }
 
     #sellForm {
@@ -1519,11 +1530,10 @@ body {
         font-size: 1.8rem;
     }
 
-    .sell-section main h2 {
+    #create-listing h2 {
         font-size: 1.5rem;
     }
 }
-
 /*--------------------------------------------------------------
 # 4. My Listings Style
 --------------------------------------------------------------*/
