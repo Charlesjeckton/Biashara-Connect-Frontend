@@ -48,7 +48,7 @@ const sampleFavorites = [
         location: "Remote",
         category: "services",
         description: "Custom website design and development for businesses. Responsive design, SEO optimized.",
-        seller: "WebCrafters",
+        seller: "Web Crafters",
         image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=500&q=80",
         date: "2024-01-10",
         active: true,
