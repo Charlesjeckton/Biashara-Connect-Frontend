@@ -3341,6 +3341,345 @@ body {
         padding: 5px 10px;
     }
 }
+
+/* Help Hero Section */
+.help-hero {
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    color: white;
+    padding: 3.5rem 1rem 4rem;
+    margin-bottom: 2rem;
+    border-radius: 0 0 20px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.help-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.08" d="M0,128L48,138.7C96,149,192,171,288,165.3C384,160,480,128,576,117.3C672,107,768,117,864,138.7C960,160,1056,192,1152,192C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+    background-size: cover;
+    background-position: center;
+}
+
+.help-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.help-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.help-hero p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.help-search {
+    max-width: 600px;
+    margin: 2rem auto 0;
+    position: relative;
+}
+
+.help-search .input-group {
+    background: white;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.help-search-input {
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    color: var(--text-dark);
+    width: 100%;
+}
+
+.help-search-input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.help-search-btn {
+    background: var(--accent-orange);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.help-search-btn:hover {
+    background: #e6a619;
+}
+
+/* Quick Links Section */
+.quick-links-section {
+    margin-top: -40px;
+    position: relative;
+    z-index: 10;
+    padding: 2rem 1rem;
+}
+
+.quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.quick-link-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    box-shadow: var(--card-shadow);
+}
+
+.quick-link-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow-hover);
+    background: var(--light-green);
+    border-color: var(--primary-green);
+}
+
+.quick-link-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    color: white;
+    font-size: 1.8rem;
+}
+
+.quick-link-title {
+    color: var(--primary-green);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+}
+
+.quick-link-desc {
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Responsive Design for Desktop (992px and up) */
+@media (min-width: 992px) {
+    .help-hero {
+        padding: 4rem 2rem 5rem;
+    }
+
+    .help-hero h1 {
+        font-size: 3rem;
+    }
+
+    .help-hero p {
+        font-size: 1.2rem;
+    }
+
+    .quick-links-section {
+        margin-top: -60px;
+        padding: 3rem 2rem;
+    }
+
+    .quick-link-card {
+        padding: 2rem 1.8rem;
+    }
+}
+
+/* Responsive Design for Tablet (768px to 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+    .help-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .help-hero p {
+        font-size: 1.1rem;
+    }
+
+    .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .quick-link-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Responsive Design for Mobile (767px and below) */
+@media (max-width: 767px) {
+    .help-hero {
+        padding: 2.5rem 1rem 3.5rem;
+        border-radius: 0 0 15px 15px;
+    }
+
+    .help-hero h1 {
+        font-size: 1.8rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .help-hero p {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+    }
+
+    .help-search {
+        margin-top: 1.5rem;
+    }
+
+    .help-search-input {
+        padding: 0.9rem 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .help-search-btn {
+        padding: 0.9rem 1.5rem;
+    }
+
+    .quick-links-section {
+        margin-top: -30px;
+        padding: 1.5rem 1rem;
+    }
+
+    .quick-links {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .quick-link-card {
+        padding: 1.5rem 1.2rem;
+    }
+
+    .quick-link-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .quick-link-title {
+        font-size: 1rem;
+    }
+
+    .quick-link-desc {
+        font-size: 0.85rem;
+    }
+}
+
+/* Extra Small Devices (575px and below) */
+@media (max-width: 575px) {
+    .help-hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .help-hero p {
+        font-size: 0.95rem;
+    }
+
+    .help-search .input-group {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+
+    .help-search-input {
+        border-radius: 15px 15px 0 0;
+        padding: 0.8rem 1rem;
+    }
+
+    .help-search-btn {
+        width: 100%;
+        border-radius: 0 0 15px 15px;
+        padding: 0.8rem;
+    }
+
+    .quick-links-section {
+        padding: 1rem 0.5rem;
+    }
+
+    .quick-link-card {
+        padding: 1.2rem 1rem;
+    }
+}
+
+/* Animation */
+.quick-link-card {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Ensure hover effects work on touch devices */
+@media (hover: hover) and (pointer: fine) {
+    .quick-link-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--card-shadow-hover);
+        background: var(--light-green);
+        border-color: var(--primary-green);
+    }
+
+    .help-search-btn:hover {
+        background: #e6a619;
+    }
+}
+
+/* Touch device optimization */
+@media (hover: none) and (pointer: coarse) {
+    .quick-link-card:active {
+        transform: translateY(-3px);
+        background: var(--light-green);
+    }
+
+    .help-search-btn:active {
+        background: #e6a619;
+        transform: scale(0.98);
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .quick-link-card,
+    .help-search-btn {
+        transition: none;
+    }
+
+    .quick-link-card:hover {
+        transform: none;
+    }
+}
 /*--------------------------------------------------------------
 # Help/Support Page Styles
 --------------------------------------------------------------*/
