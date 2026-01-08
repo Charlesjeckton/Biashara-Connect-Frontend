@@ -1093,9 +1093,8 @@ body {
 /*--------------------------------------------------------------
 # 2. Sell Page
 --------------------------------------------------------------*/
-/* Main Content Enhancement */
-.sell-page-container {
-    max-width: 1200px;
+.sell-section {
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -1103,7 +1102,6 @@ body {
     background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
     color: white;
     padding: 4rem 0;
-    margin-bottom: 3rem;
     border-radius: 0 0 20px 20px;
     position: relative;
     overflow: hidden;
@@ -1179,8 +1177,7 @@ body {
     color: white;
 }
 
-/* Main Form Container */
-main.container {
+.sell-section main.container {
     background: white;
     border-radius: 20px;
     box-shadow: var(--card-shadow);
@@ -1191,7 +1188,7 @@ main.container {
     border: 1px solid var(--border-color);
 }
 
-main h2 {
+.sell-section main h2 {
     color: var(--primary-green);
     font-weight: 700;
     margin-bottom: 2.5rem;
@@ -1202,7 +1199,7 @@ main h2 {
     align-items: center;
 }
 
-main h2::after {
+.sell-section main h2::after {
     content: '';
     position: absolute;
     bottom: -3px;
@@ -1212,7 +1209,6 @@ main h2::after {
     background: var(--secondary-green);
 }
 
-/* Enhanced Form Styling */
 #sellForm {
     padding: 2.5rem;
     border-radius: 15px;
@@ -1232,7 +1228,6 @@ main h2::after {
     gap: 0.8rem;
 }
 
-/* File Upload Customization */
 .file-upload-container {
     border: 2px dashed var(--border-color);
     border-radius: 10px;
@@ -1268,7 +1263,6 @@ main h2::after {
     font-size: 0.9rem;
 }
 
-/* Price Input with Currency */
 .price-container {
     position: relative;
 }
@@ -1287,7 +1281,6 @@ main h2::after {
     padding-left: 45px;
 }
 
-/* Description Textarea */
 #description {
     min-height: 150px;
     resize: vertical;
@@ -1317,7 +1310,6 @@ main h2::after {
     color: var(--dark-green);
 }
 
-/* Submit Button */
 .submit-btn-container {
     text-align: center;
     margin-top: 3rem;
@@ -1353,11 +1345,6 @@ main h2::after {
     transform: translateY(-1px);
 }
 
-.btn-publish i {
-    margin-right: 0;
-}
-
-/* Tips Section */
 .sell-tips {
     background-color: #f0f9f6;
     border-radius: 15px;
@@ -1399,12 +1386,16 @@ main h2::after {
     font-size: 1.1rem;
 }
 
-/* Animation for form sections */
 .form-group, .form-section-title {
     animation: fadeInUp 0.5s ease-out;
 }
 
-/* Responsive Design */
+@media (max-width: 1200px) {
+    .sell-section {
+        padding: 0 20px;
+    }
+}
+
 @media (max-width: 992px) {
     .sell-hero h1 {
         font-size: 2.2rem;
@@ -1419,7 +1410,7 @@ main h2::after {
         padding: 1rem;
     }
 
-    main.container {
+    .sell-section main.container {
         padding: 2rem !important;
     }
 
@@ -1431,6 +1422,7 @@ main h2::after {
 @media (max-width: 768px) {
     .sell-hero {
         padding: 3rem 1rem;
+        border-radius: 0 0 15px 15px;
     }
 
     .sell-hero h1 {
@@ -1441,13 +1433,32 @@ main h2::after {
         font-size: 1rem;
     }
 
-    main.container {
-        margin: -30px 1rem 2rem;
+    .sell-section main.container {
+        padding: 1.5rem !important;
+        margin: -30px 15px 0;
+    }
+
+    .benefits-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .benefit-item {
+        min-width: 140px;
+        margin-bottom: 1rem;
+    }
+
+    #sellForm {
+        padding: 1.5rem;
     }
 
     .form-section-title {
         margin-top: 1.5rem;
         font-size: 1.1rem;
+    }
+
+    .col-md-6, .col-md-4 {
+        margin-bottom: 1rem;
     }
 
     .tips-list {
@@ -1464,83 +1475,11 @@ main h2::after {
     .benefit-item {
         width: 100%;
         max-width: 250px;
-    }
-
-    .btn-publish {
-        width: 100%;
-        padding: 1rem;
-    }
-
-    #sellForm {
-        padding: 1rem;
-    }
-
-    .file-upload-container {
-        padding: 1.5rem;
-    }
-}
-/* Responsive sell page */
-@media (max-width: 992px) {
-    .sell-hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .benefit-item {
-        min-width: 160px;
-        padding: 1rem 1.2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .sell-hero {
-        padding: 3rem 1rem;
-        border-radius: 0 0 15px 15px;
-    }
-
-    .sell-hero h1 {
-        font-size: 2rem;
-    }
-
-    .benefits-container {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .benefit-item {
-        min-width: 140px;
-        margin-bottom: 1rem;
-    }
-
-    main.container {
-        padding: 2rem !important;
-        margin: -30px 15px 0;
-    }
-
-    #sellForm {
-        padding: 1.5rem;
-    }
-
-    .col-md-6, .col-md-4 {
-        margin-bottom: 1rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .sell-hero h1 {
-        font-size: 1.8rem;
-    }
-
-    .sell-hero p {
-        font-size: 1rem;
-    }
-
-    .benefit-item {
         min-width: 100%;
-        max-width: 280px;
     }
 
-    main.container {
-        padding: 1.5rem !important;
+    .sell-section main.container {
+        padding: 1rem !important;
         margin: -20px 10px 0;
     }
 
@@ -1549,8 +1488,7 @@ main h2::after {
     }
 
     .form-section-title {
-        font-size: 1.2rem;
-        margin-top: 1.5rem;
+        font-size: 1rem;
     }
 
     .price-container input {
@@ -1561,13 +1499,10 @@ main h2::after {
         padding: 1.5rem;
     }
 
-    .tips-list {
-        grid-template-columns: 1fr;
-    }
-
     .btn-publish {
         width: 100%;
         padding: 0.875rem;
+        font-size: 1rem;
     }
 }
 
@@ -1584,11 +1519,10 @@ main h2::after {
         font-size: 1.8rem;
     }
 
-    main h2 {
+    .sell-section main h2 {
         font-size: 1.5rem;
     }
 }
-
 /*--------------------------------------------------------------
 # 3. Favorites Page
 --------------------------------------------------------------*/
