@@ -110,92 +110,99 @@
     <div id="modals-placeholder"></div>
 </section>
 
-<!-- Messages Main Content -->
-<div class="container messages-main">
-    <div class="messages-container">
-        <div class="messages-header">
+<main>
+    <!-- Messages Hero Section -->
+    <section id="messages-hero" class="messages-hero">
+        <div class="container messages-hero-content">
             <h1><i class="fas fa-envelope me-2"></i>Messages</h1>
             <p>Communicate with buyers and sellers about listings</p>
         </div>
+    </section>
 
-        <div class="row g-4">
-            <!-- Conversations List -->
-            <div class="col-lg-4 col-md-5">
-                <div class="conversations-sidebar">
-                    <div class="conversations-search">
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                            <input type="text" class="form-control" placeholder="Search conversations...">
-                        </div>
-                    </div>
+    <!-- Messages Content Section -->
+    <section id="messages-content" class="messages-content-section section py-5">
+        <div class="container container-main">
+            <div class="messages-container">
+                <div class="row g-4">
+                    <!-- Conversations List -->
+                    <div class="col-lg-4 col-md-5">
+                        <div class="conversations-sidebar">
+                            <div class="conversations-search">
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                    <input type="text" class="form-control" placeholder="Search conversations...">
+                                </div>
+                            </div>
 
-                    <div class="conversations-list" id="conversationsList">
-                        <!-- Conversations will be dynamically loaded here -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Chat Area -->
-            <div class="col-lg-8 col-md-7">
-                <div class="chat-container">
-                    <!-- Chat Header -->
-                    <div class="chat-header" id="chatHeader">
-                        <div class="chat-user-info">
-                            <div class="user-avatar">SK</div>
-                            <div>
-                                <h5 class="user-name">Select a conversation</h5>
-                                <p class="user-status">Click on a conversation to start chatting</p>
+                            <div class="conversations-list" id="conversationsList">
+                                <!-- Conversations will be dynamically loaded here -->
                             </div>
                         </div>
-                        <div class="chat-actions">
-                            <button class="btn-action" title="Call">
-                                <i class="fas fa-phone"></i>
-                            </button>
-                            <button class="btn-action" title="View Listing">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                            <button class="btn-action" title="Report">
-                                <i class="fas fa-flag"></i>
-                            </button>
-                        </div>
                     </div>
 
-                    <!-- Chat Messages -->
-                    <div class="chat-messages" id="chatMessages">
-                        <div class="empty-chat">
-                            <i class="fas fa-comments"></i>
-                            <h4>No conversation selected</h4>
-                            <p>Select a conversation from the list to view messages</p>
-                        </div>
-                    </div>
-
-                    <!-- Chat Input -->
-                    <div class="chat-input-container">
-                        <div class="chat-input" id="chatInput" style="display: none;">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Type your message..." id="messageInput">
-                                <button class="btn btn-success" id="sendMessage">
-                                    <i class="fas fa-paper-plane"></i>
-                                </button>
+                    <!-- Chat Area -->
+                    <div class="col-lg-8 col-md-7">
+                        <div class="chat-container">
+                            <!-- Chat Header -->
+                            <div class="chat-header" id="chatHeader">
+                                <div class="chat-user-info">
+                                    <div class="user-avatar">SK</div>
+                                    <div>
+                                        <h5 class="user-name">Select a conversation</h5>
+                                        <p class="user-status">Click on a conversation to start chatting</p>
+                                    </div>
+                                </div>
+                                <div class="chat-actions">
+                                    <button class="btn-action" title="Call">
+                                        <i class="fas fa-phone"></i>
+                                    </button>
+                                    <button class="btn-action" title="View Listing">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-action" title="Report">
+                                        <i class="fas fa-flag"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="chat-input-actions">
-                                <button class="btn-attachment">
-                                    <i class="fas fa-image"></i>
-                                </button>
-                                <button class="btn-attachment">
-                                    <i class="fas fa-paperclip"></i>
-                                </button>
-                                <button class="btn-attachment">
-                                    <i class="fas fa-smile"></i>
-                                </button>
+
+                            <!-- Chat Messages -->
+                            <div class="chat-messages" id="chatMessages">
+                                <div class="empty-chat">
+                                    <i class="fas fa-comments"></i>
+                                    <h4>No conversation selected</h4>
+                                    <p>Select a conversation from the list to view messages</p>
+                                </div>
+                            </div>
+
+                            <!-- Chat Input -->
+                            <div class="chat-input-container">
+                                <div class="chat-input" id="chatInput" style="display: none;">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Type your message..." id="messageInput">
+                                        <button class="btn btn-success" id="sendMessage">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                    <div class="chat-input-actions">
+                                        <button class="btn-attachment">
+                                            <i class="fas fa-image"></i>
+                                        </button>
+                                        <button class="btn-attachment">
+                                            <i class="fas fa-paperclip"></i>
+                                        </button>
+                                        <button class="btn-attachment">
+                                            <i class="fas fa-smile"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+</main>
 
 <div id="footer-placeholder"></div>
 

@@ -111,9 +111,9 @@
     <div id="modals-placeholder"></div>
 </section>
 
-<section class="my-listings-section">
-    <!-- My Listings Hero -->
-    <div class="my-listings-hero">
+<main>
+    <!-- My Listings Hero Section -->
+    <section id="my-listings-hero" class="my-listings-hero">
         <div class="container my-listings-hero-content">
             <h1><i class="fas fa-list-alt me-2"></i>My Listings</h1>
             <p>Manage your products and services, track performance, and connect with buyers</p>
@@ -137,53 +137,61 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Main Content -->
-    <div class="container my-listings-main">
-        <div class="my-listings-container">
-            <!-- Action Buttons -->
-            <div class="my-listings-actions">
-                <a href="/sell.html" class="btn btn-success">
-                    <i class="fas fa-plus-circle me-2"></i> Create New Listing
-                </a>
-                <div class="action-buttons">
-                    <button class="btn-action" id="filterActive">
-                        <i class="fas fa-check-circle me-1"></i> Active
-                    </button>
-                    <button class="btn-action" id="filterDraft">
-                        <i class="fas fa-edit me-1"></i> Drafts
-                    </button>
-                    <button class="btn-action" id="filterSold">
-                        <i class="fas fa-tag me-1"></i> Sold
-                    </button>
-                    <button class="btn-action" id="filterAll">
-                        <i class="fas fa-list me-1"></i> All
-                    </button>
+    <!-- My Listings Actions Section -->
+    <section id="my-listings-actions" class="my-listings-actions-section section py-4">
+        <div class="container container-main">
+            <div class="my-listings-container">
+                <div class="my-listings-actions">
+                    <a href="/sell.html" class="btn btn-success">
+                        <i class="fas fa-plus-circle me-2"></i> Create New Listing
+                    </a>
+                    <div class="action-buttons">
+                        <button class="btn-action" id="filterActive">
+                            <i class="fas fa-check-circle me-1"></i> Active
+                        </button>
+                        <button class="btn-action" id="filterDraft">
+                            <i class="fas fa-edit me-1"></i> Drafts
+                        </button>
+                        <button class="btn-action" id="filterSold">
+                            <i class="fas fa-tag me-1"></i> Sold
+                        </button>
+                        <button class="btn-action" id="filterAll">
+                            <i class="fas fa-list me-1"></i> All
+                        </button>
+                    </div>
                 </div>
-            </div>
-
-            <!-- My Listings Grid -->
-            <div class="my-listings-grid" id="myListingsGrid">
-                <!-- Dynamic content will be loaded here -->
-            </div>
-
-            <!-- Empty State -->
-            <div class="empty-listings" id="emptyListings">
-                <div class="empty-icon">
-                    <i class="fas fa-list-alt"></i>
-                </div>
-                <h3 class="empty-title">No Listings Yet</h3>
-                <p class="empty-text">
-                    You haven't created any listings yet. Start selling by creating your first listing.
-                </p>
-                <a href="/sell.html" class="btn btn-primary">
-                    <i class="fas fa-plus-circle me-2"></i> Create Your First Listing
-                </a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- My Listings Content Section -->
+    <section id="my-listings-content" class="my-listings-content-section section pb-5">
+        <div class="container container-main">
+            <div class="my-listings-container">
+                <!-- My Listings Grid -->
+                <div class="my-listings-grid" id="myListingsGrid">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-listings" id="emptyListings">
+                    <div class="empty-icon">
+                        <i class="fas fa-list-alt"></i>
+                    </div>
+                    <h3 class="empty-title">No Listings Yet</h3>
+                    <p class="empty-text">
+                        You haven't created any listings yet. Start selling by creating your first listing.
+                    </p>
+                    <a href="/sell.html" class="btn btn-primary">
+                        <i class="fas fa-plus-circle me-2"></i> Create Your First Listing
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
 <!-- Pagination (optional) -->
 <div class="d-flex justify-content-center mt-4" id="paginationContainer" style="display: none;">

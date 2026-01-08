@@ -136,9 +136,9 @@
 
 </section>
 
-<section class="help-section">
-    <!-- Hero Section -->
-    <div class="help-hero">
+<main>
+    <!-- Help Hero Section -->
+    <section id="help-hero" class="help-hero">
         <div class="container help-hero-content">
             <h1><i class="fas fa-headset me-2"></i>Help Center & Support</h1>
             <p>Get answers to your questions, contact our support team, or browse our comprehensive help resources</p>
@@ -150,12 +150,11 @@
                 </button>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Main Content -->
-    <div class="container help-main">
-        <div class="help-container">
-            <!-- Quick Links -->
+    <!-- Quick Links Section -->
+    <section id="quick-links" class="quick-links-section section py-4">
+        <div class="container container-main">
             <div class="quick-links">
                 <div class="quick-link-card" onclick="scrollToSection('faq')">
                     <div class="quick-link-icon">
@@ -193,9 +192,13 @@
                         BiasharaConnect</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- FAQ Section -->
-            <div class="faq-section" id="faq">
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section section py-4">
+        <div class="container container-main">
+            <div class="faq-content">
                 <h3 class="section-title">
                     <i class="fas fa-question-circle"></i>
                     Frequently Asked Questions
@@ -220,9 +223,13 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Contact Section -->
-            <div class="contact-section" id="contact">
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section section py-5">
+        <div class="container container-main">
+            <div class="contact-container">
                 <div class="contact-header">
                     <h3 class="contact-title">Contact Our Support Team</h3>
                     <p class="contact-subtitle">Can't find what you're looking for? Our support team is here to help you
@@ -360,8 +367,8 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</main>
 
 <div id="footer-placeholder"></div>
 <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
