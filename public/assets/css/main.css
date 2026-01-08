@@ -932,7 +932,6 @@ body {
 }
 
 .contact-btn {
-    background: transparent;
     border: 2px solid var(--primary-green);
     color: var(--primary-green);
     padding: 8px 15px;
