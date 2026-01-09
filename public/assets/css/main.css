@@ -1089,6 +1089,93 @@ body {
         display: block;
     }
 }
+/* Add these styles to your existing CSS */
+
+.listing-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.view-details-btn {
+    border: 2px solid var(--primary-green);
+    background: white;
+    color: var(--primary-green);
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.view-details-btn:hover {
+    background: var(--primary-green);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Make contact button more distinct */
+.contact-btn {
+    border: 2px solid var(--accent-orange);
+    background: white;
+    color: var(--accent-orange);
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.contact-btn:hover {
+    background: var(--accent-orange);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments for buttons */
+@media (max-width: 576px) {
+    .listing-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .contact-btn,
+    .view-details-btn {
+        flex: 1;
+        justify-content: center;
+    }
+}
+
+/* Alternative style option (if you prefer both buttons to match) */
+/*
+.view-details-btn {
+    border: 2px solid #6b7280;
+    background: white;
+    color: #6b7280;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.view-details-btn:hover {
+    background: #6b7280;
+    color: white;
+    transform: translateY(-2px);
+}
+*/
 
 /*--------------------------------------------------------------
 # 2. Sell Page
