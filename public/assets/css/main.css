@@ -899,6 +899,7 @@ body {
     color: var(--primary-green);
 }
 
+/* Listing Footer Styles */
 .listing-card-footer {
     padding: 15px 20px;
     background: var(--light-gray);
@@ -906,6 +907,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .seller-info {
@@ -913,7 +915,7 @@ body {
     align-items: center;
 }
 
-.index-seller-avatar {
+.seller-avatar {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -924,6 +926,7 @@ body {
     justify-content: center;
     font-weight: 600;
     margin-right: 10px;
+    font-size: 12px;
 }
 
 .seller-name {
@@ -931,8 +934,39 @@ body {
     color: var(--text-dark);
 }
 
+/* Listing Action Buttons */
+.listing-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
 .contact-btn {
+    border: 2px solid var(--accent-orange);
+    background: white;
+    color: var(--accent-orange);
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
+}
+
+.contact-btn:hover {
+    background: var(--accent-orange);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.view-details-btn {
     border: 2px solid var(--primary-green);
+    background: white;
     color: var(--primary-green);
     padding: 8px 15px;
     border-radius: 6px;
@@ -943,9 +977,11 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
 }
 
-.contact-btn:hover {
+.view-details-btn:hover {
     background: var(--primary-green);
     color: white;
     transform: translateY(-2px);
@@ -998,7 +1034,8 @@ body {
     margin-bottom: 20px;
 }
 
-/* Index Media Queries */
+/* Responsive Media Queries */
+
 @media (max-width: 1200px) {
     .listings-container {
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -1009,28 +1046,7 @@ body {
     .listings-container {
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     }
-}
 
-@media (max-width: 768px) {
-    .listings-container {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    }
-}
-
-@media (max-width: 576px) {
-    .listing-card-footer {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
-    }
-
-    .contact-btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-/* Responsive filters section */
-@media (max-width: 992px) {
     .filters-section {
         padding: 15px;
     }
@@ -1041,6 +1057,23 @@ body {
 }
 
 @media (max-width: 768px) {
+    .listings-container {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .listing-actions {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .listing-card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
     .d-flex.justify-content-between.align-items-center {
         flex-direction: column;
         gap: 20px;
@@ -1067,6 +1100,18 @@ body {
 }
 
 @media (max-width: 576px) {
+    .listing-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .contact-btn,
+    .view-details-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 10px 12px;
+    }
+
     .filters-section {
         padding: 15px 12px;
     }
@@ -1088,92 +1133,6 @@ body {
         text-align: center;
         display: block;
     }
-}
-/* Add these styles to your existing CSS */
-
-.listing-actions {
-    display: flex;
-    gap: 8px;
-}
-
-.view-details-btn {
-    border: 2px solid var(--primary-green);
-    background: white;
-    color: var(--primary-green);
-    padding: 8px 15px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.view-details-btn:hover {
-    background: var(--primary-green);
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* Make contact button more distinct */
-.contact-btn {
-    border: 2px solid var(--accent-orange);
-    background: white;
-    color: var(--accent-orange);
-    padding: 8px 15px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.contact-btn:hover {
-    background: var(--accent-orange);
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* Responsive adjustments for buttons */
-@media (max-width: 576px) {
-    .listing-actions {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .contact-btn,
-    .view-details-btn {
-        flex: 1;
-        justify-content: center;
-    }
-}
-
-/* Alternative style option (if you prefer both buttons to match) */
-
-.view-details-btn {
-    border: 2px solid #6b7280;
-    background: white;
-    color: #6b7280;
-    padding: 8px 15px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.view-details-btn:hover {
-    background: #6b7280;
-    color: white;
-    transform: translateY(-2px);
 }
 
 
