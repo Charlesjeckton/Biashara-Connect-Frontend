@@ -79,6 +79,32 @@ const sampleFavorites = [
         date: "2024-01-05",
         active: true,
         priceDrop: true
+    },
+    {
+        id: 7,
+        title: "Maize Harvest - Fresh from Farm",
+        price: 2500,
+        location: "Eldoret",
+        category: "agriculture",
+        description: "Fresh maize harvest from our farm. High quality, available in 90kg bags. Delivery available.",
+        seller: "Farm Fresh",
+        image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=500&q=80",
+        date: "2024-01-08",
+        active: false,
+        priceDrop: false
+    },
+    {
+        id: 8,
+        title: "Designer Handbag - Authentic",
+        price: 15000,
+        location: "Nairobi",
+        category: "fashion",
+        description: "Authentic designer handbag in excellent condition. Comes with original dust bag and authenticity card.",
+        seller: "Fashion Hub",
+        image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=500&q=80",
+        date: "2024-01-05",
+        active: true,
+        priceDrop: true
     }
 ];
 
