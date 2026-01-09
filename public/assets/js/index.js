@@ -74,6 +74,30 @@ document.addEventListener('DOMContentLoaded', function() {
             image: "https://images.unsplash.com/photo-1712766279006-ce3a50df51ee?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             seller: { avatar: "FK", name: "Farm Kenya" },
             area: "Eldoret, Uasin Gishu"
+        },
+        {
+            id: 7,
+            title: "Farm Tractor - 45HP - Ready for Work",
+            price: 850000,
+            category: "agriculture",
+            condition: "used",
+            location: "eldoret",
+            description: "2018 model, well maintained. Perfect for small to medium farms.",
+            image: "https://images.unsplash.com/photo-1712766279006-ce3a50df51ee?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            seller: { avatar: "FK", name: "Farm Kenya" },
+            area: "Eldoret, Uasin Gishu"
+        },
+        {
+            id: 8,
+            title: "Farm Tractor - 45HP - Ready for Work",
+            price: 850000,
+            category: "agriculture",
+            condition: "used",
+            location: "eldoret",
+            description: "2018 model, well maintained. Perfect for small to medium farms.",
+            image: "https://images.unsplash.com/photo-1712766279006-ce3a50df51ee?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            seller: { avatar: "FK", name: "Farm Kenya" },
+            area: "Eldoret, Uasin Gishu"
         }
     ];
 
