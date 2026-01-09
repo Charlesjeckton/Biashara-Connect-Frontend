@@ -265,26 +265,39 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
-            <!-- Body -->
+            <div class="modal fade auth-modal" id="profileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-user me-2"></i>My Profile
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
             <div class="modal-body">
                 <form>
-
                     <div class="row g-3">
 
-                        <!-- Profile Image -->
+                        <!-- PROFILE IMAGE -->
                         <div class="col-12 text-center">
-                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&auto=format&fit=crop"
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400"
                                  class="profile-image rounded-circle mb-2"
                                  alt="Profile Picture">
-                            <div>
-                                <input type="file" class="form-control form-control-sm" accept="image/*">
-                                <small class="text-muted">Change profile picture (optional)</small>
-                            </div>
+
+                            <input type="file" class="form-control form-control-sm mx-auto"
+                                   style="max-width: 260px;" accept="image/*">
+
+                            <small class="text-muted d-block mt-1">
+                                Upload profile picture (optional)
+                            </small>
+
                             <p class="text-muted mt-2 mb-0">Member since 2023</p>
                             <span class="badge bg-success mt-1">Verified User</span>
                         </div>
 
-                        <!-- Names -->
+                        <!-- BASIC INFO -->
                         <div class="col-md-6">
                             <label class="form-label">First Name</label>
                             <input type="text" class="form-control" value="Charles" required>
@@ -295,26 +308,18 @@
                             <input type="text" class="form-control" value="Jeckton" required>
                         </div>
 
-                        <!-- Contact -->
                         <div class="col-md-6">
                             <label class="form-label">Email Address</label>
-                            <input type="email" class="form-control" value="charlesjeckton@gmail.com" required>
+                            <input type="email" class="form-control"
+                                   value="charlesjeckton@gmail.com" required>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" value="+254 748 064 530" required>
+                            <input type="tel" class="form-control"
+                                   value="+254 748 064 530" required>
                         </div>
 
-                        <!-- Business Name -->
-                        <div class="col-12">
-                            <label class="form-label">
-                                Business Name <span class="text-muted">(Optional)</span>
-                            </label>
-                            <input type="text" class="form-control" value="Charles Electronics">
-                        </div>
-
-                        <!-- Location -->
                         <div class="col-md-6">
                             <label class="form-label">Location</label>
                             <select class="form-select" required>
@@ -326,42 +331,64 @@
                             </select>
                         </div>
 
-                        <!-- Password Change (Optional) -->
+                        <!-- PASSWORD CHANGE -->
                         <div class="col-md-6">
                             <label class="form-label">
                                 New Password <span class="text-muted">(Optional)</span>
                             </label>
-                            <input type="password" class="form-control" placeholder="Leave blank to keep current password">
+                            <input type="password" class="form-control"
+                                   placeholder="Leave blank to keep current password">
                         </div>
 
-                        <!-- Bio -->
+                        <!-- BIO -->
                         <div class="col-12">
                             <label class="form-label">Bio / Description</label>
-                            <textarea class="form-control" rows="3">
+                            <textarea class="form-control" rows="3"
+                                      placeholder="Tell buyers/sellers about yourself...">
 Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.
                             </textarea>
                         </div>
 
-                        <!-- Notifications -->
+                        <!-- SELLER ONLY SECTION -->
+                        <div class="col-12 seller-only">
+                            <hr>
+                            <h6 class="text-success">
+                                <i class="fas fa-store me-1"></i> Seller Information
+                            </h6>
+                        </div>
+
+                        <div class="col-12 seller-only">
+                            <label class="form-label">
+                                Business Name <span class="text-muted">(Optional)</span>
+                            </label>
+                            <input type="text" class="form-control"
+                                   value="Charles Electronics">
+                        </div>
+
+                        <!-- NOTIFICATIONS -->
                         <div class="col-12">
                             <label class="form-label">Notification Preferences</label>
+
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" checked>
                                 <label class="form-check-label">Email notifications</label>
                             </div>
+
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox">
                                 <label class="form-check-label">SMS notifications</label>
                             </div>
+
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" checked>
                                 <label class="form-check-label">Promotional emails</label>
                             </div>
                         </div>
 
-                        <!-- Actions -->
+                        <!-- ACTIONS -->
                         <div class="col-12 d-flex justify-content-between mt-3">
-                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            <button type="button" class="btn btn-outline-secondary"
+                                    data-bs-dismiss="modal">
                                 Cancel
                             </button>
                             <button type="submit" class="btn btn-success px-4">
@@ -370,9 +397,13 @@ Experienced seller with 5+ years in electronics. Specializing in smartphones and
                         </div>
 
                     </div>
-
                 </form>
             </div>
+
+        </div>
+    </div>
+</div>
+
 
         </div>
     </div>
