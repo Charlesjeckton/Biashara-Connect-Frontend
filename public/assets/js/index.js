@@ -154,17 +154,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function renderListings(listingsArray) {
         listingsGrid.innerHTML = '';
 
-        if (listingsArray.length === 0) {
-            listingsGrid.innerHTML = `
-                <div class="no-results">
-                    <i class="fas fa-search"></i>
-                    <h3>No listings found</h3>
-                    <p>Try adjusting your filters or search criteria</p>
-                </div>
-            `;
-            return;
-        }
-
         listingsArray.forEach(listing => {
             const listingCard = document.createElement('div');
             listingCard.className = 'listing-card';
@@ -192,14 +181,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="seller-avatar">${listing.seller.avatar}</div>
                         <div class="seller-name">${listing.seller.name}</div>
                     </div>
-                    <div class="listing-actions">
-                        <button class="contact-btn" data-listing="${listing.id}">
-                            <i class="fas fa-message"></i> Contact
-                        </button>
-                        <button class="view-details-btn" data-listing="${listing.id}">
-                            <i class="fas fa-eye"></i> Details
-                        </button>
-                    </div>
+                    <button class="contact-btn" data-listing="${listing.id}">
+                        <i class="fas fa-message"></i> Contact
+                    </button>
                 </div>
             `;
             listingsGrid.appendChild(listingCard);
@@ -208,7 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reattach event listeners to new elements
         attachSaveListeners();
         attachContactListeners();
-        attachViewDetailsListeners();
     }
 
     function updateResultsCount(shown, total) {
@@ -220,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
     resetFiltersBtn.addEventListener('click', resetFilters);
     sortFilter.addEventListener('change', applyFilters);
 
-    // Auto-apply filters when inputs change
+    // Auto-apply filters when inputs change (optional)
     [categoryFilter, conditionFilter, locationFilter].forEach(filter => {
         filter.addEventListener('change', applyFilters);
     });
@@ -245,12 +228,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     heartIcon.classList.remove('far');
                     heartIcon.classList.add('fas');
                     this.classList.add('active');
-                    showToast('Listing saved to favorites');
+                    // Potential function: saveToFavorites(listingId);
                 } else {
                     heartIcon.classList.remove('fas');
                     heartIcon.classList.add('far');
                     this.classList.remove('active');
-                    showToast('Listing removed from favorites');
+                    // Potential function: removeFromFavorites(listingId);
                 }
             });
         });
@@ -262,221 +245,12 @@ document.addEventListener('DOMContentLoaded', function() {
         contactBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 const listingId = this.getAttribute('data-listing');
-                const listing = listings.find(l => l.id == listingId);
-
-                showContactModal(listing);
+                alert('Contacting seller for listing: ' + listingId);
             });
         });
-    }
-
-    // ===== VIEW DETAILS BUTTON FUNCTIONALITY =====
-    function attachViewDetailsListeners() {
-        const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
-        viewDetailsBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const listingId = this.getAttribute('data-listing');
-                const listing = listings.find(l => l.id == listingId);
-
-                showDetailsModal(listing);
-            });
-        });
-    }
-
-    // ===== MODAL FUNCTIONS =====
-    function showDetailsModal(listing) {
-        // Create modal HTML
-        const modalHTML = `
-            <div class="modal-overlay" id="detailsModal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>Listing Details</h3>
-                        <button class="modal-close">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="modal-image">
-                            <img src="${listing.image}" alt="${listing.title}">
-                        </div>
-                        <div class="modal-info">
-                            <div class="modal-price">KSh ${listing.price.toLocaleString()}</div>
-                            <h2 class="modal-title">${listing.title}</h2>
-                            <div class="modal-meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-tag"></i>
-                                    <span>${listing.category}</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-certificate"></i>
-                                    <span>${listing.condition === 'new' ? 'New' : 'Used'}</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>${listing.area}</span>
-                                </div>
-                            </div>
-                            <div class="modal-description">
-                                <h4>Description</h4>
-                                <p>${listing.description}</p>
-                            </div>
-                            <div class="modal-seller">
-                                <h4>Seller Information</h4>
-                                <div class="seller-display">
-                                    <div class="seller-avatar">${listing.seller.avatar}</div>
-                                    <div class="seller-details">
-                                        <div class="seller-name">${listing.seller.name}</div>
-                                        <div class="seller-location">${listing.area}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="modal-contact-btn contact-btn">
-                            <i class="fas fa-message"></i> Contact Seller
-                        </button>
-                        <button class="modal-close-btn view-details-btn">
-                            Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        // Add modal to page
-        document.body.insertAdjacentHTML('beforeend', modalHTML);
-
-        // Get modal elements
-        const modal = document.getElementById('detailsModal');
-        const closeBtns = modal.querySelectorAll('.modal-close, .modal-close-btn');
-
-        // Close modal functionality
-        closeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                modal.remove();
-            });
-        });
-
-        // Contact button in modal
-        modal.querySelector('.modal-contact-btn').addEventListener('click', () => {
-            modal.remove();
-            showContactModal(listing);
-        });
-
-        // Close on overlay click
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.remove();
-            }
-        });
-
-        // Close on ESC key
-        document.addEventListener('keydown', function closeOnEsc(e) {
-            if (e.key === 'Escape') {
-                modal.remove();
-                document.removeEventListener('keydown', closeOnEsc);
-            }
-        });
-    }
-
-    function showContactModal(listing) {
-        const modalHTML = `
-            <div class="modal-overlay" id="contactModal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>Contact Seller</h3>
-                        <button class="modal-close">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>You are contacting <strong>${listing.seller.name}</strong> about:</p>
-                        <div class="contact-listing-info">
-                            <img src="${listing.image}" alt="${listing.title}">
-                            <div>
-                                <h4>${listing.title}</h4>
-                                <div class="contact-price">KSh ${listing.price.toLocaleString()}</div>
-                            </div>
-                        </div>
-                        <div class="contact-form">
-                            <div class="form-group">
-                                <label for="contactMessage">Your Message</label>
-                                <textarea id="contactMessage" rows="4" placeholder="Hi, I'm interested in this item. Is it still available?"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="contactPhone">Your Phone Number (optional)</label>
-                                <input type="tel" id="contactPhone" placeholder="07XX XXX XXX">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="modal-send-btn contact-btn">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                        <button class="modal-close-btn view-details-btn">
-                            Cancel
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        document.body.insertAdjacentHTML('beforeend', modalHTML);
-
-        const modal = document.getElementById('contactModal');
-        const closeBtns = modal.querySelectorAll('.modal-close, .modal-close-btn');
-
-        closeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                modal.remove();
-            });
-        });
-
-        modal.querySelector('.modal-send-btn').addEventListener('click', () => {
-            const message = modal.querySelector('#contactMessage').value;
-            if (message.trim()) {
-                showToast('Message sent to seller!');
-                modal.remove();
-            } else {
-                showToast('Please enter a message', 'error');
-            }
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.remove();
-            }
-        });
-
-        document.addEventListener('keydown', function closeOnEsc(e) {
-            if (e.key === 'Escape') {
-                modal.remove();
-                document.removeEventListener('keydown', closeOnEsc);
-            }
-        });
-    }
-
-    // ===== TOAST NOTIFICATION =====
-    function showToast(message, type = 'success') {
-        const toast = document.createElement('div');
-        toast.className = `toast ${type}`;
-        toast.innerHTML = `
-            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-            <span>${message}</span>
-        `;
-
-        document.body.appendChild(toast);
-
-        setTimeout(() => {
-            toast.classList.add('show');
-        }, 10);
-
-        setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => {
-                toast.remove();
-            }, 300);
-        }, 3000);
     }
 
     // Initial attachment
     attachSaveListeners();
     attachContactListeners();
-    attachViewDetailsListeners();
 });
