@@ -10,110 +10,51 @@
     .modal-lg {
         max-width: 800px;
     }
-/* --------------------------------------------------
-   AUTH MODALS – PROFESSIONAL THEME
--------------------------------------------------- */
 
-/* Profile Image */
-.profile-image {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid var(--primary-green);
-    box-shadow: 0 6px 18px rgba(46, 139, 87, 0.25);
-}
+    .form-check {
+        margin-bottom: 8px;
+    }
+    .auth-modal .modal-content {
+        border-radius: 18px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
 
-/* Modal Width */
-.modal-lg {
-    max-width: 800px;
-}
+    .auth-modal .modal-header {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
 
-/* Modal Card */
-.auth-modal .modal-content {
-    background: #f9fdfb; /* soft professional background */
-    border-radius: 18px;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
-    border: none;
-}
+    .auth-modal .modal-title {
+        font-weight: 600;
+        color: var(--primary-green);
+    }
 
-/* Modal Header */
-.auth-modal .modal-header {
-    border-bottom: none;
-    padding: 1.25rem 1.5rem 0.75rem;
-}
+    .auth-modal .form-control,
+    .auth-modal .form-select {
+        border-radius: 10px;
+        padding: 0.65rem 0.75rem;
+    }
 
-.auth-modal .modal-title {
-    font-weight: 600;
-    color: var(--primary-green);
-    display: flex;
-    align-items: center;
-}
+    .auth-modal .input-group-text {
+        background: #f8f9fa;
+        border-radius: 10px 0 0 10px;
+    }
 
-/* Modal Body */
-.auth-modal .modal-body {
-    padding: 1.5rem;
-}
+    .auth-footer {
+        font-size: 0.9rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
 
-/* Form Controls */
-.auth-modal .form-control,
-.auth-modal .form-select {
-    border-radius: 10px;
-    padding: 0.7rem 0.8rem;
-    background-color: #ffffff;
-    border: 1px solid #dee2e6;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
+    .auth-footer a {
+        color: var(--primary-green);
+        text-decoration: none;
+        font-weight: 500;
+    }
 
-.auth-modal .form-control:focus,
-.auth-modal .form-select:focus {
-    border-color: var(--primary-green);
-    box-shadow: 0 0 0 0.2rem rgba(46, 139, 87, 0.15);
-}
-
-/* Input Groups */
-.auth-modal .input-group-text {
-    background: #f1f5f3;
-    border: 1px solid #dee2e6;
-    border-radius: 10px 0 0 10px;
-    color: #6c757d;
-}
-
-/* Checkboxes */
-.form-check {
-    margin-bottom: 8px;
-}
-
-.form-check-input:checked {
-    background-color: var(--primary-green);
-    border-color: var(--primary-green);
-}
-
-/* Footer Links */
-.auth-footer {
-    font-size: 0.9rem;
-    text-align: center;
-    margin-top: 1.25rem;
-    color: #6c757d;
-}
-
-.auth-footer a {
-    color: var(--primary-green);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.auth-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Buttons (Optional Polish) */
-.auth-modal .btn-success {
-    border-radius: 10px;
-    padding: 0.6rem 1.2rem;
-    font-weight: 500;
-}
-
+    .auth-footer a:hover {
+        text-decoration: underline;
+    }
 
 </style>
 
@@ -260,6 +201,22 @@
                                 placeholder="Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories."></textarea>
                         </div>
 
+                        <!-- Notification Preferences -->
+                        <div class="col-12">
+                            <label class="form-label">Notification Preferences</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" checked>
+                                <label class="form-check-label">Email notifications</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox">
+                                <label class="form-check-label">SMS notifications</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" checked>
+                                <label class="form-check-label">Promotional emails</label>
+                            </div>
+                        </div>
 
                         <!-- Terms -->
                         <div class="col-12">
@@ -294,140 +251,6 @@
     </div>
 </div>
 
-<!-- Buyer Profile Modal -->
-<div class="modal fade auth-modal" id="buyerProfileModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-
-            <!-- Header -->
-            <div class="modal-header">
-                <h5 class="modal-title">
-                    <i class="fas fa-user me-2"></i> My Profile
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <!-- Body -->
-            <div class="modal-body">
-                <form>
-
-                    <div class="row g-3">
-
-                        <!-- Profile Image -->
-                        <div class="col-12 text-center">
-                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400"
-                                 class="profile-image rounded-circle mb-2"
-                                 alt="Profile Picture">
-
-                            <div>
-                                <input type="file" class="form-control form-control-sm" accept="image/*">
-                                <small class="text-muted">Change profile picture (optional)</small>
-                            </div>
-
-                            <p class="text-muted mt-2 mb-0">Member since 2024</p>
-                            <span class="badge bg-primary mt-1">Buyer Account</span>
-                        </div>
-
-                        <!-- Names -->
-                        <div class="col-md-6">
-                            <label class="form-label">First Name</label>
-                            <input type="text" class="form-control" value="Charles" required>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label">Last Name</label>
-                            <input type="text" class="form-control" value="Jeckton" required>
-                        </div>
-
-                        <!-- Contact -->
-                        <div class="col-md-6">
-                            <label class="form-label">Email Address</label>
-                            <input type="email" class="form-control" value="charles@example.com" required>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" value="+254 7XX XXX XXX" required>
-                        </div>
-
-                        <!-- Location -->
-                        <div class="col-md-6">
-                            <label class="form-label">Location</label>
-                            <select class="form-select" required>
-                                <option>Nairobi</option>
-                                <option>Mombasa</option>
-                                <option>Kisumu</option>
-                                <option>Nakuru</option>
-                                <option>Eldoret</option>
-                            </select>
-                        </div>
-
-                        <!-- Password Change -->
-                        <div class="col-md-6">
-                            <label class="form-label">
-                                New Password <span class="text-muted">(Optional)</span>
-                            </label>
-                            <input type="password" class="form-control"
-                                   placeholder="Leave blank to keep current password">
-                        </div>
-
-                        <!-- Shopping Preferences -->
-                        <div class="col-12">
-                            <label class="form-label">Shopping Preferences</label>
-                            <textarea class="form-control" rows="3"
-                                placeholder="e.g. Electronics, fashion, home appliances, nearby sellers">
-                            </textarea>
-                        </div>
-
-                        <!-- Notifications -->
-                        <div class="col-12">
-                            <label class="form-label">Notification Preferences</label>
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" checked>
-                                <label class="form-check-label">
-                                    New listings near my location
-                                </label>
-                            </div>
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" checked>
-                                <label class="form-check-label">
-                                    Order updates & messages
-                                </label>
-                            </div>
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
-                                <label class="form-check-label">
-                                    Promotions & deals
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Actions -->
-                        <div class="col-12 d-flex justify-content-between mt-3">
-                            <button type="button"
-                                    class="btn btn-outline-secondary"
-                                    data-bs-dismiss="modal">
-                                Cancel
-                            </button>
-
-                            <button type="submit" class="btn btn-success px-4">
-                                <i class="fas fa-save me-1"></i> Save Changes
-                            </button>
-                        </div>
-
-                    </div>
-
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
 
 
 <div class="modal fade auth-modal" id="profileModal" tabindex="-1" aria-hidden="true">
@@ -458,7 +281,7 @@
                                 <small class="text-muted">Change profile picture (optional)</small>
                             </div>
                             <p class="text-muted mt-2 mb-0">Member since 2023</p>
-                            <span class="badge bg-success mt-1">Verified Seller</span>
+                            <span class="badge bg-success mt-1">Verified User</span>
                         </div>
 
                         <!-- Names -->
@@ -517,6 +340,23 @@
                             <textarea class="form-control" rows="3">
 Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.
                             </textarea>
+                        </div>
+
+                        <!-- Notifications -->
+                        <div class="col-12">
+                            <label class="form-label">Notification Preferences</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" checked>
+                                <label class="form-check-label">Email notifications</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox">
+                                <label class="form-check-label">SMS notifications</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" checked>
+                                <label class="form-check-label">Promotional emails</label>
+                            </div>
                         </div>
 
                         <!-- Actions -->
