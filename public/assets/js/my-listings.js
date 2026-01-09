@@ -54,6 +54,32 @@ document.addEventListener('DOMContentLoaded', function() {
             condition: "new",
             description: "Premium fabric, modern design.",
             inquiries: 0
+        },
+        {
+            id: 5,
+            title: "Professional Plumbing Services",
+            price: 2500,
+            category: "services",
+            status: "active",
+            views: 156,
+            createdAt: "2024-01-20",
+            image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=869&auto=format&fit=crop",
+            condition: "new",
+            description: "Available for leak repair and installation.",
+            inquiries: 8
+        },
+        {
+            id: 6,
+            title: "Modern 3-Seater Sofa Set - Beige",
+            price: 45000,
+            category: "home",
+            status: "draft",
+            views: 0,
+            createdAt: "2024-01-22",
+            image: "https://plus.unsplash.com/premium_photo-1673548917423-073963e7afc9?q=80&w=871&auto=format&fit=crop",
+            condition: "new",
+            description: "Premium fabric, modern design.",
+            inquiries: 0
         }
     ];
 
