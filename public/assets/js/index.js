@@ -181,9 +181,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="seller-avatar">${listing.seller.avatar}</div>
                         <div class="seller-name">${listing.seller.name}</div>
                     </div>
-                    <button class="contact-btn" data-listing="${listing.id}">
-                        <i class="fas fa-message"></i> Contact
-                    </button>
+                    <div class="listing-actions">
+                        <button class="contact-btn" data-listing="${listing.id}">
+                            <i class="fas fa-message"></i> Contact
+                        </button>
+                        <button class="view-details-btn" data-listing="${listing.id}">
+                            <i class="fas fa-eye"></i> Details
+                        </button>
+                    </div>
                 </div>
             `;
             listingsGrid.appendChild(listingCard);
@@ -192,6 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reattach event listeners to new elements
         attachSaveListeners();
         attachContactListeners();
+        attachViewDetailsListeners();
     }
 
     function updateResultsCount(shown, total) {
@@ -250,7 +256,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ===== VIEW DETAILS BUTTON FUNCTIONALITY =====
+    function attachViewDetailsListeners() {
+        const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+        viewDetailsBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const listingId = this.getAttribute('data-listing');
+                const listing = listings.find(l => l.id == listingId);
+
+                alert(`Listing Details:\n\n` +
+                      `Title: ${listing.title}\n` +
+                      `Price: KSh ${listing.price.toLocaleString()}\n` +
+                      `Category: ${listing.category}\n` +
+                      `Condition: ${listing.condition}\n` +
+                      `Location: ${listing.area}\n` +
+                      `Seller: ${listing.seller.name}\n\n` +
+                      `Description:\n${listing.description}`);
+            });
+        });
+    }
+
     // Initial attachment
     attachSaveListeners();
     attachContactListeners();
+    attachViewDetailsListeners();
 });
