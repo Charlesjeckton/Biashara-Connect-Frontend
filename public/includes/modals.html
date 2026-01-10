@@ -116,138 +116,118 @@
 
 
 <div class="modal fade auth-modal" id="registerModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
         <div class="modal-content">
 
             <div class="modal-header">
                 <h5 class="modal-title">
-                    <i class="fas fa-user-plus me-2"></i>Create Your Account
+                    <i class="fas fa-user-plus me-2"></i>Join BiasharaConnect
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
-            <div class="modal-body">
-                <form>
-
-                    <!-- COMMON FIELDS -->
-                    <div class="row g-3">
-
+            <div class="modal-body p-4">
+                <form id="commonRegisterForm">
+                    <h6 class="text-muted fw-bold small mb-3 text-uppercase">Basic Information</h6>
+                    <div class="row g-3 mb-4">
                         <div class="col-md-6">
                             <label class="form-label">First Name</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" placeholder="John" required>
                         </div>
-
                         <div class="col-md-6">
                             <label class="form-label">Last Name</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" placeholder="Doe" required>
                         </div>
-
                         <div class="col-md-6">
                             <label class="form-label">Email Address</label>
-                            <input type="email" class="form-control" required>
+                            <input type="email" class="form-control" placeholder="you@example.com" required>
                         </div>
-
                         <div class="col-md-6">
                             <label class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" required>
+                            <input type="tel" class="form-control" placeholder="+254 7XX XXX XXX" required>
                         </div>
-
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label class="form-label">Location</label>
                             <select class="form-select" required>
                                 <option value="">Select city</option>
                                 <option>Nairobi</option>
                                 <option>Mombasa</option>
                                 <option>Kisumu</option>
-                                <option>Nakuru</option>
-                                <option>Eldoret</option>
                             </select>
                         </div>
-
-                        <!-- ACCOUNT TYPE -->
-                        <div class="col-md-6">
-                            <label class="form-label">Account Type</label>
-                            <select class="form-select" id="accountType" required>
-                                <option value="">Select role</option>
-                                <option value="buyer">Buyer</option>
-                                <option value="seller">Seller</option>
-                            </select>
-                        </div>
-
                     </div>
 
-                    <!-- BUYER FIELDS -->
-                    <div class="collapse mt-4" id="buyerFields">
+                    <div class="bg-light p-3 rounded-3 mb-4 border">
+                        <label class="form-label fw-bold">I want to register as a:</label>
+                        <select class="form-select border-success fw-bold" id="accountTypeSelector" required>
+                            <option value="">Choose your role...</option>
+                            <option value="buyer">Buyer</option>
+                            <option value="seller">Seller</option>
+                        </select>
+                    </div>
+
+                    <div id="buyerFields" class="d-none">
+                        <h6 class="text-primary fw-bold small mb-3 text-uppercase">Security Settings</h6>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label">Password</label>
-                                <input type="password" class="form-control">
+                                <input type="password" class="form-control" placeholder="Create password">
                             </div>
-
                             <div class="col-md-6">
                                 <label class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control">
+                                <input type="password" class="form-control" placeholder="Repeat password">
                             </div>
                         </div>
                     </div>
 
-                    <!-- SELLER FIELDS -->
-                    <div class="collapse mt-4" id="sellerFields">
-
-                        <div class="text-center mb-3">
-                            <img src="https://via.placeholder.com/120"
-                                 class="profile-image rounded-circle mb-2">
-                            <div>
-                                <input type="file" class="form-control form-control-sm">
+                    <div id="sellerFields" class="d-none">
+                        <h6 class="text-success fw-bold small mb-3 text-uppercase">Business Profile</h6>
+                        <div class="row g-3">
+                            <div class="col-md-12 text-center mb-2">
+                                <label class="form-label d-block text-start">Profile Photo</label>
+                                <div class="d-flex align-items-center gap-3 bg-white p-2 rounded border">
+                                    <div class="rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                        <i class="fas fa-camera text-muted"></i>
+                                    </div>
+                                    <input type="file" class="form-control form-control-sm">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Business Name</label>
+                                <input type="text" class="form-control" placeholder="e.g. Dreamchaser Electronics">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Business Type</label>
+                                <select class="form-select">
+                                    <option value="">Select Category</option>
+                                    <option>Electronics</option>
+                                    <option>Fashion</option>
+                                    <option>Services</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Bio / Description</label>
+                                <textarea class="form-control" rows="3" placeholder="Describe your products or services..."></textarea>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Business Name</label>
-                            <input type="text" class="form-control">
+                    <div class="col-12 mt-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" required>
+                            <label class="form-check-label small">
+                                I agree to the <a href="#">Terms & Conditions</a>
+                            </label>
                         </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Business Type</label>
-                            <select class="form-select">
-                                <option value="">Select category</option>
-                                <option>Electronics</option>
-                                <option>Fashion</option>
-                                <option>Automotive</option>
-                                <option>Home & Living</option>
-                                <option>Food & Beverages</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Business Description</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-
                     </div>
 
-                    <!-- TERMS -->
-                    <div class="form-check mt-3">
-                        <input class="form-check-input" type="checkbox" required>
-                        <label class="form-check-label">
-                            I agree to the <a href="#">Terms</a> & <a href="#">Privacy Policy</a>
-                        </label>
-                    </div>
+                    <button type="submit" class="btn btn-success w-100 py-2 mt-3 fw-bold">
+                        <i class="fas fa-user-check me-1"></i> Register
+                    </button>
 
-                    <!-- SUBMIT -->
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-success px-5">
-                            <i class="fas fa-user-check me-1"></i>Create Account
-                        </button>
+                    <div class="auth-footer mt-3">
+                        Already have an account? <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">Login here</a>
                     </div>
-
-                    <div class="auth-footer">
-                        Already have an account?
-                        <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">
-                            Login here
-                        </a>
-                    </div>
-
                 </form>
             </div>
         </div>
@@ -415,18 +395,24 @@
 </div>
 
 <script>
-    const accountType = document.getElementById('accountType');
-    const buyerFields = new bootstrap.Collapse(document.getElementById('buyerFields'), { toggle: false });
-    const sellerFields = new bootstrap.Collapse(document.getElementById('sellerFields'), { toggle: false });
+document.addEventListener('DOMContentLoaded', function() {
+    const selector = document.getElementById('accountTypeSelector');
+    const buyerFields = document.getElementById('buyerFields');
+    const sellerFields = document.getElementById('sellerFields');
 
-    accountType.addEventListener('change', function () {
-        buyerFields.hide();
-        sellerFields.hide();
+    selector.addEventListener('change', function() {
+        const value = this.value;
 
-        if (this.value === 'buyer') {
-            buyerFields.show();
-        } else if (this.value === 'seller') {
-            sellerFields.show();
+        // Reset visibility
+        buyerFields.classList.add('d-none');
+        sellerFields.classList.add('d-none');
+
+        // Show specific fields based on selection
+        if (value === 'buyer') {
+            buyerFields.classList.remove('d-none');
+        } else if (value === 'seller') {
+            sellerFields.classList.remove('d-none');
         }
     });
+});
 </script>
