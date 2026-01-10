@@ -1,63 +1,76 @@
+<!-- =========================
+ AUTH & PROFILE MODAL STYLES
+========================= -->
 <style>
-    .profile-image {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-        border: 4px solid var(--primary-green);
-        box-shadow: 0 4px 15px rgba(46, 139, 87, 0.2);
-    }
+:root {
+    --primary-green: #2e8b57;
+}
 
-    .modal-lg {
-        max-width: 800px;
-    }
+/* Shared Modal Styling */
+.auth-modal .modal-content {
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
 
-    .form-check {
-        margin-bottom: 8px;
-    }
-    .auth-modal .modal-content {
-        border-radius: 18px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    }
+.auth-modal .modal-header {
+    border-bottom: none;
+}
 
-    .auth-modal .modal-header {
-        border-bottom: none;
-        padding-bottom: 0;
-    }
+.auth-modal .modal-title {
+    font-weight: 600;
+    color: var(--primary-green);
+}
 
-    .auth-modal .modal-title {
-        font-weight: 600;
-        color: var(--primary-green);
-    }
+.auth-modal .form-control,
+.auth-modal .form-select {
+    border-radius: 10px;
+    padding: 0.65rem 0.75rem;
+}
 
-    .auth-modal .form-control,
-    .auth-modal .form-select {
-        border-radius: 10px;
-        padding: 0.65rem 0.75rem;
-    }
+.auth-modal .input-group-text {
+    background-color: #f8f9fa;
+    border-radius: 10px 0 0 10px;
+}
 
-    .auth-modal .input-group-text {
-        background: #f8f9fa;
-        border-radius: 10px 0 0 10px;
-    }
+/* Footer Links */
+.auth-footer {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
 
-    .auth-footer {
-        font-size: 0.9rem;
-        text-align: center;
-        margin-top: 1rem;
-    }
+.auth-footer a {
+    color: var(--primary-green);
+    font-weight: 500;
+    text-decoration: none;
+}
 
-    .auth-footer a {
-        color: var(--primary-green);
-        text-decoration: none;
-        font-weight: 500;
-    }
+.auth-footer a:hover {
+    text-decoration: underline;
+}
 
-    .auth-footer a:hover {
-        text-decoration: underline;
-    }
+/* Profile Image */
+.profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 4px solid var(--primary-green);
+    box-shadow: 0 4px 15px rgba(46, 139, 87, 0.2);
+}
 
+/* Utilities */
+.modal-lg {
+    max-width: 800px;
+}
+
+.form-check {
+    margin-bottom: 0.5rem;
+}
 </style>
 
+<!-- =========================
+ LOGIN MODAL
+========================= -->
 <div class="modal fade auth-modal" id="loginModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -71,7 +84,6 @@
 
             <div class="modal-body">
                 <form>
-
                     <div class="mb-3">
                         <label class="form-label">Email Address</label>
                         <div class="input-group">
@@ -106,7 +118,6 @@
                             Create one
                         </a>
                     </div>
-
                 </form>
             </div>
 
@@ -114,7 +125,9 @@
     </div>
 </div>
 
-
+<!-- =========================
+ REGISTER MODAL
+========================= -->
 <div class="modal fade auth-modal" id="registerModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
         <div class="modal-content">
@@ -127,26 +140,28 @@
             </div>
 
             <div class="modal-body p-4">
-                <form id="commonRegisterForm">
+                <form id="registerForm">
+
+                    <!-- BASIC INFO -->
                     <h6 class="text-muted fw-bold small mb-3 text-uppercase">Basic Information</h6>
                     <div class="row g-3 mb-4">
                         <div class="col-md-6">
                             <label class="form-label">First Name</label>
-                            <input type="text" class="form-control" placeholder="John" required>
+                            <input type="text" class="form-control" required>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Last Name</label>
-                            <input type="text" class="form-control" placeholder="Doe" required>
+                            <input type="text" class="form-control" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Email Address</label>
-                            <input type="email" class="form-control" placeholder="you@example.com" required>
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" placeholder="+254 7XX XXX XXX" required>
+                            <label class="form-label">Phone</label>
+                            <input type="tel" class="form-control" required>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-12">
                             <label class="form-label">Location</label>
                             <select class="form-select" required>
                                 <option value="">Select city</option>
@@ -157,262 +172,95 @@
                         </div>
                     </div>
 
-                    <div class="bg-light p-3 rounded-3 mb-4 border">
-                        <label class="form-label fw-bold">I want to register as a:</label>
-                        <select class="form-select border-success fw-bold" id="accountTypeSelector" required>
-                            <option value="">Choose your role...</option>
+                    <!-- ROLE SELECT -->
+                    <div class="bg-light p-3 rounded-3 border mb-4">
+                        <label class="form-label fw-bold">Register as</label>
+                        <select class="form-select border-success fw-bold" id="accountTypeSelector">
+                            <option value="">Choose role...</option>
                             <option value="buyer">Buyer</option>
                             <option value="seller">Seller</option>
                         </select>
                     </div>
 
+                    <!-- BUYER -->
                     <div id="buyerFields" class="d-none">
-                        <h6 class="text-primary fw-bold small mb-3 text-uppercase">Security Settings</h6>
+                        <h6 class="text-primary fw-bold small mb-3 text-uppercase">Security</h6>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label">Password</label>
-                                <input type="password" class="form-control" placeholder="Create password">
+                                <input type="password" class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" placeholder="Repeat password">
+                                <input type="password" class="form-control">
                             </div>
                         </div>
                     </div>
 
+                    <!-- SELLER -->
                     <div id="sellerFields" class="d-none">
                         <h6 class="text-success fw-bold small mb-3 text-uppercase">Business Profile</h6>
                         <div class="row g-3">
-                            <div class="col-md-12 text-center mb-2">
-                                <label class="form-label d-block text-start">Profile Photo</label>
-                                <div class="d-flex align-items-center gap-3 bg-white p-2 rounded border">
-                                    <div class="rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-                                        <i class="fas fa-camera text-muted"></i>
-                                    </div>
-                                    <input type="file" class="form-control form-control-sm">
-                                </div>
-                            </div>
                             <div class="col-md-6">
                                 <label class="form-label">Business Name</label>
-                                <input type="text" class="form-control" placeholder="e.g. Dreamchaser Electronics">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label">Business Type</label>
+                                <label class="form-label">Business Category</label>
                                 <select class="form-select">
-                                    <option value="">Select Category</option>
                                     <option>Electronics</option>
                                     <option>Fashion</option>
                                     <option>Services</option>
                                 </select>
                             </div>
                             <div class="col-12">
-                                <label class="form-label">Bio / Description</label>
-                                <textarea class="form-control" rows="3" placeholder="Describe your products or services..."></textarea>
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control" rows="3"></textarea>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-12 mt-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" required>
-                            <label class="form-check-label small">
-                                I agree to the <a href="#">Terms & Conditions</a>
-                            </label>
-                        </div>
+                    <div class="form-check mt-4">
+                        <input class="form-check-input" type="checkbox" required>
+                        <label class="form-check-label small">
+                            I agree to the <a href="#">Terms & Conditions</a>
+                        </label>
                     </div>
 
-                    <button type="submit" class="btn btn-success w-100 py-2 mt-3 fw-bold">
+                    <button type="submit" class="btn btn-success w-100 mt-3 fw-bold">
                         <i class="fas fa-user-check me-1"></i> Register
                     </button>
 
-                    <div class="auth-footer mt-3">
-                        Already have an account? <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">Login here</a>
+                    <div class="auth-footer">
+                        Already have an account?
+                        <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
                     </div>
                 </form>
             </div>
+
         </div>
     </div>
 </div>
 
-
-<!-- Seller Profile Modal -->
-<div class="modal fade" id="SellerModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title fw-bold text-success" id="profileModalLabel">
-                    <i class="fas fa-user-circle me-2"></i>Seller Profile
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <!-- Profile Image & Basic Info -->
-                    <div class="col-md-4 text-center">
-                        <div class="profile-image-container mb-3">
-                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&auto=format&fit=crop"
-                                 alt="Profile" class="profile-image rounded-circle">
-                            <button class="btn btn-sm btn-outline-secondary mt-2">
-                                <i class="fas fa-camera me-1"></i> Change Photo
-                            </button>
-                        </div>
-                        <h5 class="mb-1">Charles Jeckton</h5>
-                        <p class="text-muted mb-2">Member since 2023</p>
-                        <div class="badge bg-success mb-3">Verified Seller</div>
-                    </div>
-
-                    <!-- Profile Form -->
-                    <div class="col-md-8">
-                        <form>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">First Name</label>
-                                    <input type="text" class="form-control" value="Charles" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" value="Jeckton" required>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Business Name</label>
-                                <input type="text" class="form-control" placeholder="Enter your business name" value="Dreamchaser Electronics" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Business Type / Category</label>
-                                <select class="form-select" required>
-                                    <option selected>Electronics</option>
-                                    <option>Fashion</option>
-                                    <option>Automotive</option>
-                                    <option>Home & Living</option>
-                                    <option>Food & Beverages</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Email Address</label>
-                                <input type="email" class="form-control" value="charlesjeckton@gmail.com" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" value="+254 748 064 530" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Location</label>
-                                <select class="form-select" required>
-                                    <option selected>Nairobi</option>
-                                    <option>Mombasa</option>
-                                    <option>Kisumu</option>
-                                    <option>Nakuru</option>
-                                    <option>Eldoret</option>
-                                </select>
-                            </div>
-
-
-                            <div class="mb-3">
-                                <label class="form-label">Bio / Description</label>
-                                <textarea class="form-control" rows="3" placeholder="Tell us about your business...">Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.</textarea>
-                            </div>
-
-                            <div class="d-flex justify-content-between">
-                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-success">Update Profile</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Buyer Profile Modal -->
-<div class="modal fade" id="BuyerModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered"> <div class="modal-content border-0 shadow">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title fw-bold text-success" id="profileModalLabel">
-                    <i class="fas fa-user-circle me-2"></i>Buyer Profile
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-4">
-                <form>
-                    <div class="row g-3">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label fw-semibold small">First Name</label>
-                            <input type="text" class="form-control" value="Charles" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label fw-semibold small">Last Name</label>
-                            <input type="text" class="form-control" value="Jeckton" required>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label fw-semibold small">Email Address</label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-white"><i class="fas fa-envelope text-muted small"></i></span>
-                            <input type="email" class="form-control border-start-0" value="charlesjeckton@gmail.com" required>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label fw-semibold small">Phone Number</label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-white"><i class="fas fa-phone text-muted small"></i></span>
-                            <input type="tel" class="form-control border-start-0" value="+254 748 064 530" required>
-                        </div>
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="form-label">Location</label>
-                            <select class="form-select" required>
-                                <option value="">Select city</option>
-                                <option>Nairobi</option>
-                                <option>Mombasa</option>
-                                <option>Kisumu</option>
-                                <option>Nakuru</option>
-                                <option>Eldoret</option>
-                            </select>
-                    </div>
-
-                    <div class="row pt-2">
-                        <div class="col-6">
-                            <button type="button" class="btn btn-outline-secondary w-100 py-2" data-bs-dismiss="modal">Cancel</button>
-                        </div>
-                        <div class="col-6">
-                            <button type="submit" class="btn btn-success w-100 py-2 fw-bold">Save Changes</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
+<!-- =========================
+ TOGGLE SCRIPT (SAFE)
+========================= -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('shown.bs.modal', function (event) {
+    if (event.target.id !== 'registerModal') return;
+
     const selector = document.getElementById('accountTypeSelector');
-    const buyerFields = document.getElementById('buyerFields');
-    const sellerFields = document.getElementById('sellerFields');
+    const buyer = document.getElementById('buyerFields');
+    const seller = document.getElementById('sellerFields');
 
-    selector.addEventListener('change', function() {
-        const value = this.value;
+    if (!selector) return;
 
-        // Reset visibility
-        buyerFields.classList.add('d-none');
-        sellerFields.classList.add('d-none');
+    selector.addEventListener('change', () => {
+        buyer.classList.add('d-none');
+        seller.classList.add('d-none');
 
-        // Show specific fields based on selection
-        if (value === 'buyer') {
-            buyerFields.classList.remove('d-none');
-        } else if (value === 'seller') {
-            sellerFields.classList.remove('d-none');
-        }
+        if (selector.value === 'buyer') buyer.classList.remove('d-none');
+        if (selector.value === 'seller') seller.classList.remove('d-none');
     });
 });
 </script>
