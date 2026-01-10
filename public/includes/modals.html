@@ -14,6 +14,7 @@
     .form-check {
         margin-bottom: 8px;
     }
+
     .auth-modal .modal-content {
         border-radius: 18px;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
@@ -215,8 +216,9 @@
 </div>
 
 <!-- Seller Profile Modal -->
+<!-- Seller Profile Modal -->
 <div class="modal fade" id="SellerModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header bg-light">
                 <h5 class="modal-title fw-bold text-success" id="profileModalLabel">
@@ -224,6 +226,8 @@
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
+            <!-- This area will now scroll -->
             <div class="modal-body">
                 <div class="row">
                     <!-- Profile Image & Basic Info -->
@@ -256,7 +260,7 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Business Name</label>
-                                <input type="text" class="form-control" placeholder="Enter your business name" value="Dreamchaser Electronics" required>
+                                <input type="text" class="form-control" value="Dreamchaser Electronics" required>
                             </div>
 
                             <div class="mb-3">
@@ -291,27 +295,32 @@
                                 </select>
                             </div>
 
-
                             <div class="mb-3">
                                 <label class="form-label">Bio / Description</label>
-                                <textarea class="form-control" rows="3" placeholder="Tell us about your business...">Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.</textarea>
+                                <textarea class="form-control" rows="3">
+Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.
+                                </textarea>
                             </div>
 
                             <div class="d-flex justify-content-between">
-                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel
+                                </button>
                                 <button type="submit" class="btn btn-success">Update Profile</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 
+
 <!-- Buyer Profile Modal -->
 <div class="modal fade" id="BuyerModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered"> <div class="modal-content border-0 shadow">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
             <div class="modal-header bg-light">
                 <h5 class="modal-title fw-bold text-success" id="profileModalLabel">
                     <i class="fas fa-user-circle me-2"></i>Buyer Profile
@@ -334,8 +343,10 @@
                     <div class="mb-3">
                         <label class="form-label fw-semibold small">Email Address</label>
                         <div class="input-group">
-                            <span class="input-group-text bg-white"><i class="fas fa-envelope text-muted small"></i></span>
-                            <input type="email" class="form-control border-start-0" value="charlesjeckton@gmail.com" required>
+                            <span class="input-group-text bg-white"><i
+                                    class="fas fa-envelope text-muted small"></i></span>
+                            <input type="email" class="form-control border-start-0" value="charlesjeckton@gmail.com"
+                                   required>
                         </div>
                     </div>
 
@@ -349,19 +360,21 @@
 
                     <div class="mb-4">
                         <label class="form-label">Location</label>
-                            <select class="form-select" required>
-                                <option value="">Select city</option>
-                                <option>Nairobi</option>
-                                <option>Mombasa</option>
-                                <option>Kisumu</option>
-                                <option>Nakuru</option>
-                                <option>Eldoret</option>
-                            </select>
+                        <select class="form-select" required>
+                            <option value="">Select city</option>
+                            <option>Nairobi</option>
+                            <option>Mombasa</option>
+                            <option>Kisumu</option>
+                            <option>Nakuru</option>
+                            <option>Eldoret</option>
+                        </select>
                     </div>
 
                     <div class="row pt-2">
                         <div class="col-6">
-                            <button type="button" class="btn btn-outline-secondary w-100 py-2" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-outline-secondary w-100 py-2" data-bs-dismiss="modal">
+                                Cancel
+                            </button>
                         </div>
                         <div class="col-6">
                             <button type="submit" class="btn btn-success w-100 py-2 fw-bold">Save Changes</button>
