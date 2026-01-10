@@ -61,16 +61,24 @@
 
 <style>
 .nav-tabs .nav-link.active {
-    background-color: #28a745;
-    color: white;
-    border-color: #28a745;
+    background-color: var(--primary-green);
+    color: var(--nav-text);
+    border-color: var(--primary-green);
+    font-weight: 600;
 }
 .nav-tabs .nav-link:not(.active) {
-    background-color: #f8f9fa;
-    color: #495057;
+    background-color: var(--light-gray);
+    color: var(--text-dark);
+    border-color: var(--border-color);
+}
+.nav-tabs .nav-link:not(.active):hover {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+}
+.nav-tabs {
+    border-bottom-color: var(--border-color);
 }
 </style>
-
 <!-- Login Modal -->
 <div class="modal fade auth-modal" id="loginModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
