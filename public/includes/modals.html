@@ -129,46 +129,27 @@
             <div class="modal-body">
                 <form>
 
+                    <!-- COMMON FIELDS -->
                     <div class="row g-3">
 
                         <div class="col-md-6">
                             <label class="form-label">First Name</label>
-                            <input type="text" class="form-control" placeholder="First name" required>
+                            <input type="text" class="form-control" required>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Last Name</label>
-                            <input type="text" class="form-control" placeholder="Last name" required>
+                            <input type="text" class="form-control" required>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Email Address</label>
-                            <input type="email" class="form-control" placeholder="you@example.com" required>
+                            <input type="email" class="form-control" required>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" placeholder="+254 7XX XXX XXX" required>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label">Password</label>
-                            <input type="password" class="form-control" placeholder="Create password" required>
-                            <small class="text-muted">Minimum 8 characters</small>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" placeholder="Confirm password" required>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label">Account Type</label>
-                            <select class="form-select" required>
-                                <option value="">Select role</option>
-                                <option value="buyer">Buyer</option>
-                                <option value="seller">Seller</option>
-                            </select>
+                            <input type="tel" class="form-control" required>
                         </div>
 
                         <div class="col-md-6">
@@ -183,21 +164,81 @@
                             </select>
                         </div>
 
-                        <div class="col-12">
-                            <div class="form-check mt-2">
-                                <input class="form-check-input" type="checkbox" required>
-                                <label class="form-check-label">
-                                    I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>
-                                </label>
+                        <!-- ACCOUNT TYPE -->
+                        <div class="col-md-6">
+                            <label class="form-label">Account Type</label>
+                            <select class="form-select" id="accountType" required>
+                                <option value="">Select role</option>
+                                <option value="buyer">Buyer</option>
+                                <option value="seller">Seller</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <!-- BUYER FIELDS -->
+                    <div class="collapse mt-4" id="buyerFields">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SELLER FIELDS -->
+                    <div class="collapse mt-4" id="sellerFields">
+
+                        <div class="text-center mb-3">
+                            <img src="https://via.placeholder.com/120"
+                                 class="profile-image rounded-circle mb-2">
+                            <div>
+                                <input type="file" class="form-control form-control-sm">
                             </div>
                         </div>
 
-                        <div class="col-12 text-center mt-3">
-                            <button type="submit" class="btn btn-success px-5">
-                                <i class="fas fa-user-check me-1"></i> Create Account
-                            </button>
+                        <div class="mb-3">
+                            <label class="form-label">Business Name</label>
+                            <input type="text" class="form-control">
                         </div>
 
+                        <div class="mb-3">
+                            <label class="form-label">Business Type</label>
+                            <select class="form-select">
+                                <option value="">Select category</option>
+                                <option>Electronics</option>
+                                <option>Fashion</option>
+                                <option>Automotive</option>
+                                <option>Home & Living</option>
+                                <option>Food & Beverages</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Business Description</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+
+                    </div>
+
+                    <!-- TERMS -->
+                    <div class="form-check mt-3">
+                        <input class="form-check-input" type="checkbox" required>
+                        <label class="form-check-label">
+                            I agree to the <a href="#">Terms</a> & <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <!-- SUBMIT -->
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-success px-5">
+                            <i class="fas fa-user-check me-1"></i>Create Account
+                        </button>
                     </div>
 
                     <div class="auth-footer">
@@ -209,10 +250,10 @@
 
                 </form>
             </div>
-
         </div>
     </div>
 </div>
+
 
 <!-- Seller Profile Modal -->
 <div class="modal fade" id="SellerModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
