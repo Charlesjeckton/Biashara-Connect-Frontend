@@ -414,3 +414,19 @@
     </div>
 </div>
 
+<script>
+    const accountType = document.getElementById('accountType');
+    const buyerFields = new bootstrap.Collapse(document.getElementById('buyerFields'), { toggle: false });
+    const sellerFields = new bootstrap.Collapse(document.getElementById('sellerFields'), { toggle: false });
+
+    accountType.addEventListener('change', function () {
+        buyerFields.hide();
+        sellerFields.hide();
+
+        if (this.value === 'buyer') {
+            buyerFields.show();
+        } else if (this.value === 'seller') {
+            sellerFields.show();
+        }
+    });
+</script>
