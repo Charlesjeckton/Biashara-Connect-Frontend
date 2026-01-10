@@ -216,94 +216,92 @@
 
 <!-- Seller Profile Modal -->
 <div class="modal fade" id="SellerModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-        <div class="modal-content border-0 shadow-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title fw-bold text-success" id="profileModalLabel">
-                    <i class="fas fa-store me-2"></i>My Seller Profile
-                </h5>
+                <h5 class="modal-title" id="profileModalLabel">My Profile</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
-            <div class="modal-body p-4">
+            <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-4 text-center border-end-md mb-4 mb-md-0">
+                    <!-- Profile Image & Basic Info -->
+                    <div class="col-md-4 text-center">
                         <div class="profile-image-container mb-3">
                             <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&auto=format&fit=crop"
-                                 alt="Profile" class="profile-image rounded-circle border border-4 border-white shadow-sm"
-                                 style="width: 130px; height: 130px; object-fit: cover;">
-                            <div class="mt-2">
-                                <button class="btn btn-sm btn-outline-secondary">
-                                    <i class="fas fa-camera me-1"></i> Change
-                                </button>
-                            </div>
+                                 alt="Profile" class="profile-image rounded-circle">
+                            <button class="btn btn-sm btn-outline-secondary mt-2">
+                                <i class="fas fa-camera me-1"></i> Change Photo
+                            </button>
                         </div>
-                        <h5 class="fw-bold mb-1">Charles Jeckton</h5>
-                        <p class="text-muted small">Member since 2023</p>
-                        <div class="badge bg-success-light text-success rounded-pill px-3 py-2">Verified Seller</div>
+                        <h5 class="mb-1">Charles Jeckton</h5>
+                        <p class="text-muted mb-2">Member since 2023</p>
+                        <div class="badge bg-success mb-3">Verified Seller</div>
                     </div>
 
+                    <!-- Profile Form -->
                     <div class="col-md-8">
-                        <form id="sellerProfileForm">
-                            <h6 class="fw-bold text-uppercase small text-muted mb-3">Personal Details</h6>
-                            <div class="row g-3">
+                        <form>
+                            <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label small fw-bold">First Name</label>
+                                    <label class="form-label">First Name</label>
                                     <input type="text" class="form-control" value="Charles" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label small fw-bold">Last Name</label>
+                                    <label class="form-label">Last Name</label>
                                     <input type="text" class="form-control" value="Jeckton" required>
                                 </div>
                             </div>
 
-                            <h6 class="fw-bold text-uppercase small text-muted mb-3 mt-2">Business Details</h6>
                             <div class="mb-3">
-                                <label class="form-label small fw-bold">Business Name</label>
-                                <input type="text" class="form-control" value="Dreamchaser Electronics" required>
+                                <label class="form-label">Business Name</label>
+                                <input type="text" class="form-control" placeholder="Enter your business name" value="Dreamchaser Electronics" required>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label small fw-bold">Business Type / Category</label>
+                                <label class="form-label">Business Type / Category</label>
                                 <select class="form-select" required>
                                     <option selected>Electronics</option>
                                     <option>Fashion</option>
                                     <option>Automotive</option>
                                     <option>Home & Living</option>
+                                    <option>Food & Beverages</option>
                                 </select>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label small fw-bold">Email Address</label>
+                                <label class="form-label">Email Address</label>
                                 <input type="email" class="form-control" value="charlesjeckton@gmail.com" required>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label small fw-bold">Phone Number</label>
+                                <label class="form-label">Phone Number</label>
                                 <input type="tel" class="form-control" value="+254 748 064 530" required>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label small fw-bold">Location</label>
+                                <label class="form-label">Location</label>
                                 <select class="form-select" required>
                                     <option selected>Nairobi</option>
                                     <option>Mombasa</option>
                                     <option>Kisumu</option>
+                                    <option>Nakuru</option>
+                                    <option>Eldoret</option>
                                 </select>
                             </div>
 
+
                             <div class="mb-3">
-                                <label class="form-label small fw-bold">Bio / Description</label>
-                                <textarea class="form-control" rows="4" placeholder="Tell us about your business...">Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.</textarea>
+                                <label class="form-label">Bio / Description</label>
+                                <textarea class="form-control" rows="3" placeholder="Tell us about your business...">Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.</textarea>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-success">Update Profile</button>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>
-
-            <div class="modal-footer bg-light border-top-0 px-4">
-                <button type="button" class="btn btn-link text-muted text-decoration-none me-auto" data-bs-dismiss="modal">Cancel</button>
-                <button type="submit" form="sellerProfileForm" class="btn btn-success px-5 fw-bold">Save Changes</button>
             </div>
         </div>
     </div>
