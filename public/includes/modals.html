@@ -1025,71 +1025,85 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 const API_BASE_URL = "https://biashara-connect-backend.onrender.com/api";
 
+// Buyer Form Handler
 document.getElementById("buyerForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const form = e.target;
     const formData = new FormData(form);
 
+    // Check password match
     if (formData.get("password") !== formData.get("confirm_password")) {
-        alert("Passwords do not match");
+        alert("Passwords do not match!");
         return;
     }
+
+    // Remove confirm_password before sending
+    formData.delete("confirm_password");
 
     try {
         const response = await fetch(`${API_BASE_URL}/auth/register/buyer/`, {
             method: "POST",
-            body: formData,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(Object.fromEntries(formData)),
         });
 
         const data = await response.json();
 
         if (!response.ok) {
-            alert(data.detail || "Registration failed");
+            alert(data.detail || data.error || "Registration failed. Please check your data.");
+            console.error("Buyer registration error:", data);
             return;
         }
 
-        alert("Buyer account created successfully 🎉");
+        alert("Buyer account created successfully! ✅");
         form.reset();
+        bootstrap.Modal.getInstance(document.getElementById('registerModal')).hide();
 
-    } catch (error) {
-        console.error(error);
-        alert("Network error. Try again.");
+    } catch (err) {
+        console.error("Network error:", err);
+        alert("Network error. Please check your connection and try again.");
     }
 });
-</script>
 
-<script>
+// Seller Form Handler
 document.getElementById("sellerForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const form = e.target;
     const formData = new FormData(form);
 
+    // Check password match
     if (formData.get("password") !== formData.get("confirm_password")) {
-        alert("Passwords do not match");
+        alert("Passwords do not match!");
         return;
     }
+
+    // Remove confirm_password
+    formData.delete("confirm_password");
 
     try {
         const response = await fetch(`${API_BASE_URL}/auth/register/seller/`, {
             method: "POST",
-            body: formData,
+            body: formData, // FormData for file upload
         });
 
         const data = await response.json();
 
         if (!response.ok) {
-            alert(data.detail || "Seller registration failed");
+            alert(data.detail || data.error || "Seller registration failed");
+            console.error("Seller registration error:", data);
             return;
         }
 
-        alert("Seller account created successfully 🎉");
+        alert("Seller account created successfully! ✅");
         form.reset();
+        clearSellerProfile();
+        bootstrap.Modal.getInstance(document.getElementById('registerModal')).hide();
 
     } catch (error) {
-        console.error(error);
-        alert("Network error. Try again.");
+        console.error("Network error:", error);
+        alert("Network error. Please check your connection and try again.");
     }
 });
 </script>
