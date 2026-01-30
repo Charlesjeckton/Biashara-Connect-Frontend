@@ -271,7 +271,7 @@
         background: rgba(212, 237, 218, 0.15);
         border-radius: 12px;
         padding: 1.25rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1 rem;
         border-left: 4px solid var(--primary-green);
     }
 
@@ -328,6 +328,7 @@
     }
 
     @media (max-width: 576px) {
+
         .auth-modal .form-control,
         .auth-modal .form-select {
             padding: 0.6rem 0.8rem;
@@ -393,10 +394,8 @@
                             <span class="input-group-text bg-light border-end-0">
                                 <i class="fas fa-envelope text-muted"></i>
                             </span>
-                            <input type="email"
-                                   class="form-control border-start-0"
-                                   placeholder="you@example.com"
-                                   required>
+                            <input type="email" class="form-control border-start-0" placeholder="you@example.com"
+                                required>
                         </div>
                     </div>
 
@@ -407,10 +406,8 @@
                             <span class="input-group-text bg-light border-end-0">
                                 <i class="fas fa-lock text-muted"></i>
                             </span>
-                            <input type="password"
-                                   class="form-control border-start-0"
-                                   placeholder="Enter your password"
-                                   required>
+                            <input type="password" class="form-control border-start-0" placeholder="Enter your password"
+                                required>
                         </div>
                     </div>
 
@@ -436,11 +433,8 @@
                     <!-- Footer -->
                     <div class="text-center mt-4 small">
                         Don’t have an account?
-                        <a href="#"
-                           class="fw-semibold text-success text-decoration-none"
-                           data-bs-dismiss="modal"
-                           data-bs-toggle="modal"
-                           data-bs-target="#registerModal">
+                        <a href="#" class="fw-semibold text-success text-decoration-none" data-bs-dismiss="modal"
+                            data-bs-toggle="modal" data-bs-target="#registerModal">
                             Create one
                         </a>
                     </div>
@@ -478,13 +472,15 @@
                 <div class="d-flex justify-content-center">
                     <ul class="nav nav-tabs nav-fill" id="registerTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="buyer-tab" data-bs-toggle="tab" data-bs-target="#buyer" type="button" role="tab">
+                            <button class="nav-link active" id="buyer-tab" data-bs-toggle="tab" data-bs-target="#buyer"
+                                type="button" role="tab">
                                 <i class="fas fa-shopping-cart"></i>
                                 <span>Register as Buyer</span>
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="seller-tab" data-bs-toggle="tab" data-bs-target="#seller" type="button" role="tab">
+                            <button class="nav-link" id="seller-tab" data-bs-toggle="tab" data-bs-target="#seller"
+                                type="button" role="tab">
                                 <i class="fas fa-store"></i>
                                 <span>Register as Seller</span>
                             </button>
@@ -505,14 +501,16 @@
                                     <label class="form-label">
                                         <i class="fas fa-user text-success me-1"></i>First Name
                                     </label>
-                                    <input type="text" name="first_name" class="form-control" placeholder="Enter your first name" required>
+                                    <input type="text" name="first_name" class="form-control"
+                                        placeholder="Enter your first name" required>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="form-label">
                                         <i class="fas fa-user text-success me-1"></i>Last Name
                                     </label>
-                                    <input type="text" name="last_name" class="form-control" placeholder="Enter your last name" required>
+                                    <input type="text" name="last_name" class="form-control"
+                                        placeholder="Enter your last name" required>
                                 </div>
 
                                 <!-- Contact Information -->
@@ -520,7 +518,8 @@
                                     <label class="form-label">
                                         <i class="fas fa-envelope text-success me-1"></i>Email Address
                                     </label>
-                                    <input type="email" name="email" class="form-control" placeholder="you@example.com" required>
+                                    <input type="email" name="email" class="form-control" placeholder="you@example.com"
+                                        required>
                                     <div class="form-text">We'll never share your email with anyone else.</div>
                                 </div>
 
@@ -528,7 +527,8 @@
                                     <label class="form-label">
                                         <i class="fas fa-phone text-success me-1"></i>Phone Number
                                     </label>
-                                    <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX" required>
+                                    <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
+                                        required>
                                 </div>
 
                                 <!-- Password -->
@@ -536,7 +536,8 @@
                                     <label class="form-label">
                                         <i class="fas fa-lock text-success me-1"></i>Password
                                     </label>
-                                    <input type="password" name="password" class="form-control" placeholder="Create a strong password" required>
+                                    <input type="password" name="password" class="form-control"
+                                        placeholder="Create a strong password" required>
                                     <div class="password-requirements">
                                         Must be at least 8 characters with letters & numbers
                                     </div>
@@ -558,7 +559,7 @@
                                     </select>
                                 </div>
 
-                                
+
 
                                 <!-- Terms & Conditions -->
                                 <div class="col-12">
@@ -595,10 +596,12 @@
                                     <div class="profile-upload-container">
                                         <div class="row align-items-center">
                                             <div class="col-md-4 text-center mb-3 mb-md-0">
-                                                <div class="profile-preview position-relative mx-auto" style="width: 120px; height: 120px;">
-                                                    <img id="sellerProfilePreview" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                                                         alt="Profile preview"
-                                                         class="rounded-circle w-100 h-100 object-fit-cover border border-3 border-success-subtle">
+                                                <div class="profile-preview position-relative mx-auto"
+                                                    style="width: 120px; height: 120px;">
+                                                    <img id="sellerProfilePreview"
+                                                        src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                                        alt="Profile preview"
+                                                        class="rounded-circle w-100 h-100 object-fit-cover border border-3 border-success-subtle">
                                                     <div class="position-absolute top-0 start-100 translate-middle">
                                                         <span class="badge bg-success rounded-circle p-1">
                                                             <i class="fas fa-camera fa-xs"></i>
@@ -613,12 +616,10 @@
                                                         <span class="text-muted fw-normal">(Optional)</span>
                                                     </label>
                                                     <div class="input-group">
-                                                        <input type="file"
-                                                               class="form-control"
-                                                               id="sellerProfile"
-                                                               accept="image/*"
-                                                               onchange="previewSellerProfile(event)">
-                                                        <button type="button" class="btn btn-outline-secondary" onclick="clearSellerProfile()">
+                                                        <input type="file" class="form-control" id="sellerProfile"
+                                                            accept="image/*" onchange="previewSellerProfile(event)">
+                                                        <button type="button" class="btn btn-outline-secondary"
+                                                            onclick="clearSellerProfile()">
                                                             <i class="fas fa-times"></i>
                                                         </button>
                                                     </div>
@@ -627,10 +628,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="d-flex gap-2 flex-wrap">
-                                                    <button type="button" class="btn btn-sm btn-outline-success" onclick="document.getElementById('sellerProfile').click()">
+                                                    <button type="button" class="btn btn-sm btn-outline-success"
+                                                        onclick="document.getElementById('sellerProfile').click()">
                                                         <i class="fas fa-upload me-1"></i> Choose File
                                                     </button>
-                                                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="clearSellerProfile()">
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                        onclick="clearSellerProfile()">
                                                         <i class="fas fa-trash-alt me-1"></i> Remove
                                                     </button>
                                                 </div>
@@ -644,14 +647,16 @@
                                     <label class="form-label">
                                         <i class="fas fa-user text-success me-1"></i>First Name
                                     </label>
-                                    <input type="text" name="first_name" class="form-control" placeholder="Enter your first name" required>
+                                    <input type="text" name="first_name" class="form-control"
+                                        placeholder="Enter your first name" required>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="form-label">
                                         <i class="fas fa-user text-success me-1"></i>Last Name
                                     </label>
-                                    <input type="text" name="last_name" class="form-control" placeholder="Enter your last name" required>
+                                    <input type="text" name="last_name" class="form-control"
+                                        placeholder="Enter your last name" required>
                                 </div>
 
                                 <!-- Contact Information -->
@@ -659,7 +664,8 @@
                                     <label class="form-label">
                                         <i class="fas fa-envelope text-success me-1"></i>Email Address
                                     </label>
-                                    <input type="email" name="email" class="form-control" placeholder="business@example.com" required>
+                                    <input type="email" name="email" class="form-control"
+                                        placeholder="business@example.com" required>
                                     <div class="form-text">Use your business email if available.</div>
                                 </div>
 
@@ -667,7 +673,8 @@
                                     <label class="form-label">
                                         <i class="fas fa-phone text-success me-1"></i>Phone Number
                                     </label>
-                                    <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX" required>
+                                    <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
+                                        required>
                                 </div>
 
                                 <!-- Password -->
@@ -675,7 +682,8 @@
                                     <label class="form-label">
                                         <i class="fas fa-lock text-success me-1"></i>Password
                                     </label>
-                                    <input type="password" name="password" class="form-control" placeholder="Create a strong password" required>
+                                    <input type="password" name="password" class="form-control"
+                                        placeholder="Create a strong password" required>
                                     <div class="password-requirements">
                                         Must be at least 8 characters with letters & numbers
                                     </div>
@@ -685,7 +693,8 @@
                                     <label class="form-label">
                                         <i class="fas fa-lock text-success me-1"></i>Confirm Password
                                     </label>
-                                    <input type="password" name="password" class="form-control" placeholder="Re-enter your password" required>
+                                    <input type="password" name="password" class="form-control"
+                                        placeholder="Re-enter your password" required>
                                 </div>
 
                                 <!-- Business Information -->
@@ -696,7 +705,8 @@
 
                                     <div class="mb-3">
                                         <label class="form-label">Business Name</label>
-                                        <input type="text" class="form-control" placeholder="Enter your business/store name" required>
+                                        <input type="text" class="form-control"
+                                            placeholder="Enter your business/store name" required>
                                     </div>
 
                                     <div class="row">
@@ -748,7 +758,8 @@
                                         <input class="form-check-input" type="checkbox" id="sellerTerms" required>
                                         <label class="form-check-label" for="sellerTerms">
                                             I agree to the <a href="#" class="fw-bold">Seller Terms & Conditions</a>,
-                                            <a href="#" class="fw-bold">Privacy Policy</a>, and confirm I have the right to sell these products
+                                            <a href="#" class="fw-bold">Privacy Policy</a>, and confirm I have the right
+                                            to sell these products
                                         </label>
                                     </div>
                                 </div>
@@ -794,7 +805,7 @@
                     <div class="col-md-4 text-center">
                         <div class="profile-image-container mb-3">
                             <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&auto=format&fit=crop"
-                                 alt="Profile" class="profile-image rounded-circle">
+                                alt="Profile" class="profile-image rounded-circle">
                             <button class="btn btn-sm btn-outline-secondary mt-2">
                                 <i class="fas fa-camera me-1"></i> Change Photo
                             </button>
@@ -820,7 +831,8 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Business Name</label>
-                                <input type="text" class="form-control" placeholder="Enter your business name" value="Dreamchaser Electronics" required>
+                                <input type="text" class="form-control" placeholder="Enter your business name"
+                                    value="Dreamchaser Electronics" required>
                             </div>
 
                             <div class="mb-3">
@@ -858,11 +870,13 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Bio / Description</label>
-                                <textarea class="form-control" rows="3" placeholder="Tell us about your business...">Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.</textarea>
+                                <textarea class="form-control" rows="3"
+                                    placeholder="Tell us about your business...">Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.</textarea>
                             </div>
 
                             <div class="d-flex justify-content-between">
-                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-outline-secondary"
+                                    data-bs-dismiss="modal">Cancel</button>
                                 <button type="submit" class="btn btn-success">Update Profile</button>
                             </div>
                         </form>
@@ -875,7 +889,8 @@
 
 <!-- Buyer Profile Modal -->
 <div class="modal fade" id="BuyerModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered"> <div class="modal-content border-0 shadow">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
             <div class="modal-header bg-light">
                 <h5 class="modal-title fw-bold text-success" id="profileModalLabel">
                     <i class="fas fa-user-circle me-2"></i>Buyer Profile
@@ -898,8 +913,10 @@
                     <div class="mb-3">
                         <label class="form-label fw-semibold small">Email Address</label>
                         <div class="input-group">
-                            <span class="input-group-text bg-white"><i class="fas fa-envelope text-muted small"></i></span>
-                            <input type="email" class="form-control border-start-0" value="charlesjeckton@gmail.com" required>
+                            <span class="input-group-text bg-white"><i
+                                    class="fas fa-envelope text-muted small"></i></span>
+                            <input type="email" class="form-control border-start-0" value="charlesjeckton@gmail.com"
+                                required>
                         </div>
                     </div>
 
@@ -913,19 +930,20 @@
 
                     <div class="mb-4">
                         <label class="form-label">Location</label>
-                            <select class="form-select" required>
-                                <option value="">Select city</option>
-                                <option>Nairobi</option>
-                                <option>Mombasa</option>
-                                <option>Kisumu</option>
-                                <option>Nakuru</option>
-                                <option>Eldoret</option>
-                            </select>
+                        <select class="form-select" required>
+                            <option value="">Select city</option>
+                            <option>Nairobi</option>
+                            <option>Mombasa</option>
+                            <option>Kisumu</option>
+                            <option>Nakuru</option>
+                            <option>Eldoret</option>
+                        </select>
                     </div>
 
                     <div class="row pt-2">
                         <div class="col-6">
-                            <button type="button" class="btn btn-outline-secondary w-100 py-2" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-outline-secondary w-100 py-2"
+                                data-bs-dismiss="modal">Cancel</button>
                         </div>
                         <div class="col-6">
                             <button type="submit" class="btn btn-success w-100 py-2 fw-bold">Save Changes</button>
@@ -939,78 +957,78 @@
 
 <!-- JavaScript for Profile Picture Upload -->
 <script>
-function previewSellerProfile(event) {
-    const input = event.target;
-    const preview = document.getElementById('sellerProfilePreview');
+    function previewSellerProfile(event) {
+        const input = event.target;
+        const preview = document.getElementById('sellerProfilePreview');
 
-    if (input.files && input.files[0]) {
-        const file = input.files[0];
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
 
-        // Validate file size (max 2MB)
-        if (file.size > 2 * 1024 * 1024) {
-            alert('File size should be less than 2MB');
-            clearSellerProfile();
-            return;
-        }
-
-        // Validate file type
-        const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-        if (!validTypes.includes(file.type)) {
-            alert('Please upload a valid image file (JPG, PNG, GIF, or WEBP)');
-            clearSellerProfile();
-            return;
-        }
-
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            preview.src = e.target.result;
-            preview.classList.add('border-success');
-            preview.classList.remove('border-success-subtle');
-        }
-        reader.readAsDataURL(file);
-    }
-}
-
-function clearSellerProfile() {
-    const input = document.getElementById('sellerProfile');
-    const preview = document.getElementById('sellerProfilePreview');
-
-    input.value = '';
-    preview.src = 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
-    preview.classList.remove('border-success');
-    preview.classList.add('border-success-subtle');
-}
-
-// Add click event to preview image to trigger file input
-document.addEventListener('DOMContentLoaded', function() {
-    const preview = document.getElementById('sellerProfilePreview');
-    if (preview) {
-        preview.addEventListener('click', function() {
-            document.getElementById('sellerProfile').click();
-        });
-    }
-
-    // Form submission handler
-    const sellerForm = document.getElementById('sellerForm');
-    if (sellerForm) {
-        sellerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Here you would handle the form submission
-            // The profile picture is optional, so no validation needed
-            const formData = new FormData(this);
-            const profileInput = document.getElementById('sellerProfile');
-
-            if (profileInput.files.length > 0) {
-                formData.append('profile_picture', profileInput.files[0]);
+            // Validate file size (max 2MB)
+            if (file.size > 2 * 1024 * 1024) {
+                alert('File size should be less than 2MB');
+                clearSellerProfile();
+                return;
             }
 
-            // Add your AJAX submission logic here
-            console.log('Seller form submitted with profile picture:', profileInput.files.length > 0);
+            // Validate file type
+            const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+            if (!validTypes.includes(file.type)) {
+                alert('Please upload a valid image file (JPG, PNG, GIF, or WEBP)');
+                clearSellerProfile();
+                return;
+            }
 
-            // For demonstration, just show an alert
-            alert('Seller registration submitted successfully!');
-        });
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.classList.add('border-success');
+                preview.classList.remove('border-success-subtle');
+            }
+            reader.readAsDataURL(file);
+        }
     }
-});
+
+    function clearSellerProfile() {
+        const input = document.getElementById('sellerProfile');
+        const preview = document.getElementById('sellerProfilePreview');
+
+        input.value = '';
+        preview.src = 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+        preview.classList.remove('border-success');
+        preview.classList.add('border-success-subtle');
+    }
+
+    // Add click event to preview image to trigger file input
+    document.addEventListener('DOMContentLoaded', function () {
+        const preview = document.getElementById('sellerProfilePreview');
+        if (preview) {
+            preview.addEventListener('click', function () {
+                document.getElementById('sellerProfile').click();
+            });
+        }
+
+        // Form submission handler
+        const sellerForm = document.getElementById('sellerForm');
+        if (sellerForm) {
+            sellerForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Here you would handle the form submission
+                // The profile picture is optional, so no validation needed
+                const formData = new FormData(this);
+                const profileInput = document.getElementById('sellerProfile');
+
+                if (profileInput.files.length > 0) {
+                    formData.append('profile_picture', profileInput.files[0]);
+                }
+
+                // Add your AJAX submission logic here
+                console.log('Seller form submitted with profile picture:', profileInput.files.length > 0);
+
+                // For demonstration, just show an alert
+                alert('Seller registration submitted successfully!');
+            });
+        }
+    });
 </script>
