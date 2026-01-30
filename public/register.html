@@ -4,15 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Biashara Connect</title>
-    <!-- Favicons -->
-    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-
-    <!-- Vendor CSS -->
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap"
-          rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --primary-green: #1a7f5f;
@@ -479,30 +474,10 @@
     </div>
 </div>
 
-<div id="footer-placeholder"></div>
-
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Your registration JS here -->
 <script src="/assets/js/register.js" defer></script>
-<script src="/assets/js/main.js" defer></script>
-<script>
-    // Load header & footer and modals
-    function loadHTML(elementId, filePath) {
-        return fetch(filePath)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById(elementId).innerHTML = data;
-            });
-    }
-
-    window.onload = function () {
-        // Load all components
-        Promise.all([
-            loadHTML('modals-placeholder', '/includes/modals.html'),
-            loadHTML('footer-placeholder', '/includes/footer.html')
-        ]);
-    };
-</script>
 
 </body>
 </html>
