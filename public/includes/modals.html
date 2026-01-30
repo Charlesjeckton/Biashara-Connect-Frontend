@@ -949,18 +949,30 @@
     </div>
 </div>
 
-<script src="../assets/js/modal.js" defer></script>
+<script src="../assets/js/main.js" defer></script>
 
 <script>
-    const API_BASE = "https://biashara-connect-backend.onrender.com";
+const API_BASE = "https://biashara-connect-backend.onrender.com";
+
+// ===== Error Message Containers =====
+const buyerErrorMsg = document.createElement("div");
+buyerErrorMsg.className = "text-danger mb-3";
+buyerErrorMsg.style.display = "none";
+document.getElementById("buyerForm").prepend(buyerErrorMsg);
+
+const sellerErrorMsg = document.createElement("div");
+sellerErrorMsg.className = "text-danger mb-3";
+sellerErrorMsg.style.display = "none";
+document.getElementById("sellerForm").prepend(sellerErrorMsg);
 
 // ===== Buyer Registration =====
 const buyerForm = document.getElementById("buyerForm");
 
 buyerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    buyerErrorMsg.style.display = "none";
+    buyerErrorMsg.innerText = "";
 
-    // Collect form data
     const formData = {
         first_name: buyerForm.first_name.value,
         last_name: buyerForm.last_name.value,
@@ -977,64 +989,70 @@ buyerForm.addEventListener("submit", async (e) => {
             body: JSON.stringify(formData),
         });
 
-        const data = await res.json();
+        const text = await res.text(); // raw response
+        console.log("Buyer raw response:", text);
+
+        let data;
+        try { data = JSON.parse(text); } catch { data = { error: text }; }
 
         if (res.ok) {
             alert(data.message || "Buyer registered successfully!");
             buyerForm.reset();
-            // Optionally close modal
-            // bootstrap.Modal.getInstance(document.getElementById('yourModalId')).hide();
         } else {
-            // Display errors
-            alert(JSON.stringify(data));
+            buyerErrorMsg.innerText = data.error || JSON.stringify(data);
+            buyerErrorMsg.style.display = "block";
         }
     } catch (err) {
         console.error(err);
-        alert("An error occurred. Please try again.");
+        buyerErrorMsg.innerText = "Network error. Please try again.";
+        buyerErrorMsg.style.display = "block";
     }
 });
-
 
 // ===== Seller Registration =====
 const sellerForm = document.getElementById("sellerForm");
 
 sellerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    sellerErrorMsg.style.display = "none";
+    sellerErrorMsg.innerText = "";
 
-    // Collect form data
-    const formData = {
-        first_name: sellerForm.first_name.value,
-        last_name: sellerForm.last_name.value,
-        email: sellerForm.email.value,
-        phone: sellerForm.phone.value,
-        password: sellerForm.password.value,
-        location: sellerForm.querySelector("select").value,
-        // Add additional seller fields here if your serializer expects them
-        // For example: business_name, business_type, business_category
-    };
+    // Collect form data into FormData object (for file uploads)
+    const formData = new FormData(sellerForm);
+    const profileInput = document.getElementById("sellerProfile");
+
+    if (profileInput.files.length > 0) {
+        formData.append("profile_picture", profileInput.files[0]);
+    }
 
     try {
         const res = await fetch(`${API_BASE}/api/auth/register/seller/`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
+            body: formData, // send as multipart/form-data
         });
 
-        const data = await res.json();
+        const text = await res.text(); // raw response
+        console.log("Seller raw response:", text);
+
+        let data;
+        try { data = JSON.parse(text); } catch { data = { error: text }; }
 
         if (res.ok) {
             alert(data.message || "Seller registered successfully!");
             sellerForm.reset();
+            if (profileInput) profileInput.value = "";
         } else {
-            alert(JSON.stringify(data));
+            sellerErrorMsg.innerText = data.error || JSON.stringify(data);
+            sellerErrorMsg.style.display = "block";
         }
     } catch (err) {
         console.error(err);
-        alert("An error occurred. Please try again.");
+        sellerErrorMsg.innerText = "Network error. Please try again.";
+        sellerErrorMsg.style.display = "block";
     }
 });
-
 </script>
+
 
 <!-- JavaScript for Profile Picture Upload -->
 <script>
