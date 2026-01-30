@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seller Profile</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+:root {
+    --primary-green: #1a7f5f;
+    --secondary-green: #28a745;
+    --text-dark: #333;
+    --text-light: #6c757d;
+    --light-gray: #e9ecef;
+    --border-color: #ced4da;
+}
+
+/* Body */
+body {
+    background: #f8f9fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Container */
+.profile-container {
+    max-width: 900px;
+    margin: 4% auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    overflow: hidden;
+    padding: 2rem;
+}
+
+/* Profile Image */
+.profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 4px solid var(--primary-green);
+    box-shadow: 0 4px 15px rgba(26,127,95,0.2);
+    border-radius: 50%;
+}
+
+/* Form labels */
+.form-label {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Inputs */
+.form-control, .form-select, textarea {
+    border: 2px solid var(--light-gray);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus, textarea:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(26,127,95,0.15);
+    transform: translateY(-1px);
+}
+
+/* Buttons */
+.btn-success {
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    border: none;
+    font-weight: 700;
+}
+
+/* Seller field styling */
+.seller-field {
+    background: rgba(212,237,218,0.15);
+    border-left: 4px solid var(--primary-green);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+}
+
+/* Profile Upload */
+.profile-upload-container {
+    background: rgba(255,255,255,0.7);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 2px dashed var(--border-color);
+}
+
+.profile-preview {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-preview:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(26,127,95,0.2);
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .profile-image { width:120px; height:120px; }
+}
+</style>
+</head>
+<body>
+
+<div class="profile-container">
+    <h2 class="mb-4 text-success"><i class="fas fa-user-circle me-2"></i>Seller Profile</h2>
+
+    <div class="row">
+        <!-- Left: Profile Picture & Basic Info -->
+        <div class="col-md-4 text-center mb-4 mb-md-0">
+            <div class="mb-3">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sellerProfilePreview" alt="Profile" class="profile-image">
+                <div class="mt-2">
+                    <button class="btn btn-outline-secondary btn-sm" onclick="document.getElementById('sellerProfile').click()">
+                        <i class="fas fa-camera me-1"></i> Change Photo
+                    </button>
+                </div>
+            </div>
+            <h5 class="mb-1">John Doe</h5>
+            <p class="text-muted mb-2">Member since 2023</p>
+            <div class="badge bg-success mb-3">Verified Seller</div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="col-md-8">
+            <form id="sellerProfileForm">
+                <input type="file" id="sellerProfile" accept="image/*" style="display:none" onchange="previewSellerProfile(event)">
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" value="John" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" value="Doe" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Business Name</label>
+                    <input type="text" class="form-control" value="John's Electronics" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Business Type / Category</label>
+                    <select class="form-select" required>
+                        <option selected>Electronics</option>
+                        <option>Fashion</option>
+                        <option>Home & Living</option>
+                        <option>Food & Beverages</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" value="johndoe@example.com" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" value="+254 700 000 000" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Location</label>
+                    <select class="form-select" required>
+                        <option selected>Nairobi</option>
+                        <option>Mombasa</option>
+                        <option>Kisumu</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Bio / Description</label>
+                    <textarea class="form-control" rows="3">Experienced seller with electronics products.</textarea>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-secondary" onclick="alert('Cancelled')">Cancel</button>
+                    <button type="submit" class="btn btn-success">Update Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+function previewSellerProfile(event) {
+    const input = event.target;
+    const preview = document.getElementById('sellerProfilePreview');
+    if(input.files && input.files[0]){
+        preview.src = URL.createObjectURL(input.files[0]);
+    }
+}
+</script>
+
+</body>
+</html>
