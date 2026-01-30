@@ -645,7 +645,7 @@
                                     <label class="form-label">
                                         <i class="fas fa-map-marker-alt text-success me-1"></i>Business Location
                                     </label>
-                                    <select class="form-select" required>
+                                    <select name="location" class="form-select" required>
                                         <option value="" disabled selected>Select your business city</option>
                                         <option value="Nairobi">Nairobi</option>
                                         <option value="Mombasa">Mombasa</option>
@@ -798,124 +798,110 @@
 
 <!-- Registration API Script -->
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const API_BASE = "https://biashara-connect-backend.onrender.com";
+document.addEventListener("DOMContentLoaded", () => {
+    const API_BASE = "https://biashara-connect-backend.onrender.com";
 
-        // Helper function for displaying errors
-        function showError(form, message) {
-            let errorDiv = form.querySelector(".error-msg");
-            if (!errorDiv) {
-                errorDiv = document.createElement("div");
-                errorDiv.className = "error-msg text-danger mb-3";
-                form.prepend(errorDiv);
-            }
-            errorDiv.innerText = message;
-            errorDiv.style.display = "block";
+    /* =========================
+       Shared error handler
+    ========================== */
+    function showError(form, message) {
+        let errorDiv = form.querySelector(".error-msg");
+        if (!errorDiv) {
+            errorDiv = document.createElement("div");
+            errorDiv.className = "error-msg alert alert-danger mb-3";
+            form.prepend(errorDiv);
         }
+        errorDiv.innerText = message;
+    }
 
-        // ===== Buyer Registration =====
-        const buyerForm = document.getElementById("buyerForm");
-        if (buyerForm) {
-            buyerForm.addEventListener("submit", async (e) => {
-                e.preventDefault();
-                showError(buyerForm, "");
+    /* =========================
+       BUYER REGISTRATION
+    ========================== */
+    const buyerForm = document.getElementById("buyerForm");
 
-                const formData = {
-                    first_name: buyerForm.querySelector("input[name='first_name']").value,
-                    last_name: buyerForm.querySelector("input[name='last_name']").value,
-                    email: buyerForm.querySelector("input[name='email']").value,
-                    phone: buyerForm.querySelector("input[name='phone']").value,
-                    password: buyerForm.querySelector("input[name='password']").value,
-                    location: buyerForm.querySelector("select[name='location']").value,
-                };
+    if (buyerForm) {
+        buyerForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            showError(buyerForm, "");
 
-                try {
-                    const res = await fetch(`${API_BASE}/api/auth/register/buyer/`, {
-                        method: "POST",
-                        headers: {"Content-Type": "application/json"},
-                        body: JSON.stringify(formData),
-                    });
+            const payload = {
+                first_name: buyerForm.first_name.value,
+                last_name: buyerForm.last_name.value,
+                email: buyerForm.email.value,
+                phone: buyerForm.phone.value,
+                password: buyerForm.password.value,
+                location: buyerForm.location.value,
+            };
 
-                    const text = await res.text();
-                    console.log("Buyer raw response:", text);
+            console.log("Buyer payload:", payload);
 
-                    let data;
-                    try {
-                        data = JSON.parse(text);
-                    } catch {
-                        data = {error: text};
-                    }
-
-                    if (res.ok) {
-                        alert(data.message || "Buyer registered successfully!");
-                        buyerForm.reset();
-                    } else {
-                        showError(buyerForm, data.error || JSON.stringify(data));
-                    }
-                } catch (err) {
-                    console.error(err);
-                    showError(buyerForm, "Network error. See console for details.");
-                }
-            });
-        } else {
-            console.error("buyerForm not found in DOM!");
-        }
-
-        // ===== Seller Registration =====
-        const sellerForm = document.getElementById("sellerForm");
-        if (sellerForm) {
-            sellerForm.addEventListener("submit", async (e) => {
-                e.preventDefault();
-                showError(sellerForm, "");
-
-                const formData = new FormData();
-                const fields = ["first_name", "last_name", "email", "phone", "password"];
-                fields.forEach(f => {
-                    const input = sellerForm.querySelector(`[name='${f}']`);
-                    if (input) formData.append(f, input.value);
+            try {
+                const res = await fetch(`${API_BASE}/api/auth/register/buyer/`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
                 });
 
-                const locationSelect = sellerForm.querySelector("select[name='location']");
-                if (locationSelect) formData.append("location", locationSelect.value);
+                const data = await res.json();
+                console.log("Buyer response:", data);
 
-                // Profile picture
-                const profileInput = document.getElementById("sellerProfile");
-                if (profileInput && profileInput.files.length > 0) {
-                    formData.append("profile_picture", profileInput.files[0]);
+                if (res.ok) {
+                    alert(data.message || "Buyer registered successfully!");
+                    buyerForm.reset();
+                } else {
+                    showError(buyerForm, JSON.stringify(data));
                 }
+            } catch (err) {
+                console.error(err);
+                showError(buyerForm, "Network error. Check console.");
+            }
+        });
+    }
 
-                try {
-                    const res = await fetch(`${API_BASE}/api/auth/register/seller/`, {
-                        method: "POST",
-                        body: formData,
-                    });
+    /* =========================
+       SELLER REGISTRATION
+    ========================== */
+    const sellerForm = document.getElementById("sellerForm");
 
-                    const text = await res.text();
-                    console.log("Seller raw response:", text);
+    if (sellerForm) {
+        sellerForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            showError(sellerForm, "");
 
-                    let data;
-                    try {
-                        data = JSON.parse(text);
-                    } catch {
-                        data = {error: text};
+            // ✅ This captures ALL inputs that have a name=""
+            const formData = new FormData(sellerForm);
+
+            console.log("===== SELLER FORM DATA =====");
+            for (let pair of formData.entries()) {
+                console.log(pair[0], pair[1]);
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/api/auth/register/seller/`, {
+                    method: "POST",
+                    body: formData, // multipart/form-data (auto)
+                });
+
+                const data = await res.json();
+                console.log("Seller response:", data);
+
+                if (res.ok) {
+                    alert(data.message || "Seller registered successfully!");
+                    sellerForm.reset();
+                    if (typeof clearSellerProfile === "function") {
+                        clearSellerProfile();
                     }
-
-                    if (res.ok) {
-                        alert(data.message || "Seller registered successfully!");
-                        sellerForm.reset();
-                        if (profileInput) profileInput.value = "";
-                    } else {
-                        showError(sellerForm, data.error || JSON.stringify(data));
-                    }
-                } catch (err) {
-                    console.error(err);
-                    showError(sellerForm, "Network error. See console for details.");
+                } else {
+                    showError(sellerForm, JSON.stringify(data));
                 }
-            });
-        } else {
-            console.error("sellerForm not found in DOM!");
-        }
-    });
+            } catch (err) {
+                console.error(err);
+                showError(sellerForm, "Network error. Check console.");
+            }
+        });
+    }
+});
 </script>
+
 </body>
 </html>
