@@ -271,7 +271,7 @@
         background: rgba(212, 237, 218, 0.15);
         border-radius: 12px;
         padding: 1.25rem;
-        margin-bottom: 1 rem;
+        margin-bottom: 1rem;
         border-left: 4px solid var(--primary-green);
     }
 
@@ -395,7 +395,7 @@
                                 <i class="fas fa-envelope text-muted"></i>
                             </span>
                             <input type="email" class="form-control border-start-0" placeholder="you@example.com"
-                                required>
+                                   required>
                         </div>
                     </div>
 
@@ -407,7 +407,7 @@
                                 <i class="fas fa-lock text-muted"></i>
                             </span>
                             <input type="password" class="form-control border-start-0" placeholder="Enter your password"
-                                required>
+                                   required>
                         </div>
                     </div>
 
@@ -434,7 +434,7 @@
                     <div class="text-center mt-4 small">
                         Don’t have an account?
                         <a href="#" class="fw-semibold text-success text-decoration-none" data-bs-dismiss="modal"
-                            data-bs-toggle="modal" data-bs-target="#registerModal">
+                           data-bs-toggle="modal" data-bs-target="#registerModal">
                             Create one
                         </a>
                     </div>
@@ -473,14 +473,14 @@
                     <ul class="nav nav-tabs nav-fill" id="registerTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="buyer-tab" data-bs-toggle="tab" data-bs-target="#buyer"
-                                type="button" role="tab">
+                                    type="button" role="tab">
                                 <i class="fas fa-shopping-cart"></i>
                                 <span>Register as Buyer</span>
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="seller-tab" data-bs-toggle="tab" data-bs-target="#seller"
-                                type="button" role="tab">
+                                    type="button" role="tab">
                                 <i class="fas fa-store"></i>
                                 <span>Register as Seller</span>
                             </button>
@@ -502,7 +502,7 @@
                                         <i class="fas fa-user text-success me-1"></i>First Name
                                     </label>
                                     <input type="text" name="first_name" class="form-control"
-                                        placeholder="Enter your first name" required>
+                                           placeholder="Enter your first name" required>
                                 </div>
 
                                 <div class="col-md-6">
@@ -510,7 +510,7 @@
                                         <i class="fas fa-user text-success me-1"></i>Last Name
                                     </label>
                                     <input type="text" name="last_name" class="form-control"
-                                        placeholder="Enter your last name" required>
+                                           placeholder="Enter your last name" required>
                                 </div>
 
                                 <!-- Contact Information -->
@@ -519,7 +519,7 @@
                                         <i class="fas fa-envelope text-success me-1"></i>Email Address
                                     </label>
                                     <input type="email" name="email" class="form-control" placeholder="you@example.com"
-                                        required>
+                                           required>
                                     <div class="form-text">We'll never share your email with anyone else.</div>
                                 </div>
 
@@ -528,7 +528,7 @@
                                         <i class="fas fa-phone text-success me-1"></i>Phone Number
                                     </label>
                                     <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
-                                        required>
+                                           required>
                                 </div>
 
                                 <!-- Password -->
@@ -537,7 +537,7 @@
                                         <i class="fas fa-lock text-success me-1"></i>Password
                                     </label>
                                     <input type="password" name="password" class="form-control"
-                                        placeholder="Create a strong password" required>
+                                           placeholder="Create a strong password" required>
                                     <div class="password-requirements">
                                         Must be at least 8 characters with letters & numbers
                                     </div>
@@ -558,7 +558,6 @@
                                         <option value="Other">Other</option>
                                     </select>
                                 </div>
-
 
 
                                 <!-- Terms & Conditions -->
@@ -597,11 +596,11 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-4 text-center mb-3 mb-md-0">
                                                 <div class="profile-preview position-relative mx-auto"
-                                                    style="width: 120px; height: 120px;">
+                                                     style="width: 120px; height: 120px;">
                                                     <img id="sellerProfilePreview"
-                                                        src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                                                        alt="Profile preview"
-                                                        class="rounded-circle w-100 h-100 object-fit-cover border border-3 border-success-subtle">
+                                                         src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                                         alt="Profile preview"
+                                                         class="rounded-circle w-100 h-100 object-fit-cover border border-3 border-success-subtle">
                                                     <div class="position-absolute top-0 start-100 translate-middle">
                                                         <span class="badge bg-success rounded-circle p-1">
                                                             <i class="fas fa-camera fa-xs"></i>
@@ -617,9 +616,9 @@
                                                     </label>
                                                     <div class="input-group">
                                                         <input type="file" class="form-control" id="sellerProfile"
-                                                            accept="image/*" onchange="previewSellerProfile(event)">
+                                                               accept="image/*" onchange="previewSellerProfile(event)">
                                                         <button type="button" class="btn btn-outline-secondary"
-                                                            onclick="clearSellerProfile()">
+                                                                onclick="clearSellerProfile()">
                                                             <i class="fas fa-times"></i>
                                                         </button>
                                                     </div>
@@ -629,11 +628,11 @@
                                                 </div>
                                                 <div class="d-flex gap-2 flex-wrap">
                                                     <button type="button" class="btn btn-sm btn-outline-success"
-                                                        onclick="document.getElementById('sellerProfile').click()">
+                                                            onclick="document.getElementById('sellerProfile').click()">
                                                         <i class="fas fa-upload me-1"></i> Choose File
                                                     </button>
                                                     <button type="button" class="btn btn-sm btn-outline-secondary"
-                                                        onclick="clearSellerProfile()">
+                                                            onclick="clearSellerProfile()">
                                                         <i class="fas fa-trash-alt me-1"></i> Remove
                                                     </button>
                                                 </div>
@@ -648,7 +647,7 @@
                                         <i class="fas fa-user text-success me-1"></i>First Name
                                     </label>
                                     <input type="text" name="first_name" class="form-control"
-                                        placeholder="Enter your first name" required>
+                                           placeholder="Enter your first name" required>
                                 </div>
 
                                 <div class="col-md-6">
@@ -656,7 +655,7 @@
                                         <i class="fas fa-user text-success me-1"></i>Last Name
                                     </label>
                                     <input type="text" name="last_name" class="form-control"
-                                        placeholder="Enter your last name" required>
+                                           placeholder="Enter your last name" required>
                                 </div>
 
                                 <!-- Contact Information -->
@@ -665,7 +664,7 @@
                                         <i class="fas fa-envelope text-success me-1"></i>Email Address
                                     </label>
                                     <input type="email" name="email" class="form-control"
-                                        placeholder="business@example.com" required>
+                                           placeholder="business@example.com" required>
                                     <div class="form-text">Use your business email if available.</div>
                                 </div>
 
@@ -674,7 +673,7 @@
                                         <i class="fas fa-phone text-success me-1"></i>Phone Number
                                     </label>
                                     <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
-                                        required>
+                                           required>
                                 </div>
 
                                 <!-- Password -->
@@ -683,7 +682,7 @@
                                         <i class="fas fa-lock text-success me-1"></i>Password
                                     </label>
                                     <input type="password" name="password" class="form-control"
-                                        placeholder="Create a strong password" required>
+                                           placeholder="Create a strong password" required>
                                     <div class="password-requirements">
                                         Must be at least 8 characters with letters & numbers
                                     </div>
@@ -714,7 +713,7 @@
                                     <div class="mb-3">
                                         <label class="form-label">Business Name</label>
                                         <input type="text" class="form-control"
-                                            placeholder="Enter your business/store name" required>
+                                               placeholder="Enter your business/store name" required>
                                     </div>
 
                                     <div class="row">
@@ -798,7 +797,7 @@
                     <div class="col-md-4 text-center">
                         <div class="profile-image-container mb-3">
                             <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&auto=format&fit=crop"
-                                alt="Profile" class="profile-image rounded-circle">
+                                 alt="Profile" class="profile-image rounded-circle">
                             <button class="btn btn-sm btn-outline-secondary mt-2">
                                 <i class="fas fa-camera me-1"></i> Change Photo
                             </button>
@@ -825,7 +824,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Business Name</label>
                                 <input type="text" class="form-control" placeholder="Enter your business name"
-                                    value="Dreamchaser Electronics" required>
+                                       value="Dreamchaser Electronics" required>
                             </div>
 
                             <div class="mb-3">
@@ -864,12 +863,13 @@
                             <div class="mb-3">
                                 <label class="form-label">Bio / Description</label>
                                 <textarea class="form-control" rows="3"
-                                    placeholder="Tell us about your business...">Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.</textarea>
+                                          placeholder="Tell us about your business...">Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.</textarea>
                             </div>
 
                             <div class="d-flex justify-content-between">
                                 <button type="button" class="btn btn-outline-secondary"
-                                    data-bs-dismiss="modal">Cancel</button>
+                                        data-bs-dismiss="modal">Cancel
+                                </button>
                                 <button type="submit" class="btn btn-success">Update Profile</button>
                             </div>
                         </form>
@@ -909,7 +909,7 @@
                             <span class="input-group-text bg-white"><i
                                     class="fas fa-envelope text-muted small"></i></span>
                             <input type="email" class="form-control border-start-0" value="charlesjeckton@gmail.com"
-                                required>
+                                   required>
                         </div>
                     </div>
 
@@ -936,7 +936,8 @@
                     <div class="row pt-2">
                         <div class="col-6">
                             <button type="button" class="btn btn-outline-secondary w-100 py-2"
-                                data-bs-dismiss="modal">Cancel</button>
+                                    data-bs-dismiss="modal">Cancel
+                            </button>
                         </div>
                         <div class="col-6">
                             <button type="submit" class="btn btn-success w-100 py-2 fw-bold">Save Changes</button>
@@ -947,6 +948,93 @@
         </div>
     </div>
 </div>
+
+<script src="../assets/js/modal.js" defer></script>
+
+<script>
+    const API_BASE = "https://biashara-connect-backend.onrender.com";
+
+// ===== Buyer Registration =====
+const buyerForm = document.getElementById("buyerForm");
+
+buyerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Collect form data
+    const formData = {
+        first_name: buyerForm.first_name.value,
+        last_name: buyerForm.last_name.value,
+        email: buyerForm.email.value,
+        phone: buyerForm.phone.value,
+        password: buyerForm.password.value,
+        location: buyerForm.location.value,
+    };
+
+    try {
+        const res = await fetch(`${API_BASE}/api/auth/register/buyer/`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            alert(data.message || "Buyer registered successfully!");
+            buyerForm.reset();
+            // Optionally close modal
+            // bootstrap.Modal.getInstance(document.getElementById('yourModalId')).hide();
+        } else {
+            // Display errors
+            alert(JSON.stringify(data));
+        }
+    } catch (err) {
+        console.error(err);
+        alert("An error occurred. Please try again.");
+    }
+});
+
+
+// ===== Seller Registration =====
+const sellerForm = document.getElementById("sellerForm");
+
+sellerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Collect form data
+    const formData = {
+        first_name: sellerForm.first_name.value,
+        last_name: sellerForm.last_name.value,
+        email: sellerForm.email.value,
+        phone: sellerForm.phone.value,
+        password: sellerForm.password.value,
+        location: sellerForm.querySelector("select").value,
+        // Add additional seller fields here if your serializer expects them
+        // For example: business_name, business_type, business_category
+    };
+
+    try {
+        const res = await fetch(`${API_BASE}/api/auth/register/seller/`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            alert(data.message || "Seller registered successfully!");
+            sellerForm.reset();
+        } else {
+            alert(JSON.stringify(data));
+        }
+    } catch (err) {
+        console.error(err);
+        alert("An error occurred. Please try again.");
+    }
+});
+
+</script>
 
 <!-- JavaScript for Profile Picture Upload -->
 <script>
