@@ -689,12 +689,20 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <!-- Location -->
+                                <div class="col-6">
                                     <label class="form-label">
-                                        <i class="fas fa-lock text-success me-1"></i>Confirm Password
+                                        <i class="fas fa-map-marker-alt text-success me-1"></i>Business Location
                                     </label>
-                                    <input type="password" name="password" class="form-control"
-                                        placeholder="Re-enter your password" required>
+                                    <select class="form-select" required>
+                                        <option value="" disabled selected>Select your business city</option>
+                                        <option value="Nairobi">Nairobi</option>
+                                        <option value="Mombasa">Mombasa</option>
+                                        <option value="Kisumu">Kisumu</option>
+                                        <option value="Nakuru">Nakuru</option>
+                                        <option value="Eldoret">Eldoret</option>
+                                        <option value="Other">Other</option>
+                                    </select>
                                 </div>
 
                                 <!-- Business Information -->
@@ -736,21 +744,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Location -->
-                                <div class="col-12">
-                                    <label class="form-label">
-                                        <i class="fas fa-map-marker-alt text-success me-1"></i>Business Location
-                                    </label>
-                                    <select class="form-select" required>
-                                        <option value="" disabled selected>Select your business city</option>
-                                        <option value="Nairobi">Nairobi</option>
-                                        <option value="Mombasa">Mombasa</option>
-                                        <option value="Kisumu">Kisumu</option>
-                                        <option value="Nakuru">Nakuru</option>
-                                        <option value="Eldoret">Eldoret</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
 
                                 <!-- Seller Terms -->
                                 <div class="col-12">
