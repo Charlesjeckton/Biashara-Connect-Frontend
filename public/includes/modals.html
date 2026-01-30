@@ -954,32 +954,33 @@
 <script>
 const API_BASE = "https://biashara-connect-backend.onrender.com";
 
-// ===== Error Message Containers =====
-const buyerErrorMsg = document.createElement("div");
-buyerErrorMsg.className = "text-danger mb-3";
-buyerErrorMsg.style.display = "none";
-document.getElementById("buyerForm").prepend(buyerErrorMsg);
-
-const sellerErrorMsg = document.createElement("div");
-sellerErrorMsg.className = "text-danger mb-3";
-sellerErrorMsg.style.display = "none";
-document.getElementById("sellerForm").prepend(sellerErrorMsg);
+// ===== Helper function to display error messages inside modal =====
+function showError(form, message) {
+    let errorDiv = form.querySelector(".error-msg");
+    if (!errorDiv) {
+        errorDiv = document.createElement("div");
+        errorDiv.className = "error-msg text-danger mb-3";
+        form.prepend(errorDiv);
+    }
+    errorDiv.innerText = message;
+    errorDiv.style.display = "block";
+}
 
 // ===== Buyer Registration =====
 const buyerForm = document.getElementById("buyerForm");
 
 buyerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    buyerErrorMsg.style.display = "none";
-    buyerErrorMsg.innerText = "";
+    showError(buyerForm, ""); // clear previous
 
+    // Collect form data safely
     const formData = {
-        first_name: buyerForm.first_name.value,
-        last_name: buyerForm.last_name.value,
-        email: buyerForm.email.value,
-        phone: buyerForm.phone.value,
-        password: buyerForm.password.value,
-        location: buyerForm.location.value,
+        first_name: buyerForm.querySelector("input[name='first_name']").value,
+        last_name: buyerForm.querySelector("input[name='last_name']").value,
+        email: buyerForm.querySelector("input[name='email']").value,
+        phone: buyerForm.querySelector("input[name='phone']").value,
+        password: buyerForm.querySelector("input[name='password']").value,
+        location: buyerForm.querySelector("select[name='location']").value,
     };
 
     try {
@@ -989,7 +990,7 @@ buyerForm.addEventListener("submit", async (e) => {
             body: JSON.stringify(formData),
         });
 
-        const text = await res.text(); // raw response
+        const text = await res.text();
         console.log("Buyer raw response:", text);
 
         let data;
@@ -999,13 +1000,11 @@ buyerForm.addEventListener("submit", async (e) => {
             alert(data.message || "Buyer registered successfully!");
             buyerForm.reset();
         } else {
-            buyerErrorMsg.innerText = data.error || JSON.stringify(data);
-            buyerErrorMsg.style.display = "block";
+            showError(buyerForm, data.error || JSON.stringify(data));
         }
     } catch (err) {
         console.error(err);
-        buyerErrorMsg.innerText = "Network error. Please try again.";
-        buyerErrorMsg.style.display = "block";
+        showError(buyerForm, "Network error. See console for details.");
     }
 });
 
@@ -1014,24 +1013,32 @@ const sellerForm = document.getElementById("sellerForm");
 
 sellerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    sellerErrorMsg.style.display = "none";
-    sellerErrorMsg.innerText = "";
+    showError(sellerForm, ""); // clear previous
 
-    // Collect form data into FormData object (for file uploads)
-    const formData = new FormData(sellerForm);
+    // FormData for file upload
+    const formData = new FormData();
+    const fields = ["first_name", "last_name", "email", "phone", "password"];
+    fields.forEach(f => {
+        const input = sellerForm.querySelector(`[name='${f}']`);
+        if (input) formData.append(f, input.value);
+    });
+
+    const locationSelect = sellerForm.querySelector("select[name='location']");
+    if (locationSelect) formData.append("location", locationSelect.value);
+
+    // Profile picture
     const profileInput = document.getElementById("sellerProfile");
-
-    if (profileInput.files.length > 0) {
+    if (profileInput && profileInput.files.length > 0) {
         formData.append("profile_picture", profileInput.files[0]);
     }
 
     try {
         const res = await fetch(`${API_BASE}/api/auth/register/seller/`, {
             method: "POST",
-            body: formData, // send as multipart/form-data
+            body: formData, // multipart/form-data
         });
 
-        const text = await res.text(); // raw response
+        const text = await res.text();
         console.log("Seller raw response:", text);
 
         let data;
@@ -1042,16 +1049,15 @@ sellerForm.addEventListener("submit", async (e) => {
             sellerForm.reset();
             if (profileInput) profileInput.value = "";
         } else {
-            sellerErrorMsg.innerText = data.error || JSON.stringify(data);
-            sellerErrorMsg.style.display = "block";
+            showError(sellerForm, data.error || JSON.stringify(data));
         }
     } catch (err) {
         console.error(err);
-        sellerErrorMsg.innerText = "Network error. Please try again.";
-        sellerErrorMsg.style.display = "block";
+        showError(sellerForm, "Network error. See console for details.");
     }
 });
 </script>
+
 
 
 <!-- JavaScript for Profile Picture Upload -->
