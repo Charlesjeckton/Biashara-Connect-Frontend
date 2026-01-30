@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Biashara Connect</title>
-     <!-- Favicons -->
+    <!-- Favicons -->
     <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
@@ -396,511 +396,526 @@
     </style>
 </head>
 <body>
-    <!-- Registration Modal -->
-    <div class="modal fade auth-modal show" id="registerModal" tabindex="-1" aria-hidden="false" style="display: block; padding-right: 0px;">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
+<!-- Registration Modal -->
+<div class="modal fade auth-modal show" id="registerModal" tabindex="-1" aria-hidden="false"
+     style="display: block; padding-right: 0px;">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
 
-                <!-- Header -->
-                <div class="modal-header">
-                    <div class="d-flex align-items-center gap-3">
-                        <div class="icon-circle bg-success bg-opacity-10 p-2 rounded-3">
-                            <i class="fas fa-user-plus fa-lg text-success"></i>
-                        </div>
-                        <div>
-                            <h5 class="modal-title mb-1">Create Your Account</h5>
-                            <p class="text-muted small mb-0">Join thousands of users in our community</p>
-                        </div>
+            <!-- Header -->
+            <div class="modal-header">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="icon-circle bg-success bg-opacity-10 p-2 rounded-3">
+                        <i class="fas fa-user-plus fa-lg text-success"></i>
                     </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="window.history.back()"></button>
+                    <div>
+                        <h5 class="modal-title mb-1">Create Your Account</h5>
+                        <p class="text-muted small mb-0">Join thousands of users in our community</p>
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="window.history.back()"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+
+                <!-- Tabs Navigation -->
+                <div class="d-flex justify-content-center">
+                    <ul class="nav nav-tabs nav-fill" id="registerTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="buyer-tab" data-bs-toggle="tab" data-bs-target="#buyer"
+                                    type="button" role="tab">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Register as Buyer</span>
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="seller-tab" data-bs-toggle="tab" data-bs-target="#seller"
+                                    type="button" role="tab">
+                                <i class="fas fa-store"></i>
+                                <span>Register as Seller</span>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Body -->
-                <div class="modal-body">
+                <!-- Tab Content -->
+                <div class="tab-content mt-4" id="registerTabContent">
 
-                    <!-- Tabs Navigation -->
-                    <div class="d-flex justify-content-center">
-                        <ul class="nav nav-tabs nav-fill" id="registerTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="buyer-tab" data-bs-toggle="tab" data-bs-target="#buyer"
-                                        type="button" role="tab">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    <span>Register as Buyer</span>
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="seller-tab" data-bs-toggle="tab" data-bs-target="#seller"
-                                        type="button" role="tab">
-                                    <i class="fas fa-store"></i>
-                                    <span>Register as Seller</span>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
+                    <!-- Buyer Form -->
+                    <div class="tab-pane fade show active" id="buyer" role="tabpanel">
+                        <form id="buyerForm" class="needs-validation" novalidate>
+                            <div class="row g-4">
 
-                    <!-- Tab Content -->
-                    <div class="tab-content mt-4" id="registerTabContent">
+                                <!-- Personal Information -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-user text-success me-1"></i>First Name
+                                    </label>
+                                    <input type="text" name="first_name" class="form-control"
+                                           placeholder="Enter your first name" required>
+                                </div>
 
-                        <!-- Buyer Form -->
-                        <div class="tab-pane fade show active" id="buyer" role="tabpanel">
-                            <form id="buyerForm" class="needs-validation" novalidate>
-                                <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-user text-success me-1"></i>Last Name
+                                    </label>
+                                    <input type="text" name="last_name" class="form-control"
+                                           placeholder="Enter your last name" required>
+                                </div>
 
-                                    <!-- Personal Information -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-user text-success me-1"></i>First Name
-                                        </label>
-                                        <input type="text" name="first_name" class="form-control"
-                                               placeholder="Enter your first name" required>
-                                    </div>
+                                <!-- Contact Information -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-envelope text-success me-1"></i>Email Address
+                                    </label>
+                                    <input type="email" name="email" class="form-control" placeholder="you@example.com"
+                                           required>
+                                    <div class="form-text">We'll never share your email with anyone else.</div>
+                                </div>
 
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-user text-success me-1"></i>Last Name
-                                        </label>
-                                        <input type="text" name="last_name" class="form-control"
-                                               placeholder="Enter your last name" required>
-                                    </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-phone text-success me-1"></i>Phone Number
+                                    </label>
+                                    <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
+                                           required>
+                                </div>
 
-                                    <!-- Contact Information -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-envelope text-success me-1"></i>Email Address
-                                        </label>
-                                        <input type="email" name="email" class="form-control" placeholder="you@example.com"
-                                               required>
-                                        <div class="form-text">We'll never share your email with anyone else.</div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-phone text-success me-1"></i>Phone Number
-                                        </label>
-                                        <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
-                                               required>
-                                    </div>
-
-                                    <!-- Password -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-lock text-success me-1"></i>Password
-                                        </label>
-                                        <input type="password" name="password" class="form-control"
-                                               placeholder="Create a strong password" required>
-                                        <div class="password-requirements">
-                                            Must be at least 8 characters with letters & numbers
-                                        </div>
-                                    </div>
-
-                                    <!-- Location -->
-                                    <div class="col-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-map-marker-alt text-success me-1"></i>Location
-                                        </label>
-                                        <select name="location" class="form-select" required>
-                                            <option value="" disabled selected>Select your city</option>
-                                            <option value="Nairobi">Nairobi</option>
-                                            <option value="Mombasa">Mombasa</option>
-                                            <option value="Kisumu">Kisumu</option>
-                                            <option value="Nakuru">Nakuru</option>
-                                            <option value="Eldoret">Eldoret</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                    </div>
-
-
-                                    <!-- Terms & Conditions -->
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="buyerTerms" required>
-                                            <label class="form-check-label" for="buyerTerms">
-                                                I agree to the <a href="#" class="fw-bold">Terms & Conditions</a> and
-                                                <a href="#" class="fw-bold">Privacy Policy</a>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <!-- Submit Button -->
-                                    <div class="col-12 mt-2">
-                                        <button type="submit" class="btn btn-submit">
-                                            <i class="fas fa-user-check me-2"></i>
-                                            Create Buyer Account
-                                        </button>
+                                <!-- Password -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-lock text-success me-1"></i>Password
+                                    </label>
+                                    <input type="password" name="password" class="form-control"
+                                           placeholder="Create a strong password" required>
+                                    <div class="password-requirements">
+                                        Must be at least 8 characters with letters & numbers
                                     </div>
                                 </div>
-                            </form>
-                        </div>
 
-                        <!-- Seller Form -->
-                        <div class="tab-pane fade" id="seller" role="tabpanel">
-                            <form id="sellerForm" class="needs-validation" novalidate>
-                                <div class="row g-4">
+                                <!-- Location -->
+                                <div class="col-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-map-marker-alt text-success me-1"></i>Location
+                                    </label>
+                                    <select name="location" class="form-select" required>
+                                        <option value="" disabled selected>Select your city</option>
+                                        <option value="Nairobi">Nairobi</option>
+                                        <option value="Mombasa">Mombasa</option>
+                                        <option value="Kisumu">Kisumu</option>
+                                        <option value="Nakuru">Nakuru</option>
+                                        <option value="Eldoret">Eldoret</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
 
-                                    <!-- Profile Picture Upload (Optional) -->
-                                    <div class="col-12 seller-field">
-                                        <h6 class="fw-bold text-success mb-3">
-                                            <i class="fas fa-user-circle me-2"></i>Profile Picture (Optional)
-                                        </h6>
-                                        <div class="profile-upload-container">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-4 text-center mb-3 mb-md-0">
-                                                    <div class="profile-preview position-relative mx-auto"
-                                                         style="width: 120px; height: 120px;">
-                                                        <img id="sellerProfilePreview"
-                                                             src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                                                             alt="Profile preview"
-                                                             class="rounded-circle w-100 h-100 object-fit-cover border border-3 border-success-subtle">
-                                                        <div class="position-absolute top-0 start-100 translate-middle">
+
+                                <!-- Terms & Conditions -->
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="buyerTerms" required>
+                                        <label class="form-check-label" for="buyerTerms">
+                                            I agree to the <a href="#" class="fw-bold">Terms & Conditions</a> and
+                                            <a href="#" class="fw-bold">Privacy Policy</a>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="col-12 mt-2">
+                                    <button type="submit" class="btn btn-submit">
+                                        <i class="fas fa-user-check me-2"></i>
+                                        Create Buyer Account
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Seller Form -->
+                    <div class="tab-pane fade" id="seller" role="tabpanel">
+                        <form id="sellerForm" class="needs-validation" novalidate>
+                            <div class="row g-4">
+
+                                <!-- Profile Picture Upload (Optional) -->
+                                <div class="col-12 seller-field">
+                                    <h6 class="fw-bold text-success mb-3">
+                                        <i class="fas fa-user-circle me-2"></i>Profile Picture (Optional)
+                                    </h6>
+                                    <div class="profile-upload-container">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-4 text-center mb-3 mb-md-0">
+                                                <div class="profile-preview position-relative mx-auto"
+                                                     style="width: 120px; height: 120px;">
+                                                    <img id="sellerProfilePreview"
+                                                         src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                                         alt="Profile preview"
+                                                         class="rounded-circle w-100 h-100 object-fit-cover border border-3 border-success-subtle">
+                                                    <div class="position-absolute top-0 start-100 translate-middle">
                                                             <span class="badge bg-success rounded-circle p-1">
                                                                 <i class="fas fa-camera fa-xs"></i>
                                                             </span>
-                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-8">
-                                                    <div class="mb-3">
-                                                        <label for="sellerProfile" class="form-label fw-semibold">
-                                                            Upload Profile Picture
-                                                            <span class="text-muted fw-normal">(Optional)</span>
-                                                        </label>
-                                                        <div class="input-group">
-                                                            <input type="file" class="form-control" id="sellerProfile"
-                                                                   accept="image/*" onchange="previewSellerProfile(event)">
-                                                            <button type="button" class="btn btn-outline-secondary"
-                                                                    onclick="clearSellerProfile()">
-                                                                <i class="fas fa-times"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="form-text">
-                                                            Recommended: Square image, max 2MB. JPG, PNG, or GIF formats.
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex gap-2 flex-wrap">
-                                                        <button type="button" class="btn btn-sm btn-outline-success"
-                                                                onclick="document.getElementById('sellerProfile').click()">
-                                                            <i class="fas fa-upload me-1"></i> Choose File
-                                                        </button>
-                                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="mb-3">
+                                                    <label for="sellerProfile" class="form-label fw-semibold">
+                                                        Upload Profile Picture
+                                                        <span class="text-muted fw-normal">(Optional)</span>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <input type="file" class="form-control" id="sellerProfile"
+                                                               accept="image/*" onchange="previewSellerProfile(event)">
+                                                        <button type="button" class="btn btn-outline-secondary"
                                                                 onclick="clearSellerProfile()">
-                                                            <i class="fas fa-trash-alt me-1"></i> Remove
+                                                            <i class="fas fa-times"></i>
                                                         </button>
                                                     </div>
+                                                    <div class="form-text">
+                                                        Recommended: Square image, max 2MB. JPG, PNG, or GIF formats.
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex gap-2 flex-wrap">
+                                                    <button type="button" class="btn btn-sm btn-outline-success"
+                                                            onclick="document.getElementById('sellerProfile').click()">
+                                                        <i class="fas fa-upload me-1"></i> Choose File
+                                                    </button>
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                            onclick="clearSellerProfile()">
+                                                        <i class="fas fa-trash-alt me-1"></i> Remove
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <!-- Personal Information -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-user text-success me-1"></i>First Name
-                                        </label>
-                                        <input type="text" name="first_name" class="form-control"
-                                               placeholder="Enter your first name" required>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-user text-success me-1"></i>Last Name
-                                        </label>
-                                        <input type="text" name="last_name" class="form-control"
-                                               placeholder="Enter your last name" required>
-                                    </div>
-
-                                    <!-- Contact Information -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-envelope text-success me-1"></i>Email Address
-                                        </label>
-                                        <input type="email" name="email" class="form-control"
-                                               placeholder="business@example.com" required>
-                                        <div class="form-text">Use your business email if available.</div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-phone text-success me-1"></i>Phone Number
-                                        </label>
-                                        <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
-                                               required>
-                                    </div>
-
-                                    <!-- Password -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-lock text-success me-1"></i>Password
-                                        </label>
-                                        <input type="password" name="password" class="form-control"
-                                               placeholder="Create a strong password" required>
-                                        <div class="password-requirements">
-                                            Must be at least 8 characters with letters & numbers
-                                        </div>
-                                    </div>
-
-                                    <!-- Location -->
-                                    <div class="col-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-map-marker-alt text-success me-1"></i>Business Location
-                                        </label>
-                                        <select class="form-select" required>
-                                            <option value="" disabled selected>Select your business city</option>
-                                            <option value="Nairobi">Nairobi</option>
-                                            <option value="Mombasa">Mombasa</option>
-                                            <option value="Kisumu">Kisumu</option>
-                                            <option value="Nakuru">Nakuru</option>
-                                            <option value="Eldoret">Eldoret</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- Business Information -->
-                                    <div class="col-12 seller-field">
-                                        <h6 class="fw-bold text-success mb-3">
-                                            <i class="fas fa-briefcase me-2"></i>Business Information
-                                        </h6>
-
-                                        <div class="mb-3">
-                                            <label class="form-label">Business Name</label>
-                                            <input type="text" class="form-control"
-                                                   placeholder="Enter your business/store name" required>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <label class="form-label">Business Type</label>
-                                                <select class="form-select" required>
-                                                    <option value="" disabled selected>Select business type</option>
-                                                    <option value="individual">Individual/Sole Proprietor</option>
-                                                    <option value="company">Registered Company</option>
-                                                    <option value="cooperative">Cooperative</option>
-                                                    <option value="partnership">Partnership</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-md-6 mb-3">
-                                                <label class="form-label">Business Category</label>
-                                                <select class="form-select" required>
-                                                    <option value="" disabled selected>Select category</option>
-                                                    <option value="electronics">Electronics & Gadgets</option>
-                                                    <option value="fashion">Fashion & Apparel</option>
-                                                    <option value="home">Home & Living</option>
-                                                    <option value="food">Food & Beverages</option>
-                                                    <option value="automotive">Automotive</option>
-                                                    <option value="other">Other</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- Seller Terms -->
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="sellerTerms" required>
-                                            <label class="form-check-label" for="sellerTerms">
-                                                I agree to the <a href="#" class="fw-bold">Seller Terms & Conditions</a>,
-                                                <a href="#" class="fw-bold">Privacy Policy</a>, and confirm I have the right
-                                                to sell these products
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <!-- Submit Button -->
-                                    <div class="col-12 mt-2">
-                                        <button type="submit" class="btn btn-submit">
-                                            <i class="fas fa-store me-2"></i>
-                                            Create Seller Account
-                                        </button>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
 
-                    <!-- Footer Link -->
-                    <div class="auth-footer">
-                        Already have an account?
-                        <a href="#" onclick="window.location.href='login.html'">
-                            Sign in here
-                        </a>
+                                <!-- Personal Information -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-user text-success me-1"></i>First Name
+                                    </label>
+                                    <input type="text" name="first_name" class="form-control"
+                                           placeholder="Enter your first name" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-user text-success me-1"></i>Last Name
+                                    </label>
+                                    <input type="text" name="last_name" class="form-control"
+                                           placeholder="Enter your last name" required>
+                                </div>
+
+                                <!-- Contact Information -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-envelope text-success me-1"></i>Email Address
+                                    </label>
+                                    <input type="email" name="email" class="form-control"
+                                           placeholder="business@example.com" required>
+                                    <div class="form-text">Use your business email if available.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-phone text-success me-1"></i>Phone Number
+                                    </label>
+                                    <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
+                                           required>
+                                </div>
+
+                                <!-- Password -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-lock text-success me-1"></i>Password
+                                    </label>
+                                    <input type="password" name="password" class="form-control"
+                                           placeholder="Create a strong password" required>
+                                    <div class="password-requirements">
+                                        Must be at least 8 characters with letters & numbers
+                                    </div>
+                                </div>
+
+                                <!-- Location -->
+                                <div class="col-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-map-marker-alt text-success me-1"></i>Business Location
+                                    </label>
+                                    <select class="form-select" required>
+                                        <option value="" disabled selected>Select your business city</option>
+                                        <option value="Nairobi">Nairobi</option>
+                                        <option value="Mombasa">Mombasa</option>
+                                        <option value="Kisumu">Kisumu</option>
+                                        <option value="Nakuru">Nakuru</option>
+                                        <option value="Eldoret">Eldoret</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+
+                                <!-- Business Information -->
+                                <div class="col-12 seller-field">
+                                    <h6 class="fw-bold text-success mb-3">
+                                        <i class="fas fa-briefcase me-2"></i>Business Information
+                                    </h6>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Business Name</label>
+                                        <input
+                                                type="text"
+                                                name="business_name"
+                                                class="form-control"
+                                                placeholder="Enter your business/store name"
+                                                required
+                                        >
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Business Type</label>
+                                            <select name="business_type" class="form-select" required>
+                                                <option value="" disabled selected>Select business type</option>
+                                                <option value="individual">Individual/Sole Proprietor</option>
+                                                <option value="company">Registered Company</option>
+                                                <option value="cooperative">Cooperative</option>
+                                                <option value="partnership">Partnership</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Business Category</label>
+                                            <select name="business_category" class="form-select" required>
+                                                <option value="" disabled selected>Select category</option>
+                                                <option value="electronics">Electronics & Gadgets</option>
+                                                <option value="fashion">Fashion & Apparel</option>
+                                                <option value="home">Home & Living</option>
+                                                <option value="food">Food & Beverages</option>
+                                                <option value="automotive">Automotive</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Seller Terms -->
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="sellerTerms" required>
+                                        <label class="form-check-label" for="sellerTerms">
+                                            I agree to the <a href="#" class="fw-bold">Seller Terms & Conditions</a>,
+                                            <a href="#" class="fw-bold">Privacy Policy</a>, and confirm I have the right
+                                            to sell these products
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="col-12 mt-2">
+                                    <button type="submit" class="btn btn-submit">
+                                        <i class="fas fa-store me-2"></i>
+                                        Create Seller Account
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
+                </div>
+
+                <!-- Footer Link -->
+                <div class="auth-footer">
+                    Already have an account?
+                    <a href="#" onclick="window.location.href='login.html'">
+                        Sign in here
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <script src="/assets/js/main.js" defer></script>
 
-    <!-- JavaScript for Profile Picture Upload -->
-    <script>
-        function previewSellerProfile(event) {
-            const input = event.target;
-            const preview = document.getElementById('sellerProfilePreview');
+<!-- JavaScript for Profile Picture Upload -->
+<script>
+    function previewSellerProfile(event) {
+        const input = event.target;
+        const preview = document.getElementById('sellerProfilePreview');
 
-            if (input.files && input.files[0]) {
-                const file = input.files[0];
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
 
-                // Validate file size (max 2MB)
-                if (file.size > 2 * 1024 * 1024) {
-                    alert('File size should be less than 2MB');
-                    clearSellerProfile();
-                    return;
-                }
-
-                // Validate file type
-                const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-                if (!validTypes.includes(file.type)) {
-                    alert('Please upload a valid image file (JPG, PNG, GIF, or WEBP)');
-                    clearSellerProfile();
-                    return;
-                }
-
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    preview.src = e.target.result;
-                    preview.classList.add('border-success');
-                    preview.classList.remove('border-success-subtle');
-                }
-                reader.readAsDataURL(file);
+            // Validate file size (max 2MB)
+            if (file.size > 2 * 1024 * 1024) {
+                alert('File size should be less than 2MB');
+                clearSellerProfile();
+                return;
             }
+
+            // Validate file type
+            const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+            if (!validTypes.includes(file.type)) {
+                alert('Please upload a valid image file (JPG, PNG, GIF, or WEBP)');
+                clearSellerProfile();
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.classList.add('border-success');
+                preview.classList.remove('border-success-subtle');
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function clearSellerProfile() {
+        const input = document.getElementById('sellerProfile');
+        const preview = document.getElementById('sellerProfilePreview');
+
+        input.value = '';
+        preview.src = 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+        preview.classList.remove('border-success');
+        preview.classList.add('border-success-subtle');
+    }
+
+    // Add click event to preview image to trigger file input
+    document.addEventListener('DOMContentLoaded', function () {
+        const preview = document.getElementById('sellerProfilePreview');
+        if (preview) {
+            preview.addEventListener('click', function () {
+                document.getElementById('sellerProfile').click();
+            });
+        }
+    });
+</script>
+
+<!-- Registration API Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const API_BASE = "https://biashara-connect-backend.onrender.com";
+
+        // Helper function for displaying errors
+        function showError(form, message) {
+            let errorDiv = form.querySelector(".error-msg");
+            if (!errorDiv) {
+                errorDiv = document.createElement("div");
+                errorDiv.className = "error-msg text-danger mb-3";
+                form.prepend(errorDiv);
+            }
+            errorDiv.innerText = message;
+            errorDiv.style.display = "block";
         }
 
-        function clearSellerProfile() {
-            const input = document.getElementById('sellerProfile');
-            const preview = document.getElementById('sellerProfilePreview');
+        // ===== Buyer Registration =====
+        const buyerForm = document.getElementById("buyerForm");
+        if (buyerForm) {
+            buyerForm.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                showError(buyerForm, "");
 
-            input.value = '';
-            preview.src = 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
-            preview.classList.remove('border-success');
-            preview.classList.add('border-success-subtle');
-        }
+                const formData = {
+                    first_name: buyerForm.querySelector("input[name='first_name']").value,
+                    last_name: buyerForm.querySelector("input[name='last_name']").value,
+                    email: buyerForm.querySelector("input[name='email']").value,
+                    phone: buyerForm.querySelector("input[name='phone']").value,
+                    password: buyerForm.querySelector("input[name='password']").value,
+                    location: buyerForm.querySelector("select[name='location']").value,
+                };
 
-        // Add click event to preview image to trigger file input
-        document.addEventListener('DOMContentLoaded', function () {
-            const preview = document.getElementById('sellerProfilePreview');
-            if (preview) {
-                preview.addEventListener('click', function () {
-                    document.getElementById('sellerProfile').click();
-                });
-            }
-        });
-    </script>
-
-    <!-- Registration API Script -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const API_BASE = "https://biashara-connect-backend.onrender.com";
-
-            // Helper function for displaying errors
-            function showError(form, message) {
-                let errorDiv = form.querySelector(".error-msg");
-                if (!errorDiv) {
-                    errorDiv = document.createElement("div");
-                    errorDiv.className = "error-msg text-danger mb-3";
-                    form.prepend(errorDiv);
-                }
-                errorDiv.innerText = message;
-                errorDiv.style.display = "block";
-            }
-
-            // ===== Buyer Registration =====
-            const buyerForm = document.getElementById("buyerForm");
-            if (buyerForm) {
-                buyerForm.addEventListener("submit", async (e) => {
-                    e.preventDefault();
-                    showError(buyerForm, "");
-
-                    const formData = {
-                        first_name: buyerForm.querySelector("input[name='first_name']").value,
-                        last_name: buyerForm.querySelector("input[name='last_name']").value,
-                        email: buyerForm.querySelector("input[name='email']").value,
-                        phone: buyerForm.querySelector("input[name='phone']").value,
-                        password: buyerForm.querySelector("input[name='password']").value,
-                        location: buyerForm.querySelector("select[name='location']").value,
-                    };
-
-                    try {
-                        const res = await fetch(`${API_BASE}/api/auth/register/buyer/`, {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify(formData),
-                        });
-
-                        const text = await res.text();
-                        console.log("Buyer raw response:", text);
-
-                        let data;
-                        try { data = JSON.parse(text); } catch { data = { error: text }; }
-
-                        if (res.ok) {
-                            alert(data.message || "Buyer registered successfully!");
-                            buyerForm.reset();
-                        } else {
-                            showError(buyerForm, data.error || JSON.stringify(data));
-                        }
-                    } catch (err) {
-                        console.error(err);
-                        showError(buyerForm, "Network error. See console for details.");
-                    }
-                });
-            } else {
-                console.error("buyerForm not found in DOM!");
-            }
-
-            // ===== Seller Registration =====
-            const sellerForm = document.getElementById("sellerForm");
-            if (sellerForm) {
-                sellerForm.addEventListener("submit", async (e) => {
-                    e.preventDefault();
-                    showError(sellerForm, "");
-
-                    const formData = new FormData();
-                    const fields = ["first_name", "last_name", "email", "phone", "password"];
-                    fields.forEach(f => {
-                        const input = sellerForm.querySelector(`[name='${f}']`);
-                        if (input) formData.append(f, input.value);
+                try {
+                    const res = await fetch(`${API_BASE}/api/auth/register/buyer/`, {
+                        method: "POST",
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify(formData),
                     });
 
-                    const locationSelect = sellerForm.querySelector("select[name='location']");
-                    if (locationSelect) formData.append("location", locationSelect.value);
+                    const text = await res.text();
+                    console.log("Buyer raw response:", text);
 
-                    // Profile picture
-                    const profileInput = document.getElementById("sellerProfile");
-                    if (profileInput && profileInput.files.length > 0) {
-                        formData.append("profile_picture", profileInput.files[0]);
-                    }
-
+                    let data;
                     try {
-                        const res = await fetch(`${API_BASE}/api/auth/register/seller/`, {
-                            method: "POST",
-                            body: formData,
-                        });
-
-                        const text = await res.text();
-                        console.log("Seller raw response:", text);
-
-                        let data;
-                        try { data = JSON.parse(text); } catch { data = { error: text }; }
-
-                        if (res.ok) {
-                            alert(data.message || "Seller registered successfully!");
-                            sellerForm.reset();
-                            if (profileInput) profileInput.value = "";
-                        } else {
-                            showError(sellerForm, data.error || JSON.stringify(data));
-                        }
-                    } catch (err) {
-                        console.error(err);
-                        showError(sellerForm, "Network error. See console for details.");
+                        data = JSON.parse(text);
+                    } catch {
+                        data = {error: text};
                     }
+
+                    if (res.ok) {
+                        alert(data.message || "Buyer registered successfully!");
+                        buyerForm.reset();
+                    } else {
+                        showError(buyerForm, data.error || JSON.stringify(data));
+                    }
+                } catch (err) {
+                    console.error(err);
+                    showError(buyerForm, "Network error. See console for details.");
+                }
+            });
+        } else {
+            console.error("buyerForm not found in DOM!");
+        }
+
+        // ===== Seller Registration =====
+        const sellerForm = document.getElementById("sellerForm");
+        if (sellerForm) {
+            sellerForm.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                showError(sellerForm, "");
+
+                const formData = new FormData();
+                const fields = ["first_name", "last_name", "email", "phone", "password"];
+                fields.forEach(f => {
+                    const input = sellerForm.querySelector(`[name='${f}']`);
+                    if (input) formData.append(f, input.value);
                 });
-            } else {
-                console.error("sellerForm not found in DOM!");
-            }
-        });
-    </script>
+
+                const locationSelect = sellerForm.querySelector("select[name='location']");
+                if (locationSelect) formData.append("location", locationSelect.value);
+
+                // Profile picture
+                const profileInput = document.getElementById("sellerProfile");
+                if (profileInput && profileInput.files.length > 0) {
+                    formData.append("profile_picture", profileInput.files[0]);
+                }
+
+                try {
+                    const res = await fetch(`${API_BASE}/api/auth/register/seller/`, {
+                        method: "POST",
+                        body: formData,
+                    });
+
+                    const text = await res.text();
+                    console.log("Seller raw response:", text);
+
+                    let data;
+                    try {
+                        data = JSON.parse(text);
+                    } catch {
+                        data = {error: text};
+                    }
+
+                    if (res.ok) {
+                        alert(data.message || "Seller registered successfully!");
+                        sellerForm.reset();
+                        if (profileInput) profileInput.value = "";
+                    } else {
+                        showError(sellerForm, data.error || JSON.stringify(data));
+                    }
+                } catch (err) {
+                    console.error(err);
+                    showError(sellerForm, "Network error. See console for details.");
+                }
+            });
+        } else {
+            console.error("sellerForm not found in DOM!");
+        }
+    });
+</script>
 </body>
 </html>
