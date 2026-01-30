@@ -952,111 +952,118 @@
 <script src="../assets/js/main.js" defer></script>
 
 <script>
-const API_BASE = "https://biashara-connect-backend.onrender.com";
+document.addEventListener("DOMContentLoaded", () => {
+    const API_BASE = "https://biashara-connect-backend.onrender.com";
 
-// ===== Helper function to display error messages inside modal =====
-function showError(form, message) {
-    let errorDiv = form.querySelector(".error-msg");
-    if (!errorDiv) {
-        errorDiv = document.createElement("div");
-        errorDiv.className = "error-msg text-danger mb-3";
-        form.prepend(errorDiv);
-    }
-    errorDiv.innerText = message;
-    errorDiv.style.display = "block";
-}
-
-// ===== Buyer Registration =====
-const buyerForm = document.getElementById("buyerForm");
-
-buyerForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    showError(buyerForm, ""); // clear previous
-
-    // Collect form data safely
-    const formData = {
-        first_name: buyerForm.querySelector("input[name='first_name']").value,
-        last_name: buyerForm.querySelector("input[name='last_name']").value,
-        email: buyerForm.querySelector("input[name='email']").value,
-        phone: buyerForm.querySelector("input[name='phone']").value,
-        password: buyerForm.querySelector("input[name='password']").value,
-        location: buyerForm.querySelector("select[name='location']").value,
-    };
-
-    try {
-        const res = await fetch(`${API_BASE}/api/auth/register/buyer/`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-        });
-
-        const text = await res.text();
-        console.log("Buyer raw response:", text);
-
-        let data;
-        try { data = JSON.parse(text); } catch { data = { error: text }; }
-
-        if (res.ok) {
-            alert(data.message || "Buyer registered successfully!");
-            buyerForm.reset();
-        } else {
-            showError(buyerForm, data.error || JSON.stringify(data));
+    // Helper function for displaying errors
+    function showError(form, message) {
+        let errorDiv = form.querySelector(".error-msg");
+        if (!errorDiv) {
+            errorDiv = document.createElement("div");
+            errorDiv.className = "error-msg text-danger mb-3";
+            form.prepend(errorDiv);
         }
-    } catch (err) {
-        console.error(err);
-        showError(buyerForm, "Network error. See console for details.");
-    }
-});
-
-// ===== Seller Registration =====
-const sellerForm = document.getElementById("sellerForm");
-
-sellerForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    showError(sellerForm, ""); // clear previous
-
-    // FormData for file upload
-    const formData = new FormData();
-    const fields = ["first_name", "last_name", "email", "phone", "password"];
-    fields.forEach(f => {
-        const input = sellerForm.querySelector(`[name='${f}']`);
-        if (input) formData.append(f, input.value);
-    });
-
-    const locationSelect = sellerForm.querySelector("select[name='location']");
-    if (locationSelect) formData.append("location", locationSelect.value);
-
-    // Profile picture
-    const profileInput = document.getElementById("sellerProfile");
-    if (profileInput && profileInput.files.length > 0) {
-        formData.append("profile_picture", profileInput.files[0]);
+        errorDiv.innerText = message;
+        errorDiv.style.display = "block";
     }
 
-    try {
-        const res = await fetch(`${API_BASE}/api/auth/register/seller/`, {
-            method: "POST",
-            body: formData, // multipart/form-data
+    // ===== Buyer Registration =====
+    const buyerForm = document.getElementById("buyerForm");
+    if (buyerForm) {
+        buyerForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            showError(buyerForm, "");
+
+            const formData = {
+                first_name: buyerForm.querySelector("input[name='first_name']").value,
+                last_name: buyerForm.querySelector("input[name='last_name']").value,
+                email: buyerForm.querySelector("input[name='email']").value,
+                phone: buyerForm.querySelector("input[name='phone']").value,
+                password: buyerForm.querySelector("input[name='password']").value,
+                location: buyerForm.querySelector("select[name='location']").value,
+            };
+
+            try {
+                const res = await fetch(`${API_BASE}/api/auth/register/buyer/`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData),
+                });
+
+                const text = await res.text();
+                console.log("Buyer raw response:", text);
+
+                let data;
+                try { data = JSON.parse(text); } catch { data = { error: text }; }
+
+                if (res.ok) {
+                    alert(data.message || "Buyer registered successfully!");
+                    buyerForm.reset();
+                } else {
+                    showError(buyerForm, data.error || JSON.stringify(data));
+                }
+            } catch (err) {
+                console.error(err);
+                showError(buyerForm, "Network error. See console for details.");
+            }
         });
+    } else {
+        console.error("buyerForm not found in DOM!");
+    }
 
-        const text = await res.text();
-        console.log("Seller raw response:", text);
+    // ===== Seller Registration =====
+    const sellerForm = document.getElementById("sellerForm");
+    if (sellerForm) {
+        sellerForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            showError(sellerForm, "");
 
-        let data;
-        try { data = JSON.parse(text); } catch { data = { error: text }; }
+            const formData = new FormData();
+            const fields = ["first_name", "last_name", "email", "phone", "password"];
+            fields.forEach(f => {
+                const input = sellerForm.querySelector(`[name='${f}']`);
+                if (input) formData.append(f, input.value);
+            });
 
-        if (res.ok) {
-            alert(data.message || "Seller registered successfully!");
-            sellerForm.reset();
-            if (profileInput) profileInput.value = "";
-        } else {
-            showError(sellerForm, data.error || JSON.stringify(data));
-        }
-    } catch (err) {
-        console.error(err);
-        showError(sellerForm, "Network error. See console for details.");
+            const locationSelect = sellerForm.querySelector("select[name='location']");
+            if (locationSelect) formData.append("location", locationSelect.value);
+
+            // Profile picture
+            const profileInput = document.getElementById("sellerProfile");
+            if (profileInput && profileInput.files.length > 0) {
+                formData.append("profile_picture", profileInput.files[0]);
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/api/auth/register/seller/`, {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const text = await res.text();
+                console.log("Seller raw response:", text);
+
+                let data;
+                try { data = JSON.parse(text); } catch { data = { error: text }; }
+
+                if (res.ok) {
+                    alert(data.message || "Seller registered successfully!");
+                    sellerForm.reset();
+                    if (profileInput) profileInput.value = "";
+                } else {
+                    showError(sellerForm, data.error || JSON.stringify(data));
+                }
+            } catch (err) {
+                console.error(err);
+                showError(sellerForm, "Network error. See console for details.");
+            }
+        });
+    } else {
+        console.error("sellerForm not found in DOM!");
     }
 });
 </script>
+
 
 
 
