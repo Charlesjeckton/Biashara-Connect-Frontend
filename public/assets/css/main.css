@@ -2813,7 +2813,7 @@ body {
 .my-listings-hero {
     background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
     color: white;
-    padding: 4rem 0;
+    padding: 1.5rem 0;
     border-radius: 0 0 20px 20px;
     position: relative;
     overflow: hidden;
@@ -2894,6 +2894,7 @@ body {
     background: white;
     border-radius: 20px;
     box-shadow: var(--card-shadow);
+    padding: 2.5rem;
     border: 1px solid var(--border-color);
     position: relative;
     z-index: 10;
@@ -2967,6 +2968,7 @@ body {
     background: white;
     border-radius: 20px;
     box-shadow: var(--card-shadow);
+    padding: 2.5rem;
     border: 1px solid var(--border-color);
 }
 
