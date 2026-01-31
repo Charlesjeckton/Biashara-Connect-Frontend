@@ -2894,7 +2894,6 @@ body {
     background: white;
     border-radius: 20px;
     box-shadow: var(--card-shadow);
-    padding: 2.5rem;
     border: 1px solid var(--border-color);
     position: relative;
     z-index: 10;
@@ -2968,7 +2967,6 @@ body {
     background: white;
     border-radius: 20px;
     box-shadow: var(--card-shadow);
-    padding: 2.5rem;
     border: 1px solid var(--border-color);
 }
 
