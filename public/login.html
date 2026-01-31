@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Biashara Connect</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Styles -->
+    <style>
+        /* Profile Image Styles */
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 4px solid var(--primary-green);
+            box-shadow: 0 4px 15px rgba(26, 127, 95, 0.2);
+        }
+
+        .modal-lg {
+            max-width: 800px;
+        }
+
+        .form-check {
+            margin-bottom: 8px;
+        }
+
+        /* Registration Modal Specific Styles */
+        .auth-modal .modal-content {
+            border-radius: 16px;
+            border: none;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            background: white;
+        }
+
+        .auth-modal .modal-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 1.5rem 2rem 1rem;
+            background: linear-gradient(to bottom, rgba(26, 127, 95, 0.03), transparent);
+        }
+
+        .auth-modal .modal-title {
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.4rem;
+        }
+
+        .auth-modal .modal-body {
+            padding: 0 2rem 2rem;
+        }
+
+        /* Input Group Text */
+        .auth-modal .input-group-text {
+            background: #f8f9fa;
+            border-radius: 10px 0 0 10px;
+            border: 2px solid var(--light-gray);
+            border-right: none;
+        }
+
+        /* Tabs Styling - Fixed */
+        .auth-modal .nav-tabs {
+            border: none;
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 4px;
+            position: relative;
+        }
+
+        .auth-modal .nav-tabs .nav-link {
+            border: none;
+            border-radius: 10px;
+            padding: 0.9rem 1.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .auth-modal .nav-tabs .nav-link.active {
+            color: var(--light-green);
+            box-shadow: 0 4px 15px rgba(26, 127, 95, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .auth-modal .nav-tabs .nav-link:not(.active) {
+            background: transparent;
+            color: var(--text-dark);
+        }
+
+        .auth-modal .nav-tabs .nav-link:not(.active):hover {
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--dark-green);
+        }
+
+        /* Form Styling - Dots Removed */
+        .auth-modal .form-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .auth-modal .form-control,
+        .auth-modal .form-select {
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .auth-modal .form-control:focus,
+        .auth-modal .form-select:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(26, 127, 95, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .auth-modal .form-control::placeholder {
+            color: var(--text-light);
+            opacity: 0.6;
+        }
+
+        /* Password Requirements */
+        .password-requirements {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        .password-requirements.valid {
+            color: var(--primary-green);
+            font-weight: 500;
+        }
+
+        /* Terms Checkbox */
+        .auth-modal .form-check {
+            margin: 1.5rem 0;
+        }
+
+        .auth-modal .form-check-input {
+            width: 1.1em;
+            height: 1.1em;
+            margin-top: 0.2em;
+            border: 2px solid var(--light-gray);
+        }
+
+        .auth-modal .form-check-input:checked {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+        }
+
+        .auth-modal .form-check-label {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .auth-modal .form-check-label a {
+            color: var(--primary-green);
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .auth-modal .form-check-label a:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -1px;
+            left: 0;
+            background: var(--primary-green);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .auth-modal .form-check-label a:hover:after {
+            transform: scaleX(1);
+        }
+
+        /* Submit Button */
+        .auth-modal .btn-submit {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            width: 100%;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(26, 127, 95, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-modal .btn-submit:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .auth-modal .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(26, 127, 95, 0.4);
+        }
+
+        .auth-modal .btn-submit:hover:before {
+            left: 100%;
+        }
+
+        .auth-modal .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        /* Form Text */
+        .auth-modal .form-text {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        /* Footer Link */
+        .auth-footer {
+            font-size: 0.95rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--light-gray);
+            color: var(--text-light);
+        }
+
+        .auth-footer a {
+            color: var(--primary-green);
+            font-weight: 700;
+            text-decoration: none;
+            margin-left: 5px;
+            position: relative;
+        }
+
+        .auth-footer a:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: var(--primary-green);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: none;
+        }
+
+        .auth-footer a:hover:after {
+            transform: scaleX(1);
+        }
+
+        /* Seller Specific Fields */
+        .seller-field {
+            background: rgba(212, 237, 218, 0.15);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        /* Profile Upload Styles */
+        .profile-upload-container {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 2px dashed var(--border-color);
+        }
+
+        .profile-preview {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .profile-preview:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(26, 127, 95, 0.2);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .auth-modal .modal-lg {
+                max-width: 95%;
+                margin: 1rem auto;
+            }
+
+            .auth-modal .modal-body {
+                padding: 0 1rem 1.5rem;
+            }
+
+            .auth-modal .nav-tabs .nav-link {
+                padding: 0.7rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .auth-modal .modal-header {
+                padding: 1rem 1.5rem 0.5rem;
+            }
+
+            .auth-modal .modal-title {
+                font-size: 1.2rem;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .seller-field {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            .auth-modal .form-control,
+            .auth-modal .form-select {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .auth-modal .btn-submit {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .auth-modal .nav-tabs .nav-link {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .auth-modal .modal-header {
+                padding: 1rem 1rem 0.5rem;
+            }
+
+            .auth-modal .modal-body {
+                padding: 0 1rem 1rem;
+            }
+        }
+
+        /* Icon Circle for Header */
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        /* CSS Variables */
+        :root {
+            --primary-green: #1a7f5f;
+            --secondary-green: #2ecc71;
+            --light-green: #28a745;
+            --dark-green: #0a5c36;
+            --light-gray: #e9ecef;
+            --border-color: #dee2e6;
+            --text-dark: #333;
+            --text-light: #6c757d;
+        }
+
+        /* Make modal visible on page load */
+        .modal.show {
+            display: block;
+            background: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Role Selection Modal -->
+    <div class="modal fade auth-modal show" id="roleModal" tabindex="-1" aria-hidden="false" style="display: block;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+
+                <!-- Header -->
+                <div class="modal-header border-0 pb-0">
+                    <div>
+                        <h5 class="modal-title fw-bold text-success mb-1">
+                            Welcome Back 👋
+                        </h5>
+                        <p class="text-muted small mb-0">
+                            Select your account type to continue
+                        </p>
+                    </div>
+                    <button type="button" class="btn-close" onclick="window.history.back()"></button>
+                </div>
+
+                <!-- Body -->
+                <div class="modal-body px-4 pt-3 pb-4">
+
+                    <!-- Role Selection Cards -->
+                    <div class="row g-3 mb-4">
+                        <!-- Buyer Card -->
+                        <div class="col-md-6">
+                            <div class="card h-100 border-2 hover-shadow text-center"
+                                 style="border-color: var(--light-gray); cursor: pointer;"
+                                 onclick="selectRole('buyer')"
+                                 id="buyerCard">
+                                <div class="card-body py-4">
+                                    <div class="icon-circle bg-success bg-opacity-10 p-3 rounded-circle mx-auto mb-3">
+                                        <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                                    </div>
+                                    <h5 class="card-title fw-bold">Buyer Login</h5>
+                                    <p class="card-text text-muted small">
+                                        Login to browse and purchase products
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Seller Card -->
+                        <div class="col-md-6">
+                            <div class="card h-100 border-2 hover-shadow text-center"
+                                 style="border-color: var(--light-gray); cursor: pointer;"
+                                 onclick="selectRole('seller')"
+                                 id="sellerCard">
+                                <div class="card-body py-4">
+                                    <div class="icon-circle bg-success bg-opacity-10 p-3 rounded-circle mx-auto mb-3">
+                                        <i class="fas fa-store fa-2x text-success"></i>
+                                    </div>
+                                    <h5 class="card-title fw-bold">Seller Login</h5>
+                                    <p class="card-text text-muted small">
+                                        Login to manage your store and products
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Selected Role Form -->
+                    <form id="loginForm" novalidate style="display: none;">
+                        <!-- Role Indicator -->
+                        <div class="alert alert-success d-flex align-items-center mb-3" id="roleIndicator">
+                            <i class="fas fa-user-tag me-2"></i>
+                            <span id="selectedRoleText">Logging in as Buyer</span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold small">Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="fas fa-envelope text-muted"></i>
+                                </span>
+                                <input type="email" name="email" class="form-control border-start-0" placeholder="you@example.com"
+                                       required>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold small">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="fas fa-lock text-muted"></i>
+                                </span>
+                                <input type="password" name="password" class="form-control border-start-0" placeholder="Enter your password"
+                                       required>
+                            </div>
+                        </div>
+
+                        <!-- Remember / Forgot -->
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label small" for="rememberMe">
+                                    Remember me
+                                </label>
+                            </div>
+                            <a href="#" class="small text-success fw-semibold text-decoration-none">
+                                Forgot password?
+                            </a>
+                        </div>
+
+                        <!-- Button -->
+                        <button type="submit" class="btn btn-success w-100 py-2 fw-semibold">
+                            <span id="loginBtnText">Login as Buyer</span>
+                            <i class="fas fa-arrow-right ms-1"></i>
+                        </button>
+
+                        <!-- Back to Role Selection -->
+                        <div class="text-center mt-3">
+                            <button type="button" class="btn btn-link text-decoration-none" onclick="backToRoleSelection()">
+                                <i class="fas fa-arrow-left me-1"></i> Back to account selection
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Footer Link -->
+                    <div class="text-center mt-4 small" id="registerFooter">
+                        Don't have an account?
+                        <a href="register.html" class="fw-semibold text-success text-decoration-none">
+                            Create one
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Login Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const API_BASE = "https://biashara-connect-backend.onrender.com";
+            let selectedRole = null;
+
+            // Role selection function
+            window.selectRole = function(role) {
+                selectedRole = role;
+
+                // Update UI
+                document.getElementById('buyerCard').style.borderColor =
+                    (role === 'buyer') ? 'var(--primary-green)' : 'var(--light-gray)';
+                document.getElementById('sellerCard').style.borderColor =
+                    (role === 'seller') ? 'var(--primary-green)' : 'var(--light-gray)';
+
+                // Update form
+                document.getElementById('selectedRoleText').textContent =
+                    `Logging in as ${role.charAt(0).toUpperCase() + role.slice(1)}`;
+                document.getElementById('loginBtnText').textContent =
+                    `Login as ${role.charAt(0).toUpperCase() + role.slice(1)}`;
+
+                // Show form, hide role selection
+                document.getElementById('loginForm').style.display = 'block';
+                document.getElementById('roleIndicator').style.display = 'flex';
+                document.querySelector('.row.g-3.mb-4').style.display = 'none';
+                document.getElementById('registerFooter').style.display = 'none';
+            };
+
+            // Back to role selection
+            window.backToRoleSelection = function() {
+                selectedRole = null;
+
+                // Reset UI
+                document.getElementById('buyerCard').style.borderColor = 'var(--light-gray)';
+                document.getElementById('sellerCard').style.borderColor = 'var(--light-gray)';
+
+                // Show role selection, hide form
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('roleIndicator').style.display = 'none';
+                document.querySelector('.row.g-3.mb-4').style.display = 'flex';
+                document.getElementById('registerFooter').style.display = 'block';
+            };
+
+            // Login form submission
+            const loginForm = document.getElementById("loginForm");
+
+            if (loginForm) {
+                loginForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+
+                    // Remove old errors
+                    let errorDiv = loginForm.querySelector(".error-msg");
+                    if (errorDiv) errorDiv.remove();
+
+                    if (!selectedRole) {
+                        showLoginError("Please select an account type.");
+                        return;
+                    }
+
+                    const email = loginForm.querySelector("input[name='email']").value.trim();
+                    const password = loginForm.querySelector("input[name='password']").value;
+
+                    if (!email || !password) {
+                        showLoginError("Email and password are required.");
+                        return;
+                    }
+
+                    try {
+                        const res = await fetch(`${API_BASE}/api/auth/login/`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                email,
+                                password,
+                                user_type: selectedRole
+                            }),
+                        });
+
+                        const text = await res.text();
+                        console.log("Login raw response:", text);
+
+                        let data;
+                        try {
+                            data = JSON.parse(text);
+                        } catch {
+                            data = { error: text };
+                        }
+
+                        if (!res.ok) {
+                            showLoginError(data.error || "Invalid login credentials.");
+                            return;
+                        }
+
+                        // Save tokens and user info
+                        if (data.access) localStorage.setItem("access_token", data.access);
+                        if (data.refresh) localStorage.setItem("refresh_token", data.refresh);
+                        if (data.user_type) localStorage.setItem("user_type", data.user_type);
+                        if (data.user_id) localStorage.setItem("user_id", data.user_id);
+                        if (data.first_name) localStorage.setItem("first_name", data.first_name);
+
+                        // Redirect based on role
+                        if (selectedRole === "seller") {
+                            window.location.href = "seller/dashboard.html";
+                        } else {
+                            window.location.href = "buyer/dashboard.html";
+                        }
+
+                    } catch (err) {
+                        console.error(err);
+                        showLoginError("Network error. Please try again.");
+                    }
+                });
+            }
+
+            function showLoginError(message) {
+                const div = document.createElement("div");
+                div.className = "error-msg text-danger mb-3 alert alert-danger py-2";
+                div.innerText = message;
+                loginForm.querySelector('.alert-success').after(div);
+            }
+
+            // Style for hover effect
+            const cards = document.querySelectorAll('.card.hover-shadow');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    if (!this.style.borderColor.includes('var(--primary-green)')) {
+                        this.style.boxShadow = '0 5px 15px rgba(26, 127, 95, 0.1)';
+                    }
+                });
+                card.addEventListener('mouseleave', function() {
+                    if (!this.style.borderColor.includes('var(--primary-green)')) {
+                        this.style.boxShadow = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
