@@ -1144,3 +1144,82 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const API_BASE = "https://biashara-connect-backend.onrender.com";
+
+    // ===== Login =====
+    const loginForm = document.getElementById("loginForm");
+
+    if (!loginForm) {
+        console.error("loginForm not found!");
+        return;
+    }
+
+    loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Remove old errors
+        let errorDiv = loginForm.querySelector(".error-msg");
+        if (errorDiv) errorDiv.remove();
+
+        const email = loginForm.querySelector("input[name='email']").value.trim();
+        const password = loginForm.querySelector("input[name='password']").value;
+
+        if (!email || !password) {
+            showLoginError("Email and password are required.");
+            return;
+        }
+
+        try {
+            const res = await fetch(`${API_BASE}/api/auth/login/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const text = await res.text();
+            console.log("Login raw response:", text);
+
+            let data;
+            try { data = JSON.parse(text); }
+            catch { data = { error: text }; }
+
+            if (!res.ok) {
+                showLoginError(data.error || "Invalid login credentials.");
+                return;
+            }
+
+            // ✅ Save tokens
+            if (data.access) localStorage.setItem("access_token", data.access);
+            if (data.refresh) localStorage.setItem("refresh_token", data.refresh);
+            if (data.user_type) localStorage.setItem("user_type", data.user_type);
+
+            // ✅ Close modal
+            bootstrap.Modal.getInstance(
+                document.getElementById("loginModal")
+            ).hide();
+
+            // ✅ Redirect based on role
+            if (data.user_type === "seller") {
+                window.location.href = "/seller/dashboard.html";
+            } else {
+                window.location.href = "/buyer/dashboard.html";
+            }
+
+        } catch (err) {
+            console.error(err);
+            showLoginError("Network error. Please try again.");
+        }
+    });
+
+    function showLoginError(message) {
+        const div = document.createElement("div");
+        div.className = "error-msg text-danger mb-3";
+        div.innerText = message;
+        loginForm.prepend(div);
+    }
+});
+</script>
