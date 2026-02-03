@@ -1,264 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biashara Connect | Marketplace</title>
 
-     <!-- Favicons -->
+    <!-- Favicons -->
     <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
     <!-- Vendor CSS -->
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap"
-          rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- Main CSS -->
     <link href="/assets/css/main.css" rel="stylesheet">
 </head>
+
 <body>
 
-<section id="header" class="header section">
-    <header class="main-header">
-        <div class="container py-3">
+    <section id="header" class="header section">
+        <header id="header" class="header">
+            <div class="container">
 
-            <div class="row align-items-center justify-content-between g-3">
+                <!-- TOP BAR: Logo + Mobile Toggle -->
+                <div class="d-flex align-items-center justify-content-between py-3">
 
-                <div class="col-lg-3 col-md-4 col-10 col-sm-8 logo-section d-flex align-items-center">
-                    <button class="mobile-menu-btn me-2 me-sm-3 d-lg-none" aria-label="Toggle Navigation">
-                        <i class="fas fa-bars"></i>
-                    </button>
+                    <!-- Logo Section -->
+                    <div class="logo-section d-flex align-items-center">
+                        <button class="mobile-menu-btn d-lg-none me-3" aria-label="Toggle Navigation">
+                            <i class="fas fa-bars"></i>
+                        </button>
 
-                    <a href="/index.html" class="logo d-flex align-items-center text-nowrap">
-                        <i class="fas fa-handshake logo-icon"></i>
-                        <div class="logo-text-wrapper">
-                            <div class="logo-text">BiasharaConnect</div>
-                            <div class="logo-tagline d-none d-sm-block">Kenya's Marketplace</div>
-                        </div>
-                    </a>
-                </div>
+                        <a href="/index.html" class="logo d-flex align-items-center text-decoration-none">
+                            <i class="fas fa-handshake logo-icon me-2"></i>
 
-                
-            </div>
-            <div class="row mt-3">
-                <div class="col-12">
-                    <nav aria-label="Main Navigation">
-                        <ul class="nav-menu d-flex justify-content-center" id="mainMenu">
-
-                            <li class="nav-item">
-                                <a href="/index.html" class="nav-link active">
-                                    <i class="fas fa-store me-2"></i> Marketplace
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/sell.html" class="nav-link">
-                                    <i class="fas fa-hand-holding-dollar me-2"></i> Sell & Earn
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/favorites.html" class="nav-link">
-                                    <i class="fas fa-bookmark me-2"></i> Favorites
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/my-listings.html" class="nav-link">
-                                    <i class="fas fa-list-alt me-2"></i> My Listings
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/support.html" class="nav-link">
-                                    <i class="fas fa-envelope me-2"></i> Contact Us
-                                </a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                    <i class="fas fa-user-circle me-2"></i> My Account
-                                </a>
-
-                                <div class="dropdown-menu">
-
-                                    <!-- Profile Modal Trigger -->
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                       data-bs-target="#SellerModal" >
-                                        <i class="fas fa-user me-2"></i> Seller Profile
-                                    </a>
-
-                                    <!-- Profile Modal Trigger -->
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                       data-bs-target="#BuyerModal">
-                                        <i class="fas fa-user me-2"></i> Buyer Profile
-                                    </a>
-
-                                    <a class="dropdown-item d-flex justify-content-between align-items-center" href="/messages.html">
-                                        <span><i class="fas fa-envelope me-2"></i> Messages</span>
-                                        <span class="badge bg-danger">5</span>
-                                    </a>
-
-                                    <div class="dropdown-divider"></div>
-
-                                    <!-- Register Modal Trigger -->
-                                    <a class="dropdown-item" href="register.html">
-                                        <i class="fas fa-user-plus me-2"></i> Register
-                                    </a>
-
-                                    <!-- Login Modal Trigger -->
-                                    <a class="dropdown-item" href="login.html">
-                                        <i class="fas fa-sign-in-alt me-2"></i> Login
-                                    </a>
-
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-sign-out-alt me-2"></i> Logout
-                                    </a>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div id="modals-placeholder"></div>
-
-</section>
-
-<main>
-    <section id="filters" class="filters section py-4">
-        <div class="container container-main">
-            <div class="filters-section">
-                <div class="row g-3">
-                    <div class="col-md-3">
-                        <div class="filter-group">
-                            <label class="filter-label">Category</label>
-                            <select class="filter-select" id="categoryFilter">
-                                <option value="">All Categories</option>
-                                <option value="electronics">Electronics</option>
-                                <option value="fashion">Fashion</option>
-                                <option value="home">Home & Garden</option>
-                                <option value="vehicles">Vehicles</option>
-                                <option value="services">Services</option>
-                                <option value="agriculture">Agriculture</option>
-                            </select>
-                        </div>
+                            <div>
+                                <div class="logo-text fw-bold">BiasharaConnect</div>
+                                <small class="logo-tagline text-muted d-none d-sm-block">
+                                    Kenya's Marketplace
+                                </small>
+                            </div>
+                        </a>
                     </div>
-                    <div class="col-md-3">
-                        <div class="filter-group">
-                            <label class="filter-label">Condition</label>
-                            <select class="filter-select" id="conditionFilter">
-                                <option value="">All Conditions</option>
-                                <option value="new">Brand New</option>
-                                <option value="used">Second Hand</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="filter-group">
-                            <label class="filter-label">Location</label>
-                            <select class="filter-select" id="locationFilter">
-                                <option value="">All Kenya</option>
-                                <option value="nairobi">Nairobi</option>
-                                <option value="mombasa">Mombasa</option>
-                                <option value="kisumu">Kisumu</option>
-                                <option value="nakuru">Nakuru</option>
-                                <option value="eldoret">Eldoret</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="filter-group">
-                            <label class="filter-label">Price Range</label>
-                            <div class="d-flex gap-2">
-                                <input type="number" class="filter-input" placeholder="Min" id="priceMin">
-                                <input type="number" class="filter-input" placeholder="Max" id="priceMax">
+
+                    <!-- Account (Desktop) -->
+                    <div class="d-none d-lg-block">
+                        <div class="dropdown">
+                            <a href="#" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-circle me-2"></i> My Account
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#SellerModal">
+                                    <i class="fas fa-user me-2"></i> Seller Profile
+                                </a>
+
+                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BuyerModal">
+                                    <i class="fas fa-user me-2"></i> Buyer Profile
+                                </a>
+
+                                <a class="dropdown-item d-flex justify-content-between" href="/messages.html">
+                                    <span><i class="fas fa-envelope me-2"></i> Messages</span>
+                                    <span class="badge bg-danger">5</span>
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+
+                                <a class="dropdown-item" href="register.html">
+                                    <i class="fas fa-user-plus me-2"></i> Register
+                                </a>
+
+                                <a class="dropdown-item" href="login.html">
+                                    <i class="fas fa-sign-in-alt me-2"></i> Login
+                                </a>
+
+                                <a class="dropdown-item text-danger" href="#">
+                                    <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-2">
-                                <button class="filter-btn" id="applyFilters">
-                                    <i class="fas fa-filter me-2"></i>Apply Filters
-                                </button>
-                                <button class="filter-btn" id="resetFilters" style="background: var(--text-light);">
-                                    <i class="fas fa-redo me-2"></i>Reset
-                                </button>
-                            </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <span id="resultsCount">Showing 6 of 6 results</span>
-                                <select class="filter-select" id="sortFilter" style="width: auto;">
-                                    <option value="newest">Newest First</option>
-                                    <option value="price-low">Price: Low to High</option>
-                                    <option value="price-high">Price: High to Low</option>
+
+                </div>
+
+                <!-- NAVIGATION BAR -->
+                <nav class="main-nav border-top pt-2" aria-label="Main Navigation">
+                    <ul class="nav justify-content-center" id="mainMenu">
+
+                        <li class="nav-item">
+                            <a href="/index.html" class="nav-link active">
+                                <i class="fas fa-store me-2"></i> Marketplace
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/sell.html" class="nav-link">
+                                <i class="fas fa-hand-holding-dollar me-2"></i> Sell & Earn
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/favorites.html" class="nav-link">
+                                <i class="fas fa-bookmark me-2"></i> Favorites
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/my-listings.html" class="nav-link">
+                                <i class="fas fa-list-alt me-2"></i> My Listings
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/support.html" class="nav-link">
+                                <i class="fas fa-envelope me-2"></i> Contact Us
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </div>
+        </header>
+
+        <div id="modals-placeholder"></div>
+
+
+    </section>
+
+    <main>
+        <section id="filters" class="filters section py-4">
+            <div class="container container-main">
+                <div class="filters-section">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <div class="filter-group">
+                                <label class="filter-label">Category</label>
+                                <select class="filter-select" id="categoryFilter">
+                                    <option value="">All Categories</option>
+                                    <option value="electronics">Electronics</option>
+                                    <option value="fashion">Fashion</option>
+                                    <option value="home">Home & Garden</option>
+                                    <option value="vehicles">Vehicles</option>
+                                    <option value="services">Services</option>
+                                    <option value="agriculture">Agriculture</option>
                                 </select>
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="filter-group">
+                                <label class="filter-label">Condition</label>
+                                <select class="filter-select" id="conditionFilter">
+                                    <option value="">All Conditions</option>
+                                    <option value="new">Brand New</option>
+                                    <option value="used">Second Hand</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="filter-group">
+                                <label class="filter-label">Location</label>
+                                <select class="filter-select" id="locationFilter">
+                                    <option value="">All Kenya</option>
+                                    <option value="nairobi">Nairobi</option>
+                                    <option value="mombasa">Mombasa</option>
+                                    <option value="kisumu">Kisumu</option>
+                                    <option value="nakuru">Nakuru</option>
+                                    <option value="eldoret">Eldoret</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="filter-group">
+                                <label class="filter-label">Price Range</label>
+                                <div class="d-flex gap-2">
+                                    <input type="number" class="filter-input" placeholder="Min" id="priceMin">
+                                    <input type="number" class="filter-input" placeholder="Max" id="priceMax">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex gap-2">
+                                    <button class="filter-btn" id="applyFilters">
+                                        <i class="fas fa-filter me-2"></i>Apply Filters
+                                    </button>
+                                    <button class="filter-btn" id="resetFilters" style="background: var(--text-light);">
+                                        <i class="fas fa-redo me-2"></i>Reset
+                                    </button>
+                                </div>
+                                <div class="d-flex align-items-center gap-3">
+                                    <span id="resultsCount">Showing 6 of 6 results</span>
+                                    <select class="filter-select" id="sortFilter" style="width: auto;">
+                                        <option value="newest">Newest First</option>
+                                        <option value="price-low">Price: Low to High</option>
+                                        <option value="price-high">Price: High to Low</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="listings" class="listings section pb-2">
-        <div class="container container-main">
-            <div class="listings-container" id="listingsGrid">
-                <!-- Listings will be dynamically generated by JavaScript -->
+        <section id="listings" class="listings section pb-2">
+            <div class="container container-main">
+                <div class="listings-container" id="listingsGrid">
+                    <!-- Listings will be dynamically generated by JavaScript -->
+                </div>
             </div>
+        </section>
+
+        <!-- Pagination (optional) -->
+        <div class="d-flex justify-content-center mt-2" id="paginationContainer" style="display: none;">
+            <nav aria-label="Favorites pagination">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-    </section>
+    </main>
 
-    <!-- Pagination (optional) -->
-    <div class="d-flex justify-content-center mt-2" id="paginationContainer" style="display: none;">
-        <nav aria-label="Favorites pagination">
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</main>
+    <div id="footer-placeholder"></div>
 
-<div id="footer-placeholder"></div>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/index.js" defer></script>
+    <script src="/assets/js/main.js" defer></script>
+    <script>
+        // Load header & footer and modals
+        function loadHTML(elementId, filePath) {
+            return fetch(filePath)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                });
+        }
 
-<script src="/assets/js/index.js" defer></script>
-<script src="/assets/js/main.js" defer></script>
-<script>
-    // Load header & footer and modals
-    function loadHTML(elementId, filePath) {
-        return fetch(filePath)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById(elementId).innerHTML = data;
-            });
-    }
-
-    window.onload = function () {
-        // Load all components
-        Promise.all([
-            loadHTML('modals-placeholder', '/includes/modals.html'),
-            loadHTML('footer-placeholder', '/includes/footer.html')
-        ]);
-    };
-</script>
+        window.onload = function () {
+            // Load all components
+            Promise.all([
+                loadHTML('modals-placeholder', '/includes/modals.html'),
+                loadHTML('footer-placeholder', '/includes/footer.html')
+            ]);
+        };
+    </script>
 </body>
+
 </html>
