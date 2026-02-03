@@ -27,7 +27,7 @@
         <header id="header" class="header">
             <div class="container">
 
-                <!-- TOP BAR: Logo + Mobile Toggle -->
+                <!-- TOP BAR: Logo + Mobile Toggle + Account -->
                 <div class="d-flex align-items-center justify-content-between py-3">
 
                     <!-- Logo Section -->
@@ -38,7 +38,6 @@
 
                         <a href="/index.html" class="logo d-flex align-items-center text-decoration-none">
                             <i class="fas fa-handshake logo-icon me-2"></i>
-
                             <div>
                                 <div class="logo-text fw-bold">BiasharaConnect</div>
                                 <small class="logo-tagline text-muted d-none d-sm-block">
@@ -48,7 +47,7 @@
                         </a>
                     </div>
 
-                    <!-- Account (Desktop) -->
+                    <!-- Account Dropdown (Desktop) -->
                     <div class="d-none d-lg-block">
                         <div class="dropdown">
                             <a href="#" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
@@ -63,7 +62,6 @@
                                 <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BuyerModal">
                                     <i class="fas fa-user me-2"></i> Buyer Profile
                                 </a>
-
 
                                 <div class="dropdown-divider"></div>
 
@@ -117,10 +115,13 @@
                                 <i class="fas fa-envelope me-2"></i> Contact Us
                             </a>
                         </li>
-                        <a class="dropdown-item d-flex justify-content-between" href="/messages.html">
-                                    <span><i class="fas fa-envelope me-2"></i> Messages</span>
-                                    <span class="badge bg-danger">5</span>
-                                </a>
+
+                        <li class="nav-item">
+                            <a href="/messages.html" class="nav-link d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-envelope me-2"></i> Messages</span>
+                                <span class="badge bg-danger">5</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </nav>
@@ -129,9 +130,8 @@
         </header>
 
         <div id="modals-placeholder"></div>
-
-
     </section>
+
 
     <main>
         <section id="filters" class="filters section py-4">
