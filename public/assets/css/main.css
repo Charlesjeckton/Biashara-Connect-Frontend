@@ -184,9 +184,9 @@ body {
 }
 
 /*--------------------------------------------------------------
-# Global Header
+# Global Header - Updated for New Structure
 --------------------------------------------------------------*/
-.main-header {
+header.header {
     background-color: var(--header-bg);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
     position: sticky;
@@ -195,6 +195,7 @@ body {
     transition: box-shadow 0.3s ease;
 }
 
+/* Logo Section */
 .logo-section {
     min-height: 60px;
 }
@@ -233,6 +234,7 @@ body {
     margin-top: 2px;
 }
 
+/* Mobile Menu Button */
 .mobile-menu-btn {
     background: none;
     border: none;
@@ -247,52 +249,29 @@ body {
     background-color: var(--light-green);
 }
 
-.search-box {
-    border: 2px solid var(--primary-green);
-    border-radius: 30px;
-    overflow: hidden;
-    background: white;
-    max-width: 500px;
-    transition: all 0.3s ease;
-}
-
-.search-input {
-    border: none;
-    padding: 12px 20px;
-    width: 100%;
-    font-size: 14px;
-    outline: none;
-    color: var(--text-dark);
-}
-
-.search-btn {
-    background: var(--primary-green);
-    border: none;
-    color: white;
-    padding: 12px 25px;
-    cursor: pointer;
-}
-
-.search-btn:hover {
-    background: var(--dark-green);
-}
-
-.main-header .row:last-child {
+/* Navigation Bar */
+nav.main-nav {
     background-color: var(--nav-bg);
     border-radius: 8px;
     padding: 12px 0;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
-.nav-menu {
+nav.main-nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 5px;
 }
 
-.nav-link {
+nav.main-nav .nav-item {
+    display: flex;
+}
+
+nav.main-nav .nav-link {
     padding: 12px 18px;
     text-decoration: none;
     color: var(--nav-text);
@@ -304,13 +283,15 @@ body {
     transition: all 0.3s ease;
 }
 
-.nav-link:hover, .nav-link.active {
+nav.main-nav .nav-link:hover,
+nav.main-nav .nav-link.active {
     background-color: white;
     color: var(--primary-green) !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
 }
 
+/* Dropdown Menu */
 .dropdown-menu {
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -328,9 +309,17 @@ body {
     color: var(--primary-green);
 }
 
+/* Messages Badge Styling */
+.nav-item .badge {
+    font-size: 12px;
+    padding: 2px 6px;
+}
+
 /* Header Mobile Queries */
 @media (max-width: 991px) {
-    .nav-menu {
+
+    /* Mobile nav hidden by default */
+    nav.main-nav {
         position: fixed;
         top: 80px;
         left: -100%;
@@ -340,16 +329,30 @@ body {
         transition: left 0.3s ease;
         padding: 20px;
         overflow-y: auto;
+        flex-direction: column;
+        border-radius: 0;
     }
 
-    .nav-menu.active {
+    nav.main-nav.active {
         left: 0;
     }
 
-    .main-header .row:last-child {
-        background-color: transparent;
+    nav.main-nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    nav.main-nav .nav-link {
+        padding: 12px 15px;
+    }
+
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
     }
 }
+
 
 /*--------------------------------------------------------------
 # Footer Styles
