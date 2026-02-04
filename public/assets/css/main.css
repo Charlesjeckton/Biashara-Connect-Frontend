@@ -338,7 +338,7 @@ nav.main-nav .nav-link.active {
 @media (max-width: 991px) {
     .main-nav {
         position: fixed;
-        top: 80px;
+        top: 800px;
         left: -100%;
         width: 280px;
         height: calc(100vh - 80px);
