@@ -540,15 +540,17 @@ nav.main-nav .nav-link.active {
 
 .footer-links a {
     display: flex;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
     color: var(--footer-text);
     text-decoration: none;
     font-size: 14px;
     padding: 8px 0;
     transition: all 0.3s ease;
-    border-left: 2px solid transparent;
-    padding-left: 10px;
+    border-left: none;
+    padding-left: 0;
+    text-align: center;
 }
 
 .footer-links a:hover {
