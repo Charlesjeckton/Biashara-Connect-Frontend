@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainMenu = document.getElementById('mainMenu');
     const searchBtn = document.querySelector('.search-btn');
     const searchInput = document.querySelector('.search-input');
-    const header = document.querySelector('.header');
+    const header = document.querySelector('.main-header');
 
     // Create Mobile Overlay
     const mobileOverlay = document.createElement('div');
