@@ -467,6 +467,7 @@ nav.main-nav .nav-link.active {
 }
 
 .dropdown-item {
+    cursor: pointer;
     color: var(--text-dark);
 }
 
