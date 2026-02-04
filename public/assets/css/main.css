@@ -183,6 +183,16 @@ body {
     color: var(--accent-orange);
 }
 
+/* Ensure content starts below sticky header + extra spacing */
+.page-content {
+    padding-top: calc(72px + 50px); 
+}
+@media (max-width: 991px) {
+    .page-content {
+        padding-top: calc(120px); /* taller header on mobile including nav toggle */
+    }
+}
+
 /*--------------------------------------------------------------
 # Global Header - Updated for New Structure
 --------------------------------------------------------------*/
