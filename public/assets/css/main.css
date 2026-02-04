@@ -13,7 +13,7 @@
     --light-green: #D4EDDA;
 
     /* Accent Colors - Enhanced for contrast */
-    --accent-orange: #D6631A;
+    --accent-orange: #E67E22;
 
     /* Backgrounds */
     --header-bg: #FFFFFF;
@@ -24,7 +24,7 @@
     /* Text Colors (WCAG AA Compliant) */
     --nav-text: #FFFFFF;
     --footer-text: #ffffff;
-    --footer-muted: #C7D1CC;
+    --footer-muted: #E0F1EA;
     --text-dark: #1A1A1A;
     --text-light: #4B5563;
 
@@ -554,7 +554,7 @@ nav.main-nav .nav-link.active {
     color: var(--accent-orange);
     border-left-color: var(--secondary-green);
     padding-left: 15px;
-    background: rgba(241, 245, 243, 0.1);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .footer-links i {
