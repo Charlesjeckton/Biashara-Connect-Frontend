@@ -477,8 +477,9 @@ nav.main-nav .nav-link.active {
 }
 /* Primary Green Outline Button */
 .btn-outline-primary-green {
-    color: var(--primary-green);
+    color: #fff;
     border-color: var(--primary-green);
+    background-color: var(--primary-green);
 }
 
 .btn-outline-primary-green:hover,
