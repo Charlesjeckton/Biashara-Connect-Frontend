@@ -357,6 +357,14 @@ nav.main-nav .nav-link.active {
     }
 }
 
+.page-content {
+    padding-top: calc(22px + 15px); 
+}
+@media (max-width: 991px) {
+    .page-content {
+        padding-top: calc(40px); 
+    }
+}
 
 /*--------------------------------------------------------------
 # Footer Styles
