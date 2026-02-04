@@ -516,6 +516,7 @@ nav.main-nav .nav-link.active {
     padding-bottom: 10px;
     border-bottom: 2px solid rgba(241, 245, 243, 0.25);
     position: relative;
+    text-align: center;
 }
 
 .footer-column-title::after {
@@ -541,13 +542,14 @@ nav.main-nav .nav-link.active {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--footer-muted);
+    color: var(--footer-text);
     text-decoration: none;
     font-size: 14px;
     padding: 8px 0;
     transition: all 0.3s ease;
     border-left: 2px solid transparent;
     padding-left: 10px;
+    justify-content: center;
 }
 
 .footer-links a:hover {
