@@ -554,7 +554,7 @@ nav.main-nav .nav-link.active {
 }
 
 .footer-links a:hover {
-    color: var(--accent-orange);
+    color: var(--text-dark);
     border-left-color: var(--secondary-green);
     padding-left: 15px;
     background: rgba(255, 255, 255, 0.15);
