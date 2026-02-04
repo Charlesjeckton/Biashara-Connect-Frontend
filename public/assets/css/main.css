@@ -2080,7 +2080,7 @@ nav.main-nav .nav-link.active {
 
 /* Hero Section */
 .favorites-hero {
-    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    background: var(--primary-green);
     color: white;
     padding: 4rem 0;
     border-radius: 0 0 20px 20px;
@@ -2354,7 +2354,7 @@ nav.main-nav .nav-link.active {
 }
 
 .btn-explore {
-    background: linear-gradient(to right, var(--primary-green), var(--secondary-green));
+    background: var(--primary-green);
     color: white;
     border: none;
     padding: 0.9rem 2rem;
@@ -2816,7 +2816,7 @@ nav.main-nav .nav-link.active {
    My Listings Hero Section
    ========================= */
 .my-listings-hero {
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+    background: var(--primary-green);
     color: white;
     border-radius: 0 0 20px 20px;
     position: relative;
@@ -3092,7 +3092,7 @@ nav.main-nav .nav-link.active {
 
 /* Help Hero Section */
 .help-hero {
-    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    background: var(--primary-green);
     color: white;
     padding: 4rem 0;
     border-radius: 0 0 20px 20px;
@@ -3227,7 +3227,7 @@ nav.main-nav .nav-link.active {
 .quick-link-icon {
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    background: var(--primary-green);
     border-radius: 50%;
     display: flex;
     align-items: center;
