@@ -540,6 +540,7 @@ nav.main-nav .nav-link.active {
 
 .footer-links a {
     display: flex;
+    text-align: center;
     gap: 10px;
     color: var(--footer-text);
     text-decoration: none;
@@ -548,7 +549,6 @@ nav.main-nav .nav-link.active {
     transition: all 0.3s ease;
     border-left: 2px solid transparent;
     padding-left: 10px;
-    justify-content: center;
 }
 
 .footer-links a:hover {
