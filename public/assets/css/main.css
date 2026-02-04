@@ -474,6 +474,23 @@ nav.main-nav .nav-link.active {
     background-color: var(--light-green);
     color: var(--primary-green);
 }
+/* Primary Green Outline Button */
+.btn-outline-primary-green {
+    color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.btn-outline-primary-green:hover,
+.btn-outline-primary-green:focus {
+    background-color: var(--primary-green);
+    color: #fff;
+    border-color: var(--primary-green);
+}
+
+.btn-outline-primary-green:active {
+    background-color: var(--dark-green);
+    border-color: var(--dark-green);
+}
 
 /* Messages Badge Styling */
 .nav-item .badge {
