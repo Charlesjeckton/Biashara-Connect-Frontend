@@ -540,7 +540,7 @@ nav.main-nav .nav-link.active {
 
 .footer-links a {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 10px;
     color: var(--footer-text);
@@ -579,7 +579,6 @@ nav.main-nav .nav-link.active {
     font-size: 14px;
     line-height: 1.5;
     color: var(--footer-text);
-    justify-content: center;
 }
 
 .contact-item i {
