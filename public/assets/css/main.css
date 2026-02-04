@@ -1616,7 +1616,6 @@ nav.main-nav .nav-link.active {
 .my-listings-hero {
     background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
     color: white;
-    margin-top: 20px;
     border-radius: 0 0 20px 20px;
 }
 
@@ -1687,7 +1686,6 @@ nav.main-nav .nav-link.active {
 
 .my-listings-section .my-listings-main {
     max-width: 1400px;
-    margin: -40px auto 3rem;
     position: relative;
     z-index: 10;
     padding: 0 20px;
@@ -1944,7 +1942,6 @@ nav.main-nav .nav-link.active {
 
 @media (max-width: 768px) {
     .my-listings-hero {
-        padding: 40px 0 30px;
         border-radius: 0 0 15px 15px;
     }
 
@@ -1990,10 +1987,6 @@ nav.main-nav .nav-link.active {
 }
 
 @media (max-width: 576px) {
-    .my-listings-hero {
-        padding: 30px 0 25px;
-    }
-
     .my-listings-hero h1 {
         font-size: 1.6rem;
         flex-direction: column;
