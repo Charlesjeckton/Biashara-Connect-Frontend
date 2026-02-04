@@ -19,128 +19,131 @@
 
     <!-- Main CSS -->
     <link href="/assets/css/main.css" rel="stylesheet">
+    <link href="/assets/css/old.css" rel="stylesheet">
+
 </head>
 
 <body>
     <section id="header" class="header section">
-    <header class="main-header">
-        <div class="container py-3">
+        <header class="main-header">
+            <div class="container py-3">
 
-            <div class="row align-items-center justify-content-between g-3">
+                <div class="row align-items-center justify-content-between g-3">
 
-                <div class="col-lg-3 col-md-4 col-10 col-sm-8 logo-section d-flex align-items-center">
-                    <button class="mobile-menu-btn me-2 me-sm-3 d-lg-none" aria-label="Toggle Navigation">
-                        <i class="fas fa-bars"></i>
-                    </button>
-
-                    <a href="/index.html" class="logo d-flex align-items-center text-nowrap">
-                        <i class="fas fa-handshake logo-icon"></i>
-                        <div class="logo-text-wrapper">
-                            <div class="logo-text">BiasharaConnect</div>
-                            <div class="logo-tagline d-none d-sm-block">Kenya's Marketplace</div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-5 col-md-8 col-12 search-container d-flex justify-content-center">
-                    <div class="search-box d-flex w-100">
-                        <input type="text" class="search-input" placeholder="Search products, services, or sellers...">
-                        <button class="search-btn">
-                            <i class="fas fa-search"></i>
+                    <div class="col-lg-3 col-md-4 col-10 col-sm-8 logo-section d-flex align-items-center">
+                        <button class="mobile-menu-btn me-2 me-sm-3 d-lg-none" aria-label="Toggle Navigation">
+                            <i class="fas fa-bars"></i>
                         </button>
+
+                        <a href="/index.html" class="logo d-flex align-items-center text-nowrap">
+                            <i class="fas fa-handshake logo-icon"></i>
+                            <div class="logo-text-wrapper">
+                                <div class="logo-text">BiasharaConnect</div>
+                                <div class="logo-tagline d-none d-sm-block">Kenya's Marketplace</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-5 col-md-8 col-12 search-container d-flex justify-content-center">
+                        <div class="search-box d-flex w-100">
+                            <input type="text" class="search-input"
+                                placeholder="Search products, services, or sellers...">
+                            <button class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <nav aria-label="Main Navigation">
+                            <ul class="nav-menu d-flex justify-content-center" id="mainMenu">
+
+                                <li class="nav-item">
+                                    <a href="/index.html" class="nav-link">
+                                        <i class="fas fa-store me-2"></i> Marketplace
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/sell.html" class="nav-link">
+                                        <i class="fas fa-hand-holding-dollar me-2"></i> Sell & Earn
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/favorites.html" class="nav-link">
+                                        <i class="fas fa-bookmark me-2"></i> Favorites
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/my-listings.html" class="nav-link">
+                                        <i class="fas fa-list-alt me-2"></i> My Listings
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/support.html" class="nav-link active">
+                                        <i class="fas fa-envelope me-2"></i> Contact Us
+                                    </a>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                        <i class="fas fa-user-circle me-2"></i> My Account
+                                    </a>
+
+                                    <div class="dropdown-menu">
+                                        <!-- Profile Modal Trigger -->
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#SellerModal">
+                                            <i class="fas fa-user me-2"></i> Seller Profile
+                                        </a>
+
+                                        <!-- Profile Modal Trigger -->
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#BuyerModal">
+                                            <i class="fas fa-user me-2"></i> Buyer Profile
+                                        </a>
+
+                                        <a class="dropdown-item d-flex justify-content-between align-items-center"
+                                            href="/messages.html">
+                                            <span><i class="fas fa-envelope me-2"></i> Messages</span>
+                                            <span class="badge bg-danger">5</span>
+                                        </a>
+
+                                        <div class="dropdown-divider"></div>
+
+                                        <!-- Register Modal Trigger -->
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#registerModal">
+                                            <i class="fas fa-user-plus me-2"></i> Register
+                                        </a>
+
+                                        <!-- Login Modal Trigger -->
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#loginModal">
+                                            <i class="fas fa-sign-in-alt me-2"></i> Login
+                                        </a>
+
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                        </a>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </nav>
                     </div>
                 </div>
-
             </div>
-            <div class="row mt-3">
-                <div class="col-12">
-                    <nav aria-label="Main Navigation">
-                        <ul class="nav-menu d-flex justify-content-center" id="mainMenu">
+        </header>
 
-                            <li class="nav-item">
-                                <a href="/index.html" class="nav-link">
-                                    <i class="fas fa-store me-2"></i> Marketplace
-                                </a>
-                            </li>
+        <div id="modals-placeholder"></div>
 
-                            <li class="nav-item">
-                                <a href="/sell.html" class="nav-link">
-                                    <i class="fas fa-hand-holding-dollar me-2"></i> Sell & Earn
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/favorites.html" class="nav-link">
-                                    <i class="fas fa-bookmark me-2"></i> Favorites
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/my-listings.html" class="nav-link">
-                                    <i class="fas fa-list-alt me-2"></i> My Listings
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/support.html" class="nav-link active">
-                                    <i class="fas fa-envelope me-2"></i> Contact Us
-                                </a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                    <i class="fas fa-user-circle me-2"></i> My Account
-                                </a>
-
-                                <div class="dropdown-menu">
-                                    <!-- Profile Modal Trigger -->
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                        data-bs-target="#SellerModal">
-                                        <i class="fas fa-user me-2"></i> Seller Profile
-                                    </a>
-
-                                    <!-- Profile Modal Trigger -->
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                        data-bs-target="#BuyerModal">
-                                        <i class="fas fa-user me-2"></i> Buyer Profile
-                                    </a>
-
-                                    <a class="dropdown-item d-flex justify-content-between align-items-center"
-                                        href="/messages.html">
-                                        <span><i class="fas fa-envelope me-2"></i> Messages</span>
-                                        <span class="badge bg-danger">5</span>
-                                    </a>
-
-                                    <div class="dropdown-divider"></div>
-
-                                    <!-- Register Modal Trigger -->
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                        data-bs-target="#registerModal">
-                                        <i class="fas fa-user-plus me-2"></i> Register
-                                    </a>
-
-                                    <!-- Login Modal Trigger -->
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                        data-bs-target="#loginModal">
-                                        <i class="fas fa-sign-in-alt me-2"></i> Login
-                                    </a>
-
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-sign-out-alt me-2"></i> Logout
-                                    </a>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div id="modals-placeholder"></div>
-
-</section>
+    </section>
 
     <section class="header section">
         <header id="header" class="header">
