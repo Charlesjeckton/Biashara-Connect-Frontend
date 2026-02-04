@@ -182,7 +182,173 @@ body {
 .section-title i {
     color: var(--accent-orange);
 }
+ /*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.main-header {
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: box-shadow 0.3s ease;
+}
 
+.logo-section {
+    min-height: 60px;
+}
+
+.logo {
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: translateY(-2px);
+}
+
+.logo-icon {
+    color: var(--primary-green);
+    font-size: 32px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    background: linear-gradient(90deg, var(--primary-green), var(--accent-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.logo-tagline {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 2px;
+}
+
+.mobile-menu-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--primary-green);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.mobile-menu-btn:hover {
+    background-color: var(--light-green);
+}
+
+.search-box {
+    border: 2px solid var(--primary-green);
+    border-radius: 30px;
+    overflow: hidden;
+    background: white;
+    max-width: 500px;
+    transition: all 0.3s ease;
+}
+
+.search-input {
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    font-size: 14px;
+    outline: none;
+    color: var(--text-dark);
+}
+
+.search-btn {
+    background: var(--primary-green);
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background: var(--dark-green);
+}
+
+.main-header .row:last-child {
+    background-color: var(--nav-bg);
+    border-radius: 8px;
+    padding: 12px 0;
+    margin-top: 15px;
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.nav-link {
+    padding: 12px 18px;
+    text-decoration: none;
+    color: var(--nav-text);
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: white;
+    color: var(--primary-green) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+.dropdown-menu {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    animation: fadeIn 0.3s ease;
+}
+
+.dropdown-item {
+    color: var(--text-dark);
+}
+
+.dropdown-item:hover {
+    background-color: var(--light-green);
+    color: var(--primary-green);
+}
+
+/* Header Mobile Queries */
+@media (max-width: 991px) {
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 280px;
+        height: calc(100vh - 80px);
+        background: var(--nav-bg);
+        transition: left 0.3s ease;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .main-header .row:last-child {
+        background-color: transparent;
+    }
+}
 /*--------------------------------------------------------------
 # Global Header - Updated for New Structure
 --------------------------------------------------------------*/
