@@ -221,7 +221,7 @@ header.header {
     font-family: 'Raleway', sans-serif;
     font-weight: 800;
     font-size: 24px;
-    background: var(--primary-green);
+    background: linear-gradient(90deg, var(--primary-green), var(--accent-orange));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -433,6 +433,7 @@ nav.main-nav .nav-link.active {
     color: var(--footer-text);
     letter-spacing: -0.5px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(90deg, var(--primary-green), var(--accent-orange));
 }
 
 .footer-logo-tagline {
