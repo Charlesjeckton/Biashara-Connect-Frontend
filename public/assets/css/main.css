@@ -380,6 +380,16 @@ nav.main-nav .nav-link.active {
         padding-top: calc(40px); 
     }
 }
+@media (max-width: 991px) {
+  #mainMenu {
+    display: none;
+    flex-direction: column;
+  }
+
+  #mainMenu.active {
+    display: flex;
+  }
+}
 
 /*--------------------------------------------------------------
 # Footer Styles
