@@ -578,6 +578,7 @@ nav.main-nav .nav-link.active {
     color: var(--footer-muted);
     font-size: 14px;
     line-height: 1.5;
+    color: var(--footer-text);
 }
 
 .contact-item i {
