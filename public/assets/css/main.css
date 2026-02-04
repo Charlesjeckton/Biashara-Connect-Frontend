@@ -182,6 +182,29 @@ body {
 .section-title i {
     color: var(--accent-orange);
 }
+/* Hide menu on mobile */
+@media (max-width: 991.98px) { /* Bootstrap lg breakpoint */
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        border-top: 1px solid #ddd;
+        padding: 1rem;
+    }
+
+    .main-nav.open {
+        display: flex;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+    }
+
+    .main-nav .nav-item {
+        margin-bottom: 0.5rem;
+    }
+}
+
 
 /*--------------------------------------------------------------
 # Global Header - Updated for New Structure
