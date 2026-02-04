@@ -2825,8 +2825,6 @@ nav.main-nav .nav-link.active {
 .my-listings-hero {
     background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
     color: white;
-    padding: 2.5rem 0 3.5rem;
-    margin-top: -1rem;
     border-radius: 0 0 20px 20px;
     position: relative;
     overflow: hidden;
@@ -3067,10 +3065,6 @@ nav.main-nav .nav-link.active {
    Responsive Tweaks
    ========================= */
 @media (max-width: 768px) {
-    .my-listings-hero {
-        padding: 2.2rem 1rem 3rem;
-        margin-top: -0.5rem;
-    }
 
     .my-listings-actions-section {
         margin-top: -30px;
