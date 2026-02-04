@@ -24,68 +24,73 @@
 <body>
 
     <section class="header section">
-        <header id="header" class="main-header">
-            <div class="container">
+    <header id="header" class="header">
+        <div class="container">
 
-                <!-- TOP BAR: Logo + Mobile Toggle + Account -->
-                <div class="d-flex align-items-center justify-content-between py-2">
+            <!-- TOP BAR: Logo + Mobile Toggle + Account -->
+            <div class="d-flex align-items-center justify-content-between py-2">
 
-                    <!-- Logo Section -->
-                    <div class="logo-section d-flex align-items-center">
-                        <button class="mobile-menu-btn me-2 me-sm-3 d-lg-none" aria-label="Toggle Navigation">
-                            <i class="fas fa-bars"></i>
-                        </button>
+                <!-- Logo Section -->
+                <div class="logo-section d-flex align-items-center">
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn me-2 me-sm-3 d-lg-none" 
+                            aria-label="Toggle Navigation"
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#mobileMenu">
+                        <i class="fas fa-bars"></i>
+                    </button>
 
-                        <a href="/index.html" class="logo d-flex align-items-center text-decoration-none">
-                            <i class="fas fa-handshake logo-icon me-2"></i>
-                            <div>
-                                <div class="logo-text fw-bold">BiasharaConnect</div>
-                                <small class="logo-tagline text-muted d-none d-sm-block">
-                                    Kenya's Marketplace
-                                </small>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Account Dropdown (Desktop) -->
-                    <div class="d-flex align-items-center justify-content-between py-2">
-                        <div class="dropdown">
-                            <a href="#" class="btn btn-outline-primary-green dropdown-toggle" data-bs-toggle="dropdown">
-                                <i class="fas fa-user-circle me-2"></i> My Account
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#SellerModal">
-                                    <i class="fas fa-user me-2"></i> Seller Profile
-                                </a>
-
-                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BuyerModal">
-                                    <i class="fas fa-user me-2"></i> Buyer Profile
-                                </a>
-
-                                <div class="dropdown-divider"></div>
-
-                                <a class="dropdown-item" href="register.html">
-                                    <i class="fas fa-user-plus me-2"></i> Register
-                                </a>
-
-                                <a class="dropdown-item" href="login.html">
-                                    <i class="fas fa-sign-in-alt me-2"></i> Login
-                                </a>
-
-                                <a class="dropdown-item text-danger" href="#">
-                                    <i class="fas fa-sign-out-alt me-2"></i> Logout
-                                </a>
-                            </div>
+                    <a href="/index.html" class="logo d-flex align-items-center text-decoration-none">
+                        <i class="fas fa-handshake logo-icon me-2"></i>
+                        <div>
+                            <div class="logo-text fw-bold">BiasharaConnect</div>
+                            <small class="logo-tagline text-muted d-none d-sm-block">
+                                Kenya's Marketplace
+                            </small>
                         </div>
-                    </div>
-
+                    </a>
                 </div>
 
+                <!-- Account Dropdown (Desktop) -->
+                <div class="d-flex align-items-center py-2">
+                    <div class="dropdown">
+                        <a href="#" class="btn btn-outline-primary-green dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-2"></i> My Account
+                        </a>
 
-                <!-- NAVIGATION BAR -->
-                <nav class="main-nav border-top pt-2" aria-label="Main Navigation">
-                    <ul class="nav justify-content-center" id="mainMenu">
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#SellerModal">
+                                <i class="fas fa-user me-2"></i> Seller Profile
+                            </a>
+
+                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BuyerModal">
+                                <i class="fas fa-user me-2"></i> Buyer Profile
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item" href="register.html">
+                                <i class="fas fa-user-plus me-2"></i> Register
+                            </a>
+
+                            <a class="dropdown-item" href="login.html">
+                                <i class="fas fa-sign-in-alt me-2"></i> Login
+                            </a>
+
+                            <a class="dropdown-item text-danger" href="#">
+                                <i class="fas fa-sign-out-alt me-2"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- NAVIGATION BAR -->
+            <nav class="main-nav border-top pt-2" aria-label="Main Navigation">
+                <!-- Collapsible Menu for Mobile -->
+                <div class="collapse d-lg-block" id="mobileMenu">
+                    <ul class="nav justify-content-center flex-column flex-lg-row" id="mainMenu">
 
                         <li class="nav-item">
                             <a href="/index.html" class="nav-link active">
@@ -110,11 +115,10 @@
                                 <i class="fas fa-list-alt me-2"></i> My Listings
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="/messages.html" class="nav-link">
-                                <span>
-                                    <i class="fas fa-comment-dots me-2"></i> Messages
-                                </span>
+                            <a href="/messages.html" class="nav-link d-flex align-items-center justify-content-between">
+                                <span><i class="fas fa-comment-dots me-2"></i> Messages</span>
                                 <span class="badge bg-danger">5</span>
                             </a>
                         </li>
@@ -125,15 +129,16 @@
                             </a>
                         </li>
 
-
                     </ul>
-                </nav>
+                </div>
+            </nav>
 
-            </div>
-        </header>
+        </div>
+    </header>
 
-        <div id="modals-placeholder"></div>
-    </section>
+    <div id="modals-placeholder"></div>
+</section>
+
 
 
     <main class="page-content">
