@@ -1616,7 +1616,6 @@ nav.main-nav .nav-link.active {
 .my-listings-hero {
     background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
     color: white;
-    padding: 60px 0 40px;
     margin-top: 20px;
     border-radius: 0 0 20px 20px;
 }
