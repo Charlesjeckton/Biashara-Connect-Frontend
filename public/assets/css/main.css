@@ -183,7 +183,105 @@ body {
     color: var(--accent-orange);
 }
 
+/* Enhanced Mobile Menu Button */
+.mobile-menu-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--primary-green);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
 
+.mobile-menu-btn:hover {
+    background-color: var(--light-green);
+}
+
+.mobile-menu-btn.active {
+    background-color: var(--primary-green);
+    color: white;
+}
+
+/* Prevent body scroll when menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Mobile Menu Overlay */
+body.menu-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Header Mobile Queries */
+@media (max-width: 991px) {
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        transition: left 0.3s ease;
+        padding: 80px 20px 20px;
+        overflow-y: auto;
+        z-index: 1000;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-nav.active {
+        left: 0;
+    }
+
+    nav.main-nav ul {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    nav.main-nav .nav-link {
+        width: 100%;
+        padding: 14px 18px;
+        font-size: 16px;
+    }
+
+    nav.main-nav .nav-link:hover,
+    nav.main-nav .nav-link.active {
+        transform: translateX(5px);
+    }
+
+    /* Close button in mobile menu */
+    .main-nav::before {
+        content: '\f00d';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        color: var(--primary-green);
+        cursor: pointer;
+        display: none;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 /*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
