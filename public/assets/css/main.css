@@ -2673,10 +2673,6 @@ nav.main-nav .nav-link.active {
         margin: 0.5rem;
     }
 
-    .section {
-        padding: 1.5rem 0;
-    }
-
     .favorites-actions-section {
         margin: -30px 15px 0;
     }
@@ -2830,15 +2826,6 @@ nav.main-nav .nav-link.active {
     padding: 0 20px;
 }
 
-/* Base section spacing */
-.section {
-    padding: 1.5rem 0;
-}
-
-/* Remove extra spacing below header only */
-#header.section {
-    padding-bottom: 0;
-}
 
 /* =========================
    My Listings Hero Section
@@ -3123,10 +3110,6 @@ nav.main-nav .nav-link.active {
     padding: 0 20px;
 }
 
-/* Section base styles */
-.section {
-    padding: 1.5rem 0;
-}
 
 /* Help Hero Section */
 .help-hero {
@@ -3696,9 +3679,6 @@ nav.main-nav .nav-link.active {
         font-size: 2rem;
     }
 
-    .section {
-        padding: 1.5rem 0;
-    }
 
     .quick-links-section,
     .faq-section,
@@ -3795,10 +3775,6 @@ nav.main-nav .nav-link.active {
 
     .help-hero h1 {
         font-size: 1.6rem;
-    }
-
-    .section {
-        padding: 1.5rem 0;
     }
 
     .quick-links-section,
@@ -4111,11 +4087,6 @@ nav.main-nav .nav-link.active {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-/* Section base styles */
-.section {
-    padding: 1.5rem 0;
 }
 
 /* Messages Hero Section */
@@ -4573,10 +4544,6 @@ nav.main-nav .nav-link.active {
 
     .messages-hero h1 {
         font-size: 1.8rem;
-    }
-
-    .section {
-        padding: 1.5rem 0;
     }
 
     .messages-content-section {
