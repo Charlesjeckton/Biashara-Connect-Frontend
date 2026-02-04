@@ -462,9 +462,8 @@ nav.main-nav .nav-link.active {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    background-color: var(--primary-green) !important;;
+    background-color: white;
     animation: fadeIn 0.3s ease;
-    color: white;
 }
 
 .dropdown-item {
