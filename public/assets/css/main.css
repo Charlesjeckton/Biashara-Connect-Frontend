@@ -429,7 +429,7 @@ nav.main-nav .nav-link.active {
 
 .footer-logo-icon {
     font-size: 42px;
-    color: var(--accent-orange);
+    color: white;
     background: rgba(241, 245, 243, 0.15);
     width: 70px;
     height: 70px;
