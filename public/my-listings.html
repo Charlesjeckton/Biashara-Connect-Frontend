@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,17 +12,15 @@
     <!-- Vendor CSS -->
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap"
+          rel="stylesheet">
 
     <!-- Main CSS -->
     <link href="/assets/css/main.css" rel="stylesheet">
 </head>
-
 <body>
 
-    <section id="header" class="header section">
+<section id="header" class="header section">
         <header id="header" class="header">
             <div class="container">
 
@@ -135,131 +132,130 @@
         <div id="modals-placeholder"></div>
     </section>
 
-    <main class="page-content">
-        <!-- My Listings Hero Section -->
-        <section id="my-listings-hero" class="my-listings-hero">
-            <div class="container my-listings-hero-content">
-                <h1><i class="fas fa-list-alt me-2"></i>My Listings</h1>
-                <p>Manage your products and services, track performance, and connect with buyers</p>
+<main class="page-content">
+    <!-- My Listings Hero Section -->
+    <section id="my-listings-hero" class="my-listings-hero py-4">
+        <div class="container my-listings-hero-content">
+            <h1><i class="fas fa-list-alt me-2"></i>My Listings</h1>
+            <p>Manage your products and services, track performance, and connect with buyers</p>
 
-                <div class="my-listings-stats">
-                    <div class="stat-item">
-                        <span class="stat-number" id="totalListings">0</span>
-                        <span class="stat-label">Total Listings</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" id="activeListings">0</span>
-                        <span class="stat-label">Active</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" id="soldListings">0</span>
-                        <span class="stat-label">Sold</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" id="totalViews">0</span>
-                        <span class="stat-label">Total Views</span>
-                    </div>
+            <div class="my-listings-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalListings">0</span>
+                    <span class="stat-label">Total Listings</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="activeListings">0</span>
+                    <span class="stat-label">Active</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="soldListings">0</span>
+                    <span class="stat-label">Sold</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalViews">0</span>
+                    <span class="stat-label">Total Views</span>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- My Listings Actions Section -->
-        <section id="my-listings-actions" class="my-listings-actions-section section py-4">
-            <div class="container container-main">
-                <div class="my-listings-container">
-                    <div class="my-listings-actions">
-                        <a href="/sell.html" class="btn btn-success">
-                            <i class="fas fa-plus-circle me-2"></i> Create New Listing
-                        </a>
-                        <div class="action-buttons">
-                            <button class="btn-action" id="filterActive">
-                                <i class="fas fa-check-circle me-1"></i> Active
-                            </button>
-                            <button class="btn-action" id="filterDraft">
-                                <i class="fas fa-edit me-1"></i> Drafts
-                            </button>
-                            <button class="btn-action" id="filterSold">
-                                <i class="fas fa-tag me-1"></i> Sold
-                            </button>
-                            <button class="btn-action" id="filterAll">
-                                <i class="fas fa-list me-1"></i> All
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- My Listings Content Section -->
-        <section id="my-listings-content" class="my-listings-content-section section pb-5">
-            <div class="container container-main">
-                <div class="my-listings-container">
-                    <!-- My Listings Grid -->
-                    <div class="my-listings-grid" id="myListingsGrid">
-                        <!-- Dynamic content will be loaded here -->
-                    </div>
-
-                    <!-- Empty State -->
-                    <div class="empty-listings" id="emptyListings">
-                        <div class="empty-icon">
-                            <i class="fas fa-list-alt"></i>
-                        </div>
-                        <h3 class="empty-title">No Listings Yet</h3>
-                        <p class="empty-text">
-                            You haven't created any listings yet. Start selling by creating your first listing.
-                        </p>
-                        <a href="/sell.html" class="btn btn-primary">
-                            <i class="fas fa-plus-circle me-2"></i> Create Your First Listing
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Pagination (optional) -->
-    <div class="d-flex justify-content-center mt-2" id="paginationContainer" style="display: none;">
-        <nav aria-label="Favorites pagination">
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
+    <!-- My Listings Actions Section -->
+    <section id="my-listings-actions" class="my-listings-actions-section section py-4">
+        <div class="container container-main">
+            <div class="my-listings-container">
+                <div class="my-listings-actions">
+                    <a href="/sell.html" class="btn btn-success">
+                        <i class="fas fa-plus-circle me-2"></i> Create New Listing
                     </a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
+                    <div class="action-buttons">
+                        <button class="btn-action" id="filterActive">
+                            <i class="fas fa-check-circle me-1"></i> Active
+                        </button>
+                        <button class="btn-action" id="filterDraft">
+                            <i class="fas fa-edit me-1"></i> Drafts
+                        </button>
+                        <button class="btn-action" id="filterSold">
+                            <i class="fas fa-tag me-1"></i> Sold
+                        </button>
+                        <button class="btn-action" id="filterAll">
+                            <i class="fas fa-list me-1"></i> All
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Listings Content Section -->
+    <section id="my-listings-content" class="my-listings-content-section section pb-5">
+        <div class="container container-main">
+            <div class="my-listings-container">
+                <!-- My Listings Grid -->
+                <div class="my-listings-grid" id="myListingsGrid">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-listings" id="emptyListings">
+                    <div class="empty-icon">
+                        <i class="fas fa-list-alt"></i>
+                    </div>
+                    <h3 class="empty-title">No Listings Yet</h3>
+                    <p class="empty-text">
+                        You haven't created any listings yet. Start selling by creating your first listing.
+                    </p>
+                    <a href="/sell.html" class="btn btn-primary">
+                        <i class="fas fa-plus-circle me-2"></i> Create Your First Listing
                     </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
-    <div id="footer-placeholder"></div>
+<!-- Pagination (optional) -->
+<div class="d-flex justify-content-center mt-2" id="paginationContainer" style="display: none;">
+    <nav aria-label="Favorites pagination">
+        <ul class="pagination">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
 
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/my-listings.js"></script>
-    <script src="/assets/js/main.js"></script>
-    <script>
-        // Load modals and footer
-        function loadHTML(elementId, filePath) {
-            return fetch(filePath)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById(elementId).innerHTML = data;
-                });
-        }
+<div id="footer-placeholder"></div>
 
-        window.onload = function () {
-            Promise.all([
-                loadHTML('modals-placeholder', '/includes/modals.html'),
-                loadHTML('footer-placeholder', '/includes/footer.html')
-            ]);
-        };
-    </script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/my-listings.js"></script>
+<script src="/assets/js/main.js"></script>
+<script>
+    // Load modals and footer
+    function loadHTML(elementId, filePath) {
+        return fetch(filePath)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(elementId).innerHTML = data;
+            });
+    }
+
+    window.onload = function () {
+        Promise.all([
+            loadHTML('modals-placeholder', '/includes/modals.html'),
+            loadHTML('footer-placeholder', '/includes/footer.html')
+        ]);
+    };
+</script>
 </body>
-
 </html>
