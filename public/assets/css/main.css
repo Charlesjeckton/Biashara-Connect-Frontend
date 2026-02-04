@@ -184,7 +184,7 @@ body {
 }
 
 /*--------------------------------------------------------------
-# Global Header - Updated for New Structure
+# Global Header - Updated for New Bootstrap 5 Structure
 --------------------------------------------------------------*/
 header.header {
     background-color: var(--header-bg);
@@ -196,11 +196,9 @@ header.header {
 }
 
 /* Logo Section */
-.logo-section {
-    min-height: 60px;
-}
-
 .logo {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     color: var(--text-dark);
     transition: transform 0.3s ease;
@@ -250,28 +248,26 @@ header.header {
 }
 
 /* Navigation Bar */
-nav.main-nav {
+.navbar {
     background-color: var(--nav-bg);
     border-radius: 8px;
     padding: 12px 0;
     margin-top: 5px;
 }
 
-nav.main-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.navbar-nav {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 5px;
+    width: 100%;
 }
 
-nav.main-nav .nav-item {
+.navbar-nav .nav-item {
     display: flex;
 }
 
-nav.main-nav .nav-link {
+.navbar-nav .nav-link {
     padding: 12px 18px;
     text-decoration: none;
     color: var(--nav-text);
@@ -283,8 +279,8 @@ nav.main-nav .nav-link {
     transition: all 0.3s ease;
 }
 
-nav.main-nav .nav-link:hover,
-nav.main-nav .nav-link.active {
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
     background-color: white;
     color: var(--primary-green) !important;
     transform: translateY(-2px);
@@ -309,7 +305,8 @@ nav.main-nav .nav-link.active {
     background-color: var(--light-green);
     color: var(--primary-green);
 }
-/* Primary Green Outline Button */
+
+/* Primary Green Button */
 .btn-outline-primary-green {
     color: #fff;
     border-color: var(--primary-green);
@@ -334,34 +331,33 @@ nav.main-nav .nav-link.active {
     padding: 2px 6px;
 }
 
-/* Header Mobile Queries */
+/* Mobile Menu Styles */
 @media (max-width: 991px) {
-
-    /* Mobile nav hidden by default */
-    nav.main-nav {
+    .navbar-collapse {
         position: fixed;
-        top: 80px;
+        top: 80px; /* adjust to header height */
         left: -100%;
         width: 280px;
         height: calc(100vh - 80px);
         background: var(--nav-bg);
         transition: left 0.3s ease;
         padding: 20px;
-        overflow-y: auto;
         flex-direction: column;
+        overflow-y: auto;
         border-radius: 0;
+        z-index: 1050;
     }
 
-    nav.main-nav.active {
+    .navbar-collapse.show {
         left: 0;
     }
 
-    nav.main-nav ul {
+    .navbar-nav {
         flex-direction: column;
         gap: 0;
     }
 
-    nav.main-nav .nav-link {
+    .navbar-nav .nav-link {
         padding: 12px 15px;
     }
 
@@ -370,14 +366,15 @@ nav.main-nav .nav-link.active {
         box-shadow: none;
         border: none;
     }
+
+    .page-content {
+        padding-top: 40px;
+    }
 }
 
-.page-content {
-    padding-top: calc(22px + 15px); 
-}
-@media (max-width: 991px) {
+@media (min-width: 992px) {
     .page-content {
-        padding-top: calc(40px); 
+        padding-top: 22px;
     }
 }
 
