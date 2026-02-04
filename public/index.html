@@ -249,61 +249,7 @@
     <script src="/assets/js/index.js" defer></script>
     <script src="/assets/js/main.js" defer></script>
     <script>
-
-        // Load header & footer
-        function loadHTML(elementId, filePath) {
-            return fetch(filePath)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById(elementId).innerHTML = data;
-                });
-        }
-
-        function initHeader() {
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const mainMenu = document.getElementById('mainMenu');
-            const header = document.querySelector('.header');
-
-            if (!mobileMenuBtn || !mainMenu) return;
-
-            // Create Mobile Overlay
-            const mobileOverlay = document.createElement('div');
-            mobileOverlay.className = 'mobile-overlay';
-            document.body.appendChild(mobileOverlay);
-
-            function openMobileMenu() {
-                mainMenu.classList.add('active');
-                mobileOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.replace('fa-bars', 'fa-times');
-            }
-
-            function closeMobileMenu() {
-                mainMenu.classList.remove('active');
-                mobileOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                const icon = mobileMenuBtn.querySelector('i');
-                if (icon) icon.classList.replace('fa-times', 'fa-bars');
-            }
-
-            mobileMenuBtn.addEventListener('click', () => {
-                mainMenu.classList.contains('active') ? closeMobileMenu() : openMobileMenu();
-            });
-
-            mobileOverlay.addEventListener('click', closeMobileMenu);
-        }
-
-        // Wait until header & footer are loaded
-        window.onload = function () {
-            Promise.all([
-                loadHTML('modals-placeholder', '/includes/modals.html'),
-                loadHTML('footer-placeholder', '/includes/footer.html')
-            ]).then(() => {
-                initHeader(); // <-- attach mobile toggle after header exists
-            });
-        };
-
+        
         // Load header & footer and modals
         function loadHTML(elementId, filePath) {
             return fetch(filePath)
