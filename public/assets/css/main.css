@@ -452,12 +452,12 @@ nav.main-nav .nav-link.active {
 
 .footer-logo-tagline {
     font-size: 14px;
-    color: var(--footer-muted);
+    color: var(--footer-text);
     margin-top: 4px;
 }
 
 .footer-description {
-    color: var(--footer-muted);
+    color: var(--footer-text);
     line-height: 1.6;
     margin-bottom: 25px;
     font-size: 15px;
@@ -509,7 +509,7 @@ nav.main-nav .nav-link.active {
 }
 
 .footer-column-title {
-    color: var(--accent-orange);
+    color: var(--footer-text);
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 20px;
