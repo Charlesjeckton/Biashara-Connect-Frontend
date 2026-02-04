@@ -359,6 +359,7 @@ header.header {
     top: 0;
     z-index: 1000;
     transition: box-shadow 0.3s ease;
+    margin-bottom: 50px;
 }
 
 /* Logo Section */
