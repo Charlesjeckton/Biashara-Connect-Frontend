@@ -182,28 +182,6 @@ body {
 .section-title i {
     color: var(--accent-orange);
 }
-/* Hide menu on mobile */
-@media (max-width: 991.98px) { /* Bootstrap lg breakpoint */
-    .main-nav {
-        display: none;
-        flex-direction: column;
-        background: #fff;
-        border-top: 1px solid #ddd;
-        padding: 1rem;
-    }
-
-    .main-nav.open {
-        display: flex;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-    }
-
-    .main-nav .nav-item {
-        margin-bottom: 0.5rem;
-    }
-}
 
 
 /*--------------------------------------------------------------
@@ -356,12 +334,9 @@ nav.main-nav .nav-link.active {
     font-size: 12px;
     padding: 2px 6px;
 }
-
 /* Header Mobile Queries */
 @media (max-width: 991px) {
-
-    /* Mobile nav hidden by default */
-    nav.main-nav {
+    .nav-menu {
         position: fixed;
         top: 80px;
         left: -100%;
@@ -371,38 +346,17 @@ nav.main-nav .nav-link.active {
         transition: left 0.3s ease;
         padding: 20px;
         overflow-y: auto;
-        flex-direction: column;
-        border-radius: 0;
     }
 
-    nav.main-nav.active {
+    .nav-menu.active {
         left: 0;
     }
 
-    nav.main-nav ul {
-        flex-direction: column;
-        gap: 0;
-    }
-
-    nav.main-nav .nav-link {
-        padding: 12px 15px;
-    }
-
-    .dropdown-menu {
-        position: static;
-        box-shadow: none;
-        border: none;
+    .main-header .row:last-child {
+        background-color: transparent;
     }
 }
 
-.page-content {
-    padding-top: calc(22px + 15px); 
-}
-@media (max-width: 991px) {
-    .page-content {
-        padding-top: calc(40px); 
-    }
-}
 
 /*--------------------------------------------------------------
 # Footer Styles
