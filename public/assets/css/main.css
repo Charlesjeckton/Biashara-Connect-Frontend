@@ -377,7 +377,7 @@ nav.main-nav .nav-link.active {
 }
 @media (max-width: 991px) {
     .page-content {
-        padding-top: calc(120px); 
+        padding-top: calc(40px); 
     }
 }
 
@@ -2091,11 +2091,6 @@ nav.main-nav .nav-link.active {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-/* Section base styles */
-.section {
-    padding: 1.5rem 0;
 }
 
 /* Hero Section */
