@@ -220,7 +220,7 @@ header.header {
     font-family: 'Raleway', sans-serif;
     font-weight: 800;
     font-size: 24px;
-    background: linear-gradient(90deg, var(--primary-green), var(--accent-orange));
+    background: var(--primary-green);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -400,7 +400,7 @@ nav.main-nav .nav-link.active {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--accent-orange), var(--secondary-green));
+    background: var(--primary-green);
 }
 
 .footer-content {
@@ -1117,7 +1117,7 @@ nav.main-nav .nav-link.active {
 # 2. Sell Page
 --------------------------------------------------------------*/
 .sell-hero {
-    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    background: var(--primary-green);
     color: white;
     padding: 4rem 0;
     border-radius: 0 0 20px 20px;
@@ -1607,7 +1607,7 @@ nav.main-nav .nav-link.active {
 }
 
 .my-listings-hero {
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+    background: var(--primary-green);
     color: white;
     border-radius: 0 0 20px 20px;
 }
@@ -3410,7 +3410,7 @@ nav.main-nav .nav-link.active {
 }
 
 .contact-section .contact-container {
-    background: linear-gradient(135deg, #f9fdfb, #e8f4ef);
+    background: var(--pr);
     border-radius: 20px;
     padding: 2.5rem;
     border: 1px solid var(--border-color);
@@ -3459,7 +3459,7 @@ nav.main-nav .nav-link.active {
 }
 
 .submit-btn {
-    background: linear-gradient(to right, var(--primary-green), var(--secondary-green));
+    background: var(--primary-green);
     color: white;
     border: none;
     padding: 1rem 3rem;
@@ -4070,7 +4070,7 @@ nav.main-nav .nav-link.active {
 
 /* Messages Hero Section */
 .messages-hero {
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+    background: var(--primary-green);
     color: white;
     padding: 4rem 0;
     border-radius: 0 0 20px 20px;
