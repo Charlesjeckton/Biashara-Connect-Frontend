@@ -1,972 +1,1031 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Biashara Connect</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Your CSS styles remain the same */
-        :root {
-            --primary-green: #1a7f5f;
-            --secondary-green: #2ecc71;
-            --light-green: #28a745;
-            --dark-green: #0a5c36;
-            --light-gray: #e9ecef;
-            --border-color: #dee2e6;
-            --text-dark: #333;
-            --text-light: #6c757d;
-        }
+<style>
+    /* Profile Image Styles */
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border: 4px solid var(--primary-green);
+        box-shadow: 0 4px 15px rgba(26, 127, 95, 0.2);
+    }
 
-        /* All your existing CSS styles here - they remain unchanged */
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border: 4px solid var(--primary-green);
-            box-shadow: 0 4px 15px rgba(26, 127, 95, 0.2);
-        }
+    .modal-lg {
+        max-width: 800px;
+    }
 
-        .modal-lg {
-            max-width: 800px;
-        }
+    .form-check {
+        margin-bottom: 8px;
+    }
 
-        .form-check {
-            margin-bottom: 8px;
-        }
+    /* Registration Modal Specific Styles */
+    .auth-modal .modal-content {
+        border-radius: 16px;
+        border: none;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        background: white;
+    }
 
-        /* Registration Modal Specific Styles */
-        .auth-modal .modal-content {
-            border-radius: 16px;
-            border: none;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            background: white;
-        }
+    .auth-modal .modal-header {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        padding: 1.5rem 2rem 1rem;
+        background: linear-gradient(to bottom, rgba(26, 127, 95, 0.03), transparent);
+    }
 
-        .auth-modal .modal-header {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-            padding: 1.5rem 2rem 1rem;
-            background: linear-gradient(to bottom, rgba(26, 127, 95, 0.03), transparent);
-        }
+    .auth-modal .modal-title {
+        font-weight: 700;
+        color: var(--primary-green);
+        font-size: 1.4rem;
+    }
 
-        .auth-modal .modal-title {
-            font-weight: 700;
-            color: var(--primary-green);
-            font-size: 1.4rem;
+    .auth-modal .modal-body {
+        padding: 0 2rem 2rem;
+    }
+
+    /* Input Group Text */
+    .auth-modal .input-group-text {
+        background: #f8f9fa;
+        border-radius: 10px 0 0 10px;
+        border: 2px solid var(--light-gray);
+        border-right: none;
+    }
+
+    /* Tabs Styling - Fixed */
+    .auth-modal .nav-tabs {
+        border: none;
+        background: var(--light-gray);
+        border-radius: 12px;
+        padding: 4px;
+        position: relative;
+    }
+
+    .auth-modal .nav-tabs .nav-link {
+        border: none;
+        border-radius: 10px;
+        padding: 0.9rem 1.5rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--text-dark);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .auth-modal .nav-tabs .nav-link.active {
+        color: var(--primary-green);
+        box-shadow: 0 4px 15px rgba(26, 127, 95, 0.3);
+        transform: translateY(-1px);
+    }
+
+    .auth-modal .nav-tabs .nav-link:not(.active) {
+        background: transparent;
+        color: var(--text-dark);
+    }
+
+    .auth-modal .nav-tabs .nav-link:not(.active):hover {
+        background: rgba(255, 255, 255, 0.7);
+        color: var(--dark-green);
+    }
+
+    /* Form Styling - Dots Removed */
+    .auth-modal .form-label {
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .auth-modal .form-control,
+    .auth-modal .form-select {
+        border: 2px solid var(--light-gray);
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        background: white;
+    }
+
+    .auth-modal .form-control:focus,
+    .auth-modal .form-select:focus {
+        border-color: var(--primary-green);
+        box-shadow: 0 0 0 3px rgba(26, 127, 95, 0.15);
+        transform: translateY(-1px);
+    }
+
+    .auth-modal .form-control::placeholder {
+        color: var(--text-light);
+        opacity: 0.6;
+    }
+
+    /* Password Requirements */
+    .password-requirements {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        margin-top: 0.25rem;
+    }
+
+    .password-requirements.valid {
+        color: var(--primary-green);
+        font-weight: 500;
+    }
+
+    /* Terms Checkbox */
+    .auth-modal .form-check {
+        margin: 1.5rem 0;
+    }
+
+    .auth-modal .form-check-input {
+        width: 1.1em;
+        height: 1.1em;
+        margin-top: 0.2em;
+        border: 2px solid var(--light-gray);
+    }
+
+    .auth-modal .form-check-input:checked {
+        background-color: var(--primary-green);
+        border-color: var(--primary-green);
+    }
+
+    .auth-modal .form-check-label {
+        font-size: 0.9rem;
+        color: var(--text-dark);
+        line-height: 1.4;
+    }
+
+    .auth-modal .form-check-label a {
+        color: var(--primary-green);
+        font-weight: 600;
+        text-decoration: none;
+        position: relative;
+    }
+
+    .auth-modal .form-check-label a:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        bottom: -1px;
+        left: 0;
+        background: var(--primary-green);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .auth-modal .form-check-label a:hover:after {
+        transform: scaleX(1);
+    }
+
+    /* Submit Button */
+    .auth-modal .btn-submit {
+        background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+        border: none;
+        border-radius: 12px;
+        padding: 1rem 2rem;
+        font-weight: 700;
+        font-size: 1rem;
+        color: white;
+        width: 100%;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 6px 20px rgba(26, 127, 95, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .auth-modal .btn-submit:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: 0.5s;
+    }
+
+    .auth-modal .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(26, 127, 95, 0.4);
+    }
+
+    .auth-modal .btn-submit:hover:before {
+        left: 100%;
+    }
+
+    .auth-modal .btn-submit:active {
+        transform: translateY(0);
+    }
+
+    /* Form Text */
+    .auth-modal .form-text {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        margin-top: 0.25rem;
+    }
+
+    /* Footer Link */
+    .auth-footer {
+        font-size: 0.95rem;
+        text-align: center;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--light-gray);
+        color: var(--text-light);
+    }
+
+    .auth-footer a {
+        color: var(--primary-green);
+        font-weight: 700;
+        text-decoration: none;
+        margin-left: 5px;
+        position: relative;
+    }
+
+    .auth-footer a:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background: var(--primary-green);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .auth-footer a:hover {
+        text-decoration: none;
+    }
+
+    .auth-footer a:hover:after {
+        transform: scaleX(1);
+    }
+
+    /* Seller Specific Fields */
+    .seller-field {
+        background: rgba(212, 237, 218, 0.15);
+        border-radius: 12px;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+        border-left: 4px solid var(--primary-green);
+    }
+
+    /* Profile Upload Styles */
+    .profile-upload-container {
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 2px dashed var(--border-color);
+    }
+
+    .profile-preview {
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .profile-preview:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(26, 127, 95, 0.2);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .auth-modal .modal-lg {
+            max-width: 95%;
+            margin: 1rem auto;
         }
 
         .auth-modal .modal-body {
-            padding: 0 2rem 2rem;
-        }
-
-        /* Input Group Text */
-        .auth-modal .input-group-text {
-            background: #f8f9fa;
-            border-radius: 10px 0 0 10px;
-            border: 2px solid var(--light-gray);
-            border-right: none;
-        }
-
-        /* Tabs Styling - Fixed */
-        .auth-modal .nav-tabs {
-            border: none;
-            background: var(--light-gray);
-            border-radius: 12px;
-            padding: 4px;
-            position: relative;
+            padding: 0 1rem 1.5rem;
         }
 
         .auth-modal .nav-tabs .nav-link {
-            border: none;
-            border-radius: 10px;
-            padding: 0.9rem 1.5rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .auth-modal .nav-tabs .nav-link.active {
-            color: var(--primary-green);
-            box-shadow: 0 4px 15px rgba(26, 127, 95, 0.3);
-            transform: translateY(-1px);
-        }
-
-        .auth-modal .nav-tabs .nav-link:not(.active) {
-            background: transparent;
-            color: var(--text-dark);
-        }
-
-        .auth-modal .nav-tabs .nav-link:not(.active):hover {
-            background: rgba(255, 255, 255, 0.7);
-            color: var(--dark-green);
-        }
-
-        /* Form Styling - Dots Removed */
-        .auth-modal .form-label {
-            font-weight: 600;
-            color: var(--text-dark);
+            padding: 0.7rem 1rem;
             font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
+
+        .auth-modal .modal-header {
+            padding: 1rem 1.5rem 0.5rem;
+        }
+
+        .auth-modal .modal-title {
+            font-size: 1.2rem;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+        }
+
+        .seller-field {
+            padding: 1rem;
+        }
+    }
+
+    @media (max-width: 576px) {
 
         .auth-modal .form-control,
         .auth-modal .form-select {
-            border: 2px solid var(--light-gray);
-            border-radius: 10px;
-            padding: 0.75rem 1rem;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .auth-modal .form-control:focus,
-        .auth-modal .form-select:focus {
-            border-color: var(--primary-green);
-            box-shadow: 0 0 0 3px rgba(26, 127, 95, 0.15);
-            transform: translateY(-1px);
-        }
-
-        .auth-modal .form-control::placeholder {
-            color: var(--text-light);
-            opacity: 0.6;
-        }
-
-        /* Password Requirements */
-        .password-requirements {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-top: 0.25rem;
-        }
-
-        .password-requirements.valid {
-            color: var(--primary-green);
-            font-weight: 500;
-        }
-
-        /* Terms Checkbox */
-        .auth-modal .form-check {
-            margin: 1.5rem 0;
-        }
-
-        .auth-modal .form-check-input {
-            width: 1.1em;
-            height: 1.1em;
-            margin-top: 0.2em;
-            border: 2px solid var(--light-gray);
-        }
-
-        .auth-modal .form-check-input:checked {
-            background-color: var(--primary-green);
-            border-color: var(--primary-green);
-        }
-
-        .auth-modal .form-check-label {
+            padding: 0.6rem 0.8rem;
             font-size: 0.9rem;
-            color: var(--text-dark);
-            line-height: 1.4;
         }
 
-        .auth-modal .form-check-label a {
-            color: var(--primary-green);
-            font-weight: 600;
-            text-decoration: none;
-            position: relative;
-        }
-
-        .auth-modal .form-check-label a:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            bottom: -1px;
-            left: 0;
-            background: var(--primary-green);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .auth-modal .form-check-label a:hover:after {
-            transform: scaleX(1);
-        }
-
-        /* Submit Button */
         .auth-modal .btn-submit {
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            border: none;
-            border-radius: 12px;
-            padding: 1rem 2rem;
-            font-weight: 700;
-            font-size: 1rem;
-            color: white;
-            width: 100%;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 6px 20px rgba(26, 127, 95, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .auth-modal .btn-submit:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .auth-modal .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(26, 127, 95, 0.4);
-        }
-
-        .auth-modal .btn-submit:hover:before {
-            left: 100%;
-        }
-
-        .auth-modal .btn-submit:active {
-            transform: translateY(0);
-        }
-
-        /* Form Text */
-        .auth-modal .form-text {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-top: 0.25rem;
-        }
-
-        /* Footer Link */
-        .auth-footer {
+            padding: 0.8rem 1.5rem;
             font-size: 0.95rem;
-            text-align: center;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--light-gray);
-            color: var(--text-light);
         }
 
-        .auth-footer a {
-            color: var(--primary-green);
-            font-weight: 700;
-            text-decoration: none;
-            margin-left: 5px;
-            position: relative;
+        .auth-modal .nav-tabs .nav-link {
+            padding: 0.6rem 0.8rem;
+            font-size: 0.85rem;
         }
 
-        .auth-footer a:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background: var(--primary-green);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
+        .auth-modal .modal-header {
+            padding: 1rem 1rem 0.5rem;
         }
 
-        .auth-footer a:hover {
-            text-decoration: none;
+        .auth-modal .modal-body {
+            padding: 0 1rem 1rem;
         }
+    }
 
-        .auth-footer a:hover:after {
-            transform: scaleX(1);
-        }
+    /* Icon Circle for Header */
+    .icon-circle {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+    }
+</style>
 
-        /* Seller Specific Fields */
-        .seller-field {
-            background: rgba(212, 237, 218, 0.15);
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--primary-green);
-        }
+<!-- Login Modal -->
+<div class="modal fade auth-modal" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
 
-        /* Profile Upload Styles */
-        .profile-upload-container {
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 12px;
-            padding: 1.5rem;
-            border: 2px dashed var(--border-color);
-        }
+            <!-- Header -->
+            <div class="modal-header border-0 pb-0">
+                <div>
+                    <h5 class="modal-title fw-bold text-success mb-1">
+                        Welcome Back 👋
+                    </h5>
+                    <p class="text-muted small mb-0">
+                        Login to continue to your account
+                    </p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
 
-        .profile-preview {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+            <!-- Body -->
+            <div class="modal-body px-4 pt-3 pb-4">
+                <form id="loginForm" novalidate>
 
-        .profile-preview:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(26, 127, 95, 0.2);
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .auth-modal .modal-lg {
-                max-width: 95%;
-                margin: 1rem auto;
-            }
-
-            .auth-modal .modal-body {
-                padding: 0 1rem 1.5rem;
-            }
-
-            .auth-modal .nav-tabs .nav-link {
-                padding: 0.7rem 1rem;
-                font-size: 0.9rem;
-            }
-
-            .auth-modal .modal-header {
-                padding: 1rem 1.5rem 0.5rem;
-            }
-
-            .auth-modal .modal-title {
-                font-size: 1.2rem;
-            }
-
-            .profile-image {
-                width: 120px;
-                height: 120px;
-            }
-
-            .seller-field {
-                padding: 1rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-
-            .auth-modal .form-control,
-            .auth-modal .form-select {
-                padding: 0.6rem 0.8rem;
-                font-size: 0.9rem;
-            }
-
-            .auth-modal .btn-submit {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.95rem;
-            }
-
-            .auth-modal .nav-tabs .nav-link {
-                padding: 0.6rem 0.8rem;
-                font-size: 0.85rem;
-            }
-
-            .auth-modal .modal-header {
-                padding: 1rem 1rem 0.5rem;
-            }
-
-            .auth-modal .modal-body {
-                padding: 0 1rem 1rem;
-            }
-        }
-
-        /* Icon Circle for Header */
-        .icon-circle {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-        }
-
-        /* Success/Error Message Styles */
-        .form-message {
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            font-weight: 500;
-        }
-
-        .form-message.success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .form-message.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        /* Make modal visible */
-        .modal.show {
-            display: block;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-    </style>
-</head>
-<body>
-    <!-- Registration Modal - Show by default -->
-    <div class="modal fade auth-modal show" id="registerModal" tabindex="-1" aria-hidden="false" style="display: block;">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-
-                <!-- Header -->
-                <div class="modal-header">
-                    <div class="d-flex align-items-center gap-3">
-                        <div class="icon-circle bg-success bg-opacity-10 p-2 rounded-3">
-                            <i class="fas fa-user-plus fa-lg text-success"></i>
-                        </div>
-                        <div>
-                            <h5 class="modal-title mb-1">Create Your Account</h5>
-                            <p class="text-muted small mb-0">Join thousands of users in our community</p>
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold small">Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0">
+                                <i class="fas fa-envelope text-muted"></i>
+                            </span>
+                            <input type="email" name="email" class="form-control border-start-0"
+                                placeholder="you@example.com" required>
                         </div>
                     </div>
-                    <button type="button" class="btn-close" onclick="window.history.back()"></button>
+
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold small">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0">
+                                <i class="fas fa-lock text-muted"></i>
+                            </span>
+                            <input type="password" name="password" class="form-control border-start-0"
+                                placeholder="Enter your password" required>
+                        </div>
+                    </div>
+
+                    <!-- Remember / Forgot -->
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label small" for="rememberMe">
+                                Remember me
+                            </label>
+                        </div>
+                        <a href="#" class="small text-success fw-semibold text-decoration-none">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <!-- Button -->
+                    <button type="submit" class="btn btn-success w-100 py-2 fw-semibold justify-content-center">
+                        Login
+                        <i class="fas fa-arrow-right ms-1"></i>
+                    </button>
+
+                    <!-- Footer -->
+                    <div class="text-center mt-4 small">
+                        Don’t have an account?
+                        <a href="#" class="fw-semibold text-success text-decoration-none" data-bs-dismiss="modal"
+                            data-bs-toggle="modal" data-bs-target="#registerModal">
+                            Create one
+                        </a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Registration Modal -->
+<div class="modal fade auth-modal" id="registerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+            <!-- Header -->
+            <div class="modal-header">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="icon-circle bg-success bg-opacity-10 p-2 rounded-3">
+                        <i class="fas fa-user-plus fa-lg text-success"></i>
+                    </div>
+                    <div>
+                        <h5 class="modal-title mb-1">Create Your Account</h5>
+                        <p class="text-muted small mb-0">Join thousands of users in our community</p>
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+
+                <!-- Tabs Navigation -->
+                <div class="d-flex justify-content-center">
+                    <ul class="nav nav-tabs nav-fill" id="registerTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="buyer-tab" data-bs-toggle="tab" data-bs-target="#buyer"
+                                type="button" role="tab">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Register as Buyer</span>
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="seller-tab" data-bs-toggle="tab" data-bs-target="#seller"
+                                type="button" role="tab">
+                                <i class="fas fa-store"></i>
+                                <span>Register as Seller</span>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Body -->
-                <div class="modal-body">
+                <!-- Tab Content -->
+                <div class="tab-content mt-4" id="registerTabContent">
 
-                    <!-- Tabs Navigation -->
-                    <div class="d-flex justify-content-center">
-                        <ul class="nav nav-tabs nav-fill" id="registerTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="buyer-tab" data-bs-toggle="tab" data-bs-target="#buyer"
-                                    type="button" role="tab">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    <span>Register as Buyer</span>
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="seller-tab" data-bs-toggle="tab" data-bs-target="#seller"
-                                    type="button" role="tab">
-                                    <i class="fas fa-store"></i>
-                                    <span>Register as Seller</span>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
+                    <!-- Buyer Form -->
+                    <div class="tab-pane fade show active" id="buyer" role="tabpanel">
+                        <form id="buyerForm" class="needs-validation" novalidate>
+                            <div class="row g-2">
 
-                    <!-- Tab Content -->
-                    <div class="tab-content mt-4" id="registerTabContent">
+                                <!-- Personal Information -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-user text-success me-1"></i>First Name
+                                    </label>
+                                    <input type="text" name="first_name" class="form-control"
+                                        placeholder="Enter your first name" required>
+                                </div>
 
-                        <!-- Buyer Form -->
-                        <div class="tab-pane fade show active" id="buyer" role="tabpanel">
-                            <form id="buyerForm" class="needs-validation" novalidate>
-                                <div class="row g-2">
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-user text-success me-1"></i>Last Name
+                                    </label>
+                                    <input type="text" name="last_name" class="form-control"
+                                        placeholder="Enter your last name" required>
+                                </div>
 
-                                    <!-- Personal Information -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-user text-success me-1"></i>First Name
-                                        </label>
-                                        <input type="text" name="first_name" class="form-control"
-                                            placeholder="Enter your first name" required>
-                                    </div>
+                                <!-- Contact Information -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-envelope text-success me-1"></i>Email Address
+                                    </label>
+                                    <input type="email" name="email" class="form-control" placeholder="you@example.com"
+                                        required>
+                                    <div class="form-text">We'll never share your email with anyone else.</div>
+                                </div>
 
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-user text-success me-1"></i>Last Name
-                                        </label>
-                                        <input type="text" name="last_name" class="form-control"
-                                            placeholder="Enter your last name" required>
-                                    </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-phone text-success me-1"></i>Phone Number
+                                    </label>
+                                    <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
+                                        required>
+                                </div>
 
-                                    <!-- Contact Information -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-envelope text-success me-1"></i>Email Address
-                                        </label>
-                                        <input type="email" name="email" class="form-control" placeholder="you@example.com"
-                                            required>
-                                        <div class="form-text">We'll never share your email with anyone else.</div>
-                                    </div>
+                                <!-- Location -->
+                                <div class="col-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-map-marker-alt text-success me-1"></i>Location
+                                    </label>
+                                    <select name="location" class="form-select" required>
+                                        <option value="" disabled selected>Select your city</option>
+                                        <option value="Nairobi">Nairobi</option>
+                                        <option value="Mombasa">Mombasa</option>
+                                        <option value="Kisumu">Kisumu</option>
+                                        <option value="Nakuru">Nakuru</option>
+                                        <option value="Eldoret">Eldoret</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
 
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-phone text-success me-1"></i>Phone Number
-                                        </label>
-                                        <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
-                                            required>
-                                    </div>
-
-                                    <!-- Location -->
-                                    <div class="col-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-map-marker-alt text-success me-1"></i>Location
-                                        </label>
-                                        <select name="location" class="form-select" required>
-                                            <option value="" disabled selected>Select your city</option>
-                                            <option value="Nairobi">Nairobi</option>
-                                            <option value="Mombasa">Mombasa</option>
-                                            <option value="Kisumu">Kisumu</option>
-                                            <option value="Nakuru">Nakuru</option>
-                                            <option value="Eldoret">Eldoret</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- Password -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-lock text-success me-1"></i>Password
-                                        </label>
-                                        <input type="password" name="password" class="form-control"
-                                            placeholder="Create a strong password" required>
-                                        <div class="password-requirements">
-                                            Must be at least 8 characters with letters & numbers
-                                        </div>
-                                    </div>
-
-
-                                    <!-- Terms & Conditions -->
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="buyerTerms" required>
-                                            <label class="form-check-label" for="buyerTerms">
-                                                I agree to the <a href="#" class="fw-bold">Terms & Conditions</a> and
-                                                <a href="#" class="fw-bold">Privacy Policy</a>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <!-- Submit Button -->
-                                    <div class="col-12 mt-2">
-                                        <button type="submit" class="btn btn-submit">
-                                            <i class="fas fa-user-check me-2"></i>
-                                            Create Buyer Account
-                                        </button>
+                                <!-- Password -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-lock text-success me-1"></i>Password
+                                    </label>
+                                    <input type="password" name="password" class="form-control"
+                                        placeholder="Create a strong password" required>
+                                    <div class="password-requirements">
+                                        Must be at least 8 characters with letters & numbers
                                     </div>
                                 </div>
-                            </form>
-                        </div>
 
-                        <!-- Seller Form -->
-                        <div class="tab-pane fade" id="seller" role="tabpanel">
-                            <form id="sellerForm" class="needs-validation" novalidate>
-                                <div class="row g-2">
 
-                                    <!-- Profile Picture Upload (Optional) -->
-                                    <div class="col-12">
-                                        <h6 class="fw-bold text-success mb-3">
-                                            <i class="fas fa-user-circle me-2"></i>Profile Picture (Optional)
-                                        </h6>
-                                        <div class="row align-items-center">
-                                            <div class="col-md-3 text-center mb-3 mb-md-0">
-                                                <img id="sellerProfilePreview"
-                                                    src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                                                    alt="Profile preview" class="rounded-circle"
-                                                    style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #198754;">
-                                            </div>
-                                            <div class="col-md-9">
-                                                <label for="sellerProfile" class="form-label">Upload Profile Picture</label>
-                                                <input type="file" class="form-control" id="sellerProfile" name="profile_picture" accept="image/*"
-                                                    onchange="previewSellerProfile(event)">
-                                                <div class="form-text">JPG, PNG, or GIF. Max 2MB.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Personal Information -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-user text-success me-1"></i>First Name
-                                        </label>
-                                        <input type="text" name="first_name" class="form-control"
-                                            placeholder="Enter your first name" required>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-user text-success me-1"></i>Last Name
-                                        </label>
-                                        <input type="text" name="last_name" class="form-control"
-                                            placeholder="Enter your last name" required>
-                                    </div>
-
-                                    <!-- Contact Information -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-envelope text-success me-1"></i>Email Address
-                                        </label>
-                                        <input type="email" name="email" class="form-control"
-                                            placeholder="business@example.com" required>
-                                        <div class="form-text">Use your business email if available.</div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-phone text-success me-1"></i>Phone Number
-                                        </label>
-                                        <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
+                                <!-- Terms & Conditions -->
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="buyerTerms" name="terms"
                                             required>
-                                    </div>
-                                    
-
-                                    <!-- Password -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-lock text-success me-1"></i>Password
+                                        <label class="form-check-label" for="buyerTerms">
+                                            I agree to the <a href="#" class="fw-bold">Terms & Conditions</a> and
+                                            <a href="#" class="fw-bold">Privacy Policy</a>
                                         </label>
-                                        <input type="password" name="password" class="form-control"
-                                            placeholder="Create a strong password" required>
-                                        <div class="password-requirements">
-                                            Must be at least 8 characters with letters & numbers
-                                        </div>
-                                    </div>
-                                    <!--Confirm Password -->
-                                    <div class="col-md-6">
-                                        <label class="form-label">
-                                            <i class="fas fa-lock text-success me-1"></i>Confirm Password
-                                        </label>
-                                        <input type="password" name="confirm_password" class="form-control"
-                                            placeholder="Confirm your password" required>
-                                    </div>
-
-                                    <!-- Business Information -->
-                                    <div class="col-12 seller-field">
-                                        <h6 class="fw-bold text-success mb-3">
-                                            <i class="fas fa-briefcase me-2"></i>Business Information
-                                        </h6>
-
-                                        <div class="row">
-                                            <!--Business Name -->
-                                            <div class="col-md-6 mb-3">
-                                                <label class="form-label">Business Name</label>
-                                                <input type="text" name="business_name" class="form-control"
-                                                    placeholder="Enter your business/store name" required>
-                                            </div>
-
-                                            <!--Business Location -->
-                                            <div class="col-md-6 mb-3">
-                                                <label class="form-label">Business Location</label>
-                                                <select name="business_location" class="form-select" required>
-                                                    <option value="" disabled selected>Select your business city</option>
-                                                    <option value="Nairobi">Nairobi</option>
-                                                    <option value="Mombasa">Mombasa</option>
-                                                    <option value="Kisumu">Kisumu</option>
-                                                    <option value="Nakuru">Nakuru</option>
-                                                    <option value="Eldoret">Eldoret</option>
-                                                    <option value="Other">Other</option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <label class="form-label">Business Type</label>
-                                                <select name="business_type" class="form-select" required>
-                                                    <option value="" disabled selected>Select business type</option>
-                                                    <option value="individual">Individual/Sole Proprietor</option>
-                                                    <option value="company">Registered Company</option>
-                                                    <option value="cooperative">Cooperative</option>
-                                                    <option value="partnership">Partnership</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-md-6 mb-3">
-                                                <label class="form-label">Business Category</label>
-                                                <select name="business_category" class="form-select" required>
-                                                    <option value="" disabled selected>Select category</option>
-                                                    <option value="electronics">Electronics & Gadgets</option>
-                                                    <option value="fashion">Fashion & Apparel</option>
-                                                    <option value="home">Home & Living</option>
-                                                    <option value="food">Food & Beverages</option>
-                                                    <option value="automotive">Automotive</option>
-                                                    <option value="other">Other</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-2">
-                                        <label class="form-label">Bio / Description</label>
-                                        <textarea class="form-control" name="bio" rows="3"
-                                            placeholder="Tell us about your business..."></textarea>
-                                    </div>
-
-                                    <!-- Seller Terms -->
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="sellerTerms" required>
-                                            <label class="form-check-label" for="sellerTerms">
-                                                I agree to the <a href="#" class="fw-bold">Seller Terms & Conditions</a>,
-                                                <a href="#" class="fw-bold">Privacy Policy</a>, and confirm I have the right
-                                                to sell these products
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <!-- Submit Button -->
-                                    <div class="col-12 mt-2">
-                                        <button type="submit" class="btn btn-submit">
-                                            <i class="fas fa-store me-2"></i>
-                                            Create Seller Account
-                                        </button>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+
+                                <!-- Submit Button -->
+                                <div class="col-12 mt-2">
+                                    <button type="submit" class="btn btn-submit">
+                                        <i class="fas fa-user-check me-2"></i>
+                                        Create Buyer Account
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
-                    <!-- Footer Link -->
-                    <div class="auth-footer">
-                        Already have an account?
-                        <a href="login.html" class="fw-semibold text-success text-decoration-none">
-                            Sign in here
-                        </a>
+                    <!-- Seller Form -->
+                    <div class="tab-pane fade" id="seller" role="tabpanel">
+                        <form id="sellerForm" class="needs-validation" novalidate>
+                            <div class="row g-2">
+
+                                <!-- Profile Picture Upload (Optional) -->
+                                <div class="col-12">
+                                    <h6 class="fw-bold text-success mb-3">
+                                        <i class="fas fa-user-circle me-2"></i>Profile Picture (Optional)
+                                    </h6>
+                                    <div class="row align-items-center">
+                                        <div class="col-md-3 text-center mb-3 mb-md-0">
+                                            <img id="sellerProfilePreview"
+                                                src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                                alt="Profile preview" class="rounded-circle"
+                                                style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #198754;">
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label for="sellerProfile" class="form-label">Upload Profile Picture</label>
+                                            <input type="file" class="form-control" id="sellerProfile"
+                                                name="profile_image" accept="image/*"
+                                                onchange="previewSellerProfile(event)">
+                                            <div class="form-text">JPG, PNG, or GIF. Max 2MB.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Personal Information -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-user text-success me-1"></i>First Name
+                                    </label>
+                                    <input type="text" name="first_name" class="form-control"
+                                        placeholder="Enter your first name" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-user text-success me-1"></i>Last Name
+                                    </label>
+                                    <input type="text" name="last_name" class="form-control"
+                                        placeholder="Enter your last name" required>
+                                </div>
+
+                                <!-- Contact Information -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-envelope text-success me-1"></i>Email Address
+                                    </label>
+                                    <input type="email" name="email" class="form-control"
+                                        placeholder="business@example.com" required>
+                                    <div class="form-text">Use your business email if available.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-phone text-success me-1"></i>Phone Number
+                                    </label>
+                                    <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
+                                        required>
+                                </div>
+
+
+                                <!-- Password -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-lock text-success me-1"></i>Password
+                                    </label>
+                                    <input type="password" name="password" class="form-control"
+                                        placeholder="Create a strong password" required>
+                                    <div class="password-requirements">
+                                        Must be at least 8 characters with letters & numbers
+                                    </div>
+                                </div>
+                                <!--Confirm Password -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-lock text-success me-1"></i>Confirm Password
+                                    </label>
+                                    <input type="password" name="confirm_password" class="form-control"
+                                        placeholder="Enter your password" required>
+                                </div>
+
+                                <!-- Business Information -->
+                                <div class="col-12 seller-field">
+                                    <h6 class="fw-bold text-success mb-3">
+                                        <i class="fas fa-briefcase me-2"></i>Business Information
+                                    </h6>
+
+                                    <div class="row">
+                                        <!--Business Name -->
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Business Name</label>
+                                            <input type="text" class="form-control" name="business_name"
+                                                placeholder="Enter your business/store name" required>
+                                        </div>
+
+                                        <!--Business Location -->
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Business Location</label>
+                                            <select class="form-select" name="business_location" required>
+                                                <option value="" disabled selected>Select your business city</option>
+                                                <option value="Nairobi">Nairobi</option>
+                                                <option value="Mombasa">Mombasa</option>
+                                                <option value="Kisumu">Kisumu</option>
+                                                <option value="Nakuru">Nakuru</option>
+                                                <option value="Eldoret">Eldoret</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label" name="business_type">Business Type</label>
+                                            <select class="form-select" required>
+                                                <option value="" disabled selected>Select business type</option>
+                                                <option value="individual">Individual/Sole Proprietor</option>
+                                                <option value="company">Registered Company</option>
+                                                <option value="cooperative">Cooperative</option>
+                                                <option value="partnership">Partnership</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label" name="business_category">Business Category</label>
+                                            <select class="form-select" required>
+                                                <option value="" disabled selected>Select category</option>
+                                                <option value="electronics">Electronics & Gadgets</option>
+                                                <option value="fashion">Fashion & Apparel</option>
+                                                <option value="home">Home & Living</option>
+                                                <option value="food">Food & Beverages</option>
+                                                <option value="automotive">Automotive</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-2">
+                                    <label class="form-label">Bio / Description</label>
+                                    <textarea class="form-control" name="bio" rows="3"
+                                        placeholder="Tell us about your business...">Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.</textarea>
+                                </div>
+
+                                <!-- Seller Terms -->
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="sellerTerms" name="terms"
+                                            required>
+                                        <label class="form-check-label" for="sellerTerms">
+                                            I agree to the <a href="#" class="fw-bold">Seller Terms & Conditions</a>,
+                                            <a href="#" class="fw-bold">Privacy Policy</a>, and confirm I have the right
+                                            to sell these products
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="col-12 mt-2">
+                                    <button type="submit" class="btn btn-submit">
+                                        <i class="fas fa-store me-2"></i>
+                                        Create Seller Account
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Footer Link -->
+                <div class="auth-footer">
+                    Already have an account?
+                    <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        Sign in here
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Seller Profile Modal -->
+<div class="modal fade" id="SellerModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title fw-bold text-success" id="profileModalLabel">
+                    <i class="fas fa-user-circle me-2"></i>Seller Profile
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- Profile Image & Basic Info -->
+                    <div class="col-md-4 text-center">
+                        <div class="profile-image-container mb-3">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&auto=format&fit=crop"
+                                alt="Profile" class="profile-image rounded-circle">
+                            <button class="btn btn-sm btn-outline-secondary mt-2">
+                                <i class="fas fa-camera me-1"></i> Change Photo
+                            </button>
+                        </div>
+                        <h5 class="mb-1">Charles Jeckton</h5>
+                        <p class="text-muted mb-2">Member since 2023</p>
+                        <div class="badge bg-success mb-3">Verified Seller</div>
+                    </div>
+
+                    <!-- Profile Form -->
+                    <div class="col-md-8">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" value="Charles" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" value="Jeckton" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" value="charlesjeckton10@gmail.com"
+                                        required>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" value="+254 748 064 530" required>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label class="form-label">Business Name</label>
+                                <input type="text" class="form-control" placeholder="Enter your business name"
+                                    value="Dreamchaser Electronics" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Business Type</label>
+                                <select class="form-select" required>
+                                    <option value="individual" selected>Individual/Sole Proprietor</option>
+                                    <option value="company">Registered Company</option>
+                                    <option value="cooperative">Cooperative</option>
+                                    <option value="partnership">Partnership</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Business Category</label>
+                                <select class="form-select" required>
+                                    <option selected>Electronics</option>
+                                    <option>Fashion</option>
+                                    <option>Automotive</option>
+                                    <option>Home & Living</option>
+                                    <option>Food & Beverages</option>
+                                </select>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label class="form-label">Business Location</label>
+                                <select class="form-select" required>
+                                    <option selected>Nairobi</option>
+                                    <option>Mombasa</option>
+                                    <option>Kisumu</option>
+                                    <option>Nakuru</option>
+                                    <option>Eldoret</option>
+                                </select>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label class="form-label">Bio / Description</label>
+                                <textarea class="form-control" rows="3"
+                                    placeholder="Tell us about your business...">Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.</textarea>
+                            </div>
+
+                            <div class="row pt-2">
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-outline-secondary w-100 py-2 fw-bold"
+                                        data-bs-dismiss="modal">Cancel
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button type="submit"
+                                        class="btn btn-success w-100 py-2 fw-bold justify-content-center">Save</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Buyer Profile Modal -->
+<div class="modal fade" id="BuyerModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title fw-bold text-success" id="profileModalLabel">
+                    <i class="fas fa-user-circle me-2"></i>Buyer Profile
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold small">First Name</label>
+                            <input type="text" class="form-control" value="Charles" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold small">Last Name</label>
+                            <input type="text" class="form-control" value="Jeckton" required>
+                        </div>
+                    </div>
 
-    <!-- Fixed JavaScript for Registration -->
-    <script>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold small">Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white"><i
+                                    class="fas fa-envelope text-muted small"></i></span>
+                            <input type="email" class="form-control border-start-0" value="charlesjeckton@gmail.com"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold small">Phone Number</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white"><i class="fas fa-phone text-muted small"></i></span>
+                            <input type="tel" class="form-control border-start-0" value="+254 748 064 530" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Location</label>
+                        <select class="form-select" required>
+                            <option value="">Select city</option>
+                            <option>Nairobi</option>
+                            <option>Mombasa</option>
+                            <option>Kisumu</option>
+                            <option>Nakuru</option>
+                            <option>Eldoret</option>
+                        </select>
+                    </div>
+
+                    <div class="row pt-2">
+                        <div class="col-6">
+                            <button type="button" class="btn btn-outline-secondary w-100 py-2 fw-bold"
+                                data-bs-dismiss="modal">Cancel
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button type="submit"
+                                class="btn btn-success w-100 py-2 fw-bold justify-content-center">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../assets/js/main.js" defer></script>
+<script>
+    function previewSellerProfile(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('sellerProfilePreview').src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+
+<script>
     document.addEventListener("DOMContentLoaded", () => {
         const API_BASE = "https://biashara-connect-backend.onrender.com/api/auth";
 
-        // Profile preview function
-        window.previewSellerProfile = function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                // Check file size (max 2MB)
-                if (file.size > 2 * 1024 * 1024) {
-                    alert('File size should be less than 2MB');
-                    event.target.value = '';
-                    return;
-                }
-                
-                // Check file type
-                const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
-                if (!validTypes.includes(file.type)) {
-                    alert('Please upload a JPG, PNG, or GIF image');
-                    event.target.value = '';
-                    return;
-                }
-                
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById('sellerProfilePreview').src = e.target.result;
-                }
-                reader.readAsDataURL(file);
-            }
-        };
-
-        // Show message function
         function showMessage(form, message, type = "success") {
-            // Remove any existing message
-            const existingMsg = form.querySelector(".form-message");
-            if (existingMsg) existingMsg.remove();
-            
-            // Create new message element
-            const messageDiv = document.createElement("div");
-            messageDiv.className = `form-message ${type}`;
-            messageDiv.textContent = message;
-            messageDiv.style.padding = "10px";
-            messageDiv.style.marginBottom = "15px";
-            messageDiv.style.borderRadius = "5px";
-            messageDiv.style.fontWeight = "500";
-            
-            if (type === "success") {
-                messageDiv.style.backgroundColor = "#d4edda";
-                messageDiv.style.color = "#155724";
-                messageDiv.style.border = "1px solid #c3e6cb";
-            } else {
-                messageDiv.style.backgroundColor = "#f8d7da";
-                messageDiv.style.color = "#721c24";
-                messageDiv.style.border = "1px solid #f5c6cb";
+            let container = form.querySelector(".form-message");
+            if (!container) {
+                container = document.createElement("div");
+                container.className = "form-message mt-2";
+                form.prepend(container);
             }
-            
-            // Insert at the beginning of the form
-            form.insertBefore(messageDiv, form.firstChild);
-            
-            // Auto-remove after 5 seconds for success messages
-            if (type === "success") {
-                setTimeout(() => {
-                    messageDiv.remove();
-                }, 5000);
-            }
+            container.textContent = message;
+            container.style.color = type === "error" ? "red" : "green";
         }
 
-        // Validate password match for seller form
-        function validatePasswordMatch(form) {
-            const password = form.querySelector('input[name="password"]').value;
-            const confirmPassword = form.querySelector('input[name="confirm_password"]').value;
-            
-            if (password !== confirmPassword) {
-                showMessage(form, "Passwords do not match!", "error");
-                return false;
-            }
-            
-            if (password.length < 8) {
-                showMessage(form, "Password must be at least 8 characters!", "error");
-                return false;
-            }
-            
-            return true;
-        }
-
-        // Buyer Form Submission
+        // Buyer Form (JSON)
         const buyerForm = document.getElementById("buyerForm");
-        if (buyerForm) {
-            buyerForm.addEventListener("submit", async (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Show loading state
-                const submitBtn = buyerForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Creating Account...';
-                submitBtn.disabled = true;
-                
-                try {
-                    // Get form data
-                    const formData = new FormData(buyerForm);
-                    const data = {};
-                    formData.forEach((value, key) => {
-                        data[key] = value;
-                    });
-                    
-                    console.log("Buyer data to send:", data);
-                    
-                    const response = await fetch(`${API_BASE}/register/buyer/`, {
-                        method: "POST",
-                        headers: { 
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(data)
-                    });
-                    
-                    console.log("Response status:", response.status);
-                    
-                    const responseText = await response.text();
-                    console.log("Response text:", responseText);
-                    
-                    let json;
-                    try {
-                        json = JSON.parse(responseText);
-                    } catch (error) {
-                        console.error("JSON parse error:", error);
-                        showMessage(buyerForm, "Server returned invalid response", "error");
-                        return;
-                    }
-                    
-                    if (response.ok) {
-                        showMessage(buyerForm, json.message || "Buyer registered successfully!", "success");
-                        buyerForm.reset();
-                        
-                        // Redirect to login after 2 seconds
-                        setTimeout(() => {
-                            window.location.href = "login.html";
-                        }, 2000);
-                    } else {
-                        showMessage(buyerForm, json.error || json.message || "Registration failed!", "error");
-                    }
-                } catch (error) {
-                    console.error("Fetch error:", error);
-                    showMessage(buyerForm, "Network error. Please check your connection.", "error");
-                } finally {
-                    // Restore button state
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }
-            });
-        }
+        buyerForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const formData = new FormData(buyerForm);
+            const data = {};
+            formData.forEach((v, k) => (data[k] = v));
 
-        // Seller Form Submission
+            try {
+                const res = await fetch(`${API_BASE}/register/buyer/`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                });
+                const json = await res.json();
+                if (json.error) showMessage(buyerForm, json.error, "error");
+                else {
+                    showMessage(buyerForm, json.message || "Buyer registered!", "success");
+                    buyerForm.reset();
+                }
+            } catch (err) {
+                showMessage(buyerForm, "Network error", "error");
+            }
+        });
+
+        // Seller Form (FormData for file upload)
         const sellerForm = document.getElementById("sellerForm");
-        if (sellerForm) {
-            sellerForm.addEventListener("submit", async (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Validate password match
-                if (!validatePasswordMatch(sellerForm)) {
-                    return;
+        sellerForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const formData = new FormData(sellerForm);
+
+            try {
+                const res = await fetch(`${API_BASE}/register/seller/`, {
+                    method: "POST",
+                    body: formData, // ✅ FormData sends file and text correctly
+                });
+                const json = await res.json();
+                if (json.error) showMessage(sellerForm, json.error, "error");
+                else {
+                    showMessage(sellerForm, json.message || "Seller registered!", "success");
+                    sellerForm.reset();
+                    document.getElementById("sellerProfilePreview").src =
+                        "https://cdn-icons-png.flaticon.com/512/149/149071.png";
                 }
-                
-                // Show loading state
-                const submitBtn = sellerForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Creating Account...';
-                submitBtn.disabled = true;
-                
-                try {
-                    // Create FormData object for file upload
-                    const formData = new FormData(sellerForm);
-                    
-                    console.log("Seller form data:");
-                    for (let [key, value] of formData.entries()) {
-                        console.log(key + ": " + value);
-                    }
-                    
-                    const response = await fetch(`${API_BASE}/register/seller/`, {
-                        method: "POST",
-                        body: formData  // Don't set Content-Type header for FormData
-                    });
-                    
-                    console.log("Response status:", response.status);
-                    
-                    const responseText = await response.text();
-                    console.log("Response text:", responseText);
-                    
-                    let json;
-                    try {
-                        json = JSON.parse(responseText);
-                    } catch (error) {
-                        console.error("JSON parse error:", error);
-                        showMessage(sellerForm, "Server returned invalid response", "error");
-                        return;
-                    }
-                    
-                    if (response.ok) {
-                        showMessage(sellerForm, json.message || "Seller registered successfully!", "success");
-                        sellerForm.reset();
-                        // Reset profile preview
-                        document.getElementById("sellerProfilePreview").src = 
-                            "https://cdn-icons-png.flaticon.com/512/149/149071.png";
-                        
-                        // Redirect to login after 2 seconds
-                        setTimeout(() => {
-                            window.location.href = "login.html";
-                        }, 2000);
-                    } else {
-                        showMessage(sellerForm, json.error || json.message || "Registration failed!", "error");
-                    }
-                } catch (error) {
-                    console.error("Fetch error:", error);
-                    showMessage(sellerForm, "Network error. Please check your connection.", "error");
-                } finally {
-                    // Restore button state
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }
-            });
-        }
-        
-        // Initialize Bootstrap tabs
-        const triggerTabList = [].slice.call(document.querySelectorAll('#registerTab button'));
-        triggerTabList.forEach(function (triggerEl) {
-            const tabTrigger = new bootstrap.Tab(triggerEl);
-            triggerEl.addEventListener('click', function (event) {
-                event.preventDefault();
-                tabTrigger.show();
-            });
+            } catch (err) {
+                showMessage(sellerForm, "Network error", "error");
+            }
         });
     });
-    </script>
-</body>
-</html>
+</script>
