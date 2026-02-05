@@ -963,84 +963,94 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+  const API_BASE = "https://biashara-connect-backend.onrender.com";
 
-    const API_BASE = "https://biashara-connect-backend.onrender.com";
+  // Helper to send JSON to backend
+  async function postJSON(url, data) {
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+      return json;
+    } catch (err) {
+      return { error: "Network error" };
+    }
+  }
 
-    // Helper to send JSON to backend
-    async function postJSON(url, data) {
-        try {
-            const res = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            });
-            return await res.json();
-        } catch (err) {
-            return { error: "Network error" };
-        }
+  function showMessage(form, message, type = "success") {
+    let container = form.querySelector(".form-message");
+    if (!container) {
+      container = document.createElement("div");
+      container.className = "form-message mt-2";
+      form.prepend(container);
+    }
+    container.textContent = message;
+    container.style.color = type === "error" ? "red" : "green";
+  }
+
+  // Convert FormData to JSON object
+  function formDataToJSON(formData) {
+    const obj = {};
+    for (const [key, value] of formData.entries()) {
+      obj[key] = value;
+    }
+    return obj;
+  }
+
+  // Buyer Form
+  const buyerForm = document.getElementById("buyerForm");
+  buyerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = formDataToJSON(new FormData(buyerForm));
+    const result = await postJSON(`${API_BASE}/register_buyer/`, data);
+    if (result.error) {
+      showMessage(buyerForm, result.error, "error");
+    } else if (result.message) {
+      showMessage(buyerForm, result.message, "success");
+      buyerForm.reset();
+    } else {
+      showMessage(buyerForm, "Something went wrong", "error");
+    }
+  });
+
+  // Seller Form
+  const sellerForm = document.getElementById("sellerForm");
+  sellerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(sellerForm);
+
+    // Convert profile image to Base64 if exists
+    const fileInput = document.getElementById("sellerProfile");
+    if (fileInput && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+      reader.onloadend = async () => {
+        formData.set("profile_image", reader.result);
+        const data = formDataToJSON(formData);
+        const result = await postJSON(`${API_BASE}/register_seller/`, data);
+        handleSellerResult(result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      const data = formDataToJSON(formData);
+      const result = await postJSON(`${API_BASE}/register_seller/`, data);
+      handleSellerResult(result);
     }
 
-    // Buyer Registration
-    document.getElementById("buyerForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const form = e.target;
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
-        const result = await postJSON(`${API_BASE}/register_buyer/`, data);
-        console.log("Buyer result:", result);
-
-        if (result.message) {
-            alert("Success: " + result.message);
-            form.reset();
-        } else {
-            alert("Error: " + JSON.stringify(result));
-        }
-    });
-
-    // Seller Registration
-    document.getElementById("sellerForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const form = e.target;
-        const formData = new FormData(form);
-
-        // Handle profile image (base64)
-        const fileInput = document.getElementById("sellerProfile");
-        if (fileInput && fileInput.files.length > 0) {
-            const file = fileInput.files[0];
-            const reader = new FileReader();
-            reader.onloadend = async () => {
-                formData.set("profile_image", reader.result);
-                const data = Object.fromEntries(formData.entries());
-                const result = await postJSON(`${API_BASE}/register_seller/`, data);
-                console.log("Seller result:", result);
-
-                if (result.message) {
-                    alert("Success: " + result.message);
-                    form.reset();
-                } else {
-                    alert("Error: " + JSON.stringify(result));
-                }
-            };
-            reader.readAsDataURL(file);
-        } else {
-            // No image
-            const data = Object.fromEntries(formData.entries());
-            const result = await postJSON(`${API_BASE}/register_seller/`, data);
-            console.log("Seller result:", result);
-
-            if (result.message) {
-                alert("Success: " + result.message);
-                form.reset();
-            } else {
-                alert("Error: " + JSON.stringify(result));
-            }
-        }
-    });
-
+    function handleSellerResult(result) {
+      if (result.error) {
+        showMessage(sellerForm, result.error, "error");
+      } else if (result.message) {
+        showMessage(sellerForm, result.message, "success");
+        sellerForm.reset();
+        document.getElementById("sellerProfilePreview").src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+      } else {
+        showMessage(sellerForm, "Something went wrong", "error");
+      }
+    }
+  });
 });
 </script>
