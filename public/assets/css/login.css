@@ -1,0 +1,27 @@
+.login-card {
+            max-width: 450px;
+            margin: 60px auto;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #198754;
+        }
+
+        .btn-login {
+            background-color: #198754;
+            color: #fff;
+        }
+
+        .btn-login:hover {
+            background-color: #157347;
+            color: #fff;
+        }
+
+        .alert {
+            display: none;
+        }
