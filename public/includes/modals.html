@@ -75,7 +75,7 @@
     }
 
     .auth-modal .nav-tabs .nav-link.active {
-        color: var(--light-green);
+        color: var(--primary-green);
         box-shadow: 0 4px 15px rgba(26, 127, 95, 0.3);
         transform: translateY(-1px);
     }
@@ -425,7 +425,7 @@
                     </div>
 
                     <!-- Button -->
-                    <button type="submit" class="btn btn-success w-100 py-2 fw-semibold">
+                    <button type="submit" class="btn btn-success w-100 py-2 fw-semibold justify-content-center">
                         Login
                         <i class="fas fa-arrow-right ms-1"></i>
                     </button>
@@ -531,18 +531,6 @@
                                         required>
                                 </div>
 
-                                <!-- Password -->
-                                <div class="col-md-6">
-                                    <label class="form-label">
-                                        <i class="fas fa-lock text-success me-1"></i>Password
-                                    </label>
-                                    <input type="password" name="password" class="form-control"
-                                        placeholder="Create a strong password" required>
-                                    <div class="password-requirements">
-                                        Must be at least 8 characters with letters & numbers
-                                    </div>
-                                </div>
-
                                 <!-- Location -->
                                 <div class="col-6">
                                     <label class="form-label">
@@ -559,6 +547,17 @@
                                     </select>
                                 </div>
 
+                                <!-- Password -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-lock text-success me-1"></i>Password
+                                    </label>
+                                    <input type="password" name="password" class="form-control"
+                                        placeholder="Create a strong password" required>
+                                    <div class="password-requirements">
+                                        Must be at least 8 characters with letters & numbers
+                                    </div>
+                                </div>
 
                                 <!-- Terms & Conditions -->
                                 <div class="col-12">
@@ -688,21 +687,15 @@
                                     </div>
                                 </div>
 
-                                <!-- Location -->
-                                <div class="col-6">
+                                <!--Confirm Password -->
+                                <div class="col-md-6">
                                     <label class="form-label">
-                                        <i class="fas fa-map-marker-alt text-success me-1"></i>Business Location
+                                        <i class="fas fa-lock text-success me-1"></i>Confirm Password
                                     </label>
-                                    <select class="form-select" required>
-                                        <option value="" disabled selected>Select your business city</option>
-                                        <option value="Nairobi">Nairobi</option>
-                                        <option value="Mombasa">Mombasa</option>
-                                        <option value="Kisumu">Kisumu</option>
-                                        <option value="Nakuru">Nakuru</option>
-                                        <option value="Eldoret">Eldoret</option>
-                                        <option value="Other">Other</option>
-                                    </select>
+                                    <input type="password" name="confirm_password" class="form-control"
+                                        placeholder="Re-enter your password" required>
                                 </div>
+
 
                                 <!-- Business Information -->
                                 <div class="col-12 seller-field">
@@ -710,12 +703,31 @@
                                         <i class="fas fa-briefcase me-2"></i>Business Information
                                     </h6>
 
-                                    <div class="mb-3">
-                                        <label class="form-label">Business Name</label>
-                                        <input type="text" class="form-control"
-                                            placeholder="Enter your business/store name" required>
-                                    </div>
+                                    <div class="row">
+                                        <!--Business Name -->
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Business Name</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Enter your business/store name" required>
+                                        </div>
 
+                                        <!--Business Location -->
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">
+                                                <i class="fas fa-map-marker-alt text-success me-1"></i>Business Location
+                                            </label>
+                                            <select class="form-select" required>
+                                                <option value="" disabled selected>Select your business city</option>
+                                                <option value="Nairobi">Nairobi</option>
+                                                <option value="Mombasa">Mombasa</option>
+                                                <option value="Kisumu">Kisumu</option>
+                                                <option value="Nakuru">Nakuru</option>
+                                                <option value="Eldoret">Eldoret</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Business Type</label>
@@ -743,6 +755,11 @@
                                     </div>
                                 </div>
 
+                                <div class="mb-3">
+                                    <label class="form-label">Bio / Description</label>
+                                    <textarea class="form-control" rows="3"
+                                        placeholder="Tell us about your business...">Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.</textarea>
+                                </div>
 
                                 <!-- Seller Terms -->
                                 <div class="col-12">
