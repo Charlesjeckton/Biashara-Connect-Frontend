@@ -563,7 +563,7 @@
                                 <!-- Terms & Conditions -->
                                 <div class="col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="buyerTerms" required>
+                                        <input class="form-check-input" type="checkbox" id="buyerTerms"  name="terms" required>
                                         <label class="form-check-label" for="buyerTerms">
                                             I agree to the <a href="#" class="fw-bold">Terms & Conditions</a> and
                                             <a href="#" class="fw-bold">Privacy Policy</a>
@@ -601,7 +601,8 @@
                                         </div>
                                         <div class="col-md-9">
                                             <label for="sellerProfile" class="form-label">Upload Profile Picture</label>
-                                            <input type="file" class="form-control" id="sellerProfile" accept="image/*"
+                                            <input type="file" class="form-control" id="sellerProfile"
+                                                name="profile_image" accept="image/*"
                                                 onchange="previewSellerProfile(event)">
                                             <div class="form-text">JPG, PNG, or GIF. Max 2MB.</div>
                                         </div>
@@ -642,7 +643,7 @@
                                     <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
                                         required>
                                 </div>
-                                
+
 
                                 <!-- Password -->
                                 <div class="col-md-6">
@@ -660,7 +661,7 @@
                                     <label class="form-label">
                                         <i class="fas fa-lock text-success me-1"></i>Confirm Password
                                     </label>
-                                    <input type="confirm_password" name="confirm_password" class="form-control"
+                                    <input type="password" name="confirm_password" class="form-control"
                                         placeholder="Enter your password" required>
                                 </div>
 
@@ -674,14 +675,14 @@
                                         <!--Business Name -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Business Name</label>
-                                            <input type="text" class="form-control"
+                                            <input type="text" class="form-control" name="business_name"
                                                 placeholder="Enter your business/store name" required>
                                         </div>
 
                                         <!--Business Location -->
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Business Location</label>
-                                            <select class="form-select" required>
+                                            <select class="form-select" name="business_location" required>
                                                 <option value="" disabled selected>Select your business city</option>
                                                 <option value="Nairobi">Nairobi</option>
                                                 <option value="Mombasa">Mombasa</option>
@@ -695,7 +696,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
-                                            <label class="form-label">Business Type</label>
+                                            <label class="form-label" name="business_type">Business Type</label>
                                             <select class="form-select" required>
                                                 <option value="" disabled selected>Select business type</option>
                                                 <option value="individual">Individual/Sole Proprietor</option>
@@ -706,7 +707,7 @@
                                         </div>
 
                                         <div class="col-md-6 mb-3">
-                                            <label class="form-label">Business Category</label>
+                                            <label class="form-label" name="business_category">Business Category</label>
                                             <select class="form-select" required>
                                                 <option value="" disabled selected>Select category</option>
                                                 <option value="electronics">Electronics & Gadgets</option>
@@ -722,14 +723,14 @@
 
                                 <div class="mb-2">
                                     <label class="form-label">Bio / Description</label>
-                                    <textarea class="form-control" rows="3"
+                                    <textarea class="form-control" name="bio" rows="3"
                                         placeholder="Tell us about your business...">Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.</textarea>
                                 </div>
 
                                 <!-- Seller Terms -->
                                 <div class="col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="sellerTerms" required>
+                                        <input class="form-check-input" type="checkbox" id="sellerTerms"  name="terms" required>
                                         <label class="form-check-label" for="sellerTerms">
                                             I agree to the <a href="#" class="fw-bold">Seller Terms & Conditions</a>,
                                             <a href="#" class="fw-bold">Privacy Policy</a>, and confirm I have the right
@@ -962,67 +963,67 @@
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const API_BASE = "https://biashara-connect-backend.onrender.com/api/auth";
+    document.addEventListener("DOMContentLoaded", () => {
+        const API_BASE = "https://biashara-connect-backend.onrender.com/api/auth";
 
-  function showMessage(form, message, type = "success") {
-    let container = form.querySelector(".form-message");
-    if (!container) {
-      container = document.createElement("div");
-      container.className = "form-message mt-2";
-      form.prepend(container);
-    }
-    container.textContent = message;
-    container.style.color = type === "error" ? "red" : "green";
-  }
+        function showMessage(form, message, type = "success") {
+            let container = form.querySelector(".form-message");
+            if (!container) {
+                container = document.createElement("div");
+                container.className = "form-message mt-2";
+                form.prepend(container);
+            }
+            container.textContent = message;
+            container.style.color = type === "error" ? "red" : "green";
+        }
 
-  // Buyer Form (JSON)
-  const buyerForm = document.getElementById("buyerForm");
-  buyerForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formData = new FormData(buyerForm);
-    const data = {};
-    formData.forEach((v, k) => (data[k] = v));
+        // Buyer Form (JSON)
+        const buyerForm = document.getElementById("buyerForm");
+        buyerForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const formData = new FormData(buyerForm);
+            const data = {};
+            formData.forEach((v, k) => (data[k] = v));
 
-    try {
-      const res = await fetch(`${API_BASE}/register/buyer/`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const json = await res.json();
-      if (json.error) showMessage(buyerForm, json.error, "error");
-      else {
-        showMessage(buyerForm, json.message || "Buyer registered!", "success");
-        buyerForm.reset();
-      }
-    } catch (err) {
-      showMessage(buyerForm, "Network error", "error");
-    }
-  });
+            try {
+                const res = await fetch(`${API_BASE}/register/buyer/`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                });
+                const json = await res.json();
+                if (json.error) showMessage(buyerForm, json.error, "error");
+                else {
+                    showMessage(buyerForm, json.message || "Buyer registered!", "success");
+                    buyerForm.reset();
+                }
+            } catch (err) {
+                showMessage(buyerForm, "Network error", "error");
+            }
+        });
 
-  // Seller Form (FormData for file upload)
-  const sellerForm = document.getElementById("sellerForm");
-  sellerForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formData = new FormData(sellerForm);
+        // Seller Form (FormData for file upload)
+        const sellerForm = document.getElementById("sellerForm");
+        sellerForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const formData = new FormData(sellerForm);
 
-    try {
-      const res = await fetch(`${API_BASE}/register/seller/`, {
-        method: "POST",
-        body: formData, // ✅ FormData sends file and text correctly
-      });
-      const json = await res.json();
-      if (json.error) showMessage(sellerForm, json.error, "error");
-      else {
-        showMessage(sellerForm, json.message || "Seller registered!", "success");
-        sellerForm.reset();
-        document.getElementById("sellerProfilePreview").src =
-          "https://cdn-icons-png.flaticon.com/512/149/149071.png";
-      }
-    } catch (err) {
-      showMessage(sellerForm, "Network error", "error");
-    }
-  });
-});
+            try {
+                const res = await fetch(`${API_BASE}/register/seller/`, {
+                    method: "POST",
+                    body: formData, // ✅ FormData sends file and text correctly
+                });
+                const json = await res.json();
+                if (json.error) showMessage(sellerForm, json.error, "error");
+                else {
+                    showMessage(sellerForm, json.message || "Seller registered!", "success");
+                    sellerForm.reset();
+                    document.getElementById("sellerProfilePreview").src =
+                        "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+                }
+            } catch (err) {
+                showMessage(sellerForm, "Network error", "error");
+            }
+        });
+    });
 </script>
