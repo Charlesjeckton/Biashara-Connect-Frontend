@@ -531,6 +531,22 @@
                                         required>
                                 </div>
 
+                                <!-- Location -->
+                                <div class="col-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-map-marker-alt text-success me-1"></i>Location
+                                    </label>
+                                    <select name="location" class="form-select" required>
+                                        <option value="" disabled selected>Select your city</option>
+                                        <option value="Nairobi">Nairobi</option>
+                                        <option value="Mombasa">Mombasa</option>
+                                        <option value="Kisumu">Kisumu</option>
+                                        <option value="Nakuru">Nakuru</option>
+                                        <option value="Eldoret">Eldoret</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+
                                 <!-- Password -->
                                 <div class="col-md-6">
                                     <label class="form-label">
@@ -543,14 +559,6 @@
                                     </div>
                                 </div>
 
-                                <!--Confirm Password -->
-                                <div class="col-md-6">
-                                    <label class="form-label">
-                                        <i class="fas fa-lock text-success me-1"></i>Password
-                                    </label>
-                                    <input type="confirm_password" name="confirm_password" class="form-control"
-                                        placeholder="Enter your password" required>
-                                </div>
 
                                 <!-- Terms & Conditions -->
                                 <div class="col-12">
@@ -634,21 +642,7 @@
                                     <input type="tel" name="phone" class="form-control" placeholder="+254 7XX XXX XXX"
                                         required>
                                 </div>
-                                <!-- Location -->
-                                <div class="col-6">
-                                    <label class="form-label">
-                                        <i class="fas fa-map-marker-alt text-success me-1"></i>Location
-                                    </label>
-                                    <select name="location" class="form-select" required>
-                                        <option value="" disabled selected>Select your city</option>
-                                        <option value="Nairobi">Nairobi</option>
-                                        <option value="Mombasa">Mombasa</option>
-                                        <option value="Kisumu">Kisumu</option>
-                                        <option value="Nakuru">Nakuru</option>
-                                        <option value="Eldoret">Eldoret</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
+                                
 
                                 <!-- Password -->
                                 <div class="col-md-6">
@@ -660,6 +654,14 @@
                                     <div class="password-requirements">
                                         Must be at least 8 characters with letters & numbers
                                     </div>
+                                </div>
+                                <!--Confirm Password -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-lock text-success me-1"></i>Confirm Password
+                                    </label>
+                                    <input type="confirm_password" name="confirm_password" class="form-control"
+                                        placeholder="Enter your password" required>
                                 </div>
 
                                 <!-- Business Information -->
