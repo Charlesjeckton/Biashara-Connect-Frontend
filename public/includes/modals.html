@@ -531,22 +531,6 @@
                                         required>
                                 </div>
 
-                                <!-- Location -->
-                                <div class="col-6">
-                                    <label class="form-label">
-                                        <i class="fas fa-map-marker-alt text-success me-1"></i>Location
-                                    </label>
-                                    <select name="location" class="form-select" required>
-                                        <option value="" disabled selected>Select your city</option>
-                                        <option value="Nairobi">Nairobi</option>
-                                        <option value="Mombasa">Mombasa</option>
-                                        <option value="Kisumu">Kisumu</option>
-                                        <option value="Nakuru">Nakuru</option>
-                                        <option value="Eldoret">Eldoret</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-
                                 <!-- Password -->
                                 <div class="col-md-6">
                                     <label class="form-label">
@@ -557,6 +541,15 @@
                                     <div class="password-requirements">
                                         Must be at least 8 characters with letters & numbers
                                     </div>
+                                </div>
+
+                                <!--Confirm Password -->
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-lock text-success me-1"></i>Password
+                                    </label>
+                                    <input type="confirm_password" name="confirm_password" class="form-control"
+                                        placeholder="Enter your password" required>
                                 </div>
 
                                 <!-- Terms & Conditions -->
@@ -767,7 +760,6 @@
     </div>
 </div>
 
-
 <!-- Seller Profile Modal -->
 <div class="modal fade" id="SellerModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -968,274 +960,85 @@
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const API_BASE = "https://biashara-connect-backend.onrender.com";
+document.addEventListener("DOMContentLoaded", () => {
 
-        // Helper function for displaying errors
-        function showError(form, message) {
-            let errorDiv = form.querySelector(".error-msg");
-            if (!errorDiv) {
-                errorDiv = document.createElement("div");
-                errorDiv.className = "error-msg text-danger mb-3";
-                form.prepend(errorDiv);
-            }
-            errorDiv.innerText = message;
-            errorDiv.style.display = "block";
-        }
+    const API_BASE = "https://biashara-connect-backend.onrender.com";
 
-        // ===== Buyer Registration =====
-        const buyerForm = document.getElementById("buyerForm");
-        if (buyerForm) {
-            buyerForm.addEventListener("submit", async (e) => {
-                e.preventDefault();
-                showError(buyerForm, "");
-
-                const formData = {
-                    first_name: buyerForm.querySelector("input[name='first_name']").value,
-                    last_name: buyerForm.querySelector("input[name='last_name']").value,
-                    email: buyerForm.querySelector("input[name='email']").value,
-                    phone: buyerForm.querySelector("input[name='phone']").value,
-                    password: buyerForm.querySelector("input[name='password']").value,
-                    location: buyerForm.querySelector("select[name='location']").value,
-                };
-
-                try {
-                    const res = await fetch(`${API_BASE}/api/auth/register/buyer/`, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(formData),
-                    });
-
-                    const text = await res.text();
-                    console.log("Buyer raw response:", text);
-
-                    let data;
-                    try { data = JSON.parse(text); } catch { data = { error: text }; }
-
-                    if (res.ok) {
-                        alert(data.message || "Buyer registered successfully!");
-                        buyerForm.reset();
-                    } else {
-                        showError(buyerForm, data.error || JSON.stringify(data));
-                    }
-                } catch (err) {
-                    console.error(err);
-                    showError(buyerForm, "Network error. See console for details.");
-                }
+    // Helper to send JSON to backend
+    async function postJSON(url, data) {
+        try {
+            const res = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
             });
-        } else {
-            console.error("buyerForm not found in DOM!");
+            return await res.json();
+        } catch (err) {
+            return { error: "Network error" };
         }
+    }
 
-        // ===== Seller Registration =====
-        const sellerForm = document.getElementById("sellerForm");
-        if (sellerForm) {
-            sellerForm.addEventListener("submit", async (e) => {
-                e.preventDefault();
-                showError(sellerForm, "");
+    // Buyer Registration
+    document.getElementById("buyerForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-                const formData = new FormData();
-                const fields = ["first_name", "last_name", "email", "phone", "password"];
-                fields.forEach(f => {
-                    const input = sellerForm.querySelector(`[name='${f}']`);
-                    if (input) formData.append(f, input.value);
-                });
+        const form = e.target;
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
 
-                const locationSelect = sellerForm.querySelector("select[name='location']");
-                if (locationSelect) formData.append("location", locationSelect.value);
+        const result = await postJSON(`${API_BASE}/register_buyer/`, data);
+        console.log("Buyer result:", result);
 
-                // Profile picture
-                const profileInput = document.getElementById("sellerProfile");
-                if (profileInput && profileInput.files.length > 0) {
-                    formData.append("profile_picture", profileInput.files[0]);
-                }
-
-                try {
-                    const res = await fetch(`${API_BASE}/api/auth/register/seller/`, {
-                        method: "POST",
-                        body: formData,
-                    });
-
-                    const text = await res.text();
-                    console.log("Seller raw response:", text);
-
-                    let data;
-                    try { data = JSON.parse(text); } catch { data = { error: text }; }
-
-                    if (res.ok) {
-                        alert(data.message || "Seller registered successfully!");
-                        sellerForm.reset();
-                        if (profileInput) profileInput.value = "";
-                    } else {
-                        showError(sellerForm, data.error || JSON.stringify(data));
-                    }
-                } catch (err) {
-                    console.error(err);
-                    showError(sellerForm, "Network error. See console for details.");
-                }
-            });
+        if (result.message) {
+            alert("Success: " + result.message);
+            form.reset();
         } else {
-            console.error("sellerForm not found in DOM!");
+            alert("Error: " + JSON.stringify(result));
         }
     });
-</script>
 
+    // Seller Registration
+    document.getElementById("sellerForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
 
+        const form = e.target;
+        const formData = new FormData(form);
 
-
-<!-- JavaScript for Profile Picture Upload -->
-<script>
-    function previewSellerProfile(event) {
-        const input = event.target;
-        const preview = document.getElementById('sellerProfilePreview');
-
-        if (input.files && input.files[0]) {
-            const file = input.files[0];
-
-            // Validate file size (max 2MB)
-            if (file.size > 2 * 1024 * 1024) {
-                alert('File size should be less than 2MB');
-                clearSellerProfile();
-                return;
-            }
-
-            // Validate file type
-            const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-            if (!validTypes.includes(file.type)) {
-                alert('Please upload a valid image file (JPG, PNG, GIF, or WEBP)');
-                clearSellerProfile();
-                return;
-            }
-
+        // Handle profile image (base64)
+        const fileInput = document.getElementById("sellerProfile");
+        if (fileInput && fileInput.files.length > 0) {
+            const file = fileInput.files[0];
             const reader = new FileReader();
-            reader.onload = function (e) {
-                preview.src = e.target.result;
-                preview.classList.add('border-success');
-                preview.classList.remove('border-success-subtle');
-            }
-            reader.readAsDataURL(file);
-        }
-    }
+            reader.onloadend = async () => {
+                formData.set("profile_image", reader.result);
+                const data = Object.fromEntries(formData.entries());
+                const result = await postJSON(`${API_BASE}/register_seller/`, data);
+                console.log("Seller result:", result);
 
-    function clearSellerProfile() {
-        const input = document.getElementById('sellerProfile');
-        const preview = document.getElementById('sellerProfilePreview');
-
-        input.value = '';
-        preview.src = 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
-        preview.classList.remove('border-success');
-        preview.classList.add('border-success-subtle');
-    }
-
-    // Add click event to preview image to trigger file input
-    document.addEventListener('DOMContentLoaded', function () {
-        const preview = document.getElementById('sellerProfilePreview');
-        if (preview) {
-            preview.addEventListener('click', function () {
-                document.getElementById('sellerProfile').click();
-            });
-        }
-
-        // Form submission handler
-        const sellerForm = document.getElementById('sellerForm');
-        if (sellerForm) {
-            sellerForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                // Here you would handle the form submission
-                // The profile picture is optional, so no validation needed
-                const formData = new FormData(this);
-                const profileInput = document.getElementById('sellerProfile');
-
-                if (profileInput.files.length > 0) {
-                    formData.append('profile_picture', profileInput.files[0]);
-                }
-
-                // Add your AJAX submission logic here
-                console.log('Seller form submitted with profile picture:', profileInput.files.length > 0);
-
-                // For demonstration, just show an alert
-                alert('Seller registration submitted successfully!');
-            });
-        }
-    });
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const API_BASE = "https://biashara-connect-backend.onrender.com";
-
-        // ===== Login =====
-        const loginForm = document.getElementById("loginForm");
-
-        if (!loginForm) {
-            console.error("loginForm not found!");
-            return;
-        }
-
-        loginForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
-
-            // Remove old errors
-            let errorDiv = loginForm.querySelector(".error-msg");
-            if (errorDiv) errorDiv.remove();
-
-            const email = loginForm.querySelector("input[name='email']").value.trim();
-            const password = loginForm.querySelector("input[name='password']").value;
-
-            if (!email || !password) {
-                showLoginError("Email and password are required.");
-                return;
-            }
-
-            try {
-                const res = await fetch(`${API_BASE}/api/auth/login/`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ email, password }),
-                });
-
-                const text = await res.text();
-                console.log("Login raw response:", text);
-
-                let data;
-                try { data = JSON.parse(text); }
-                catch { data = { error: text }; }
-
-                if (!res.ok) {
-                    showLoginError(data.error || "Invalid login credentials.");
-                    return;
-                }
-
-                // ✅ Save tokens
-                if (data.access) localStorage.setItem("access_token", data.access);
-                if (data.refresh) localStorage.setItem("refresh_token", data.refresh);
-                if (data.user_type) localStorage.setItem("user_type", data.user_type);
-
-                // ✅ Close modal
-                bootstrap.Modal.getInstance(
-                    document.getElementById("loginModal")
-                ).hide();
-
-                // ✅ Redirect based on role
-                if (data.user_type === "seller") {
-                    window.location.href = "/seller/dashboard.html";
+                if (result.message) {
+                    alert("Success: " + result.message);
+                    form.reset();
                 } else {
-                    window.location.href = "/buyer/dashboard.html";
+                    alert("Error: " + JSON.stringify(result));
                 }
+            };
+            reader.readAsDataURL(file);
+        } else {
+            // No image
+            const data = Object.fromEntries(formData.entries());
+            const result = await postJSON(`${API_BASE}/register_seller/`, data);
+            console.log("Seller result:", result);
 
-            } catch (err) {
-                console.error(err);
-                showLoginError("Network error. Please try again.");
+            if (result.message) {
+                alert("Success: " + result.message);
+                form.reset();
+            } else {
+                alert("Error: " + JSON.stringify(result));
             }
-        });
-
-        function showLoginError(message) {
-            const div = document.createElement("div");
-            div.className = "error-msg text-danger mb-3";
-            div.innerText = message;
-            loginForm.prepend(div);
         }
     });
+
+});
 </script>
