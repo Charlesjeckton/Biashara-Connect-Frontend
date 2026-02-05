@@ -587,17 +587,23 @@
                             <div class="row g-4">
 
                                 <!-- Profile Picture Upload (Optional) -->
-                                <div class="col-12 mb-3">
-                                    <label for="sellerProfile" class="form-label fw-semibold">
-                                        Profile Picture (Optional)
-                                    </label>
-                                    <input type="file" class="form-control" id="sellerProfile" accept="image/*"
-                                        onchange="previewSellerProfile(event)">
-                                    <div class="mt-2" style="width: 120px; height: 120px;">
-                                        <img id="sellerProfilePreview"
-                                            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                                            alt="Profile preview"
-                                            class="rounded-circle w-100 h-100 object-fit-cover border border-2 border-success-subtle">
+                                <div class="col-12">
+                                    <h6 class="fw-bold text-success mb-3">
+                                        <i class="fas fa-user-circle me-2"></i>Profile Picture (Optional)
+                                    </h6>
+                                    <div class="row align-items-center">
+                                        <div class="col-md-3 text-center mb-3 mb-md-0">
+                                            <img id="sellerProfilePreview"
+                                                src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                                alt="Profile preview" class="rounded-circle"
+                                                style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #198754;">
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label for="sellerProfile" class="form-label">Upload Profile Picture</label>
+                                            <input type="file" class="form-control" id="sellerProfile" accept="image/*"
+                                                onchange="previewSellerProfile(event)">
+                                            <div class="form-text">JPG, PNG, or GIF. Max 2MB.</div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -939,12 +945,14 @@
 <script src="../assets/js/main.js" defer></script>
 <script>
     function previewSellerProfile(event) {
-        const reader = new FileReader();
-        reader.onload = function () {
-            const output = document.getElementById('sellerProfilePreview');
-            output.src = reader.result;
-        };
-        reader.readAsDataURL(event.target.files[0]);
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('sellerProfilePreview').src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
     }
 </script>
 
