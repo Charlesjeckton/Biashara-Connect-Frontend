@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiasharaConnect | Sell & Earn</title>
 
-     <!-- Favicons -->
+    <!-- Favicons -->
     <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
-        <!-- Vendor CSS -->
+    <!-- Vendor CSS -->
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap"
-          rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- Main CSS -->
     <link href="/assets/css/main.css" rel="stylesheet">
 </head>
+
 <body>
 
-<section id="header" class="header section">
+    <section id="header" class="header section">
         <header id="header" class="header">
             <div class="container">
 
@@ -62,7 +65,7 @@
 
                                 <div class="dropdown-divider"></div>
 
-                                <a class="dropdown-item" href="register.html">
+                                <a class="dropdown-item" href="buyerRegister.html">
                                     <i class="fas fa-user-plus me-2"></i> Register
                                 </a>
 
@@ -132,189 +135,191 @@
         <div id="modals-placeholder"></div>
     </section>
 
-<main class="page-content">
-    <!-- Sell Hero Section -->
-    <section class="sell-hero py-4">
-        <div class="container sell-hero-content">
-            <h1>Sell & Earn on BiasharaConnect</h1>
-            <p>Reach thousands of buyers across Kenya. List your products or services in minutes and start earning
-                today!</p>
+    <main class="page-content">
+        <!-- Sell Hero Section -->
+        <section class="sell-hero py-4">
+            <div class="container sell-hero-content">
+                <h1>Sell & Earn on BiasharaConnect</h1>
+                <p>Reach thousands of buyers across Kenya. List your products or services in minutes and start earning
+                    today!</p>
 
-            <div class="benefits-container">
-                <div class="benefit-item">
-                    <i class="fas fa-rocket"></i>
-                    <span>Quick Setup</span>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Secure Payments</span>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-users"></i>
-                    <span>Wide Reach</span>
-                </div>
-                <div class="benefit-item">
-                    <i class="fas fa-headset"></i>
-                    <span>24/7 Support</span>
+                <div class="benefits-container">
+                    <div class="benefit-item">
+                        <i class="fas fa-rocket"></i>
+                        <span>Quick Setup</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure Payments</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-users"></i>
+                        <span>Wide Reach</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-headset"></i>
+                        <span>24/7 Support</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Create Listing Section -->
-    <section id="create-listing" class="create-listing section py-5">
-        <div class="container container-main">
-            <h2><i class="fas fa-edit me-2"></i>Create Your Listing</h2>
+        <!-- Create Listing Section -->
+        <section id="create-listing" class="create-listing section py-5">
+            <div class="container container-main">
+                <h2><i class="fas fa-edit me-2"></i>Create Your Listing</h2>
 
-            <form id="sellForm" class="row g-4">
-                <div class="col-12">
-                    <h4 class="form-section-title">Product Information</h4>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="productName" class="form-label">
-                        <i class="fas fa-tag"></i> Product / Service Name
-                    </label>
-                    <input type="text" class="form-control" id="productName"
-                           placeholder="e.g., iPhone 13 Pro, Web Design Service, Maize Harvest" required>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="category" class="form-label">
-                        <i class="fas fa-layer-group"></i> Category
-                    </label>
-                    <select id="category" class="form-select" required>
-                        <option value="">Choose</option>
-                        <option value="electronics">Electronics & Gadgets</option>
-                        <option value="fashion">Fashion & Clothing</option>
-                        <option value="home">Home & Garden</option>
-                        <option value="vehicles">Vehicles & Automobiles</option>
-                        <option value="services">Professional Services</option>
-                        <option value="agriculture">Agriculture & Farm Produce</option>
-                        <option value="realestate">Real Estate</option>
-                        <option value="jobs">Jobs & Vacancies</option>
-                    </select>
-                </div>
-
-                <div class="col-12">
-                    <h4 class="form-section-title">Pricing & Details</h4>
-                </div>
-
-                <div class="col-md-4">
-                    <label for="price" class="form-label">
-                        <i class="fas fa-money-bill-wave"></i> Price (KSh)
-                    </label>
-                    <div class="price-container">
-                        <span class="currency-symbol">KSh</span>
-                        <input type="number" class="form-control" id="price"
-                               placeholder="  0.00" min="0" step="100" required>
+                <form id="sellForm" class="row g-4">
+                    <div class="col-12">
+                        <h4 class="form-section-title">Product Information</h4>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <label for="location" class="form-label">
-                        <i class="fas fa-map-marker-alt"></i> Location
-                    </label>
-                    <input type="text" class="form-control" id="location"
-                           placeholder="e.g., Nairobi, Mombasa, Kisumu" required>
-                </div>
-
-                <div class="col-md-4">
-                    <label for="condition" class="form-label">
-                        <i class="fas fa-certificate"></i> Condition
-                    </label>
-                    <select id="condition" class="form-select" required>
-                        <option value="">Choose</option>
-                        <option value="new">Brand New</option>
-                        <option value="used-like-new">Used - Like New</option>
-                        <option value="used-good">Used - Good</option>
-                        <option value="used-fair">Used - Fair</option>
-                        <option value="service">Service</option>
-                    </select>
-                </div>
-
-                <div class="col-12">
-                    <h4 class="form-section-title">Media & Description</h4>
-                </div>
-
-                <div class="col-12">
-                    <label class="form-label">
-                        <i class="fas fa-images"></i> Upload Images
-                    </label>
-                    <div class="file-upload-container" onclick="document.getElementById('images').click()">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <div class="file-upload-label">Click to upload images</div>
-                        <div class="file-upload-hint">Upload up to 10 images (JPEG, PNG, GIF) • Max 5MB each</div>
-                        <input type="file" class="form-control d-none" id="images" multiple accept="image/*">
+                    <div class="col-md-6">
+                        <label for="productName" class="form-label">
+                            <i class="fas fa-tag"></i> Product / Service Name
+                        </label>
+                        <input type="text" class="form-control" id="productName"
+                            placeholder="e.g., iPhone 13 Pro, Web Design Service, Maize Harvest" required>
                     </div>
-                </div>
 
-                <div class="col-12">
-                    <label for="description" class="form-label">
-                        <i class="fas fa-align-left"></i> Description
-                    </label>
-                    <textarea id="description" class="form-control" rows="6"
-                              placeholder="Describe your product or service in detail. Include specifications, features, condition, and any other relevant information..."
-                              required></textarea>
-                    <div class="form-text mt-2">
-                        <i class="fas fa-lightbulb text-warning"></i> Tip: Detailed descriptions with clear specifications
-                        attract more buyers.
+                    <div class="col-md-6">
+                        <label for="category" class="form-label">
+                            <i class="fas fa-layer-group"></i> Category
+                        </label>
+                        <select id="category" class="form-select" required>
+                            <option value="">Choose</option>
+                            <option value="electronics">Electronics & Gadgets</option>
+                            <option value="fashion">Fashion & Clothing</option>
+                            <option value="home">Home & Garden</option>
+                            <option value="vehicles">Vehicles & Automobiles</option>
+                            <option value="services">Professional Services</option>
+                            <option value="agriculture">Agriculture & Farm Produce</option>
+                            <option value="realestate">Real Estate</option>
+                            <option value="jobs">Jobs & Vacancies</option>
+                        </select>
                     </div>
-                </div>
 
-                <div class="col-12 submit-btn-container">
-                    <button type="submit" class="btn btn-publish">
-                        <i class="fas fa-paper-plane"></i> Publish Listing
-                    </button>
-                    <div class="form-text mt-3">
-                        By publishing, you agree to our <a href="#" class="text-decoration-none">Terms of Service</a> and <a
-                            href="#" class="text-decoration-none">Seller Policy</a>.
+                    <div class="col-12">
+                        <h4 class="form-section-title">Pricing & Details</h4>
                     </div>
-                </div>
-            </form>
-        </div>
-    </section>
 
-    <!-- Tips Section -->
-    <section id="sell-tips" class="sell-tips section">
-        <div class="container container-main">
-            <div class="sell-tips-content">
-                <h4><i class="fas fa-lightbulb me-2"></i>Tips for Successful Listings</h4>
-                <ul class="tips-list">
-                    <li>Use clear, well-lit photos from multiple angles</li>
-                    <li>Set a competitive price by checking similar listings</li>
-                    <li>Be honest about the condition of your item</li>
-                    <li>Include your contact information for quick responses</li>
-                    <li>Respond to buyer inquiries promptly</li>
-                    <li>Update your listing regularly to keep it active</li>
-                </ul>
+                    <div class="col-md-4">
+                        <label for="price" class="form-label">
+                            <i class="fas fa-money-bill-wave"></i> Price (KSh)
+                        </label>
+                        <div class="price-container">
+                            <span class="currency-symbol">KSh</span>
+                            <input type="number" class="form-control" id="price" placeholder="  0.00" min="0" step="100"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="location" class="form-label">
+                            <i class="fas fa-map-marker-alt"></i> Location
+                        </label>
+                        <input type="text" class="form-control" id="location"
+                            placeholder="e.g., Nairobi, Mombasa, Kisumu" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="condition" class="form-label">
+                            <i class="fas fa-certificate"></i> Condition
+                        </label>
+                        <select id="condition" class="form-select" required>
+                            <option value="">Choose</option>
+                            <option value="new">Brand New</option>
+                            <option value="used-like-new">Used - Like New</option>
+                            <option value="used-good">Used - Good</option>
+                            <option value="used-fair">Used - Fair</option>
+                            <option value="service">Service</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <h4 class="form-section-title">Media & Description</h4>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">
+                            <i class="fas fa-images"></i> Upload Images
+                        </label>
+                        <div class="file-upload-container" onclick="document.getElementById('images').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <div class="file-upload-label">Click to upload images</div>
+                            <div class="file-upload-hint">Upload up to 10 images (JPEG, PNG, GIF) • Max 5MB each</div>
+                            <input type="file" class="form-control d-none" id="images" multiple accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="description" class="form-label">
+                            <i class="fas fa-align-left"></i> Description
+                        </label>
+                        <textarea id="description" class="form-control" rows="6"
+                            placeholder="Describe your product or service in detail. Include specifications, features, condition, and any other relevant information..."
+                            required></textarea>
+                        <div class="form-text mt-2">
+                            <i class="fas fa-lightbulb text-warning"></i> Tip: Detailed descriptions with clear
+                            specifications
+                            attract more buyers.
+                        </div>
+                    </div>
+
+                    <div class="col-12 submit-btn-container">
+                        <button type="submit" class="btn btn-publish">
+                            <i class="fas fa-paper-plane"></i> Publish Listing
+                        </button>
+                        <div class="form-text mt-3">
+                            By publishing, you agree to our <a href="#" class="text-decoration-none">Terms of
+                                Service</a> and <a href="#" class="text-decoration-none">Seller Policy</a>.
+                        </div>
+                    </div>
+                </form>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
 
-<div id="footer-placeholder"></div>
+        <!-- Tips Section -->
+        <section id="sell-tips" class="sell-tips section">
+            <div class="container container-main">
+                <div class="sell-tips-content">
+                    <h4><i class="fas fa-lightbulb me-2"></i>Tips for Successful Listings</h4>
+                    <ul class="tips-list">
+                        <li>Use clear, well-lit photos from multiple angles</li>
+                        <li>Set a competitive price by checking similar listings</li>
+                        <li>Be honest about the condition of your item</li>
+                        <li>Include your contact information for quick responses</li>
+                        <li>Respond to buyer inquiries promptly</li>
+                        <li>Update your listing regularly to keep it active</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
 
-<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/assets/js/sell.js"></script>
-<script src="/assets/js/main.js" defer></script>
-<script>
-    // Load header & footer and modals
-    function loadHTML(elementId, filePath) {
-        return fetch(filePath)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById(elementId).innerHTML = data;
-            });
-    }
+    <div id="footer-placeholder"></div>
 
-    window.onload = function() {
-        // Load all components
-        Promise.all([
-            loadHTML('modals-placeholder', '/includes/modals.html'),
-            loadHTML('footer-placeholder', '/includes/footer.html')
-        ]);
-    };
-</script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/sell.js"></script>
+    <script src="/assets/js/main.js" defer></script>
+    <script>
+        // Load header & footer and modals
+        function loadHTML(elementId, filePath) {
+            return fetch(filePath)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                });
+        }
+
+        window.onload = function () {
+            // Load all components
+            Promise.all([
+                loadHTML('modals-placeholder', '/includes/modals.html'),
+                loadHTML('footer-placeholder', '/includes/footer.html')
+            ]);
+        };
+    </script>
 </body>
+
 </html>
