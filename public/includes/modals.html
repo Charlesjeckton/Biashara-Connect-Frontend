@@ -494,7 +494,7 @@
                     <!-- Buyer Form -->
                     <div class="tab-pane fade show active" id="buyer" role="tabpanel">
                         <form id="buyerForm" class="needs-validation" novalidate>
-                            <div class="row g-4">
+                            <div class="row g-2">
 
                                 <!-- Personal Information -->
                                 <div class="col-md-6">
@@ -584,7 +584,7 @@
                     <!-- Seller Form -->
                     <div class="tab-pane fade" id="seller" role="tabpanel">
                         <form id="sellerForm" class="needs-validation" novalidate>
-                            <div class="row g-4">
+                            <div class="row g-2">
 
                                 <!-- Profile Picture Upload (Optional) -->
                                 <div class="col-12">
@@ -723,7 +723,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-2">
                                     <label class="form-label">Bio / Description</label>
                                     <textarea class="form-control" rows="3"
                                         placeholder="Tell us about your business...">Experienced seller with 5+ years in electronics. Specializing in smartphones and accessories.</textarea>
@@ -821,6 +821,15 @@
                                 <label class="form-label">Business Name</label>
                                 <input type="text" class="form-control" placeholder="Enter your business name"
                                     value="Dreamchaser Electronics" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Business Type</label>
+                                <select class="form-select" required>
+                                    <option value="individual" selected>Individual/Sole Proprietor</option>
+                                    <option value="company">Registered Company</option>
+                                    <option value="cooperative">Cooperative</option>
+                                    <option value="partnership">Partnership</option>
+                                </select>
                             </div>
 
                             <div class="mb-3">
