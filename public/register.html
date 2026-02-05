@@ -306,7 +306,8 @@
                             <div class="col-md-6">
                                 <label class="form-label"><i class="fas fa-lock text-success me-1"></i>Confirm
                                     Password</label>
-                                <input type="password" name="confirm_password" class="form-control" placeholder="Enter your password" required>
+                                <input type="password" name="confirm_password" class="form-control"
+                                    placeholder="Enter your password" required>
                             </div>
 
                             <!-- Business Info -->
@@ -316,7 +317,8 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">Business Name</label>
-                                        <input type="text" name="business_name" class="form-control" placeholder="Enter your business/store name" required>
+                                        <input type="text" name="business_name" class="form-control"
+                                            placeholder="Enter your business/store name" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">Business Location</label>
@@ -410,48 +412,86 @@
     </script>
 
     <script>
-        function previewSellerProfile(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById('sellerProfilePreview').src = e.target.result;
-                }
-                reader.readAsDataURL(file);
-            }
+        const API_BASE = "https://biashara-connect-backend.onrender.com";
+
+        // Utility to show alerts
+        function showAlert(alertBox, message) {
+            alertBox.textContent = message;
+            alertBox.style.display = 'block';
         }
 
-        // Bootstrap validation for forms
-        (function () {
-            'use strict'
+        // Buyer Form Submission
+        document.getElementById('buyerForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('buyerAlert');
+            alertBox.style.display = 'none';
+            alertBox.textContent = '';
 
-            const forms = document.querySelectorAll('.needs-validation')
+            const formData = Object.fromEntries(new FormData(this).entries());
 
-            Array.from(forms).forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    event.preventDefault()
-                    event.stopPropagation()
+            // Password confirmation check
+            if (formData.password !== formData.confirm_password) {
+                showAlert(alertBox, "Passwords do not match!");
+                return;
+            }
 
-                    if (!form.checkValidity()) {
-                        form.classList.add('was-validated')
-                    } else {
-                        // Here you can handle form submission (AJAX or normal)
-                        if (form.id === 'buyerForm') {
-                            alert('Buyer registered successfully!');
-                        } else if (form.id === 'sellerForm') {
-                            alert('Seller registered successfully!');
-                        }
-                        form.reset();
-                        form.classList.remove('was-validated');
-                        // Reset profile preview
-                        const preview = document.getElementById('sellerProfilePreview');
-                        preview.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
-                    }
-                }, false)
-            })
-        })()
+            try {
+                const res = await fetch(`${API_BASE}/api/auth/register/buyer/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    showAlert(alertBox, data.error || JSON.stringify(data));
+                } else {
+                    alert('Buyer registered successfully! Please login.');
+                    window.location.href = 'login.html';
+                }
+            } catch (err) {
+                showAlert(alertBox, 'Something went wrong. Please try again.');
+                console.error(err);
+            }
+        });
+
+        // Seller Form Submission
+        document.getElementById('sellerForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('sellerAlert');
+            alertBox.style.display = 'none';
+            alertBox.textContent = '';
+
+            const formDataObj = new FormData(this);
+
+            // Password confirmation check
+            if (formDataObj.get('password') !== formDataObj.get('confirm_password')) {
+                showAlert(alertBox, "Passwords do not match!");
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/api/auth/register/seller/`, {
+                    method: 'POST',
+                    body: formDataObj
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    showAlert(alertBox, data.error || JSON.stringify(data));
+                } else {
+                    alert('Seller registered successfully! Please login.');
+                    window.location.href = 'login.html';
+                }
+            } catch (err) {
+                showAlert(alertBox, 'Something went wrong. Please try again.');
+                console.error(err);
+            }
+        });
     </script>
-
+    
 </body>
 
 </html>

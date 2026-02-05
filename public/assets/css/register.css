@@ -1,6 +1,6 @@
 .auth-page {
             max-width: 900px;
-            margin: 3rem auto;
+            margin: auto;
             padding: 2rem;
             background: white;
             border-radius: 16px;
@@ -189,7 +189,7 @@
         /* Responsive */
         @media(max-width:768px) {
             .auth-page {
-                margin: 1rem;
+                margin: auto;
                 padding: 1.5rem;
             }
 
