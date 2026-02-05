@@ -23,118 +23,7 @@
 </head>
 
 <body>
-    <section class="header section">
-        <header id="header" class="header">
-            <div class="container">
 
-                <!-- TOP BAR: Logo + Mobile Toggle + Account -->
-                <div class="d-flex align-items-center justify-content-between py-2">
-
-                    <!-- Logo Section -->
-                    <div class="logo-section d-flex align-items-center">
-                        <button class="mobile-menu-btn d-lg-none me-3" aria-label="Toggle Navigation">
-                            <i class="fas fa-bars"></i>
-                        </button>
-
-
-                        <a href="/index.html" class="logo d-flex align-items-center text-decoration-none">
-                            <i class="fas fa-handshake logo-icon me-2"></i>
-                            <div>
-                                <div class="logo-text fw-bold">BiasharaConnect</div>
-                                <small class="logo-tagline text-muted d-none d-sm-block">
-                                    Kenya's Marketplace
-                                </small>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Account Dropdown (Desktop) -->
-                    <div class="d-flex align-items-center justify-content-between py-2">
-                        <div class="dropdown">
-                            <a href="#" class="btn btn-outline-primary-green dropdown-toggle" data-bs-toggle="dropdown">
-                                <i class="fas fa-user-circle me-2"></i> My Account
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#SellerModal">
-                                    <i class="fas fa-user me-2"></i> Seller Profile
-                                </a>
-
-                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BuyerModal">
-                                    <i class="fas fa-user me-2"></i> Buyer Profile
-                                </a>
-
-                                <div class="dropdown-divider"></div>
-
-                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#registerModal">>
-                                    <i class="fas fa-user-plus me-2"></i> Register
-                                </a>
-
-                                <a class="dropdown-item" href="login.html">
-                                    <i class="fas fa-sign-in-alt me-2"></i> Login
-                                </a>
-
-                                <a class="dropdown-item text-danger" href="#">
-                                    <i class="fas fa-sign-out-alt me-2"></i> Logout
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <!-- NAVIGATION BAR -->
-                <nav class="main-nav border-top pt-2" aria-label="Main Navigation">
-                    <ul class="nav justify-content-center" id="mainMenu">
-
-                        <li class="nav-item">
-                            <a href="/index.html" class="nav-link active">
-                                <i class="fas fa-store me-2"></i> Marketplace
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/sell.html" class="nav-link">
-                                <i class="fas fa-hand-holding-dollar me-2"></i> Sell & Earn
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/favorites.html" class="nav-link">
-                                <i class="fas fa-bookmark me-2"></i> Favorites
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/my-listings.html" class="nav-link">
-                                <i class="fas fa-list-alt me-2"></i> My Listings
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/messages.html" class="nav-link">
-                                <span>
-                                    <i class="fas fa-comment-dots me-2"></i> Messages
-                                </span>
-                                <span class="badge bg-danger">5</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/support.html" class="nav-link">
-                                <i class="fas fa-headset me-2"></i> Contact Us
-                            </a>
-                        </li>
-
-
-                    </ul>
-                </nav>
-
-            </div>
-        </header>
-
-        <div id="modals-placeholder"></div>
-    </section>
 
     <main>
         <!-- Registration Modal -->
@@ -188,59 +77,49 @@
                             <div class="tab-pane fade show active" id="buyer" role="tabpanel">
                                 <form id="buyerForm" class="needs-validation" novalidate>
                                     <div class="row g-4">
-
-                                        <!-- Personal Information -->
+                                        <!-- First & Last Name -->
                                         <div class="col-md-6">
-                                            <label class="form-label">
-                                                <i class="fas fa-user text-success me-1"></i>First Name
-                                            </label>
+                                            <label class="form-label"><i class="fas fa-user text-success me-1"></i>First
+                                                Name</label>
                                             <input type="text" name="first_name" class="form-control"
                                                 placeholder="Enter your first name" required>
                                         </div>
-
                                         <div class="col-md-6">
-                                            <label class="form-label">
-                                                <i class="fas fa-user text-success me-1"></i>Last Name
-                                            </label>
+                                            <label class="form-label"><i class="fas fa-user text-success me-1"></i>Last
+                                                Name</label>
                                             <input type="text" name="last_name" class="form-control"
                                                 placeholder="Enter your last name" required>
                                         </div>
 
-                                        <!-- Contact Information -->
+                                        <!-- Email & Phone -->
                                         <div class="col-md-6">
-                                            <label class="form-label">
-                                                <i class="fas fa-envelope text-success me-1"></i>Email Address
-                                            </label>
+                                            <label class="form-label"><i
+                                                    class="fas fa-envelope text-success me-1"></i>Email Address</label>
                                             <input type="email" name="email" class="form-control"
                                                 placeholder="you@example.com" required>
                                             <div class="form-text">We'll never share your email with anyone else.</div>
                                         </div>
-
                                         <div class="col-md-6">
-                                            <label class="form-label">
-                                                <i class="fas fa-phone text-success me-1"></i>Phone Number
-                                            </label>
+                                            <label class="form-label"><i
+                                                    class="fas fa-phone text-success me-1"></i>Phone Number</label>
                                             <input type="tel" name="phone" class="form-control"
                                                 placeholder="+254 7XX XXX XXX" required>
                                         </div>
 
                                         <!-- Password -->
                                         <div class="col-md-6">
-                                            <label class="form-label">
-                                                <i class="fas fa-lock text-success me-1"></i>Password
-                                            </label>
+                                            <label class="form-label"><i
+                                                    class="fas fa-lock text-success me-1"></i>Password</label>
                                             <input type="password" name="password" class="form-control"
                                                 placeholder="Create a strong password" required>
-                                            <div class="password-requirements">
-                                                Must be at least 8 characters with letters & numbers
-                                            </div>
+                                            <div class="password-requirements">Must be at least 8 characters with
+                                                letters & numbers</div>
                                         </div>
 
                                         <!-- Location -->
                                         <div class="col-6">
-                                            <label class="form-label">
-                                                <i class="fas fa-map-marker-alt text-success me-1"></i>Location
-                                            </label>
+                                            <label class="form-label"><i
+                                                    class="fas fa-map-marker-alt text-success me-1"></i>Location</label>
                                             <select name="location" class="form-select" required>
                                                 <option value="" disabled selected>Select your city</option>
                                                 <option value="Nairobi">Nairobi</option>
@@ -252,8 +131,7 @@
                                             </select>
                                         </div>
 
-
-                                        <!-- Terms & Conditions -->
+                                        <!-- Terms -->
                                         <div class="col-12">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" id="buyerTerms"
@@ -266,11 +144,10 @@
                                             </div>
                                         </div>
 
-                                        <!-- Submit Button -->
+                                        <!-- Submit -->
                                         <div class="col-12 mt-2">
                                             <button type="submit" class="btn btn-submit">
-                                                <i class="fas fa-user-check me-2"></i>
-                                                Create Buyer Account
+                                                <i class="fas fa-user-check me-2"></i> Create Buyer Account
                                             </button>
                                         </div>
                                     </div>
@@ -279,14 +156,13 @@
 
                             <!-- Seller Form -->
                             <div class="tab-pane fade" id="seller" role="tabpanel">
-                                <form id="sellerForm" class="needs-validation" novalidate>
+                                <form id="sellerForm" class="needs-validation" novalidate enctype="multipart/form-data">
                                     <div class="row g-4">
 
-                                        <!-- Profile Picture Upload (Optional) -->
+                                        <!-- Profile Image -->
                                         <div class="col-12 seller-field">
-                                            <h6 class="fw-bold text-success mb-3">
-                                                <i class="fas fa-user-circle me-2"></i>Profile Picture (Optional)
-                                            </h6>
+                                            <h6 class="fw-bold text-success mb-3"><i
+                                                    class="fas fa-user-circle me-2"></i>Profile Picture (Optional)</h6>
                                             <div class="profile-upload-container">
                                                 <div class="row align-items-center">
                                                     <div class="col-md-4 text-center mb-3 mb-md-0">
@@ -306,23 +182,22 @@
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="mb-3">
-                                                            <label for="sellerProfile" class="form-label fw-semibold">
-                                                                Upload Profile Picture
-                                                                <span class="text-muted fw-normal">(Optional)</span>
-                                                            </label>
+                                                            <label for="sellerProfile"
+                                                                class="form-label fw-semibold">Upload Profile Picture
+                                                                <span
+                                                                    class="text-muted fw-normal">(Optional)</span></label>
                                                             <div class="input-group">
                                                                 <input type="file" class="form-control"
-                                                                    id="sellerProfile" accept="image/*"
+                                                                    id="sellerProfile" name="profile_image"
+                                                                    accept="image/*"
                                                                     onchange="previewSellerProfile(event)">
                                                                 <button type="button" class="btn btn-outline-secondary"
                                                                     onclick="clearSellerProfile()">
                                                                     <i class="fas fa-times"></i>
                                                                 </button>
                                                             </div>
-                                                            <div class="form-text">
-                                                                Recommended: Square image, max 2MB. JPG, PNG, or GIF
-                                                                formats.
-                                                            </div>
+                                                            <div class="form-text">Recommended: Square image, max 2MB.
+                                                                JPG, PNG, or GIF formats.</div>
                                                         </div>
                                                         <div class="d-flex gap-2 flex-wrap">
                                                             <button type="button" class="btn btn-sm btn-outline-success"
@@ -340,59 +215,51 @@
                                             </div>
                                         </div>
 
-                                        <!-- Personal Information -->
+                                        <!-- Personal Info -->
                                         <div class="col-md-6">
-                                            <label class="form-label">
-                                                <i class="fas fa-user text-success me-1"></i>First Name
-                                            </label>
+                                            <label class="form-label"><i class="fas fa-user text-success me-1"></i>First
+                                                Name</label>
                                             <input type="text" name="first_name" class="form-control"
                                                 placeholder="Enter your first name" required>
                                         </div>
-
                                         <div class="col-md-6">
-                                            <label class="form-label">
-                                                <i class="fas fa-user text-success me-1"></i>Last Name
-                                            </label>
+                                            <label class="form-label"><i class="fas fa-user text-success me-1"></i>Last
+                                                Name</label>
                                             <input type="text" name="last_name" class="form-control"
                                                 placeholder="Enter your last name" required>
                                         </div>
 
-                                        <!-- Contact Information -->
+                                        <!-- Email & Phone -->
                                         <div class="col-md-6">
-                                            <label class="form-label">
-                                                <i class="fas fa-envelope text-success me-1"></i>Email Address
-                                            </label>
+                                            <label class="form-label"><i
+                                                    class="fas fa-envelope text-success me-1"></i>Email Address</label>
                                             <input type="email" name="email" class="form-control"
                                                 placeholder="business@example.com" required>
                                             <div class="form-text">Use your business email if available.</div>
                                         </div>
-
                                         <div class="col-md-6">
-                                            <label class="form-label">
-                                                <i class="fas fa-phone text-success me-1"></i>Phone Number
-                                            </label>
+                                            <label class="form-label"><i
+                                                    class="fas fa-phone text-success me-1"></i>Phone Number</label>
                                             <input type="tel" name="phone" class="form-control"
                                                 placeholder="+254 7XX XXX XXX" required>
                                         </div>
 
                                         <!-- Password -->
                                         <div class="col-md-6">
-                                            <label class="form-label">
-                                                <i class="fas fa-lock text-success me-1"></i>Password
-                                            </label>
+                                            <label class="form-label"><i
+                                                    class="fas fa-lock text-success me-1"></i>Password</label>
                                             <input type="password" name="password" class="form-control"
                                                 placeholder="Create a strong password" required>
-                                            <div class="password-requirements">
-                                                Must be at least 8 characters with letters & numbers
-                                            </div>
+                                            <div class="password-requirements">Must be at least 8 characters with
+                                                letters & numbers</div>
                                         </div>
 
-                                        <!-- Location -->
+                                        <!-- Business Info -->
                                         <div class="col-6">
-                                            <label class="form-label">
-                                                <i class="fas fa-map-marker-alt text-success me-1"></i>Business Location
-                                            </label>
-                                            <select name="location" class="form-select" required>
+                                            <label class="form-label"><i
+                                                    class="fas fa-map-marker-alt text-success me-1"></i>Business
+                                                Location</label>
+                                            <select name="business_location" class="form-select" required>
                                                 <option value="" disabled selected>Select your business city</option>
                                                 <option value="Nairobi">Nairobi</option>
                                                 <option value="Mombasa">Mombasa</option>
@@ -403,11 +270,9 @@
                                             </select>
                                         </div>
 
-                                        <!-- Business Information -->
                                         <div class="col-12 seller-field">
-                                            <h6 class="fw-bold text-success mb-3">
-                                                <i class="fas fa-briefcase me-2"></i>Business Information
-                                            </h6>
+                                            <h6 class="fw-bold text-success mb-3"><i
+                                                    class="fas fa-briefcase me-2"></i>Business Information</h6>
 
                                             <div class="mb-3">
                                                 <label class="form-label">Business Name</label>
@@ -440,10 +305,16 @@
                                                     </select>
                                                 </div>
                                             </div>
+
+                                            <!-- Bio -->
+                                            <div class="col-12 mb-3">
+                                                <label class="form-label">Short Bio (optional)</label>
+                                                <textarea name="bio" class="form-control" rows="3"
+                                                    placeholder="Write something about your business or yourself"></textarea>
+                                            </div>
                                         </div>
 
-
-                                        <!-- Seller Terms -->
+                                        <!-- Terms -->
                                         <div class="col-12">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" id="sellerTerms"
@@ -452,19 +323,18 @@
                                                     I agree to the <a href="#" class="fw-bold">Seller Terms &
                                                         Conditions</a>,
                                                     <a href="#" class="fw-bold">Privacy Policy</a>, and confirm I have
-                                                    the right
-                                                    to sell these products
+                                                    the right to sell these products
                                                 </label>
                                             </div>
                                         </div>
 
-                                        <!-- Submit Button -->
+                                        <!-- Submit -->
                                         <div class="col-12 mt-2">
                                             <button type="submit" class="btn btn-submit">
-                                                <i class="fas fa-store me-2"></i>
-                                                Create Seller Account
+                                                <i class="fas fa-store me-2"></i> Create Seller Account
                                             </button>
                                         </div>
+
                                     </div>
                                 </form>
                             </div>
@@ -473,14 +343,13 @@
                         <!-- Footer Link -->
                         <div class="auth-footer">
                             Already have an account?
-                            <a href="#" onclick="window.location.href='login.html'">
-                                Sign in here
-                            </a>
+                            <a href="#" onclick="window.location.href='login.html'">Sign in here</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </main>
 
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
