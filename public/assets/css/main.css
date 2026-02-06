@@ -305,7 +305,11 @@ nav.main-nav .nav-link.active {
     cursor: pointer;
     color: var(--text-dark);
 }
-
+.dropdown-item .active{
+    color: var(--nav-text);
+    background-color: var(--primary-green);
+    text-decoration: none;
+}
 .dropdown-item:hover {
     background-color: var(--light-green);
     color: var(--primary-green);
@@ -3397,7 +3401,7 @@ nav.main-nav .nav-link.active {
 }
 
 .contact-section .contact-container {
-    background: var(--pr);
+    background: var(--primary-green);
     border-radius: 20px;
     padding: 2.5rem;
     border: 1px solid var(--border-color);
