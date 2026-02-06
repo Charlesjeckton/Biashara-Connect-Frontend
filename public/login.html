@@ -207,8 +207,28 @@
 
         </div>
     </main>
+    <div id="footer-placeholder"></div>
 
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/main.js" defer></script>
+    <script>
+
+        // Load header & footer and modals
+        function loadHTML(elementId, filePath) {
+            return fetch(filePath)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                });
+        }
+
+        window.onload = function () {
+            // Load all components
+            Promise.all([
+                loadHTML('footer-placeholder', '/includes/footer.html')
+            ]);
+        };
+    </script>
 
     <script>
         const API_BASE = "https://biashara-connect-backend.onrender.com";
