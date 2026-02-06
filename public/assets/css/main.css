@@ -305,11 +305,7 @@ nav.main-nav .nav-link.active {
     cursor: pointer;
     color: var(--text-dark);
 }
-.dropdown-item .active{
-    color: var(--nav-text);
-    background-color: var(--primary-green);
-    text-decoration: none;
-}
+
 .dropdown-item:hover {
     background-color: var(--light-green);
     color: var(--primary-green);

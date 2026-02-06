@@ -203,3 +203,15 @@
             font-weight: 600;
             margin-bottom: 1rem;
         }
+        /* Style for active dropdown link */
+.dropdown-item.active {
+    background-color: var(--primary-green); /* Bootstrap primary blue, change as needed */
+    color: #fff; /* White text */
+    font-weight: 500; /* Slightly bolder */
+}
+
+/* Optional: hover effect for active item */
+.dropdown-item.active:hover {
+    background-color:var(--light-green); /* Slightly darker on hover */
+    color: var(--primary-green);
+}
