@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         listingsArray.forEach(listing => {
             const image =
                 listing.images && listing.images.length
-                    ? listing.images[0].image
+                    ? `${API_BASE_URL.replace('/api', '')}${listing.images[0].image}`
                     : "/assets/img/no-image.png";
 
             // Use seller_name returned by API
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     
                     <div class="condition-badge ${listing.condition === 'new' ? 'new-badge' : ''}">
                         ${listing.condition === 'new' ? 'New' :
-                            listing.condition === 'service' ? 'Service' : 'Used'}
+                listing.condition === 'service' ? 'Service' : 'Used'}
                     </div>
 
                     <div class="saved-icon" data-listing="${listing.id}">
