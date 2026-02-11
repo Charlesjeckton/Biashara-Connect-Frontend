@@ -1,59 +1,126 @@
 const API_BASE_URL = "https://biashara-connect-backend.onrender.com/api";
+const CLOUDINARY_ROOT = "https://res.cloudinary.com/dmunt99au/image/upload";
 const FALLBACK_IMAGE = "https://dummyimage.com/300x200/cccccc/000000.png&text=No+Image";
-const CLOUDINARY_ROOT = "https://res.cloudinary.com/dmunt99au/image/upload"; // your Cloudinary base
 
 document.addEventListener("DOMContentLoaded", function () {
+
     const listingsGrid = document.getElementById("listingsGrid");
     const resultsCount = document.getElementById("resultsCount");
 
+    const categoryFilter = document.getElementById("categoryFilter");
+    const conditionFilter = document.getElementById("conditionFilter");
+    const locationFilter = document.getElementById("locationFilter");
+    const priceMin = document.getElementById("priceMin");
+    const priceMax = document.getElementById("priceMax");
+    const sortFilter = document.getElementById("sortFilter");
+    const applyBtn = document.getElementById("applyFilters");
+    const resetBtn = document.getElementById("resetFilters");
+
+    let allListings = [];
+
     loadListings();
 
-    // ==============================
-    // Construct Image URL
-    // ==============================
-    function getImageUrl(path, title = "No Image") {
+    /* ============================= */
+    /* IMAGE HANDLER */
+    /* ============================= */
+    function getImageUrl(path, title) {
         if (!path) {
-            // Use fallback image with listing title
             return `https://dummyimage.com/300x200/cccccc/000000.png&text=${encodeURIComponent(title)}`;
         }
-
-        // If full URL already
-        if (path.startsWith("http://") || path.startsWith("https://")) return path;
-
-        // Cloudinary path
-        return `${CLOUDINARY_ROOT}/${encodeURIComponent(path)}.jpg`;
+        if (path.startsWith("http")) return path;
+        return `${CLOUDINARY_ROOT}/${path}.jpg`;
     }
 
-    // ==============================
-    // Load Listings
-    // ==============================
+    /* ============================= */
+    /* LOAD LISTINGS */
+    /* ============================= */
     function loadListings() {
         fetch(`${API_BASE_URL}/listings/`)
             .then(res => res.json())
             .then(data => {
-                renderListings(data);
-                updateResultsCount(data.length);
+                allListings = data;
+                applyFilters(); // render immediately
             })
-            .catch(error => {
-                console.error("Error loading listings:", error);
+            .catch(err => {
+                console.error(err);
                 listingsGrid.innerHTML =
-                    `<p class="text-center text-danger">Failed to load listings.</p>`;
+                    `<p class="text-danger text-center">Failed to load listings.</p>`;
             });
     }
 
-    // ==============================
-    // Render Listings
-    // ==============================
-    function renderListings(listingsArray) {
+    /* ============================= */
+    /* APPLY FILTERS */
+    /* ============================= */
+    function applyFilters() {
+
+        let filtered = [...allListings];
+
+        // Category
+        if (categoryFilter.value) {
+            filtered = filtered.filter(l =>
+                l.category === categoryFilter.value
+            );
+        }
+
+        // Condition
+        if (conditionFilter.value) {
+            filtered = filtered.filter(l =>
+                l.condition === conditionFilter.value
+            );
+        }
+
+        // Location (case insensitive)
+        if (locationFilter.value) {
+            filtered = filtered.filter(l =>
+                l.location.toLowerCase() === locationFilter.value.toLowerCase()
+            );
+        }
+
+        // Price Range
+        if (priceMin.value) {
+            filtered = filtered.filter(l =>
+                Number(l.price) >= Number(priceMin.value)
+            );
+        }
+
+        if (priceMax.value) {
+            filtered = filtered.filter(l =>
+                Number(l.price) <= Number(priceMax.value)
+            );
+        }
+
+        // Sorting
+        if (sortFilter.value === "price-low") {
+            filtered.sort((a, b) => Number(a.price) - Number(b.price));
+        }
+
+        if (sortFilter.value === "price-high") {
+            filtered.sort((a, b) => Number(b.price) - Number(a.price));
+        }
+
+        if (sortFilter.value === "newest") {
+            filtered.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        }
+
+        renderListings(filtered);
+        resultsCount.textContent = `Showing ${filtered.length} results`;
+    }
+
+    /* ============================= */
+    /* RENDER */
+    /* ============================= */
+    function renderListings(listings) {
+
         listingsGrid.innerHTML = "";
 
-        if (!listingsArray.length) {
+        if (!listings.length) {
             listingsGrid.innerHTML =
-                `<p class="text-center text-muted">No listings found.</p>`;
+                `<p class="text-muted text-center">No listings found.</p>`;
             return;
         }
 
-        listingsArray.forEach(listing => {
+        listings.forEach(listing => {
+
             const imageUrl =
                 listing.images && listing.images.length
                     ? getImageUrl(listing.images[0].image, listing.title)
@@ -62,29 +129,20 @@ document.addEventListener("DOMContentLoaded", function () {
             const sellerName = listing.seller_name || "Seller";
             const initials = sellerName
                 .split(" ")
-                .map(word => word[0])
+                .map(w => w[0])
                 .join("")
                 .toUpperCase()
                 .substring(0, 2);
 
-            const listingCard = document.createElement("div");
-            listingCard.className = "listing-card";
+            const card = document.createElement("div");
+            card.className = "listing-card";
 
-            listingCard.innerHTML = `
+            card.innerHTML = `
                 <div class="listing-image-container">
                     <img src="${imageUrl}" 
                          alt="${listing.title}" 
                          class="listing-image"
                          onerror="this.src='${FALLBACK_IMAGE}'">
-                    
-                    <div class="condition-badge ${listing.condition === 'new' ? 'new-badge' : ''}">
-                        ${listing.condition === 'new' ? 'New' :
-                            listing.condition === 'service' ? 'Service' : 'Used'}
-                    </div>
-
-                    <div class="saved-icon" data-listing="${listing.id}">
-                        <i class="far fa-heart"></i>
-                    </div>
                 </div>
 
                 <div class="listing-card-body">
@@ -94,56 +152,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     <h3 class="listing-title">${listing.title}</h3>
 
-                    <p class="listing-description">
-                        ${listing.description}
-                    </p>
+                    <p>${listing.description}</p>
 
                     <div class="listing-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>${listing.area}, ${listing.location}</span>
+                        ${listing.area}, ${listing.location}
                     </div>
                 </div>
 
                 <div class="listing-card-footer">
                     <div class="seller-info">
                         <div class="seller-avatar">${initials}</div>
-                        <div class="seller-name">${sellerName}</div>
+                        <div>${sellerName}</div>
                     </div>
-
-                    <button class="contact-btn" data-listing="${listing.id}">
-                        <i class="fas fa-message"></i> Contact
-                    </button>
                 </div>
             `;
 
-            listingsGrid.appendChild(listingCard);
-        });
-
-        attachSaveListeners();
-        attachContactListeners();
-    }
-
-    function updateResultsCount(total) {
-        resultsCount.textContent = `Showing ${total} results`;
-    }
-
-    function attachSaveListeners() {
-        document.querySelectorAll(".saved-icon").forEach(icon => {
-            icon.addEventListener("click", function () {
-                const heart = this.querySelector("i");
-                heart.classList.toggle("far");
-                heart.classList.toggle("fas");
-                this.classList.toggle("active");
-            });
+            listingsGrid.appendChild(card);
         });
     }
 
-    function attachContactListeners() {
-        document.querySelectorAll(".contact-btn").forEach(btn => {
-            btn.addEventListener("click", function () {
-                const listingId = this.getAttribute("data-listing");
-                alert("Contacting seller for listing: " + listingId);
-            });
-        });
-    }
+    /* ============================= */
+    /* EVENTS */
+    /* ============================= */
+    applyBtn.addEventListener("click", applyFilters);
+    sortFilter.addEventListener("change", applyFilters);
+
+    resetBtn.addEventListener("click", () => {
+        categoryFilter.value = "";
+        conditionFilter.value = "";
+        locationFilter.value = "";
+        priceMin.value = "";
+        priceMax.value = "";
+        sortFilter.value = "newest";
+        applyFilters();
+    });
+
 });
