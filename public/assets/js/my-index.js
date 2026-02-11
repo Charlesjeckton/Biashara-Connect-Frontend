@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     : "/assets/img/no-image.png";
 
             // Seller initials
-            const sellerName = listing.seller || "Seller";
+            const sellerName = listing.seller_Name || "Seller";
             const initials = sellerName
                 .split(" ")
                 .map(word => word[0])
