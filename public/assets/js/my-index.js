@@ -11,10 +11,10 @@ const FALLBACK_IMAGE = "https://via.placeholder.com/300x200?text=No+Image";
 function getImageUrl(url) {
     if (!url) return FALLBACK_IMAGE;
 
-    // If full URL (Cloudinary or external)
+    // Full URL (Cloudinary or external)
     if (url.startsWith("http://") || url.startsWith("https://")) return url;
 
-    // Otherwise, assume relative path from backend
+    // Otherwise, relative path from backend
     return `${BACKEND_ROOT}${url.startsWith("/") ? "" : "/"}${encodeURI(url)}`;
 }
 
@@ -27,7 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loadListings();
 
-    /* LOAD LISTINGS FROM API */
+    /* -----------------------------
+       LOAD LISTINGS FROM API
+    ----------------------------- */
     async function loadListings() {
         try {
             const res = await fetch(`${API_BASE_URL}/listings/`);
@@ -42,7 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    /* RENDER LISTINGS */
+    /* -----------------------------
+       RENDER LISTINGS
+    ----------------------------- */
     function renderListings(listingsArray) {
         listingsGrid.innerHTML = "";
 
@@ -53,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         listingsArray.forEach(listing => {
-            const image = listing.images && listing.images.length
+            const image = listing.images?.length
                 ? getImageUrl(listing.images[0].image)
                 : FALLBACK_IMAGE;
 
@@ -75,9 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
                          class="listing-image"
                          onerror="this.src='${FALLBACK_IMAGE}'">
                     
-                    <div class="condition-badge ${listing.condition === 'new' ? 'new-badge' : ''}">
-                        ${listing.condition === 'new' ? 'New' :
-                          listing.condition === 'service' ? 'Service' : 'Used'}
+                    <div class="condition-badge ${listing.condition === 'new' ? 'new-badge' : listing.condition === 'service' ? 'service-badge' : 'used-badge'}">
+                        ${listing.condition === 'new' ? 'New' : listing.condition === 'service' ? 'Service' : 'Used'}
                     </div>
 
                     <div class="saved-icon" data-listing="${listing.id}">
@@ -113,12 +116,16 @@ document.addEventListener("DOMContentLoaded", function () {
         attachContactListeners();
     }
 
-    /* UPDATE RESULTS COUNT */
+    /* -----------------------------
+       UPDATE RESULTS COUNT
+    ----------------------------- */
     function updateResultsCount(total) {
-        resultsCount.textContent = `Showing ${total} results`;
+        if (resultsCount) resultsCount.textContent = `Showing ${total} results`;
     }
 
-    /* TOGGLE SAVE ICON */
+    /* -----------------------------
+       TOGGLE SAVE ICON
+    ----------------------------- */
     function attachSaveListeners() {
         document.querySelectorAll(".saved-icon").forEach(icon => {
             icon.addEventListener("click", function () {
@@ -126,15 +133,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 heart.classList.toggle("far");
                 heart.classList.toggle("fas");
                 this.classList.toggle("active");
+
+                // Optional: API call to save/unsave listing
+                const listingId = this.dataset.listing;
+                console.log("Toggle save for listing:", listingId);
             });
         });
     }
 
-    /* CONTACT BUTTON */
+    /* -----------------------------
+       CONTACT BUTTON
+    ----------------------------- */
     function attachContactListeners() {
         document.querySelectorAll(".contact-btn").forEach(btn => {
             btn.addEventListener("click", function () {
-                const listingId = this.getAttribute("data-listing");
+                const listingId = this.dataset.listing;
                 alert("Contacting seller for listing: " + listingId);
             });
         });
