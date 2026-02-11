@@ -1,6 +1,6 @@
 const API_BASE_URL = "https://biashara-connect-backend.onrender.com/api";
 const BACKEND_ROOT = API_BASE_URL.replace("/api", ""); // https://biashara-connect-backend.onrender.com
-const FALLBACK_IMAGE = "/assets/img/no-image.png"; // fallback if no image
+const FALLBACK_IMAGE = "https://via.placeholder.com/300x200?text=No+Image";
 
 document.addEventListener("DOMContentLoaded", function () {
     const listingsGrid = document.getElementById("listingsGrid");
