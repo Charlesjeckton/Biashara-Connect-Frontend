@@ -1,10 +1,19 @@
 const API_BASE_URL = "https://biashara-connect-backend.onrender.com/api";
+const BACKEND_ROOT = API_BASE_URL.replace("/api", ""); // https://biashara-connect-backend.onrender.com
+const FALLBACK_IMAGE = "/assets/img/no-image.png"; // fallback if no image
 
 document.addEventListener("DOMContentLoaded", function () {
     const listingsGrid = document.getElementById("listingsGrid");
     const resultsCount = document.getElementById("resultsCount");
 
     loadListings();
+
+    function getImageUrl(url) {
+        if (!url) return FALLBACK_IMAGE;
+        if (url.startsWith("http://") || url.startsWith("https://")) return url;
+        // prepend backend root
+        return `${BACKEND_ROOT}/${encodeURI(url)}`;
+    }
 
     function loadListings() {
         fetch(`${API_BASE_URL}/listings/`)
@@ -30,12 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         listingsArray.forEach(listing => {
-            const image =
+            const imageUrl =
                 listing.images && listing.images.length
-                    ? listing.images[0].image
-                    : "/assets/img/no-image.png";
+                    ? getImageUrl(listing.images[0].image)
+                    : FALLBACK_IMAGE;
 
-            // Use seller_name returned by API
             const sellerName = listing.seller_name || "Seller";
             const initials = sellerName
                 .split(" ")
@@ -49,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             listingCard.innerHTML = `
                 <div class="listing-image-container">
-                    <img src="${image}" alt="${listing.title}" class="listing-image">
+                    <img src="${imageUrl}" alt="${listing.title}" class="listing-image" onerror="this.src='${FALLBACK_IMAGE}'">
                     
                     <div class="condition-badge ${listing.condition === 'new' ? 'new-badge' : ''}">
                         ${listing.condition === 'new' ? 'New' :
