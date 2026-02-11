@@ -3,7 +3,7 @@
 ===================================================== */
 const BACKEND_ROOT = "https://biashara-connect-backend.onrender.com";
 const API_BASE_URL = `${BACKEND_ROOT}/api`;
-const FALLBACK_IMAGE = "/images/default-fallback.jpg"; // Place this in your /public/images folder
+const FALLBACK_IMAGE = "https://via.placeholder.com/300x200?text=No+Image";
 
 /* =====================================================
    IMAGE HELPER
