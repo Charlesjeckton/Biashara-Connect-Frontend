@@ -1,6 +1,6 @@
 const API_BASE_URL = "https://biashara-connect-backend.onrender.com/api";
-const BACKEND_ROOT = API_BASE_URL.replace("/api", ""); // https://biashara-connect-backend.onrender.com
 const FALLBACK_IMAGE = "https://dummyimage.com/300x200/cccccc/000000.png&text=No+Image";
+const CLOUDINARY_ROOT = "https://res.cloudinary.com/dmunt99au/image/upload"; // your Cloudinary base
 
 document.addEventListener("DOMContentLoaded", function () {
     const listingsGrid = document.getElementById("listingsGrid");
@@ -8,13 +8,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loadListings();
 
-    function getImageUrl(url) {
-        if (!url) return FALLBACK_IMAGE;
-        if (url.startsWith("http://") || url.startsWith("https://")) return url;
-        // prepend backend root
-        return `${BACKEND_ROOT}/${encodeURI(url)}`;
+    // ==============================
+    // Construct Image URL
+    // ==============================
+    function getImageUrl(path, title = "No Image") {
+        if (!path) {
+            // Use fallback image with listing title
+            return `https://dummyimage.com/300x200/cccccc/000000.png&text=${encodeURIComponent(title)}`;
+        }
+
+        // If full URL already
+        if (path.startsWith("http://") || path.startsWith("https://")) return path;
+
+        // Cloudinary path
+        return `${CLOUDINARY_ROOT}/${encodeURIComponent(path)}.jpg`;
     }
 
+    // ==============================
+    // Load Listings
+    // ==============================
     function loadListings() {
         fetch(`${API_BASE_URL}/listings/`)
             .then(res => res.json())
@@ -29,6 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
+    // ==============================
+    // Render Listings
+    // ==============================
     function renderListings(listingsArray) {
         listingsGrid.innerHTML = "";
 
@@ -41,8 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
         listingsArray.forEach(listing => {
             const imageUrl =
                 listing.images && listing.images.length
-                    ? getImageUrl(listing.images[0].image)
-                    : FALLBACK_IMAGE;
+                    ? getImageUrl(listing.images[0].image, listing.title)
+                    : getImageUrl(null, listing.title);
 
             const sellerName = listing.seller_name || "Seller";
             const initials = sellerName
@@ -57,7 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             listingCard.innerHTML = `
                 <div class="listing-image-container">
-                    <img src="${imageUrl}" alt="${listing.title}" class="listing-image" onerror="this.src='${FALLBACK_IMAGE}'">
+                    <img src="${imageUrl}" 
+                         alt="${listing.title}" 
+                         class="listing-image"
+                         onerror="this.src='${FALLBACK_IMAGE}'">
                     
                     <div class="condition-badge ${listing.condition === 'new' ? 'new-badge' : ''}">
                         ${listing.condition === 'new' ? 'New' :
