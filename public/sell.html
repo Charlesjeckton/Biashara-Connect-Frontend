@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiasharaConnect | Sell & Earn</title>
+
+    <!-- Favicons -->
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+    <!-- Vendor CSS -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800;900&display=swap"
+            rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+<section id="header" class="header section">
+    <header id="header" class="header">
+        <div class="container">
+
+            <!-- TOP BAR: Logo + Mobile Toggle + Account -->
+            <div class="d-flex align-items-center justify-content-between py-2">
+
+                <!-- Logo Section -->
+                <div class="logo-section d-flex align-items-center">
+                    <button class="mobile-menu-btn d-lg-none me-3" aria-label="Toggle Navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <a href="/index.html" class="logo d-flex align-items-center text-decoration-none">
+                        <i class="fas fa-handshake logo-icon me-2"></i>
+                        <div>
+                            <div class="logo-text fw-bold">BiasharaConnect</div>
+                            <small class="logo-tagline text-muted d-none d-sm-block">
+                                Kenya's Marketplace
+                            </small>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Account Dropdown (Desktop) -->
+                <div class="d-flex align-items-center justify-content-between py-2">
+                    <div class="dropdown">
+                        <a href="#" class="btn btn-outline-primary-green dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-2"></i> My Account
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#SellerModal">
+                                <i class="fas fa-user me-2"></i> Seller Profile
+                            </a>
+
+                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BuyerModal">
+                                <i class="fas fa-user me-2"></i> Buyer Profile
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/register.html">
+                                <i class="fas fa-user-plus me-2"></i> Register
+                            </a>
+
+                            <a class="dropdown-item" href="/login.html">
+                                <i class="fas fa-sign-in-alt me-2"></i> Login
+                            </a>
+
+                            <a class="dropdown-item text-danger" href="#">
+                                <i class="fas fa-sign-out-alt me-2"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION BAR -->
+            <nav class="main-nav border-top pt-2" aria-label="Main Navigation">
+                <ul class="nav justify-content-center" id="mainMenu">
+
+                    <li class="nav-item">
+                        <a href="/index.html" class="nav-link">
+                            <i class="fas fa-store me-2"></i> Marketplace
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/sell.html" class="nav-link active">
+                            <i class="fas fa-hand-holding-dollar me-2"></i> Sell & Earn
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/favorites.html" class="nav-link">
+                            <i class="fas fa-bookmark me-2"></i> Favorites
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/my-listings.html" class="nav-link">
+                            <i class="fas fa-list-alt me-2"></i> My Listings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/messages.html" class="nav-link">
+                                <span>
+                                    <i class="fas fa-comment-dots me-2"></i> Messages
+                                </span>
+                            <span class="badge bg-danger">5</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/support.html" class="nav-link">
+                            <i class="fas fa-headset me-2"></i> Contact Us
+                        </a>
+                    </li>
+
+
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <div id="modals-placeholder"></div>
+</section>
+
+<main class="page-content">
+    <!-- Sell Hero Section -->
+    <section class="sell-hero py-4">
+        <div class="container sell-hero-content">
+            <h1>Sell & Earn on BiasharaConnect</h1>
+            <p>Reach thousands of buyers across Kenya. List your products or services in minutes and start earning
+                today!</p>
+
+            <div class="benefits-container">
+                <div class="benefit-item">
+                    <i class="fas fa-rocket"></i>
+                    <span>Quick Setup</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure Payments</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-users"></i>
+                    <span>Wide Reach</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-headset"></i>
+                    <span>24/7 Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Create Listing Section -->
+    <form id="listingForm" enctype="multipart/form-data">
+
+        <div class="row">
+
+            <!-- Title -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Product/Service Name</label>
+                <input type="text" class="form-control" name="title" required>
+            </div>
+
+            <!-- Price -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Pricing (KSh)</label>
+                <input type="number" class="form-control" name="price">
+            </div>
+
+            <!-- Category -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Category</label>
+                <select class="form-select" name="category" required>
+                    <option value="">Select</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="home">Home & Living</option>
+                    <option value="vehicles">Vehicles</option>
+                    <option value="services">Services</option>
+                    <option value="agriculture">Agriculture</option>
+                </select>
+            </div>
+
+            <!-- Condition -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Condition</label>
+                <select class="form-select" name="condition" required>
+                    <option value="">Select</option>
+                    <option value="new">New</option>
+                    <option value="used">Used</option>
+                    <option value="service">Service</option>
+                    <option value="fresh">Fresh</option>
+                </select>
+            </div>
+
+            <!-- Location -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label">County</label>
+                <input type="text" class="form-control" name="location" required>
+            </div>
+
+            <!-- Area -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Area / Estate</label>
+                <input type="text" class="form-control" name="area" required>
+            </div>
+
+            <!-- Description -->
+            <div class="col-12 mb-3">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" name="description" rows="4" required></textarea>
+            </div>
+
+            <!-- Images -->
+            <div class="col-12 mb-3">
+                <label class="form-label">Upload Images</label>
+                <input type="file" class="form-control" name="images" multiple accept="image/*">
+                <small class="text-muted">First image will be primary</small>
+            </div>
+
+            <div class="col-12 text-end">
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-upload"></i> Post Listing
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+
+    <!-- Tips Section -->
+    <section id="sell-tips" class="sell-tips section">
+        <div class="container container-main">
+            <div class="sell-tips-content">
+                <h4><i class="fas fa-lightbulb me-2"></i>Tips for Successful Listings</h4>
+                <ul class="tips-list">
+                    <li>Use clear, well-lit photos from multiple angles</li>
+                    <li>Set a competitive price by checking similar listings</li>
+                    <li>Be honest about the condition of your item</li>
+                    <li>Include your contact information for quick responses</li>
+                    <li>Respond to buyer inquiries promptly</li>
+                    <li>Update your listing regularly to keep it active</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/sell.js"></script>
+<script src="/assets/js/main.js" defer></script>
+<script>
+    // Load header & footer and modals
+    function loadHTML(elementId, filePath) {
+        return fetch(filePath)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(elementId).innerHTML = data;
+            });
+    }
+
+    window.onload = function () {
+        // Load all components
+        Promise.all([
+            loadHTML('modals-placeholder', '/includes/modals.html'),
+            loadHTML('footer-placeholder', '/includes/footer.html')
+        ]);
+    };
+</script>
+</body>
+
+</html>
