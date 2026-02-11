@@ -143,6 +143,15 @@ document.addEventListener("DOMContentLoaded", function () {
                          alt="${listing.title}" 
                          class="listing-image"
                          onerror="this.src='${FALLBACK_IMAGE}'">
+                    
+                    <div class="condition-badge ${listing.condition === 'new' ? 'new-badge' : ''}">
+                        ${listing.condition === 'new' ? 'New' :
+                            listing.condition === 'service' ? 'Service' : 'Used'}
+                    </div>
+
+                    <div class="saved-icon" data-listing="${listing.id}">
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
 
                 <div class="listing-card-body">
@@ -152,18 +161,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     <h3 class="listing-title">${listing.title}</h3>
 
-                    <p>${listing.description}</p>
+                    <p class="listing-description">
+                        ${listing.description}
+                    </p>
 
                     <div class="listing-location">
-                        ${listing.area}, ${listing.location}
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>${listing.area}, ${listing.location}</span>
                     </div>
                 </div>
 
                 <div class="listing-card-footer">
                     <div class="seller-info">
                         <div class="seller-avatar">${initials}</div>
-                        <div>${sellerName}</div>
+                        <div class="seller-name">${sellerName}</div>
                     </div>
+
+                    <button class="contact-btn" data-listing="${listing.id}">
+                        <i class="fas fa-message"></i> Contact
+                    </button>
                 </div>
             `;
 
@@ -188,3 +204,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+
+
+
+
