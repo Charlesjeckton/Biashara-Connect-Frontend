@@ -144,8 +144,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ====================================================== */
     function attachContactListeners() {
         document.querySelectorAll(".contact-btn").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const listingId = btn.getAttribute("data-listing");
+            btn.addEventListener("click", function () {
+                const listingId = this.getAttribute("data-listing");
                 alert(`Contacting seller for listing: ${listingId}`);
             });
         });
