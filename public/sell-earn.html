@@ -229,10 +229,23 @@
 
                 <div class="col-md-4">
                     <label for="location" class="form-label">
-                        <i class="fas fa-map-marker-alt"></i> Location
+                        <i class="fas fa-map-marker-alt"></i> County
                     </label>
-                    <input type="text" class="form-control" id="location"
-                           placeholder="e.g., Nairobi, Mombasa, Kisumu" required>
+                    <select class="form-select" id="location" required>
+                        <option value="">Choose</option>
+                        <option value="nairobi">Nairobi</option>
+                        <option value="mombasa">Mombasa</option>
+                        <option value="kisumu">Kisumu</option>
+                        <option value="nakuru">Nakuru</option>
+                        <option value="eldoret">Eldoret</option>
+                        <option value="kericho">Kericho</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">
+                        <i class="fas fa-location-dot"></i>
+                        Area / Estate</label>
+                    <input type="text" class="form-control" name="area" required>
                 </div>
 
 
