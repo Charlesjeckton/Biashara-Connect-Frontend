@@ -1,41 +1,38 @@
 const API_BASE_URL = "https://biashara-connect-backend.onrender.com/api";
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const listingsGrid = document.getElementById("listingsGrid");
     const resultsCount = document.getElementById("resultsCount");
 
     loadListings();
 
-    function loadListings() {
-        fetch(`${API_BASE_URL}/listings/`)
-            .then(res => res.json())
-            .then(data => {
-                renderListings(data);
-                updateResultsCount(data.length);
-            })
-            .catch(error => {
-                console.error("Error loading listings:", error);
-                listingsGrid.innerHTML =
-                    `<p class="text-center text-danger">Failed to load listings.</p>`;
-            });
+    async function loadListings() {
+        try {
+            const response = await fetch(`${API_BASE_URL}/listings/`);
+            if (!response.ok) throw new Error("Network response was not ok");
+            const data = await response.json();
+
+            renderListings(data);
+            updateResultsCount(data.length);
+        } catch (error) {
+            console.error("Error loading listings:", error);
+            listingsGrid.innerHTML = `
+                <p class="text-center text-danger">Failed to load listings.</p>
+            `;
+        }
     }
 
-    function renderListings(listingsArray) {
+    function renderListings(listings) {
         listingsGrid.innerHTML = "";
 
-        if (!listingsArray.length) {
-            listingsGrid.innerHTML =
-                `<p class="text-center text-muted">No listings found.</p>`;
+        if (!listings.length) {
+            listingsGrid.innerHTML = `<p class="text-center text-muted">No listings found.</p>`;
             return;
         }
 
-        listingsArray.forEach(listing => {
-            const image =
-                listing.images && listing.images.length
-                    ? `${API_BASE_URL.replace('/api', '')}${listing.images[0].image}`
-                    : "/assets/img/no-image.png";
+        listings.forEach(listing => {
+            const image = listing.images?.[0]?.image || "/assets/img/no-image.png";
 
-            // Use seller_name returned by API
             const sellerName = listing.seller_name || "Seller";
             const initials = sellerName
                 .split(" ")
@@ -46,14 +43,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const listingCard = document.createElement("div");
             listingCard.className = "listing-card";
-
             listingCard.innerHTML = `
                 <div class="listing-image-container">
                     <img src="${image}" alt="${listing.title}" class="listing-image">
-                    
+
                     <div class="condition-badge ${listing.condition === 'new' ? 'new-badge' : ''}">
                         ${listing.condition === 'new' ? 'New' :
-                listing.condition === 'service' ? 'Service' : 'Used'}
+                          listing.condition === 'service' ? 'Service' : 'Used'}
                     </div>
 
                     <div class="saved-icon" data-listing="${listing.id}">
@@ -62,16 +58,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
 
                 <div class="listing-card-body">
-                    <div class="listing-price">
-                        KSh ${Number(listing.price).toLocaleString()}
-                    </div>
-
+                    <div class="listing-price">KSh ${Number(listing.price).toLocaleString()}</div>
                     <h3 class="listing-title">${listing.title}</h3>
-
-                    <p class="listing-description">
-                        ${listing.description}
-                    </p>
-
+                    <p class="listing-description">${listing.description}</p>
                     <div class="listing-location">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>${listing.area}, ${listing.location}</span>
@@ -103,20 +92,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function attachSaveListeners() {
         document.querySelectorAll(".saved-icon").forEach(icon => {
-            icon.addEventListener("click", function () {
-                const heart = this.querySelector("i");
+            icon.addEventListener("click", () => {
+                const heart = icon.querySelector("i");
                 heart.classList.toggle("far");
                 heart.classList.toggle("fas");
-                this.classList.toggle("active");
+                icon.classList.toggle("active");
             });
         });
     }
 
     function attachContactListeners() {
         document.querySelectorAll(".contact-btn").forEach(btn => {
-            btn.addEventListener("click", function () {
-                const listingId = this.getAttribute("data-listing");
-                alert("Contacting seller for listing: " + listingId);
+            btn.addEventListener("click", () => {
+                const listingId = btn.getAttribute("data-listing");
+                alert(`Contacting seller for listing: ${listingId}`);
             });
         });
     }
