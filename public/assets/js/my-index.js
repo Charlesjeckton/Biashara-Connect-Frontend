@@ -53,57 +53,49 @@ document.addEventListener("DOMContentLoaded", function () {
     /* ============================= */
     function applyFilters() {
 
-        let filtered = [...allListings];
+        const category = categoryFilter.value;
+        const condition = conditionFilter.value;
+        const location = locationFilter.value;
+        const min = priceMin.value ? Number(priceMin.value) : null;
+        const max = priceMax.value ? Number(priceMax.value) : null;
+        const sort = sortFilter.value;
 
-        // Category
-        if (categoryFilter.value) {
-            filtered = filtered.filter(l =>
-                l.category === categoryFilter.value
-            );
-        }
+        let filtered = allListings.filter(listing => {
 
-        // Condition
-        if (conditionFilter.value) {
-            filtered = filtered.filter(l =>
-                l.condition === conditionFilter.value
-            );
-        }
+            if (category && listing.category !== category) return false;
 
-        // Location (case insensitive)
-        if (locationFilter.value) {
-            filtered = filtered.filter(l =>
-                l.location.toLowerCase() === locationFilter.value.toLowerCase()
-            );
-        }
+            if (condition && listing.condition !== condition) return false;
 
-        // Price Range
-        if (priceMin.value) {
-            filtered = filtered.filter(l =>
-                Number(l.price) >= Number(priceMin.value)
-            );
-        }
+            if (location &&
+                listing.location.toLowerCase() !== location.toLowerCase())
+                return false;
 
-        if (priceMax.value) {
-            filtered = filtered.filter(l =>
-                Number(l.price) <= Number(priceMax.value)
-            );
-        }
+            if (min !== null && Number(listing.price) < min) return false;
+
+            if (max !== null && Number(listing.price) > max) return false;
+
+            return true;
+        });
 
         // Sorting
-        if (sortFilter.value === "price-low") {
-            filtered.sort((a, b) => Number(a.price) - Number(b.price));
-        }
+        switch (sort) {
+            case "price-low":
+                filtered.sort((a, b) => Number(a.price) - Number(b.price));
+                break;
 
-        if (sortFilter.value === "price-high") {
-            filtered.sort((a, b) => Number(b.price) - Number(a.price));
-        }
+            case "price-high":
+                filtered.sort((a, b) => Number(b.price) - Number(a.price));
+                break;
 
-        if (sortFilter.value === "newest") {
-            filtered.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+            case "newest":
+            default:
+                filtered.sort(
+                    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+                );
         }
 
         renderListings(filtered);
-        resultsCount.textContent = `Showing ${filtered.length} results`;
+        resultsCount.textContent = `Showing ${filtered.length} result${filtered.length !== 1 ? "s" : ""}`;
     }
 
     /* ============================= */
@@ -127,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     : getImageUrl(null, listing.title);
 
             const sellerName = listing.seller_name || "Seller";
+
             const initials = sellerName
                 .split(" ")
                 .map(w => w[0])
@@ -143,10 +136,13 @@ document.addEventListener("DOMContentLoaded", function () {
                          alt="${listing.title}" 
                          class="listing-image"
                          onerror="this.src='${FALLBACK_IMAGE}'">
-                    
+
                     <div class="condition-badge ${listing.condition === 'new' ? 'new-badge' : ''}">
-                        ${listing.condition === 'new' ? 'New' :
-                            listing.condition === 'service' ? 'Service' : 'Used'}
+                        ${listing.condition === 'new'
+                            ? 'New'
+                            : listing.condition === 'service'
+                                ? 'Service'
+                                : 'Used'}
                     </div>
 
                     <div class="saved-icon" data-listing="${listing.id}">
@@ -162,12 +158,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     <h3 class="listing-title">${listing.title}</h3>
 
                     <p class="listing-description">
-                        ${listing.description}
+                        ${listing.description || ""}
                     </p>
 
                     <div class="listing-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>${listing.area}, ${listing.location}</span>
+                        <span>${listing.area || ""}, ${listing.location || ""}</span>
                     </div>
                 </div>
 
@@ -190,9 +186,26 @@ document.addEventListener("DOMContentLoaded", function () {
     /* ============================= */
     /* EVENTS */
     /* ============================= */
-    applyBtn.addEventListener("click", applyFilters);
-    sortFilter.addEventListener("change", applyFilters);
 
+    // Apply button still works
+    applyBtn.addEventListener("click", applyFilters);
+
+    // Auto filter on dropdown change
+    [categoryFilter, conditionFilter, locationFilter, sortFilter]
+        .forEach(filter => {
+            filter.addEventListener("change", applyFilters);
+        });
+
+    // Auto filter on price typing (debounced)
+    let typingTimer;
+    [priceMin, priceMax].forEach(input => {
+        input.addEventListener("input", () => {
+            clearTimeout(typingTimer);
+            typingTimer = setTimeout(applyFilters, 400);
+        });
+    });
+
+    // Reset
     resetBtn.addEventListener("click", () => {
         categoryFilter.value = "";
         conditionFilter.value = "";
@@ -204,8 +217,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
-
-
-
-
-
