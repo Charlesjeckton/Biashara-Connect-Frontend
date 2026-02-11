@@ -1,112 +1,71 @@
-const API_BASE_URL = "https://biashara-connect-backend.onrender.com/api";
-
-document.addEventListener("DOMContentLoaded", () => {
+// ================= RENDER LISTINGS =================
+function renderListings(listingsArray) {
     const listingsGrid = document.getElementById("listingsGrid");
-    const resultsCount = document.getElementById("resultsCount");
+    listingsGrid.innerHTML = "";
 
-    loadListings();
-
-    async function loadListings() {
-        try {
-            const response = await fetch(`${API_BASE_URL}/listings/`);
-            if (!response.ok) throw new Error("Network response was not ok");
-            const data = await response.json();
-
-            renderListings(data);
-            updateResultsCount(data.length);
-        } catch (error) {
-            console.error("Error loading listings:", error);
-            listingsGrid.innerHTML = `
-                <p class="text-center text-danger">Failed to load listings.</p>
-            `;
-        }
+    if (!listingsArray.length) {
+        listingsGrid.innerHTML =
+            `<p class="text-center text-muted">No listings found.</p>`;
+        return;
     }
 
-    function renderListings(listings) {
-        listingsGrid.innerHTML = "";
+    listingsArray.forEach(listing => {
+        // Prepend backend URL to image path
+        const image = listing.images && listing.images.length
+            ? `https://biashara-connect-backend.onrender.com${listing.images[0].image}`
+            : "/assets/img/no-image.png";
 
-        if (!listings.length) {
-            listingsGrid.innerHTML = `<p class="text-center text-muted">No listings found.</p>`;
-            return;
-        }
+        const sellerName = listing.seller_name || "Seller";
 
-        listings.forEach(listing => {
-            const image = listing.images?.[0]?.image || "/assets/img/no-image.png";
+        const listingCard = document.createElement("div");
+        listingCard.className = "listing-card";
 
-            const sellerName = listing.seller_name || "Seller";
-            const initials = sellerName
-                .split(" ")
-                .map(word => word[0])
-                .join("")
-                .toUpperCase()
-                .substring(0, 2);
+        listingCard.innerHTML = `
+            <div class="listing-image-container">
+                <img src="${image}" alt="${listing.title}" class="listing-image">
 
-            const listingCard = document.createElement("div");
-            listingCard.className = "listing-card";
-            listingCard.innerHTML = `
-                <div class="listing-image-container">
-                    <img src="${image}" alt="${listing.title}" class="listing-image">
-
-                    <div class="condition-badge ${listing.condition === 'new' ? 'new-badge' : ''}">
-                        ${listing.condition === 'new' ? 'New' :
-                          listing.condition === 'service' ? 'Service' : 'Used'}
-                    </div>
-
-                    <div class="saved-icon" data-listing="${listing.id}">
-                        <i class="far fa-heart"></i>
-                    </div>
+                <div class="condition-badge ${listing.condition === 'new' ? 'new-badge' : ''}">
+                    ${listing.condition === 'new' ? 'New' :
+                      listing.condition === 'service' ? 'Service' : 'Used'}
                 </div>
 
-                <div class="listing-card-body">
-                    <div class="listing-price">KSh ${Number(listing.price).toLocaleString()}</div>
-                    <h3 class="listing-title">${listing.title}</h3>
-                    <p class="listing-description">${listing.description}</p>
-                    <div class="listing-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>${listing.area}, ${listing.location}</span>
-                    </div>
+                <div class="saved-icon" data-listing="${listing.id}">
+                    <i class="far fa-heart"></i>
+                </div>
+            </div>
+
+            <div class="listing-card-body">
+                <div class="listing-price">
+                    KSh ${Number(listing.price).toLocaleString()}
                 </div>
 
-                <div class="listing-card-footer">
-                    <div class="seller-info">
-                        <div class="seller-avatar">${initials}</div>
-                        <div class="seller-name">${sellerName}</div>
-                    </div>
+                <h3 class="listing-title">${listing.title}</h3>
 
-                    <button class="contact-btn" data-listing="${listing.id}">
-                        <i class="fas fa-message"></i> Contact
-                    </button>
+                <p class="listing-description">
+                    ${listing.description}
+                </p>
+
+                <div class="listing-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${listing.area}, ${listing.location}</span>
                 </div>
-            `;
+            </div>
 
-            listingsGrid.appendChild(listingCard);
-        });
+            <div class="listing-card-footer">
+                <div class="seller-info">
+                    <div class="seller-avatar">${sellerName.split(" ").map(n => n[0]).join("").toUpperCase()}</div>
+                    <div class="seller-name">${sellerName}</div>
+                </div>
 
-        attachSaveListeners();
-        attachContactListeners();
-    }
+                <button class="contact-btn" data-listing="${listing.id}">
+                    <i class="fas fa-message"></i> Contact
+                </button>
+            </div>
+        `;
 
-    function updateResultsCount(total) {
-        resultsCount.textContent = `Showing ${total} results`;
-    }
+        listingsGrid.appendChild(listingCard);
+    });
 
-    function attachSaveListeners() {
-        document.querySelectorAll(".saved-icon").forEach(icon => {
-            icon.addEventListener("click", () => {
-                const heart = icon.querySelector("i");
-                heart.classList.toggle("far");
-                heart.classList.toggle("fas");
-                icon.classList.toggle("active");
-            });
-        });
-    }
-
-    function attachContactListeners() {
-        document.querySelectorAll(".contact-btn").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const listingId = btn.getAttribute("data-listing");
-                alert(`Contacting seller for listing: ${listingId}`);
-            });
-        });
-    }
-});
+    attachSaveListeners();
+    attachContactListeners();
+}
