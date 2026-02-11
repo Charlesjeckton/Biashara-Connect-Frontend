@@ -1,14 +1,11 @@
 const API_BASE_URL = "https://biashara-connect-backend.onrender.com/api";
 
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("Biashara Connect Listings Page loaded");
-
     const listingsGrid = document.getElementById("listingsGrid");
     const resultsCount = document.getElementById("resultsCount");
 
     loadListings();
 
-    // ================= LOAD FROM BACKEND =================
     function loadListings() {
         fetch(`${API_BASE_URL}/listings/`)
             .then(res => res.json())
@@ -23,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    // ================= RENDER LISTINGS =================
     function renderListings(listingsArray) {
         listingsGrid.innerHTML = "";
 
@@ -34,15 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         listingsArray.forEach(listing => {
-
-            // Cloudinary image (first image or fallback)
             const image =
                 listing.images && listing.images.length
                     ? listing.images[0].image
                     : "/assets/img/no-image.png";
 
-            // Seller initials
-            const sellerName = listing.seller_Name || "Seller";
+            // Use seller_name returned by API
+            const sellerName = listing.seller_name || "Seller";
             const initials = sellerName
                 .split(" ")
                 .map(word => word[0])
@@ -107,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
         resultsCount.textContent = `Showing ${total} results`;
     }
 
-    // ================= SAVE BUTTON =================
     function attachSaveListeners() {
         document.querySelectorAll(".saved-icon").forEach(icon => {
             icon.addEventListener("click", function () {
@@ -119,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ================= CONTACT BUTTON =================
     function attachContactListeners() {
         document.querySelectorAll(".contact-btn").forEach(btn => {
             btn.addEventListener("click", function () {
