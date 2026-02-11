@@ -1,5 +1,28 @@
-const API_BASE_URL = "https://biashara-connect-backend.onrender.com/api";
+/* =====================================================
+   CONFIG
+===================================================== */
+const BACKEND_ROOT = "https://biashara-connect-backend.onrender.com";
+const API_BASE_URL = `${BACKEND_ROOT}/api`;
+const FALLBACK_IMAGE = "/assets/img/no-image.png";
 
+/* =====================================================
+   IMAGE HELPER
+===================================================== */
+function getImageUrl(url) {
+    if (!url) return FALLBACK_IMAGE;
+
+    // If already full URL (Cloudinary full link)
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+        return url;
+    }
+
+    // If relative path, prepend backend root
+    return `${BACKEND_ROOT}${url.startsWith("/") ? "" : "/"}${encodeURI(url)}`;
+}
+
+/* =====================================================
+   MAIN
+===================================================== */
 document.addEventListener("DOMContentLoaded", function () {
     const listingsGrid = document.getElementById("listingsGrid");
     const resultsCount = document.getElementById("resultsCount");
@@ -30,13 +53,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         listingsArray.forEach(listing => {
-            const image =
-                listing.images && listing.images.length
-                    ? listing.images[0].image
-                    : "/assets/img/no-image.png";
 
-            // Use seller_name returned by API
+            const image = listing.images && listing.images.length
+                ? getImageUrl(listing.images[0].image)
+                : FALLBACK_IMAGE;
+
             const sellerName = listing.seller_name || "Seller";
+
             const initials = sellerName
                 .split(" ")
                 .map(word => word[0])
@@ -49,11 +72,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             listingCard.innerHTML = `
                 <div class="listing-image-container">
-                    <img src="${image}" alt="${listing.title}" class="listing-image">
+                    <img src="${image}" 
+                         alt="${listing.title}" 
+                         class="listing-image"
+                         onerror="this.src='${FALLBACK_IMAGE}'">
                     
                     <div class="condition-badge ${listing.condition === 'new' ? 'new-badge' : ''}">
                         ${listing.condition === 'new' ? 'New' :
-                            listing.condition === 'service' ? 'Service' : 'Used'}
+                          listing.condition === 'service' ? 'Service' : 'Used'}
                     </div>
 
                     <div class="saved-icon" data-listing="${listing.id}">
